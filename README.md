@@ -63,78 +63,8 @@ npm run dev
 # Visit http://localhost:8000
 ```
 
-## Customization
-
-### Modify Video Filters
-
-Edit `scripts/fetch-videos.js` and update the filtering logic:
-
-```javascript
-this.allowedSessionTypes = [
-    'fp1', 'fp2', 'qualifying', 'sprint', 'race'
-];
-
-this.excludeKeywords = [
-    'f2', 'formula 2', 'post-race show', 'drivers react'
-];
-```
-
-### Change Update Schedule
-
-Edit `.github/workflows/update-videos.yml`:
-
-```yaml
-schedule:
-  # Currently runs Fri-Mon during race weekends
-  # Modify cron expressions to change timing
-```
-
-## File Structure
-
-```
-├── index.html          # Main website
-├── styles.css          # Styling
-├── script.js           # Frontend JavaScript
-├── videos.json         # Video data (auto-generated)
-├── package.json        # Dependencies
-├── sitemap.xml         # SEO sitemap
-├── robots.txt          # Crawler instructions
-├── scripts/
-│   └── fetch-videos.js # YouTube API fetcher
-└── .github/workflows/
-    └── update-videos.yml # GitHub Actions workflow
-```
-
-## SEO Features
-
-- ✅ **Optimized meta tags** for search engines
-- ✅ **Open Graph tags** for social media sharing
-- ✅ **Structured data** (JSON-LD schema)
-- ✅ **Dynamic titles** based on current Grand Prix
-- ✅ **Mobile-friendly** responsive design
-- ✅ **Fast loading** with optimized assets
-
-## Troubleshooting
-
-### No videos showing up?
-- Check if GitHub Actions is running successfully
-- Verify your YouTube API key is correct
-- Check the repository Actions tab for error logs
-
-### API quota exceeded?
-- YouTube Data API has daily quotas
-- The optimized schedule (race weekends only) helps manage this
-- Monitor usage in Google Cloud Console
-
-### Videos not filtering correctly?
-- Check the filtering logic in `scripts/fetch-videos.js`
-- F1 might change their video naming conventions
-- Use manual workflow runs to test changes
-
 ## License
 
-MIT License - feel free to modify and use as needed!
+[MIT License](./LICENSE)
 
 ---
-
-Built with ❤️ for F1 fans who want quick access to session highlights without scrolling through the entire F1 YouTube channel.
