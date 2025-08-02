@@ -1,17 +1,10 @@
 {
-  "lastUpdated": "2025-08-02T06:46:14.821Z",
+  "lastUpdated": "2025-08-02T07:07:41.514Z",
   "totalVideos": 6,
   "grandPrixWeekends": [
     {
       "name": "2025 Hungarian Grand Prix",
       "videos": [
-        {
-          "videoId": "GeCXZHXVTac",
-          "title": "FP1 Highlights | 2025 Hungarian Grand Prix",
-          "description": "Catch the most important moments from the first practice session at the Hungaroring, as two rookies step in. For more F1® videos, ...",
-          "publishedAt": "2025-08-01T13:55:15Z",
-          "thumbnail": "https://i.ytimg.com/vi/GeCXZHXVTac/hqdefault.jpg"
-        },
         {
           "videoId": "zq0LPmtvuNw",
           "title": "FP2 Highlights | 2025 Hungarian Grand Prix",
@@ -47,6 +40,13 @@
           "thumbnail": "https://i.ytimg.com/vi/1gGaWHOnBn0/hqdefault.jpg"
         },
         {
+          "videoId": "yApM21L0GgY",
+          "title": "Race Highlights | 2025 Belgian Grand Prix",
+          "description": "Catch up on all the action from a wet-dry race at Spa-Francorchamps, with big overtakes and a tense battle at the top in the ...",
+          "publishedAt": "2025-07-27T16:33:30Z",
+          "thumbnail": "https://i.ytimg.com/vi/yApM21L0GgY/hqdefault.jpg"
+        },
+        {
           "videoId": "e3_bGHWAlkg",
           "title": "Qualifying Highlights | 2025 Belgian Grand Prix",
           "description": "Catch up on all the highlights from Qualifying in Belgium! For more F1® videos, visit https://www.Formula1.com Follow F1®: ...",
@@ -54,7 +54,7 @@
           "thumbnail": "https://i.ytimg.com/vi/e3_bGHWAlkg/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-07-26T15:42:47.000Z"
+      "latestDate": "2025-07-27T16:33:30.000Z"
     }
   ]
 }
