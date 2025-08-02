@@ -2,8 +2,15 @@ name: Update F1 Videos
 
 on:
   schedule:
-    # Run every 30 minutes
-    - cron: '*/30 * * * *'
+    # Run every 30 minutes during F1 race weekends (Friday-Monday)
+    # Friday: 0-23 hours
+    - cron: '*/30 * * * 5'
+    # Saturday: 0-23 hours  
+    - cron: '*/30 * * * 6'
+    # Sunday: 0-23 hours
+    - cron: '*/30 * * * 0'
+    # Monday: 0-12 hours (for post-race content)
+    - cron: '*/30 0-12 * * 1'
   workflow_dispatch: # Allow manual trigger
     inputs:
       reason:
@@ -22,10 +29,16 @@ on:
 jobs:
   update-videos:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Allow writing to repository
+      actions: read    # Allow reading workflow info
     
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 0
       
     - name: Setup Node.js
       uses: actions/setup-node@v4
@@ -48,26 +61,31 @@ jobs:
       
     - name: Commit and push changes
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+        # Configure git with GitHub Actions bot
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        
+        # Add the videos.json file
         git add videos.json
         
         # Check if there are changes or if force update is enabled
         if git diff --staged --quiet && [ "${{ github.event.inputs.force_update }}" != "true" ]; then
           echo "✅ No changes to commit"
         else
+          # Create appropriate commit message
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             COMMIT_MSG="🏎️ Manual F1 video update - ${{ github.event.inputs.reason || 'Manual update' }} ($(date))"
           else
             COMMIT_MSG="🔄 Auto F1 video update - $(date)"
           fi
           
+          echo "📝 Committing with message: $COMMIT_MSG"
           git commit -m "$COMMIT_MSG"
-          git push
-          echo "✅ Changes committed and pushed"
+          
+          echo "🚀 Pushing changes..."
+          git push origin HEAD:${{ github.ref_name }}
+          echo "✅ Changes committed and pushed successfully"
         fi
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
     - name: Summary
       run: |
