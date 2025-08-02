@@ -1,14 +1,27 @@
-# F1 Video Tracker 🏎️
+# F1 Recap 🏎️
 
-A static website that automatically tracks and displays Formula 1 YouTube videos, focusing on Practice, Sprint, and Race recaps. Updates every 30 minutes via GitHub Actions.
+A static website that automatically tracks and displays Formula 1 YouTube videos, focusing on Practice, Sprint, and Race recaps. Updates every 30 minutes during race weekends via GitHub Actions.
+
+## 🌐 Live Site
+
+**[f1recap.pages.dev](https://f1recap.pages.dev)**
 
 ## Features
 
 - 🎯 **Smart Filtering**: Only shows Practice, Sprint, and Race recap videos
-- ⏰ **Auto Updates**: GitHub Actions fetches new videos every 30 minutes
+- ⏰ **Auto Updates**: GitHub Actions fetches new videos during F1 race weekends
 - 📱 **Responsive Design**: Works great on desktop and mobile
-- 🎬 **Embedded Videos**: Watch directly without leaving the site
-- 📅 **Recent Content**: Shows videos from the last 3 race weekends
+- 🎬 **Direct YouTube Access**: One-click to watch videos
+- 📅 **Weekend Organization**: Videos grouped by Grand Prix weekends
+- 🏁 **Session Ordering**: FP1 → FP2 → Qualifying → Race (or Sprint format)
+
+## How It Works
+
+1. **GitHub Actions** runs during F1 race weekends (Fri-Mon)
+2. **fetch-videos.js** queries YouTube Data API for latest F1 channel videos
+3. **Smart filtering** identifies Practice/Sprint/Race recaps using keywords
+4. **videos.json** is updated with the latest video data organized by Grand Prix
+5. **Static website** loads and displays the videos with clean interface
 
 ## Setup
 
@@ -28,12 +41,12 @@ A static website that automatically tracks and displays Formula 1 YouTube videos
    - Name: `YOUTUBE_API_KEY`
    - Value: Your YouTube API key
 
-### 3. Enable GitHub Pages
+### 3. Deploy to Cloudflare Pages
 
-1. Go to Settings → Pages
-2. Source: Deploy from a branch
-3. Branch: `main` / `(root)`
-4. Save
+1. Connect your GitHub repository to Cloudflare Pages
+2. Set build command: `npm run build`
+3. Set output directory: `/` (root)
+4. Deploy!
 
 ### 4. Local Development
 
@@ -50,51 +63,30 @@ npm run dev
 # Visit http://localhost:8000
 ```
 
-## How It Works
-
-1. **GitHub Actions** runs every 30 minutes
-2. **fetch-videos.js** queries YouTube Data API for latest F1 channel videos
-3. **Smart filtering** identifies Practice/Sprint/Race recaps using keywords
-4. **videos.json** is updated with the latest video data
-5. **Static website** loads and displays the videos with embedded players
-
 ## Customization
 
 ### Modify Video Filters
 
-Edit `scripts/fetch-videos.js` and update the `targetKeywords` array:
+Edit `scripts/fetch-videos.js` and update the filtering logic:
 
 ```javascript
-this.targetKeywords = [
-    'practice recap',
-    'fp1 recap',
-    'fp2 recap', 
-    'fp3 recap',
-    'sprint recap',
-    'race recap',
-    // Add your own keywords
+this.allowedSessionTypes = [
+    'fp1', 'fp2', 'qualifying', 'sprint', 'race'
+];
+
+this.excludeKeywords = [
+    'f2', 'formula 2', 'post-race show', 'drivers react'
 ];
 ```
 
-### Change Update Frequency
+### Change Update Schedule
 
-Edit `.github/workflows/update-videos.yml` and modify the cron schedule:
+Edit `.github/workflows/update-videos.yml`:
 
 ```yaml
 schedule:
-  # Every 15 minutes: '*/15 * * * *'
-  # Every hour: '0 * * * *'
-  # Every 30 minutes: '*/30 * * * *'
-  - cron: '*/30 * * * *'
-```
-
-### Adjust Time Range
-
-In `scripts/fetch-videos.js`, modify the days parameter:
-
-```javascript
-// Keep videos from last 6 weeks (42 days)
-const recentVideos = this.filterRecentVideos(filteredVideos, 42);
+  # Currently runs Fri-Mon during race weekends
+  # Modify cron expressions to change timing
 ```
 
 ## File Structure
@@ -105,11 +97,22 @@ const recentVideos = this.filterRecentVideos(filteredVideos, 42);
 ├── script.js           # Frontend JavaScript
 ├── videos.json         # Video data (auto-generated)
 ├── package.json        # Dependencies
+├── sitemap.xml         # SEO sitemap
+├── robots.txt          # Crawler instructions
 ├── scripts/
 │   └── fetch-videos.js # YouTube API fetcher
 └── .github/workflows/
     └── update-videos.yml # GitHub Actions workflow
 ```
+
+## SEO Features
+
+- ✅ **Optimized meta tags** for search engines
+- ✅ **Open Graph tags** for social media sharing
+- ✅ **Structured data** (JSON-LD schema)
+- ✅ **Dynamic titles** based on current Grand Prix
+- ✅ **Mobile-friendly** responsive design
+- ✅ **Fast loading** with optimized assets
 
 ## Troubleshooting
 
@@ -120,13 +123,18 @@ const recentVideos = this.filterRecentVideos(filteredVideos, 42);
 
 ### API quota exceeded?
 - YouTube Data API has daily quotas
-- Consider reducing update frequency
+- The optimized schedule (race weekends only) helps manage this
 - Monitor usage in Google Cloud Console
 
 ### Videos not filtering correctly?
-- Check the `targetKeywords` array in `fetch-videos.js`
+- Check the filtering logic in `scripts/fetch-videos.js`
 - F1 might change their video naming conventions
+- Use manual workflow runs to test changes
 
 ## License
 
-MIT License - feel free to modify and use as needed!# f1tracker
+MIT License - feel free to modify and use as needed!
+
+---
+
+Built with ❤️ for F1 fans who want quick access to session highlights without scrolling through the entire F1 YouTube channel.

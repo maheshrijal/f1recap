@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate OG Image</title>
+    <style>
+        body { 
+            margin: 0; 
+            padding: 20px; 
+            font-family: Arial, sans-serif; 
+            background: #f0f0f0;
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            text-align: center;
+        }
+        #ogImage { 
+            border: 2px solid #ddd; 
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .controls {
+            margin: 20px 0;
+        }
+        button {
+            background: #e10600;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        button:hover {
+            background: #cc0000;
+        }
+        .info {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏎️ F1 Recap - Open Graph Image Generator</h1>
+        
+        <div class="info">
+            <h3>Instructions:</h3>
+            <ol>
+                <li><strong>Preview:</strong> The image below shows how your OG image will look</li>
+                <li><strong>Download PNG:</strong> Click the button to download as PNG (recommended for social media)</li>
+                <li><strong>Use SVG:</strong> The SVG version is already created as <code>og-image.svg</code></li>
+                <li><strong>Upload:</strong> Place the downloaded <code>og-image.png</code> in your website root</li>
+            </ol>
+            <p><strong>Dimensions:</strong> 1200x630px (perfect for Facebook, Twitter, LinkedIn)</p>
+        </div>
+        
+        <div class="controls">
+            <button onclick="downloadPNG()">📥 Download PNG</button>
+            <button onclick="copyToClipboard()">📋 Copy SVG Code</button>
+        </div>
+        
+        <img id="ogImage" src="og-image.svg" alt="F1 Recap Open Graph Image" style="max-width: 100%; height: auto;">
+        
+        <div class="info">
+            <h3>How it will appear:</h3>
+            <ul>
+                <li><strong>Facebook:</strong> Large image with title and description</li>
+                <li><strong>Twitter:</strong> Summary card with large image</li>
+                <li><strong>LinkedIn:</strong> Rich preview with image</li>
+                <li><strong>Discord/Slack:</strong> Embedded preview</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function downloadPNG() {
+            // Create canvas
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 1200;
+            canvas.height = 630;
+            
+            // Create image from SVG
+            const img = new Image();
+            const svgBlob = new Blob([document.querySelector('#ogImage').outerHTML], {type: 'image/svg+xml'});
+            const url = URL.createObjectURL(svgBlob);
+            
+            img.onload = function() {
+                ctx.drawImage(img, 0, 0);
+                
+                // Download
+                canvas.toBlob(function(blob) {
+                    const link = document.createElement('a');
+                    link.download = 'og-image.png';
+                    link.href = URL.createObjectURL(blob);
+                    link.click();
+                    URL.revokeObjectURL(url);
+                });
+            };
+            
+            img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(`
+                <svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Background Gradient -->
+                    <defs>
+                        <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                        </linearGradient>
+                        <pattern id="stripes" patternUnits="userSpaceOnUse" width="40" height="40" patternTransform="rotate(45)">
+                            <rect width="40" height="40" fill="rgba(255,255,255,0.05)"/>
+                            <rect width="20" height="40" fill="rgba(255,255,255,0.1)"/>
+                        </pattern>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                            <feMerge> 
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <rect width="1200" height="630" fill="url(#bgGradient)"/>
+                    <rect width="1200" height="630" fill="url(#stripes)" opacity="0.3"/>
+                    <g transform="translate(50, 400)">
+                        <path d="M0,50 L100,40 L200,35 L350,30 L450,25 L550,25 L650,30 L750,35 L850,40 L950,50 L950,80 L850,85 L750,85 L650,85 L550,85 L450,85 L350,85 L200,85 L100,85 Z" 
+                              fill="rgba(255,255,255,0.15)" 
+                              stroke="rgba(255,255,255,0.3)" 
+                              stroke-width="2"/>
+                        <circle cx="200" cy="85" r="25" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.4)" stroke-width="3"/>
+                        <circle cx="750" cy="85" r="25" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.4)" stroke-width="3"/>
+                        <path d="M0,50 L50,45 L100,50 L100,60 L50,55 L0,60 Z" fill="rgba(255,255,255,0.1)"/>
+                    </g>
+                    <rect x="100" y="100" width="1000" height="350" fill="rgba(255,255,255,0.95)" rx="20" ry="20" filter="url(#glow)"/>
+                    <text x="600" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="#e10600">🏎️ F1 Recap</text>
+                    <text x="600" y="260" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="600" fill="#333">Latest Formula 1 Highlights</text>
+                    <g transform="translate(200, 300)">
+                        <text x="0" y="0" font-family="Arial, sans-serif" font-size="24" font-weight="500" fill="#666">✅ Auto-updated every 30 minutes</text>
+                        <text x="0" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="500" fill="#666">🏁 Practice, Qualifying &amp; Race highlights</text>
+                        <text x="0" y="80" font-family="Arial, sans-serif" font-size="24" font-weight="500" fill="#666">📱 Organized by Grand Prix weekends</text>
+                    </g>
+                    <text x="600" y="550" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="600" fill="#e10600">f1recap.pages.dev</text>
+                    <circle cx="150" cy="150" r="3" fill="#e10600" opacity="0.6"/>
+                    <circle cx="1050" cy="180" r="4" fill="#e10600" opacity="0.4"/>
+                    <circle cx="200" cy="500" r="2" fill="#e10600" opacity="0.8"/>
+                    <circle cx="1000" cy="520" r="3" fill="#e10600" opacity="0.5"/>
+                    <g transform="translate(950, 120)">
+                        <rect x="0" y="0" width="20" height="20" fill="#333"/>
+                        <rect x="20" y="0" width="20" height="20" fill="white"/>
+                        <rect x="0" y="20" width="20" height="20" fill="white"/>
+                        <rect x="20" y="20" width="20" height="20" fill="#333"/>
+                        <rect x="40" y="0" width="20" height="20" fill="#333"/>
+                        <rect x="40" y="20" width="20" height="20" fill="white"/>
+                    </g>
+                </svg>
+            `)));
+        }
+        
+        function copyToClipboard() {
+            navigator.clipboard.writeText(document.querySelector('#ogImage').outerHTML)
+                .then(() => alert('SVG code copied to clipboard!'))
+                .catch(() => alert('Failed to copy. Please copy manually from og-image.svg file.'));
+        }
+    </script>
+</body>
+</html>

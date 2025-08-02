@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://your-domain.github.io/sitemap.xml
+Sitemap: https://f1recap.pages.dev/sitemap.xml
 
 # Crawl-delay for respectful crawling
 Crawl-delay: 1
