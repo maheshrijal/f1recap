@@ -5,6 +5,17 @@ on:
     # Run every 30 minutes
     - cron: '*/30 * * * *'
   workflow_dispatch: # Allow manual trigger
+    inputs:
+      reason:
+        description: 'Reason for manual update'
+        required: false
+        default: 'Manual update requested'
+        type: string
+      force_update:
+        description: 'Force update even if no new videos found'
+        required: false
+        default: false
+        type: boolean
   push:
     branches: [ main ]
 
@@ -28,18 +39,61 @@ jobs:
     - name: Fetch latest videos
       env:
         YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-      run: npm run fetch
+        MANUAL_RUN: ${{ github.event_name == 'workflow_dispatch' }}
+        UPDATE_REASON: ${{ github.event.inputs.reason || 'Scheduled update' }}
+      run: |
+        echo "🚀 Starting F1 video fetch..."
+        echo "Reason: $UPDATE_REASON"
+        npm run fetch
       
     - name: Commit and push changes
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add videos.json
-        if git diff --staged --quiet; then
-          echo "No changes to commit"
+        
+        # Check if there are changes or if force update is enabled
+        if git diff --staged --quiet && [ "${{ github.event.inputs.force_update }}" != "true" ]; then
+          echo "✅ No changes to commit"
         else
-          git commit -m "Update F1 videos - $(date)"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            COMMIT_MSG="🏎️ Manual F1 video update - ${{ github.event.inputs.reason || 'Manual update' }} ($(date))"
+          else
+            COMMIT_MSG="🔄 Auto F1 video update - $(date)"
+          fi
+          
+          git commit -m "$COMMIT_MSG"
           git push
+          echo "✅ Changes committed and pushed"
         fi
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Summary
+      run: |
+        echo "📊 F1 Video Update Summary"
+        echo "=========================="
+        
+        if [ -f videos.json ]; then
+          TOTAL_VIDEOS=$(node -e "const data = require('./videos.json'); console.log(data.totalVideos || 0);")
+          WEEKENDS=$(node -e "const data = require('./videos.json'); console.log((data.grandPrixWeekends || []).length);")
+          LAST_UPDATED=$(node -e "const data = require('./videos.json'); console.log(data.lastUpdated || 'Unknown');")
+          
+          echo "📹 Total videos: $TOTAL_VIDEOS"
+          echo "🏁 Grand Prix weekends: $WEEKENDS"
+          echo "🕒 Last updated: $LAST_UPDATED"
+          
+          if [ "$WEEKENDS" -gt 0 ]; then
+            echo ""
+            echo "🏎️ Current weekends:"
+            node -e "
+              const data = require('./videos.json');
+              (data.grandPrixWeekends || []).forEach((gp, i) => {
+                const status = i === 0 ? '🔴 Current' : i === 1 ? '🟡 Recent' : '⚪ Past';
+                console.log(\`  \${status} \${gp.name} (\${gp.videos.length} videos)\`);
+              });
+            "
+          fi
+        else
+          echo "❌ No videos.json file found"
+        fi
