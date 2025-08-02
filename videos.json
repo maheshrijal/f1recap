@@ -1,10 +1,17 @@
 {
-  "lastUpdated": "2025-08-02T17:38:40.643Z",
-  "totalVideos": 7,
+  "lastUpdated": "2025-08-02T18:09:21.625Z",
+  "totalVideos": 8,
   "grandPrixWeekends": [
     {
       "name": "2025 Hungarian Grand Prix",
       "videos": [
+        {
+          "videoId": "GeCXZHXVTac",
+          "title": "FP1 Highlights | 2025 Hungarian Grand Prix",
+          "description": "Catch the most important moments from the first practice session at the Hungaroring, as two rookies step in. For more F1® videos, ...",
+          "publishedAt": "2025-08-01T13:55:15Z",
+          "thumbnail": "https://i.ytimg.com/vi/GeCXZHXVTac/hqdefault.jpg"
+        },
         {
           "videoId": "zq0LPmtvuNw",
           "title": "FP2 Highlights | 2025 Hungarian Grand Prix",
@@ -18,6 +25,13 @@
           "description": "Catch up on all the action from a thrilling Qualifying session, which saw a first pole position of the season, and the closest top-10 ...",
           "publishedAt": "2025-08-02T15:48:10Z",
           "thumbnail": "https://i.ytimg.com/vi/54SSKAjFrWs/hqdefault.jpg"
+        },
+        {
+          "videoId": "o1J6pK91r5c",
+          "title": "FP3 Highlights | 2025 Hungarian Grand Prix",
+          "description": "Catch up on our final practice running before qualifying at the Hungaroring! For more F1® videos, visit: https://www.Formula1.com ...",
+          "publishedAt": "2025-08-02T12:42:31Z",
+          "thumbnail": "https://i.ytimg.com/vi/o1J6pK91r5c/hqdefault.jpg"
         }
       ],
       "latestDate": "2025-08-02T15:48:10.000Z"
@@ -47,13 +61,6 @@
           "thumbnail": "https://i.ytimg.com/vi/1gGaWHOnBn0/hqdefault.jpg"
         },
         {
-          "videoId": "yApM21L0GgY",
-          "title": "Race Highlights | 2025 Belgian Grand Prix",
-          "description": "Catch up on all the action from a wet-dry race at Spa-Francorchamps, with big overtakes and a tense battle at the top in the ...",
-          "publishedAt": "2025-07-27T16:33:30Z",
-          "thumbnail": "https://i.ytimg.com/vi/yApM21L0GgY/hqdefault.jpg"
-        },
-        {
           "videoId": "e3_bGHWAlkg",
           "title": "Qualifying Highlights | 2025 Belgian Grand Prix",
           "description": "Catch up on all the highlights from Qualifying in Belgium! For more F1® videos, visit https://www.Formula1.com Follow F1®: ...",
@@ -61,7 +68,7 @@
           "thumbnail": "https://i.ytimg.com/vi/e3_bGHWAlkg/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-07-27T16:33:30.000Z"
+      "latestDate": "2025-07-26T15:42:47.000Z"
     }
   ]
 }
