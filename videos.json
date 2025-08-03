@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-08-03T18:10:02.428Z",
-  "totalVideos": 9,
+  "lastUpdated": "2025-08-03T18:43:38.410Z",
+  "totalVideos": 8,
   "grandPrixWeekends": [
     {
       "name": "2025 Hungarian Grand Prix",
@@ -27,13 +27,6 @@
           "thumbnail": "https://i.ytimg.com/vi/54SSKAjFrWs/hqdefault.jpg"
         },
         {
-          "videoId": "hrPtK5D5yn4",
-          "title": "Race Highlights | 2025 Hungarian Grand Prix",
-          "description": "Catch up on the most intense and dramatic moments from the final race before summer break, as the drivers' championship fight ...",
-          "publishedAt": "2025-08-03T15:16:09Z",
-          "thumbnail": "https://i.ytimg.com/vi/hrPtK5D5yn4/hqdefault.jpg"
-        },
-        {
           "videoId": "o1J6pK91r5c",
           "title": "FP3 Highlights | 2025 Hungarian Grand Prix",
           "description": "Catch up on our final practice running before qualifying at the Hungaroring! For more F1® videos, visit: https://www.Formula1.com ...",
@@ -41,7 +34,7 @@
           "thumbnail": "https://i.ytimg.com/vi/o1J6pK91r5c/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-08-03T15:16:09.000Z"
+      "latestDate": "2025-08-02T15:48:10.000Z"
     },
     {
       "name": "2025 Belgian Grand Prix",
