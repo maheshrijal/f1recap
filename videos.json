@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-08-04T08:05:07.160Z",
-  "totalVideos": 8,
+  "lastUpdated": "2025-08-04T08:42:36.482Z",
+  "totalVideos": 6,
   "grandPrixWeekends": [
     {
       "name": "2025 Hungarian Grand Prix",
@@ -13,28 +13,14 @@
           "thumbnail": "https://i.ytimg.com/vi/GeCXZHXVTac/hqdefault.jpg"
         },
         {
-          "videoId": "zq0LPmtvuNw",
-          "title": "FP2 Highlights | 2025 Hungarian Grand Prix",
-          "description": "Catch up on the second practice run at the Hungaroring, as Fernando Alonso returned to action and familiar faces occupied the ...",
-          "publishedAt": "2025-08-01T17:28:17Z",
-          "thumbnail": "https://i.ytimg.com/vi/zq0LPmtvuNw/hqdefault.jpg"
-        },
-        {
-          "videoId": "54SSKAjFrWs",
-          "title": "Qualifying Highlights | 2025 Hungarian Grand Prix",
-          "description": "Catch up on all the action from a thrilling Qualifying session, which saw a first pole position of the season, and the closest top-10 ...",
-          "publishedAt": "2025-08-02T15:48:10Z",
-          "thumbnail": "https://i.ytimg.com/vi/54SSKAjFrWs/hqdefault.jpg"
-        },
-        {
-          "videoId": "o1J6pK91r5c",
-          "title": "FP3 Highlights | 2025 Hungarian Grand Prix",
-          "description": "Catch up on our final practice running before qualifying at the Hungaroring! For more F1® videos, visit: https://www.Formula1.com ...",
-          "publishedAt": "2025-08-02T12:42:31Z",
-          "thumbnail": "https://i.ytimg.com/vi/o1J6pK91r5c/hqdefault.jpg"
+          "videoId": "hrPtK5D5yn4",
+          "title": "Race Highlights | 2025 Hungarian Grand Prix",
+          "description": "Catch up on the most intense and dramatic moments from the final race before summer break, as the drivers' championship fight ...",
+          "publishedAt": "2025-08-03T15:16:09Z",
+          "thumbnail": "https://i.ytimg.com/vi/hrPtK5D5yn4/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-08-02T15:48:10.000Z"
+      "latestDate": "2025-08-03T15:16:09.000Z"
     },
     {
       "name": "2025 Belgian Grand Prix",
