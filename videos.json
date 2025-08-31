@@ -1,23 +1,16 @@
 {
-  "lastUpdated": "2025-08-30T23:34:47.528Z",
-  "totalVideos": 3,
+  "lastUpdated": "2025-08-31T00:35:44.445Z",
+  "totalVideos": 2,
   "grandPrixWeekends": [
     {
       "name": "2025 Dutch Grand Prix",
       "videos": [
         {
-          "videoId": "0jWlfFTXDNI",
-          "title": "FP1 Highlights | 2025 Dutch Grand Prix",
-          "description": "We are back! Catch up on the key moments from our return to track action in Zandvoort. Who's still locked in and who needs to ...",
-          "publishedAt": "2025-08-29T13:13:10Z",
-          "thumbnail": "https://i.ytimg.com/vi/0jWlfFTXDNI/hqdefault.jpg"
-        },
-        {
-          "videoId": "oeeLYWGB8Xc",
-          "title": "Qualifying Highlights | 2025 Dutch Grand Prix",
-          "description": "A fiercely close battle for the top spot, and a surprise P4! Catch up on all the highlights from Qualifying in Zandvoort. For more F1® ...",
-          "publishedAt": "2025-08-30T14:58:54Z",
-          "thumbnail": "https://i.ytimg.com/vi/oeeLYWGB8Xc/hqdefault.jpg"
+          "videoId": "zRuF3P_JgVw",
+          "title": "FP2 Highlights | 2025 Dutch Grand Prix",
+          "description": "Plenty more action and incidents in our second practice run at Zandvoort - catch up now! For more F1® videos, visit: https://www.",
+          "publishedAt": "2025-08-29T17:27:09Z",
+          "thumbnail": "https://i.ytimg.com/vi/zRuF3P_JgVw/hqdefault.jpg"
         },
         {
           "videoId": "TgSeI-qHwFA",
@@ -27,7 +20,7 @@
           "thumbnail": "https://i.ytimg.com/vi/TgSeI-qHwFA/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-08-30T14:58:54.000Z"
+      "latestDate": "2025-08-30T12:00:17.000Z"
     }
   ]
 }
