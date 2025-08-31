@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-08-31T09:07:05.822Z",
-  "totalVideos": 4,
+  "lastUpdated": "2025-08-31T09:35:06.743Z",
+  "totalVideos": 3,
   "grandPrixWeekends": [
     {
       "name": "2025 Dutch Grand Prix",
@@ -20,13 +20,6 @@
           "thumbnail": "https://i.ytimg.com/vi/zRuF3P_JgVw/hqdefault.jpg"
         },
         {
-          "videoId": "oeeLYWGB8Xc",
-          "title": "Qualifying Highlights | 2025 Dutch Grand Prix",
-          "description": "A fiercely close battle for the top spot, and a surprise P4! Catch up on all the highlights from Qualifying in Zandvoort. For more F1® ...",
-          "publishedAt": "2025-08-30T14:58:54Z",
-          "thumbnail": "https://i.ytimg.com/vi/oeeLYWGB8Xc/hqdefault.jpg"
-        },
-        {
           "videoId": "TgSeI-qHwFA",
           "title": "Alonso &amp; Russell Drama! FP3 Highlights | 2025 Dutch Grand Prix",
           "description": "Catch up with all the action from the final practice session ahead of Qualifying for the Dutch Grand Prix! For more F1® videos, visit: ...",
@@ -34,7 +27,7 @@
           "thumbnail": "https://i.ytimg.com/vi/TgSeI-qHwFA/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-08-30T14:58:54.000Z"
+      "latestDate": "2025-08-30T12:00:17.000Z"
     }
   ]
 }
