@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-09-05T09:03:28.665Z",
+  "lastUpdated": "2025-09-05T09:33:56.180Z",
   "totalVideos": 3,
   "grandPrixWeekends": [
     {
@@ -13,18 +13,18 @@
           "thumbnail": "https://i.ytimg.com/vi/0jWlfFTXDNI/hqdefault.jpg"
         },
         {
-          "videoId": "oeeLYWGB8Xc",
-          "title": "Qualifying Highlights | 2025 Dutch Grand Prix",
-          "description": "A fiercely close battle for the top spot, and a surprise P4! Catch up on all the highlights from Qualifying in Zandvoort. For more F1® ...",
-          "publishedAt": "2025-08-30T14:58:54Z",
-          "thumbnail": "https://i.ytimg.com/vi/oeeLYWGB8Xc/hqdefault.jpg"
-        },
-        {
           "videoId": "VEodpBscQPU",
           "title": "F1 Academy Race Highlights | 2025 Dutch Grand Prix",
           "description": "F1 Academy was back for Round 5 at the Dutch Grand Prix, racing around the bankings of Zandvoort. Nina Gademan secured her ...",
           "publishedAt": "2025-09-03T10:00:50Z",
           "thumbnail": "https://i.ytimg.com/vi/VEodpBscQPU/hqdefault.jpg"
+        },
+        {
+          "videoId": "JIRqdeNl2cU",
+          "title": "Race Highlights | 2025 Dutch Grand Prix",
+          "description": "Catch up with the thrilling moments from the Dutch Grand Prix! With drama from lights out to flag, relive the collisions, safety cars, ...",
+          "publishedAt": "2025-08-31T15:54:30Z",
+          "thumbnail": "https://i.ytimg.com/vi/JIRqdeNl2cU/hqdefault.jpg"
         }
       ],
       "latestDate": "2025-09-03T10:00:50.000Z"
