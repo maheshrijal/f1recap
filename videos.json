@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-09-06T15:34:41.137Z",
-  "totalVideos": 7,
+  "lastUpdated": "2025-09-06T16:07:08.540Z",
+  "totalVideos": 9,
   "grandPrixWeekends": [
     {
       "name": "2025 Italian Grand Prix",
@@ -13,6 +13,13 @@
           "thumbnail": "https://i.ytimg.com/vi/z3gM9FOFUEA/hqdefault.jpg"
         },
         {
+          "videoId": "XSK1zf4LMZQ",
+          "title": "Qualifying Highlights | 2025 Italian Grand Prix",
+          "description": "Catch up on a thrilling Qualifying for the Italian Grand Prix, which saw a record added to the F1 history books, and a fierce fight to ...",
+          "publishedAt": "2025-09-06T15:56:17Z",
+          "thumbnail": "https://i.ytimg.com/vi/XSK1zf4LMZQ/hqdefault.jpg"
+        },
+        {
           "videoId": "7LHjo4ZVQYI",
           "title": "FP3 Highlights | 2025 Italian Grand Prix",
           "description": "Final practice concluded at Monza, with the McLaren duo finding the pace along with Ferrari's Charles Leclerc. Watch the ...",
@@ -20,7 +27,7 @@
           "thumbnail": "https://i.ytimg.com/vi/7LHjo4ZVQYI/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-09-06T12:49:01.000Z"
+      "latestDate": "2025-09-06T15:56:17.000Z"
     },
     {
       "name": "2025 Dutch Grand Prix",
@@ -38,6 +45,13 @@
           "description": "Plenty more action and incidents in our second practice run at Zandvoort - catch up now! For more F1® videos, visit: https://www.",
           "publishedAt": "2025-08-29T17:27:09Z",
           "thumbnail": "https://i.ytimg.com/vi/zRuF3P_JgVw/hqdefault.jpg"
+        },
+        {
+          "videoId": "oeeLYWGB8Xc",
+          "title": "Qualifying Highlights | 2025 Dutch Grand Prix",
+          "description": "A fiercely close battle for the top spot, and a surprise P4! Catch up on all the highlights from Qualifying in Zandvoort. For more F1® ...",
+          "publishedAt": "2025-08-30T14:58:54Z",
+          "thumbnail": "https://i.ytimg.com/vi/oeeLYWGB8Xc/hqdefault.jpg"
         },
         {
           "videoId": "VEodpBscQPU",
