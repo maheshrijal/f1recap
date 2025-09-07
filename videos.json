@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-09-07T09:06:53.041Z",
+  "lastUpdated": "2025-09-07T09:35:05.652Z",
   "totalVideos": 8,
   "grandPrixWeekends": [
     {
@@ -13,13 +13,6 @@
           "thumbnail": "https://i.ytimg.com/vi/z3gM9FOFUEA/hqdefault.jpg"
         },
         {
-          "videoId": "XSK1zf4LMZQ",
-          "title": "Qualifying Highlights | 2025 Italian Grand Prix",
-          "description": "Catch up on a thrilling Qualifying for the Italian Grand Prix, which saw a record added to the F1 history books, and a fierce fight to ...",
-          "publishedAt": "2025-09-06T15:56:17Z",
-          "thumbnail": "https://i.ytimg.com/vi/XSK1zf4LMZQ/hqdefault.jpg"
-        },
-        {
           "videoId": "7LHjo4ZVQYI",
           "title": "FP3 Highlights | 2025 Italian Grand Prix",
           "description": "Final practice concluded at Monza, with the McLaren duo finding the pace along with Ferrari's Charles Leclerc. Watch the ...",
@@ -27,7 +20,7 @@
           "thumbnail": "https://i.ytimg.com/vi/7LHjo4ZVQYI/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-09-06T15:56:17.000Z"
+      "latestDate": "2025-09-06T12:49:01.000Z"
     },
     {
       "name": "2025 Dutch Grand Prix",
@@ -59,6 +52,13 @@
           "description": "F1 Academy was back for Round 5 at the Dutch Grand Prix, racing around the bankings of Zandvoort. Nina Gademan secured her ...",
           "publishedAt": "2025-09-03T10:00:50Z",
           "thumbnail": "https://i.ytimg.com/vi/VEodpBscQPU/hqdefault.jpg"
+        },
+        {
+          "videoId": "JIRqdeNl2cU",
+          "title": "Race Highlights | 2025 Dutch Grand Prix",
+          "description": "Catch up with the thrilling moments from the Dutch Grand Prix! With drama from lights out to flag, relive the collisions, safety cars, ...",
+          "publishedAt": "2025-08-31T15:54:30Z",
+          "thumbnail": "https://i.ytimg.com/vi/JIRqdeNl2cU/hqdefault.jpg"
         },
         {
           "videoId": "TgSeI-qHwFA",
