@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-09-08T04:36:47.251Z",
+  "lastUpdated": "2025-09-08T05:03:49.505Z",
   "totalVideos": 9,
   "grandPrixWeekends": [
     {
@@ -20,6 +20,13 @@
           "thumbnail": "https://i.ytimg.com/vi/XSK1zf4LMZQ/hqdefault.jpg"
         },
         {
+          "videoId": "kGMp1Byuwto",
+          "title": "Race Highlights | 2025 Italian Grand Prix",
+          "description": "Our return to the famous Temple of Speed in Monza saw a frantic race start, penalty drama, late team orders and more. For more ...",
+          "publishedAt": "2025-09-07T15:28:17Z",
+          "thumbnail": "https://i.ytimg.com/vi/kGMp1Byuwto/hqdefault.jpg"
+        },
+        {
           "videoId": "7LHjo4ZVQYI",
           "title": "FP3 Highlights | 2025 Italian Grand Prix",
           "description": "Final practice concluded at Monza, with the McLaren duo finding the pace along with Ferrari's Charles Leclerc. Watch the ...",
@@ -27,18 +34,11 @@
           "thumbnail": "https://i.ytimg.com/vi/7LHjo4ZVQYI/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-09-06T15:56:17.000Z"
+      "latestDate": "2025-09-07T15:28:17.000Z"
     },
     {
       "name": "2025 Dutch Grand Prix",
       "videos": [
-        {
-          "videoId": "0jWlfFTXDNI",
-          "title": "FP1 Highlights | 2025 Dutch Grand Prix",
-          "description": "We are back! Catch up on the key moments from our return to track action in Zandvoort. Who's still locked in and who needs to ...",
-          "publishedAt": "2025-08-29T13:13:10Z",
-          "thumbnail": "https://i.ytimg.com/vi/0jWlfFTXDNI/hqdefault.jpg"
-        },
         {
           "videoId": "zRuF3P_JgVw",
           "title": "FP2 Highlights | 2025 Dutch Grand Prix",
