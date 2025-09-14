@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-09-14T07:35:23.598Z",
-  "totalVideos": 1,
+  "lastUpdated": "2025-09-14T08:09:18.839Z",
+  "totalVideos": 2,
   "grandPrixWeekends": [
     {
       "name": "2025 Italian Grand Prix",
@@ -11,9 +11,16 @@
           "description": "Catch up on a thrilling Qualifying for the Italian Grand Prix, which saw a record added to the F1 history books, and a fierce fight to ...",
           "publishedAt": "2025-09-06T15:56:17Z",
           "thumbnail": "https://i.ytimg.com/vi/XSK1zf4LMZQ/hqdefault.jpg"
+        },
+        {
+          "videoId": "kGMp1Byuwto",
+          "title": "Race Highlights | 2025 Italian Grand Prix",
+          "description": "Our return to the famous Temple of Speed in Monza saw a frantic race start, penalty drama, late team orders and more. For more ...",
+          "publishedAt": "2025-09-07T15:28:17Z",
+          "thumbnail": "https://i.ytimg.com/vi/kGMp1Byuwto/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-09-06T15:56:17.000Z"
+      "latestDate": "2025-09-07T15:28:17.000Z"
     }
   ]
 }
