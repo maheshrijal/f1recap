@@ -1,10 +1,17 @@
 {
-  "lastUpdated": "2025-09-20T16:08:03.272Z",
+  "lastUpdated": "2025-09-20T16:36:53.421Z",
   "totalVideos": 4,
   "grandPrixWeekends": [
     {
       "name": "2025 Azerbaijan Grand Prix",
       "videos": [
+        {
+          "videoId": "Hci1EqjNPZM",
+          "title": "FP1 Highlights | 2025 Azerbaijan Grand Prix",
+          "description": "The drivers took to the track as we return to the streets of Baku City Circuit for the first practice session of the 2025 Azerbaijan ...",
+          "publishedAt": "2025-09-19T10:50:15Z",
+          "thumbnail": "https://i.ytimg.com/vi/Hci1EqjNPZM/hqdefault.jpg"
+        },
         {
           "videoId": "7QC7-5jWriI",
           "title": "A Session-Ending Collision &amp; A New-Look Top 3! | FP2 Highlights | Azerbaijan Grand Prix",
@@ -18,13 +25,6 @@
           "description": "Catch all the biggest moments from an unforgettable qualifying session - SIX red flags (the most ever), shock results throughout ...",
           "publishedAt": "2025-09-20T14:35:49Z",
           "thumbnail": "https://i.ytimg.com/vi/ki2VqbwPhfQ/hqdefault.jpg"
-        },
-        {
-          "videoId": "lUCSfxwdS-c",
-          "title": "FP3 Highlights | 2025 Azerbaijan Grand Prix",
-          "description": "Catch up on the most important moments from a very windy final practice session ahead of the all-important quali hour in Baku.",
-          "publishedAt": "2025-09-20T10:52:40Z",
-          "thumbnail": "https://i.ytimg.com/vi/lUCSfxwdS-c/hqdefault.jpg"
         }
       ],
       "latestDate": "2025-09-20T14:35:49.000Z"
