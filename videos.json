@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-09-22T04:04:31.774Z",
-  "totalVideos": 6,
+  "lastUpdated": "2025-09-22T04:36:37.196Z",
+  "totalVideos": 7,
   "grandPrixWeekends": [
     {
       "name": "2025 Azerbaijan Grand Prix",
@@ -39,6 +39,13 @@
           "description": "A mixed-up starting grid meant drama right from the beginning in Baku. Could Carlos Sainz or Liam Lawson hold out for a podium ...",
           "publishedAt": "2025-09-21T13:37:13Z",
           "thumbnail": "https://i.ytimg.com/vi/JntKOmbMI08/hqdefault.jpg"
+        },
+        {
+          "videoId": "lUCSfxwdS-c",
+          "title": "FP3 Highlights | 2025 Azerbaijan Grand Prix",
+          "description": "Catch up on the most important moments from a very windy final practice session ahead of the all-important quali hour in Baku.",
+          "publishedAt": "2025-09-20T10:52:40Z",
+          "thumbnail": "https://i.ytimg.com/vi/lUCSfxwdS-c/hqdefault.jpg"
         }
       ],
       "latestDate": "2025-09-21T13:37:13.000Z"
