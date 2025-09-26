@@ -1,24 +1,10 @@
 {
-  "lastUpdated": "2025-09-22T12:45:22.654Z",
-  "totalVideos": 7,
+  "lastUpdated": "2025-09-26T00:10:29.712Z",
+  "totalVideos": 3,
   "grandPrixWeekends": [
     {
       "name": "2025 Azerbaijan Grand Prix",
       "videos": [
-        {
-          "videoId": "Hci1EqjNPZM",
-          "title": "FP1 Highlights | 2025 Azerbaijan Grand Prix",
-          "description": "The drivers took to the track as we return to the streets of Baku City Circuit for the first practice session of the 2025 Azerbaijan ...",
-          "publishedAt": "2025-09-19T10:50:15Z",
-          "thumbnail": "https://i.ytimg.com/vi/Hci1EqjNPZM/hqdefault.jpg"
-        },
-        {
-          "videoId": "7QC7-5jWriI",
-          "title": "A Session-Ending Collision &amp; A New-Look Top 3! | FP2 Highlights | Azerbaijan Grand Prix",
-          "description": "Catch up on all the highlights from the second practice of the day at the Baku City Circuit, which saw a new-look top 3 and a ...",
-          "publishedAt": "2025-09-19T14:33:50Z",
-          "thumbnail": "https://i.ytimg.com/vi/7QC7-5jWriI/hqdefault.jpg"
-        },
         {
           "videoId": "fp0RPhoOo3k",
           "title": "Most Red Flags EVER In F1 Qualifying! - Every Incident | 2025 Azerbaijan Grand Prix",
@@ -27,25 +13,11 @@
           "thumbnail": "https://i.ytimg.com/vi/fp0RPhoOo3k/hqdefault.jpg"
         },
         {
-          "videoId": "ki2VqbwPhfQ",
-          "title": "Qualifying Highlights | 2025 Azerbaijan Grand Prix",
-          "description": "Catch all the biggest moments from an unforgettable qualifying session - SIX red flags (the most ever), shock results throughout ...",
-          "publishedAt": "2025-09-20T14:35:49Z",
-          "thumbnail": "https://i.ytimg.com/vi/ki2VqbwPhfQ/hqdefault.jpg"
-        },
-        {
           "videoId": "JntKOmbMI08",
           "title": "Race Highlights | 2025 Azerbaijan Grand Prix",
           "description": "A mixed-up starting grid meant drama right from the beginning in Baku. Could Carlos Sainz or Liam Lawson hold out for a podium ...",
           "publishedAt": "2025-09-21T13:37:13Z",
           "thumbnail": "https://i.ytimg.com/vi/JntKOmbMI08/hqdefault.jpg"
-        },
-        {
-          "videoId": "lUCSfxwdS-c",
-          "title": "FP3 Highlights | 2025 Azerbaijan Grand Prix",
-          "description": "Catch up on the most important moments from a very windy final practice session ahead of the all-important quali hour in Baku.",
-          "publishedAt": "2025-09-20T10:52:40Z",
-          "thumbnail": "https://i.ytimg.com/vi/lUCSfxwdS-c/hqdefault.jpg"
         }
       ],
       "latestDate": "2025-09-21T13:37:13.000Z"
