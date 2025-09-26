@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-09-26T17:02:50.850Z",
-  "totalVideos": 4,
+  "lastUpdated": "2025-09-26T17:33:11.061Z",
+  "totalVideos": 3,
   "grandPrixWeekends": [
     {
       "name": "2025 Azerbaijan Grand Prix",
@@ -28,19 +28,6 @@
         }
       ],
       "latestDate": "2025-09-21T13:37:13.000Z"
-    },
-    {
-      "name": "Unknown Grand Prix",
-      "videos": [
-        {
-          "videoId": "e2tXWGoolhA",
-          "title": "When A Cat Invaded an F1 Race",
-          "description": "Charles Leclerc was distracted back in 2023 when a cat ran onto the track during the Sprint in Baku... even if everyone else didn't ...",
-          "publishedAt": "2025-09-16T16:01:11Z",
-          "thumbnail": "https://i.ytimg.com/vi/e2tXWGoolhA/hqdefault.jpg"
-        }
-      ],
-      "latestDate": "2025-09-16T16:01:11.000Z"
     }
   ]
 }
