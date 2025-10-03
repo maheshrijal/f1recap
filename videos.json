@@ -1,10 +1,17 @@
 {
-  "lastUpdated": "2025-10-03T11:32:09.813Z",
-  "totalVideos": 1,
+  "lastUpdated": "2025-10-03T12:04:21.949Z",
+  "totalVideos": 2,
   "grandPrixWeekends": [
     {
       "name": "2025 Singapore Grand Prix",
       "videos": [
+        {
+          "videoId": "zf5gKvTIQE4",
+          "title": "FP1 Highlights | 2025 Singapore Grand Prix",
+          "description": "Catch up on all the best bits from our first practice session of the weekend as the drivers took to the streets of Singapore at the ...",
+          "publishedAt": "2025-10-03T11:50:11Z",
+          "thumbnail": "https://i.ytimg.com/vi/zf5gKvTIQE4/hqdefault.jpg"
+        },
         {
           "videoId": "VS8SVHWAluo",
           "title": "Drivers Look Ahead To Race Weekend | 2025 Singapore Grand Prix",
@@ -13,7 +20,7 @@
           "thumbnail": "https://i.ytimg.com/vi/VS8SVHWAluo/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-10-02T16:45:01.000Z"
+      "latestDate": "2025-10-03T11:50:11.000Z"
     }
   ]
 }
