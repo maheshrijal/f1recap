@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-10-04T19:05:57.982Z",
-  "totalVideos": 4,
+  "lastUpdated": "2025-10-04T19:34:52.536Z",
+  "totalVideos": 3,
   "grandPrixWeekends": [
     {
       "name": "2025 Singapore Grand Prix",
@@ -20,13 +20,6 @@
           "thumbnail": "https://i.ytimg.com/vi/s776CEmoFu8/hqdefault.jpg"
         },
         {
-          "videoId": "Sq02V0i0_BE",
-          "title": "Qualifying Highlights | 2025 Singapore Grand Prix",
-          "description": "A HUGE lap and track record secures pole position around the streets of Singapore! Tune in for all the highlights from Qualifying ...",
-          "publishedAt": "2025-10-04T14:38:41Z",
-          "thumbnail": "https://i.ytimg.com/vi/Sq02V0i0_BE/hqdefault.jpg"
-        },
-        {
           "videoId": "Ktmh53pZ5fY",
           "title": "FP3 Highlights | 2025 Singapore Grand Prix",
           "description": "Catch up with all the action from the final practice session in Singapore, which saw a red flag, traffic drama and the name at the ...",
@@ -34,7 +27,7 @@
           "thumbnail": "https://i.ytimg.com/vi/Ktmh53pZ5fY/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-10-04T14:38:41.000Z"
+      "latestDate": "2025-10-04T11:58:58.000Z"
     }
   ]
 }
