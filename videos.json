@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-10-05T18:09:10.097Z",
-  "totalVideos": 4,
+  "lastUpdated": "2025-10-05T18:39:23.232Z",
+  "totalVideos": 5,
   "grandPrixWeekends": [
     {
       "name": "2025 Singapore Grand Prix",
@@ -13,11 +13,11 @@
           "thumbnail": "https://i.ytimg.com/vi/zf5gKvTIQE4/hqdefault.jpg"
         },
         {
-          "videoId": "Sq02V0i0_BE",
-          "title": "Qualifying Highlights | 2025 Singapore Grand Prix",
-          "description": "A HUGE lap and track record secures pole position around the streets of Singapore! Tune in for all the highlights from Qualifying ...",
-          "publishedAt": "2025-10-04T14:38:41Z",
-          "thumbnail": "https://i.ytimg.com/vi/Sq02V0i0_BE/hqdefault.jpg"
+          "videoId": "s776CEmoFu8",
+          "title": "Two Red Flags &amp; Pit Lane Incident! | FP2 Highlights | 2025 Singapore Grand Prix",
+          "description": "Relive all the key moments from FP2 in Singapore, featuring two red flags as well contact in the pit lane between Lando Norris ...",
+          "publishedAt": "2025-10-03T15:27:10Z",
+          "thumbnail": "https://i.ytimg.com/vi/s776CEmoFu8/hqdefault.jpg"
         },
         {
           "videoId": "XZhXFbFCOu4",
@@ -32,6 +32,13 @@
           "description": "As the drivers get set for race weekend in Singapore, we hear from them directly to get more insight to their approach to a highly ...",
           "publishedAt": "2025-10-02T16:45:01Z",
           "thumbnail": "https://i.ytimg.com/vi/VS8SVHWAluo/hqdefault.jpg"
+        },
+        {
+          "videoId": "Ktmh53pZ5fY",
+          "title": "FP3 Highlights | 2025 Singapore Grand Prix",
+          "description": "Catch up with all the action from the final practice session in Singapore, which saw a red flag, traffic drama and the name at the ...",
+          "publishedAt": "2025-10-04T11:58:58Z",
+          "thumbnail": "https://i.ytimg.com/vi/Ktmh53pZ5fY/hqdefault.jpg"
         }
       ],
       "latestDate": "2025-10-05T14:34:17.000Z"
