@@ -1,10 +1,17 @@
 {
-  "lastUpdated": "2025-10-11T00:56:04.792Z",
-  "totalVideos": 2,
+  "lastUpdated": "2025-10-11T01:35:23.445Z",
+  "totalVideos": 3,
   "grandPrixWeekends": [
     {
       "name": "2025 Singapore Grand Prix",
       "videos": [
+        {
+          "videoId": "Sq02V0i0_BE",
+          "title": "Qualifying Highlights | 2025 Singapore Grand Prix",
+          "description": "A HUGE lap and track record secures pole position around the streets of Singapore! Tune in for all the highlights from Qualifying ...",
+          "publishedAt": "2025-10-04T14:38:41Z",
+          "thumbnail": "https://i.ytimg.com/vi/Sq02V0i0_BE/hqdefault.jpg"
+        },
         {
           "videoId": "XZhXFbFCOu4",
           "title": "Race Highlights | 2025 Singapore Grand Prix",
