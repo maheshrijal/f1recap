@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-10-11T02:30:47.301Z",
-  "totalVideos": 2,
+  "lastUpdated": "2025-10-11T03:14:57.090Z",
+  "totalVideos": 3,
   "grandPrixWeekends": [
     {
       "name": "2025 Singapore Grand Prix",
@@ -13,6 +13,13 @@
           "thumbnail": "https://i.ytimg.com/vi/Sq02V0i0_BE/hqdefault.jpg"
         },
         {
+          "videoId": "XZhXFbFCOu4",
+          "title": "Race Highlights | 2025 Singapore Grand Prix",
+          "description": "Catch up on all the highlights from the streets of Marina Bay, which saw a dramatic intra-team incident early in the race, and ...",
+          "publishedAt": "2025-10-05T14:34:17Z",
+          "thumbnail": "https://i.ytimg.com/vi/XZhXFbFCOu4/hqdefault.jpg"
+        },
+        {
           "videoId": "Ktmh53pZ5fY",
           "title": "FP3 Highlights | 2025 Singapore Grand Prix",
           "description": "Catch up with all the action from the final practice session in Singapore, which saw a red flag, traffic drama and the name at the ...",
@@ -20,7 +27,7 @@
           "thumbnail": "https://i.ytimg.com/vi/Ktmh53pZ5fY/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-10-04T14:38:41.000Z"
+      "latestDate": "2025-10-05T14:34:17.000Z"
     }
   ]
 }
