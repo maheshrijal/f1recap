@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-10-17T23:03:10.961Z",
-  "totalVideos": 3,
+  "lastUpdated": "2025-10-17T23:32:18.504Z",
+  "totalVideos": 4,
   "grandPrixWeekends": [
     {
       "name": "2025 United States Grand Prix",
@@ -18,9 +18,16 @@
           "description": "The drivers are getting ready for the United States Grand Prix! Let's hear from them and learn how preparations for a Sprint ...",
           "publishedAt": "2025-10-16T23:45:02Z",
           "thumbnail": "https://i.ytimg.com/vi/_Y_xRcMJhwY/hqdefault.jpg"
+        },
+        {
+          "videoId": "VQ1lfwPBtKs",
+          "title": "Sprint Qualifying Highlights | 2025 United States Grand Prix",
+          "description": "The drivers headed straight into Sprint Qualifying after FP1 at COTA! Let's relive the key moments from the session, and see who ...",
+          "publishedAt": "2025-10-17T23:11:27Z",
+          "thumbnail": "https://i.ytimg.com/vi/VQ1lfwPBtKs/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-10-17T20:09:45.000Z"
+      "latestDate": "2025-10-17T23:11:27.000Z"
     },
     {
       "name": "Unknown Grand Prix",
