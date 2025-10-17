@@ -1,10 +1,17 @@
 {
-  "lastUpdated": "2025-10-17T20:03:43.231Z",
-  "totalVideos": 2,
+  "lastUpdated": "2025-10-17T20:34:28.381Z",
+  "totalVideos": 3,
   "grandPrixWeekends": [
     {
       "name": "2025 United States Grand Prix",
       "videos": [
+        {
+          "videoId": "KMi90ZJ8i60",
+          "title": "FP1 Highlights | 2025 United States Grand Prix",
+          "description": "Catch up on the key moments from the first practice session of the weekend, as the drivers complete their one and only hour of ...",
+          "publishedAt": "2025-10-17T20:09:45Z",
+          "thumbnail": "https://i.ytimg.com/vi/KMi90ZJ8i60/hqdefault.jpg"
+        },
         {
           "videoId": "_Y_xRcMJhwY",
           "title": "Drivers Look Ahead To Race Weekend | 2025 United States Grand Prix",
@@ -13,7 +20,7 @@
           "thumbnail": "https://i.ytimg.com/vi/_Y_xRcMJhwY/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-10-16T23:45:02.000Z"
+      "latestDate": "2025-10-17T20:09:45.000Z"
     },
     {
       "name": "Unknown Grand Prix",
