@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-10-19T21:06:41.277Z",
-  "totalVideos": 7,
+  "lastUpdated": "2025-10-19T21:35:05.702Z",
+  "totalVideos": 8,
   "grandPrixWeekends": [
     {
       "name": "2025 United States Grand Prix",
@@ -27,6 +27,13 @@
           "thumbnail": "https://i.ytimg.com/vi/VQ1lfwPBtKs/hqdefault.jpg"
         },
         {
+          "videoId": "CdKwc1bC44c",
+          "title": "Race Highlights | 2025 United States Grand Prix",
+          "description": "Relive the 2025 United States Grand Prix with highlights from a sweltering hot Circuit of the Americas! For more F1® videos, visit: ...",
+          "publishedAt": "2025-10-19T21:34:35Z",
+          "thumbnail": "https://i.ytimg.com/vi/CdKwc1bC44c/hqdefault.jpg"
+        },
+        {
           "videoId": "_Y_xRcMJhwY",
           "title": "Drivers Look Ahead To Race Weekend | 2025 United States Grand Prix",
           "description": "The drivers are getting ready for the United States Grand Prix! Let's hear from them and learn how preparations for a Sprint ...",
@@ -41,7 +48,7 @@
           "thumbnail": "https://i.ytimg.com/vi/m4vO__p3K6Y/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-10-18T22:53:35.000Z"
+      "latestDate": "2025-10-19T21:34:35.000Z"
     },
     {
       "name": "Unknown Grand Prix",
