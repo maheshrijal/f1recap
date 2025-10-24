@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-10-24T19:32:16.859Z",
-  "totalVideos": 5,
+  "lastUpdated": "2025-10-24T20:03:14.498Z",
+  "totalVideos": 6,
   "grandPrixWeekends": [
     {
       "name": "2025 Mexico City Grand Prix",
@@ -18,6 +18,13 @@
     {
       "name": "2025 United States Grand Prix",
       "videos": [
+        {
+          "videoId": "KMi90ZJ8i60",
+          "title": "FP1 Highlights | 2025 United States Grand Prix",
+          "description": "Catch up on the key moments from the first practice session of the weekend, as the drivers complete their one and only hour of ...",
+          "publishedAt": "2025-10-17T20:09:45Z",
+          "thumbnail": "https://i.ytimg.com/vi/KMi90ZJ8i60/hqdefault.jpg"
+        },
         {
           "videoId": "ZgfOrbKkMsA",
           "title": "Sprint Highlights | 2025 United States Grand Prix",
