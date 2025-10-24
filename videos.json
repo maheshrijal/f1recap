@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-10-24T15:35:16.418Z",
-  "totalVideos": 6,
+  "lastUpdated": "2025-10-24T16:03:54.826Z",
+  "totalVideos": 5,
   "grandPrixWeekends": [
     {
       "name": "2025 Mexico City Grand Prix",
@@ -48,19 +48,6 @@
         }
       ],
       "latestDate": "2025-10-19T21:34:35.000Z"
-    },
-    {
-      "name": "Unknown Grand Prix",
-      "videos": [
-        {
-          "videoId": "ZwI9vhIsukY",
-          "title": "Have Haas Brought Risky Updates For Their Home Race? | F1 TV Tech Talk",
-          "description": "Haas head to their home race not just with a special one-off livery design, but also some intriguing updates to their cars.",
-          "publishedAt": "2025-10-18T00:15:03Z",
-          "thumbnail": "https://i.ytimg.com/vi/ZwI9vhIsukY/hqdefault.jpg"
-        }
-      ],
-      "latestDate": "2025-10-18T00:15:03.000Z"
     }
   ]
 }
