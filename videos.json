@@ -1,7 +1,20 @@
 {
-  "lastUpdated": "2025-10-24T00:09:47.925Z",
-  "totalVideos": 5,
+  "lastUpdated": "2025-10-24T00:47:16.816Z",
+  "totalVideos": 6,
   "grandPrixWeekends": [
+    {
+      "name": "2025 Mexico City Grand Prix",
+      "videos": [
+        {
+          "videoId": "oz72q2Dvf0E",
+          "title": "Drivers Look Ahead To Race Weekend | 2025 Mexico City Grand Prix",
+          "description": "Hear from the grid as they share their thoughts and prepare for the Mexico City Grand Prix. For more F1® videos, visit: https://www.",
+          "publishedAt": "2025-10-24T00:38:37Z",
+          "thumbnail": "https://i.ytimg.com/vi/oz72q2Dvf0E/hqdefault.jpg"
+        }
+      ],
+      "latestDate": "2025-10-24T00:38:37.000Z"
+    },
     {
       "name": "2025 United States Grand Prix",
       "videos": [
