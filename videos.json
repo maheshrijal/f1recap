@@ -1,20 +1,7 @@
 {
-  "lastUpdated": "2025-10-25T22:06:26.849Z",
-  "totalVideos": 10,
+  "lastUpdated": "2025-10-25T22:35:35.976Z",
+  "totalVideos": 11,
   "grandPrixWeekends": [
-    {
-      "name": "2025 Mexico Grand Prix",
-      "videos": [
-        {
-          "videoId": "e6GfiA8m1yU",
-          "title": "FP3 Highlights | 2025 Mexico Grand Prix",
-          "description": "Catch up on all the action from the free practice 3 in Mexico, as the drivers and teams make their final preparations ahead of ...",
-          "publishedAt": "2025-10-25T20:37:45Z",
-          "thumbnail": "https://i.ytimg.com/vi/e6GfiA8m1yU/hqdefault.jpg"
-        }
-      ],
-      "latestDate": "2025-10-25T20:37:45.000Z"
-    },
     {
       "name": "2025 Mexico City Grand Prix",
       "videos": [
@@ -40,6 +27,13 @@
           "thumbnail": "https://i.ytimg.com/vi/huYuU5dXXS8/hqdefault.jpg"
         },
         {
+          "videoId": "xDLDVxjgfdg",
+          "title": "Qualifying Highlights | 2025 Mexico City Grand Prix",
+          "description": "Catch up on all the action from a dramatic Qualifying in Mexico City, as the battles are hotting up in the hunt for the drivers ...",
+          "publishedAt": "2025-10-25T22:33:45Z",
+          "thumbnail": "https://i.ytimg.com/vi/xDLDVxjgfdg/hqdefault.jpg"
+        },
+        {
           "videoId": "oz72q2Dvf0E",
           "title": "Drivers Look Ahead To Race Weekend | 2025 Mexico City Grand Prix",
           "description": "Hear from the grid as they share their thoughts and prepare for the Mexico City Grand Prix. For more F1® videos, visit: https://www.",
@@ -47,7 +41,20 @@
           "thumbnail": "https://i.ytimg.com/vi/oz72q2Dvf0E/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-10-25T12:44:44.000Z"
+      "latestDate": "2025-10-25T22:33:45.000Z"
+    },
+    {
+      "name": "2025 Mexico Grand Prix",
+      "videos": [
+        {
+          "videoId": "e6GfiA8m1yU",
+          "title": "FP3 Highlights | 2025 Mexico Grand Prix",
+          "description": "Catch up on all the action from the free practice 3 in Mexico, as the drivers and teams make their final preparations ahead of ...",
+          "publishedAt": "2025-10-25T20:37:45Z",
+          "thumbnail": "https://i.ytimg.com/vi/e6GfiA8m1yU/hqdefault.jpg"
+        }
+      ],
+      "latestDate": "2025-10-25T20:37:45.000Z"
     },
     {
       "name": "2025 United States Grand Prix",
