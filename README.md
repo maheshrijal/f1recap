@@ -51,6 +51,7 @@ A static website that automatically tracks and displays Formula 1 YouTube videos
    - `PUBLIC_POSTHOG_KEY` (public)
    - `PUBLIC_POSTHOG_HOST` (public, e.g. `https://app.posthog.com`)
 5. Deploy!
+> **Tip:** Set the public PostHog variables for both Preview and Production environments so the runtime function can serve them to the browser. The handler lives at `functions/posthog-config.js` and responds to `/posthog-config.js`.
 
 ### 4. Local Development
 
@@ -61,14 +62,11 @@ npm install
 # Fetch videos (requires YOUTUBE_API_KEY environment variable)
 export YOUTUBE_API_KEY="your-api-key-here"
 npm run fetch
-node scripts/generate-posthog-config.js  # optional, only needed if you want PostHog locally (reverts afterwards to avoid committing secrets)
 
 # Start local server
 npm run dev
 # Visit http://localhost:8000
 ```
-
-> **Note:** `posthog-config.js` is tracked with a blank key so the file always exists in production. If you generate a local config with real keys, run `git checkout -- posthog-config.js` before committing to avoid leaking credentials.
 
 ## License
 

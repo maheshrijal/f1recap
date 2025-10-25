@@ -6,7 +6,7 @@
   "scripts": {
     "fetch": "node scripts/fetch-videos.js",
     "dev": "python -m http.server 8000",
-    "build": "npm run fetch && node scripts/generate-posthog-config.js"
+    "build": "npm run fetch"
   },
   "dependencies": {
     "axios": "^1.6.0"
