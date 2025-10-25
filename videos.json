@@ -1,7 +1,20 @@
 {
-  "lastUpdated": "2025-10-25T20:36:01.387Z",
-  "totalVideos": 9,
+  "lastUpdated": "2025-10-25T21:06:23.950Z",
+  "totalVideos": 10,
   "grandPrixWeekends": [
+    {
+      "name": "2025 Mexico Grand Prix",
+      "videos": [
+        {
+          "videoId": "e6GfiA8m1yU",
+          "title": "FP3 Highlights | 2025 Mexico Grand Prix",
+          "description": "Catch up on all the action from the free practice 3 in Mexico, as the drivers and teams make their final preparations ahead of ...",
+          "publishedAt": "2025-10-25T20:37:45Z",
+          "thumbnail": "https://i.ytimg.com/vi/e6GfiA8m1yU/hqdefault.jpg"
+        }
+      ],
+      "latestDate": "2025-10-25T20:37:45.000Z"
+    },
     {
       "name": "2025 Mexico City Grand Prix",
       "videos": [
