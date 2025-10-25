@@ -1,10 +1,17 @@
 {
-  "lastUpdated": "2025-10-25T12:10:59.392Z",
-  "totalVideos": 8,
+  "lastUpdated": "2025-10-25T12:47:30.322Z",
+  "totalVideos": 9,
   "grandPrixWeekends": [
     {
       "name": "2025 Mexico City Grand Prix",
       "videos": [
+        {
+          "videoId": "Rx_ckHZ_iZk",
+          "title": "Rookies On Track In FP1! | 2025 Mexico City Grand Prix",
+          "description": "For nine hopefuls it was a chance to show what they could do at the controls of F1 machinery in Friday's first practice session at ...",
+          "publishedAt": "2025-10-25T12:44:44Z",
+          "thumbnail": "https://i.ytimg.com/vi/Rx_ckHZ_iZk/hqdefault.jpg"
+        },
         {
           "videoId": "NXLVltpAEDI",
           "title": "FP1 Highlights | 2025 Mexico City Grand Prix",
@@ -27,7 +34,7 @@
           "thumbnail": "https://i.ytimg.com/vi/oz72q2Dvf0E/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-10-25T00:08:49.000Z"
+      "latestDate": "2025-10-25T12:44:44.000Z"
     },
     {
       "name": "2025 United States Grand Prix",
