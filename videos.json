@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-10-24T23:32:14.796Z",
-  "totalVideos": 7,
+  "lastUpdated": "2025-10-25T00:30:51.291Z",
+  "totalVideos": 8,
   "grandPrixWeekends": [
     {
       "name": "2025 Mexico City Grand Prix",
@@ -13,6 +13,13 @@
           "thumbnail": "https://i.ytimg.com/vi/NXLVltpAEDI/hqdefault.jpg"
         },
         {
+          "videoId": "huYuU5dXXS8",
+          "title": "FP2 Highlights | 2025 Mexico City Grand Prix",
+          "description": "Some bumps with the barriers and late session racing in our second practice of the day in Mexico! Catch up on all the highlights ...",
+          "publishedAt": "2025-10-25T00:08:49Z",
+          "thumbnail": "https://i.ytimg.com/vi/huYuU5dXXS8/hqdefault.jpg"
+        },
+        {
           "videoId": "oz72q2Dvf0E",
           "title": "Drivers Look Ahead To Race Weekend | 2025 Mexico City Grand Prix",
           "description": "Hear from the grid as they share their thoughts and prepare for the Mexico City Grand Prix. For more F1® videos, visit: https://www.",
@@ -20,7 +27,7 @@
           "thumbnail": "https://i.ytimg.com/vi/oz72q2Dvf0E/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-10-24T20:50:10.000Z"
+      "latestDate": "2025-10-25T00:08:49.000Z"
     },
     {
       "name": "2025 United States Grand Prix",
