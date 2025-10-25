@@ -46,7 +46,11 @@ A static website that automatically tracks and displays Formula 1 YouTube videos
 1. Connect your GitHub repository to Cloudflare Pages
 2. Set build command: `npm run build`
 3. Set output directory: `/` (root)
-4. Deploy!
+4. Add environment variables in the Pages project settings:
+   - `YOUTUBE_API_KEY` (secret)
+   - `PUBLIC_POSTHOG_KEY` (public)
+   - `PUBLIC_POSTHOG_HOST` (public, e.g. `https://app.posthog.com`)
+5. Deploy!
 
 ### 4. Local Development
 
@@ -57,6 +61,7 @@ npm install
 # Fetch videos (requires YOUTUBE_API_KEY environment variable)
 export YOUTUBE_API_KEY="your-api-key-here"
 npm run fetch
+node scripts/generate-posthog-config.js  # optional, only needed if you want PostHog locally
 
 # Start local server
 npm run dev

@@ -114,6 +114,84 @@
         </div>
     </footer>
 
+    <script>
+        window.__POSTHOG__ = window.__POSTHOG__ || {};
+    </script>
+    <script src="posthog-config.js"></script>
+    <script>
+        (function(window, document) {
+            const config = window.__POSTHOG__ || {};
+            if (!config.key) {
+                if (typeof console !== 'undefined') {
+                    console.info('PostHog public key not provided; analytics disabled.');
+                }
+                return;
+            }
+
+            const apiHost = (config.host || 'https://app.posthog.com').replace(/\/$/, '');
+
+            (function(t, e) {
+                var o, n, p, r;
+                if (!e.__SV) {
+                    window.posthog = e.posthog = function() {
+                        posthog._i.push(arguments);
+                    };
+                    posthog._i = [];
+                    posthog.init = function(i, s, a) {
+                        function g(t, e) {
+                            var o = e.split('.');
+                            if (o.length === 2) {
+                                t = t[o[0]];
+                                e = o[1];
+                            }
+                            t[e] = function() {
+                                t.push([e].concat(Array.prototype.slice.call(arguments, 0)));
+                            };
+                        }
+                        var u = posthog;
+                        if (typeof a !== 'undefined') {
+                            u = posthog[a] = [];
+                        } else {
+                            a = 'posthog';
+                        }
+                        u.people = u.people || [];
+                        u.toString = function(t) {
+                            var e = 'posthog';
+                            if (a !== 'posthog') {
+                                e += '.' + a;
+                            }
+                            if (!t) {
+                                e += ' (stub)';
+                            }
+                            return e;
+                        };
+                        u.people.toString = function() {
+                            return u.toString(1) + '.people (stub)';
+                        };
+                        r = 'capture identify alias people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete group identify_account resetAutocompleteCounter register register_once unregister set_config opt_out_capturing has_opted_out_capturing has_opted_in_capturing opt_in_capturing clear_opt_in_out_capturing onLMTConsentChange group_identify'.split(' ');
+                        for (p = 0; p < r.length; p++) {
+                            g(u, r[p]);
+                        }
+                        posthog._i.push([i, s, a]);
+                    };
+                    posthog.__SV = 1;
+                    o = t.createElement('script');
+                    o.type = 'text/javascript';
+                    o.async = true;
+                    o.src = apiHost + '/static/array.js';
+                    n = t.getElementsByTagName('script')[0];
+                    n.parentNode.insertBefore(o, n);
+                }
+            })(document, window.posthog || []);
+
+            window.posthog.init(config.key, {
+                api_host: apiHost,
+                capture_pageview: true,
+                autocapture: true,
+                persistence: 'localStorage+cookie'
+            });
+        })(window, document);
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
