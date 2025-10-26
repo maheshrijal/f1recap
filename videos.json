@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-10-26T22:37:02.343Z",
-  "totalVideos": 11,
+  "lastUpdated": "2025-10-26T23:07:34.568Z",
+  "totalVideos": 12,
   "grandPrixWeekends": [
     {
       "name": "2025 Mexico City Grand Prix",
@@ -34,6 +34,13 @@
           "thumbnail": "https://i.ytimg.com/vi/xDLDVxjgfdg/hqdefault.jpg"
         },
         {
+          "videoId": "hTqxfkWRimk",
+          "title": "Race Highlights | 2025 Mexico City Grand Prix",
+          "description": "With crucial points up for grabs in the race for the Drivers' Championship, catch up on all the action from a dramatic race at the ...",
+          "publishedAt": "2025-10-26T22:39:45Z",
+          "thumbnail": "https://i.ytimg.com/vi/hTqxfkWRimk/hqdefault.jpg"
+        },
+        {
           "videoId": "oz72q2Dvf0E",
           "title": "Drivers Look Ahead To Race Weekend | 2025 Mexico City Grand Prix",
           "description": "Hear from the grid as they share their thoughts and prepare for the Mexico City Grand Prix. For more F1® videos, visit: https://www.",
@@ -41,7 +48,7 @@
           "thumbnail": "https://i.ytimg.com/vi/oz72q2Dvf0E/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-10-25T22:33:45.000Z"
+      "latestDate": "2025-10-26T22:39:45.000Z"
     },
     {
       "name": "2025 Mexico Grand Prix",
