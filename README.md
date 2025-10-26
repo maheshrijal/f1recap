@@ -51,7 +51,7 @@ A static website that automatically tracks and displays Formula 1 YouTube videos
    - `PUBLIC_POSTHOG_KEY` (public)
    - `PUBLIC_POSTHOG_HOST` (public, e.g. `https://app.posthog.com`)
 5. Deploy!
-> **Tip:** Set the public PostHog variables for both Preview and Production environments so the runtime function can serve them to the browser. The handler lives at `functions/posthog-config.js` and responds to `/posthog-config.js`.
+> **Tip:** Set the public PostHog variables for both Preview and Production environments so the runtime function can serve them to the browser. The handler lives at `functions/posthog-config.js` and responds to `/posthog-config`.
 
 ### 4. Local Development
 
