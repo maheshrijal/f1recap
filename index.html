@@ -129,6 +129,7 @@
             }
 
             const apiHost = (config.host || 'https://app.posthog.com').replace(/\/$/, '');
+            const assetHost = apiHost.replace('.i.posthog.com', '-assets.i.posthog.com');
 
             (function(t, e) {
                 var o, n, p, r;
@@ -178,7 +179,8 @@
                     o = t.createElement('script');
                     o.type = 'text/javascript';
                     o.async = true;
-                    o.src = apiHost + '/static/array.js';
+                    o.src = assetHost + '/static/array.js';
+                    o.crossOrigin = 'anonymous';
                     n = t.getElementsByTagName('script')[0];
                     n.parentNode.insertBefore(o, n);
                 }
