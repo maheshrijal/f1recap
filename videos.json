@@ -1,17 +1,10 @@
 {
-  "lastUpdated": "2025-10-27T12:45:43.770Z",
-  "totalVideos": 12,
+  "lastUpdated": "2025-10-31T00:11:23.671Z",
+  "totalVideos": 4,
   "grandPrixWeekends": [
     {
       "name": "2025 Mexico City Grand Prix",
       "videos": [
-        {
-          "videoId": "Rx_ckHZ_iZk",
-          "title": "Rookies On Track In FP1! | 2025 Mexico City Grand Prix",
-          "description": "For nine hopefuls it was a chance to show what they could do at the controls of F1 machinery in Friday's first practice session at ...",
-          "publishedAt": "2025-10-25T12:44:44Z",
-          "thumbnail": "https://i.ytimg.com/vi/Rx_ckHZ_iZk/hqdefault.jpg"
-        },
         {
           "videoId": "NXLVltpAEDI",
           "title": "FP1 Highlights | 2025 Mexico City Grand Prix",
@@ -39,70 +32,9 @@
           "description": "With crucial points up for grabs in the race for the Drivers' Championship, catch up on all the action from a dramatic race at the ...",
           "publishedAt": "2025-10-26T22:39:45Z",
           "thumbnail": "https://i.ytimg.com/vi/hTqxfkWRimk/hqdefault.jpg"
-        },
-        {
-          "videoId": "oz72q2Dvf0E",
-          "title": "Drivers Look Ahead To Race Weekend | 2025 Mexico City Grand Prix",
-          "description": "Hear from the grid as they share their thoughts and prepare for the Mexico City Grand Prix. For more F1® videos, visit: https://www.",
-          "publishedAt": "2025-10-24T00:38:37Z",
-          "thumbnail": "https://i.ytimg.com/vi/oz72q2Dvf0E/hqdefault.jpg"
         }
       ],
       "latestDate": "2025-10-26T22:39:45.000Z"
-    },
-    {
-      "name": "2025 Mexico Grand Prix",
-      "videos": [
-        {
-          "videoId": "e6GfiA8m1yU",
-          "title": "FP3 Highlights | 2025 Mexico Grand Prix",
-          "description": "Catch up on all the action from the free practice 3 in Mexico, as the drivers and teams make their final preparations ahead of ...",
-          "publishedAt": "2025-10-25T20:37:45Z",
-          "thumbnail": "https://i.ytimg.com/vi/e6GfiA8m1yU/hqdefault.jpg"
-        }
-      ],
-      "latestDate": "2025-10-25T20:37:45.000Z"
-    },
-    {
-      "name": "2025 United States Grand Prix",
-      "videos": [
-        {
-          "videoId": "KMi90ZJ8i60",
-          "title": "FP1 Highlights | 2025 United States Grand Prix",
-          "description": "Catch up on the key moments from the first practice session of the weekend, as the drivers complete their one and only hour of ...",
-          "publishedAt": "2025-10-17T20:09:45Z",
-          "thumbnail": "https://i.ytimg.com/vi/KMi90ZJ8i60/hqdefault.jpg"
-        },
-        {
-          "videoId": "ZgfOrbKkMsA",
-          "title": "Sprint Highlights | 2025 United States Grand Prix",
-          "description": "For more F1® videos, visit: https://www.Formula1.com Visit our store: https://f1store.formula1.com/ Follow F1®: ...",
-          "publishedAt": "2025-10-18T18:54:39Z",
-          "thumbnail": "https://i.ytimg.com/vi/ZgfOrbKkMsA/hqdefault.jpg"
-        },
-        {
-          "videoId": "VQ1lfwPBtKs",
-          "title": "Sprint Qualifying Highlights | 2025 United States Grand Prix",
-          "description": "The drivers headed straight into Sprint Qualifying after FP1 at COTA! Let's relive the key moments from the session, and see who ...",
-          "publishedAt": "2025-10-17T23:11:27Z",
-          "thumbnail": "https://i.ytimg.com/vi/VQ1lfwPBtKs/hqdefault.jpg"
-        },
-        {
-          "videoId": "CdKwc1bC44c",
-          "title": "Race Highlights | 2025 United States Grand Prix",
-          "description": "Watch the key talking points from the US Grand Prix in Austin, Texas as Max Verstappen looked to cut the championship lead from ...",
-          "publishedAt": "2025-10-19T21:34:35Z",
-          "thumbnail": "https://i.ytimg.com/vi/CdKwc1bC44c/hqdefault.jpg"
-        },
-        {
-          "videoId": "m4vO__p3K6Y",
-          "title": "Qualifying Highlights | 2025 United States Grand Prix",
-          "description": "An impressive lap secures pole position for Sunday's Grand Prix at the Circuit of the Americas. Tune in for all the highlights from ...",
-          "publishedAt": "2025-10-18T22:53:35Z",
-          "thumbnail": "https://i.ytimg.com/vi/m4vO__p3K6Y/hqdefault.jpg"
-        }
-      ],
-      "latestDate": "2025-10-19T21:34:35.000Z"
     }
   ]
 }
