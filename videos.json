@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-11-07T19:32:05.105Z",
-  "totalVideos": 2,
+  "lastUpdated": "2025-11-07T20:03:38.030Z",
+  "totalVideos": 3,
   "grandPrixWeekends": [
     {
       "name": "2025 Sao Paulo Grand Prix",
@@ -18,9 +18,16 @@
           "description": "Hear the thoughts of the grid as we get set to race in Sao Paulo once more. For more F1® videos, visit: https://www.Formula1.com ...",
           "publishedAt": "2025-11-06T21:04:12Z",
           "thumbnail": "https://i.ytimg.com/vi/QEOtnfMZqKE/hqdefault.jpg"
+        },
+        {
+          "videoId": "-dCLabtcZBQ",
+          "title": "Sprint Qualifying Highlights | 2025 Sao Paulo Grand Prix",
+          "description": "Catch up on all the action from F1 Sprint Qualifying at Interlagos, which saw an unlikely front row position secured for Saturday's ...",
+          "publishedAt": "2025-11-07T19:53:23Z",
+          "thumbnail": "https://i.ytimg.com/vi/-dCLabtcZBQ/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-11-07T17:08:16.000Z"
+      "latestDate": "2025-11-07T19:53:23.000Z"
     }
   ]
 }
