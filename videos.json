@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-11-08T15:35:14.924Z",
-  "totalVideos": 3,
+  "lastUpdated": "2025-11-08T16:07:46.599Z",
+  "totalVideos": 4,
   "grandPrixWeekends": [
     {
       "name": "2025 Sao Paulo Grand Prix",
@@ -13,11 +13,11 @@
           "thumbnail": "https://i.ytimg.com/vi/sosujmIQ4oo/hqdefault.jpg"
         },
         {
-          "videoId": "QEOtnfMZqKE",
-          "title": "Drivers Look Ahead To Race Weekend | 2025 Sao Paulo Grand Prix",
-          "description": "Hear the thoughts of the grid as we get set to race in Sao Paulo once more. For more F1® videos, visit: https://www.Formula1.com ...",
-          "publishedAt": "2025-11-06T21:04:12Z",
-          "thumbnail": "https://i.ytimg.com/vi/QEOtnfMZqKE/hqdefault.jpg"
+          "videoId": "55_LalL3E6Y",
+          "title": "Sprint Highlights | 2025 Sao Paulo Grand Prix",
+          "description": "Catch up on an action-packed Sprint in Sao Paulo, with multiple crashes in the early stages and a huge moment in the battle for ...",
+          "publishedAt": "2025-11-08T15:43:23Z",
+          "thumbnail": "https://i.ytimg.com/vi/55_LalL3E6Y/hqdefault.jpg"
         },
         {
           "videoId": "-dCLabtcZBQ",
@@ -25,9 +25,16 @@
           "description": "Catch up on all the action from F1 Sprint Qualifying at Interlagos, which saw an unlikely front row position secured for Saturday's ...",
           "publishedAt": "2025-11-07T19:53:23Z",
           "thumbnail": "https://i.ytimg.com/vi/-dCLabtcZBQ/hqdefault.jpg"
+        },
+        {
+          "videoId": "QEOtnfMZqKE",
+          "title": "Drivers Look Ahead To Race Weekend | 2025 Sao Paulo Grand Prix",
+          "description": "Hear the thoughts of the grid as we get set to race in Sao Paulo once more. For more F1® videos, visit: https://www.Formula1.com ...",
+          "publishedAt": "2025-11-06T21:04:12Z",
+          "thumbnail": "https://i.ytimg.com/vi/QEOtnfMZqKE/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-11-07T19:53:23.000Z"
+      "latestDate": "2025-11-08T15:43:23.000Z"
     }
   ]
 }
