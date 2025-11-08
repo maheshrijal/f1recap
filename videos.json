@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-11-08T19:35:07.944Z",
-  "totalVideos": 4,
+  "lastUpdated": "2025-11-08T20:07:14.834Z",
+  "totalVideos": 5,
   "grandPrixWeekends": [
     {
       "name": "2025 Sao Paulo Grand Prix",
@@ -32,9 +32,16 @@
           "description": "Hear the thoughts of the grid as we get set to race in Sao Paulo once more. For more F1® videos, visit: https://www.Formula1.com ...",
           "publishedAt": "2025-11-06T21:04:12Z",
           "thumbnail": "https://i.ytimg.com/vi/QEOtnfMZqKE/hqdefault.jpg"
+        },
+        {
+          "videoId": "MYpwaMHYDfw",
+          "title": "Qualifying Highlights | 2025 Sao Paulo Grand Prix",
+          "description": "Catch up on all the action from Qualifying in Sao Paulo, which saw a shock Q1 exit! For more F1® videos, visit: https://www.",
+          "publishedAt": "2025-11-08T19:42:25Z",
+          "thumbnail": "https://i.ytimg.com/vi/MYpwaMHYDfw/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-11-08T15:43:23.000Z"
+      "latestDate": "2025-11-08T19:42:25.000Z"
     }
   ]
 }
