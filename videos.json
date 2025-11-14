@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-11-14T08:04:07.246Z",
-  "totalVideos": 3,
+  "lastUpdated": "2025-11-14T08:38:35.460Z",
+  "totalVideos": 4,
   "grandPrixWeekends": [
     {
       "name": "2025 Sao Paulo Grand Prix",
@@ -20,6 +20,13 @@
           "thumbnail": "https://i.ytimg.com/vi/-dCLabtcZBQ/hqdefault.jpg"
         },
         {
+          "videoId": "MK83clSv6-k",
+          "title": "Race Highlights | 2025 Sao Paulo Grand Prix",
+          "description": "Lando Norris led the field away for a classic Interlagos race as the reigning champion Max Verstappen started from the pit lane ...",
+          "publishedAt": "2025-11-09T19:25:48Z",
+          "thumbnail": "https://i.ytimg.com/vi/MK83clSv6-k/hqdefault.jpg"
+        },
+        {
           "videoId": "MYpwaMHYDfw",
           "title": "Qualifying Highlights | 2025 Sao Paulo Grand Prix",
           "description": "Catch up on all the action from Qualifying in Sao Paulo, which saw a shock Q1 exit! For more F1® videos, visit: https://www.",
@@ -27,7 +34,7 @@
           "thumbnail": "https://i.ytimg.com/vi/MYpwaMHYDfw/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-11-08T19:42:25.000Z"
+      "latestDate": "2025-11-09T19:25:48.000Z"
     }
   ]
 }
