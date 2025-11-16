@@ -4,7 +4,8 @@ class F1VideoTracker {
         this.loading = document.getElementById('loading');
         this.error = document.getElementById('error');
         this.lastUpdated = document.getElementById('lastUpdated');
-        
+        this.latestGrandPrixWeekends = [];
+
         this.init();
     }
 
@@ -18,76 +19,130 @@ class F1VideoTracker {
     }
 
     async loadVideos() {
+        const fetchStartedAt = this.getHighResolutionTime();
+        let response;
+
         try {
-            const response = await fetch('videos.json');
+            response = await fetch('videos.json', { cache: 'no-cache' });
             if (!response.ok) {
-                throw new Error('Failed to fetch videos');
+                throw new Error(`Failed to fetch videos (${response.status})`);
             }
-            
+
             const data = await response.json();
-            this.displayGrandPrixWeekends(data.grandPrixWeekends || []);
+            const grandPrixWeekends = Array.isArray(data.grandPrixWeekends) ? data.grandPrixWeekends : [];
+            this.latestGrandPrixWeekends = grandPrixWeekends;
+
+            this.displayGrandPrixWeekends(grandPrixWeekends);
             this.updateLastUpdated(data.lastUpdated);
-            
+
+            this.captureAnalytics('videos_fetch_completed', {
+                duration_ms: this.getRequestDuration(fetchStartedAt),
+                status: response.status,
+                weekend_count: grandPrixWeekends.length,
+                video_count: this.countTotalVideos(grandPrixWeekends),
+                last_updated: data.lastUpdated || null
+            });
         } catch (error) {
+            this.captureAnalytics('videos_fetch_failed', {
+                duration_ms: this.getRequestDuration(fetchStartedAt),
+                status: response ? response.status : null,
+                status_text: response ? response.statusText : null,
+                message: error.message,
+                error_name: error.name
+            });
             console.error('Error loading videos:', error);
             this.showError();
         }
     }
 
     displayGrandPrixWeekends(grandPrixWeekends) {
+        if (!this.videoContainer) {
+            return;
+        }
+
         this.loading.style.display = 'none';
         this.error.style.display = 'none';
         this.videoContainer.style.display = 'block';
 
-        if (!grandPrixWeekends || grandPrixWeekends.length === 0) {
+        const safeWeekends = Array.isArray(grandPrixWeekends) ? grandPrixWeekends : [];
+        if (safeWeekends.length === 0) {
             this.videoContainer.innerHTML = '<p style="color: white; text-align: center;">No Grand Prix weekends found.</p>';
+            this.captureAnalytics('videos_empty_state_seen');
             return;
         }
 
-        this.videoContainer.innerHTML = grandPrixWeekends.map((grandPrix, index) => 
-            this.createGrandPrixSection(grandPrix, index)
-        ).join('');
+        this.videoContainer.innerHTML = safeWeekends
+            .map((grandPrix, index) => this.createGrandPrixSection(grandPrix, index))
+            .join('');
+
+        this.attachVideoAnalyticsHandlers(safeWeekends);
+
+        this.captureAnalytics('videos_loaded', {
+            weekend_count: safeWeekends.length,
+            video_count: this.countTotalVideos(safeWeekends),
+            current_weekend: safeWeekends[0] ? safeWeekends[0].name : null,
+            latest_published_at: this.getLatestPublishedAt(safeWeekends)
+        });
     }
 
-    createGrandPrixSection(grandPrix, index) {
+    createGrandPrixSection(grandPrix = {}, index = 0) {
         const isRecent = index === 0;
-        const statusBadge = isRecent ? '<span class="status-badge current">Current Weekend</span>' : 
-                           index === 1 ? '<span class="status-badge recent">Last Weekend</span>' : 
-                           '<span class="status-badge past">Past Weekend</span>';
-        
+        const videos = Array.isArray(grandPrix.videos) ? grandPrix.videos : [];
+        const videoCountLabel = videos.length === 1 ? 'video' : 'videos';
+        const statusBadge = isRecent
+            ? '<span class="status-badge current">Current Weekend</span>'
+            : index === 1
+                ? '<span class="status-badge recent">Last Weekend</span>'
+                : '<span class="status-badge past">Past Weekend</span>';
+
         return `
             <div class="grandprix-section ${isRecent ? 'current-weekend' : ''}">
                 <div class="grandprix-header">
-                    <h2 class="grandprix-title">${this.escapeHtml(grandPrix.name)}</h2>
+                    <h2 class="grandprix-title">${this.escapeHtml(grandPrix.name || '')}</h2>
                     ${statusBadge}
-                    <div class="video-count">${grandPrix.videos.length} video${grandPrix.videos.length !== 1 ? 's' : ''}</div>
+                    <div class="video-count">${videos.length} ${videoCountLabel}</div>
                 </div>
                 <div class="grandprix-videos">
-                    ${grandPrix.videos.map(video => this.createVideoCard(video)).join('')}
+                    ${videos.map(video => this.createVideoCard(video, grandPrix, isRecent)).join('')}
                 </div>
             </div>
         `;
     }
 
-    createVideoCard(video) {
-        const videoType = this.getVideoType(video.title);
+    createVideoCard(video = {}, grandPrix = {}, isCurrentWeekend = false) {
+        const videoType = this.getVideoType(video.title || '');
         const formattedDate = this.formatDate(video.publishedAt);
-        
+        const videoUrl = this.getVideoUrl(video.videoId);
+        const analyticsAttributes = this.buildVideoDataAttributes({
+            videoId: video.videoId,
+            videoUrl,
+            grandPrixName: grandPrix.name,
+            videoTitle: video.title,
+            sessionType: videoType,
+            publishedAt: video.publishedAt,
+            isCurrentWeekend
+        });
+        const sessionClass = videoType.toLowerCase().replace(/\s+/g, '-');
+
         return `
             <div class="video-card">
-                <div class="video-thumbnail-container" onclick="window.open('https://youtube.com/watch?v=${video.videoId}', '_blank')">
-                    <div class="video-thumbnail" style="background-image: url('${video.thumbnail}')">
+                <div class="video-thumbnail-container"
+                    role="button"
+                    tabindex="0"
+                    aria-label="Play ${this.escapeAttribute(video.title || 'video')}"
+                    data-analytics-role="thumbnail"${analyticsAttributes}>
+                    <div class="video-thumbnail" style="background-image: url('${this.escapeAttribute(video.thumbnail || '')}')">
                         <div class="play-overlay">
                             <div class="play-button">▶</div>
                         </div>
                     </div>
                 </div>
                 <div class="video-info">
-                    <h3 class="video-title">${this.escapeHtml(video.title)}</h3>
+                    <h3 class="video-title">${this.escapeHtml(video.title || '')}</h3>
                     <div class="video-date">${formattedDate}</div>
                     <div class="video-actions">
-                        <span class="video-type ${videoType.toLowerCase().replace(/\s+/g, '-')}">${videoType}</span>
-                        <a href="https://youtube.com/watch?v=${video.videoId}" target="_blank" class="watch-button">
+                        <span class="video-type ${sessionClass}">${videoType}</span>
+                        <a href="${videoUrl}" target="_blank" rel="noopener noreferrer" class="watch-button" data-analytics-role="watch-button"${analyticsAttributes}>
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                             </svg>
@@ -99,12 +154,9 @@ class F1VideoTracker {
         `;
     }
 
-
-
     getVideoType(title) {
         const titleLower = title.toLowerCase();
-        
-        // Check for specific session types
+
         if (titleLower.includes('fp1')) {
             return 'FP1';
         } else if (titleLower.includes('fp2')) {
@@ -120,12 +172,20 @@ class F1VideoTracker {
         } else if (titleLower.includes('race') && !titleLower.includes('practice')) {
             return 'Race';
         }
-        
+
         return 'Other';
     }
 
     formatDate(dateString) {
+        if (!dateString) {
+            return 'Date unavailable';
+        }
+
         const date = new Date(dateString);
+        if (Number.isNaN(date.getTime())) {
+            return 'Date unavailable';
+        }
+
         return date.toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'long',
@@ -136,27 +196,171 @@ class F1VideoTracker {
     }
 
     updateLastUpdated(timestamp) {
-        if (timestamp) {
+        if (timestamp && this.lastUpdated) {
             const date = new Date(timestamp);
-            this.lastUpdated.textContent = date.toLocaleString();
-            
-            // Update page title with current weekend info
-            this.updatePageTitle();
+            if (!Number.isNaN(date.getTime())) {
+                this.lastUpdated.textContent = date.toLocaleString();
+                this.updatePageTitle();
+            }
         }
     }
-    
+
     updatePageTitle() {
-        // Get current weekend from the data
         const currentSection = document.querySelector('.grandprix-section.current-weekend');
         if (currentSection) {
             const weekendName = currentSection.querySelector('.grandprix-title').textContent;
             document.title = `${weekendName} Highlights - F1 Video Hub`;
-            
-            // Update meta description
+
             const metaDesc = document.querySelector('meta[name="description"]');
             if (metaDesc) {
                 metaDesc.content = `Watch the latest ${weekendName} highlights including FP1, FP2, Qualifying, Sprint, and Race sessions. Updated every 30 minutes.`;
             }
+        }
+    }
+
+    attachVideoAnalyticsHandlers(grandPrixWeekends) {
+        if (!this.videoContainer) {
+            return;
+        }
+
+        const metadataById = this.buildVideoMetadataMap(grandPrixWeekends);
+        const thumbnailNodes = this.videoContainer.querySelectorAll('[data-analytics-role="thumbnail"]');
+        thumbnailNodes.forEach(thumbnail => {
+            thumbnail.addEventListener('click', () => {
+                const videoId = thumbnail.getAttribute('data-video-id');
+                const videoUrl = thumbnail.getAttribute('data-video-url');
+                const payload = Object.assign({}, metadataById.get(videoId), { interaction_type: 'thumbnail' });
+                this.captureAnalytics('video_thumbnail_opened', payload);
+                this.openVideo(videoUrl);
+            });
+
+            thumbnail.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    thumbnail.click();
+                }
+            });
+        });
+
+        const watchButtons = this.videoContainer.querySelectorAll('[data-analytics-role="watch-button"]');
+        watchButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const videoId = button.getAttribute('data-video-id');
+                const payload = Object.assign({}, metadataById.get(videoId), { interaction_type: 'watch_button' });
+                this.captureAnalytics('video_watch_clicked', payload);
+            });
+        });
+    }
+
+    buildVideoMetadataMap(grandPrixWeekends) {
+        const map = new Map();
+        const safeWeekends = Array.isArray(grandPrixWeekends) ? grandPrixWeekends : [];
+
+        safeWeekends.forEach((grandPrix, index) => {
+            const videos = Array.isArray(grandPrix.videos) ? grandPrix.videos : [];
+            videos.forEach(video => {
+                if (!video || !video.videoId) {
+                    return;
+                }
+                map.set(video.videoId, {
+                    video_id: video.videoId,
+                    video_title: video.title,
+                    grand_prix: grandPrix.name,
+                    session_type: this.getVideoType(video.title || ''),
+                    published_at: video.publishedAt,
+                    is_current_weekend: index === 0,
+                    weekend_index: index,
+                    video_url: this.getVideoUrl(video.videoId)
+                });
+            });
+        });
+
+        return map;
+    }
+
+    buildVideoDataAttributes(meta) {
+        const attributeEntries = [
+            ['data-video-id', meta.videoId],
+            ['data-video-url', meta.videoUrl],
+            ['data-grand-prix', meta.grandPrixName],
+            ['data-video-title', meta.videoTitle],
+            ['data-session-type', meta.sessionType],
+            ['data-published-at', meta.publishedAt],
+            ['data-is-current', typeof meta.isCurrentWeekend === 'boolean' ? String(meta.isCurrentWeekend) : null]
+        ];
+
+        const attributes = attributeEntries
+            .filter(([, value]) => value !== undefined && value !== null && value !== '')
+            .map(([name, value]) => `${name}="${this.escapeAttribute(value)}"`);
+
+        return attributes.length ? ` ${attributes.join(' ')}` : '';
+    }
+
+    getVideoUrl(videoId) {
+        if (!videoId) {
+            return '';
+        }
+        return `https://youtube.com/watch?v=${videoId}`;
+    }
+
+    openVideo(videoUrl) {
+        if (!videoUrl) {
+            return;
+        }
+        const newWindow = window.open(videoUrl, '_blank', 'noopener');
+        if (newWindow) {
+            newWindow.opener = null;
+        }
+    }
+
+    getLatestPublishedAt(grandPrixWeekends) {
+        const safeWeekends = Array.isArray(grandPrixWeekends) ? grandPrixWeekends : [];
+        let latestTimestamp = null;
+
+        safeWeekends.forEach(grandPrix => {
+            const videos = Array.isArray(grandPrix.videos) ? grandPrix.videos : [];
+            videos.forEach(video => {
+                if (!video || !video.publishedAt) {
+                    return;
+                }
+                const time = Date.parse(video.publishedAt);
+                if (!Number.isNaN(time) && (latestTimestamp === null || time > latestTimestamp)) {
+                    latestTimestamp = time;
+                }
+            });
+        });
+
+        return latestTimestamp ? new Date(latestTimestamp).toISOString() : null;
+    }
+
+    countTotalVideos(grandPrixWeekends) {
+        return (Array.isArray(grandPrixWeekends) ? grandPrixWeekends : []).reduce((total, grandPrix) => {
+            const videos = Array.isArray(grandPrix.videos) ? grandPrix.videos : [];
+            return total + videos.length;
+        }, 0);
+    }
+
+    getHighResolutionTime() {
+        if (typeof performance !== 'undefined' && typeof performance.now === 'function') {
+            return performance.now();
+        }
+        return Date.now();
+    }
+
+    getRequestDuration(startTime) {
+        const endTime = this.getHighResolutionTime();
+        return Math.max(0, Math.round(endTime - startTime));
+    }
+
+    captureAnalytics(eventName, properties = {}) {
+        if (!window.posthog || typeof window.posthog.capture !== 'function') {
+            return;
+        }
+
+        try {
+            window.posthog.capture(eventName, properties);
+        } catch (error) {
+            console.debug('PostHog capture failed:', error);
         }
     }
 
@@ -166,14 +370,31 @@ class F1VideoTracker {
         return div.innerHTML;
     }
 
+    escapeAttribute(value) {
+        if (value === null || value === undefined) {
+            return '';
+        }
+        return String(value)
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+    }
+
     showError() {
-        this.loading.style.display = 'none';
-        this.videoContainer.style.display = 'none';
-        this.error.style.display = 'block';
+        if (this.loading) {
+            this.loading.style.display = 'none';
+        }
+        if (this.videoContainer) {
+            this.videoContainer.style.display = 'none';
+        }
+        if (this.error) {
+            this.error.style.display = 'block';
+        }
+        this.captureAnalytics('videos_error_displayed', { displayed_at: new Date().toISOString() });
     }
 }
-
-
 
 // Initialize the app when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {

@@ -119,6 +119,20 @@
     </script>
     <script src="/posthog-config"></script>
     <script>
+        (function() {
+            if (!window.__POSTHOG__ || (!window.__POSTHOG__.host && !window.__POSTHOG__.key)) {
+                const defaultEnv = window.location.hostname === 'localhost' ? 'local' : 'production';
+                window.__POSTHOG__ = {
+                    key: '',
+                    host: 'https://app.posthog.com',
+                    uiHost: 'https://app.posthog.com',
+                    environment: defaultEnv,
+                    commitSha: ''
+                };
+            }
+        })();
+    </script>
+    <script>
         (function(window, document) {
             const config = window.__POSTHOG__ || {};
             if (!config.key) {
@@ -130,6 +144,8 @@
 
             const apiHost = (config.host || 'https://app.posthog.com').replace(/\/$/, '');
             const assetHost = apiHost.replace('.i.posthog.com', '-assets.i.posthog.com');
+            const toolbarHost = (config.uiHost || apiHost).replace(/\/$/, '');
+            const runtimeEnv = config.environment || (window.location.hostname === 'localhost' ? 'local' : 'production');
 
             (function(t, e) {
                 var o, n, p, r;
@@ -186,11 +202,25 @@
                 }
             })(document, window.posthog || []);
 
+            if (typeof window.posthog.register === 'function') {
+                var baseProperties = { environment: runtimeEnv };
+                if (config.commitSha) {
+                    baseProperties.commit_sha = config.commitSha;
+                }
+                window.posthog.register(baseProperties);
+            }
+
             window.posthog.init(config.key, {
                 api_host: apiHost,
+                ui_host: toolbarHost,
                 capture_pageview: true,
+                capture_pageleave: true,
                 autocapture: true,
-                persistence: 'localStorage+cookie'
+                persistence: 'localStorage+cookie',
+                session_recording: {
+                    maskAllInputs: true,
+                    maskTextSelector: '.ph-mask'
+                }
             });
         })(window, document);
     </script>
