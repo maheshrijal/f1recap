@@ -224,6 +224,103 @@
             });
         })(window, document);
     </script>
+    <script>
+        (function(window, document) {
+            const config = window.__POSTHOG__ || {};
+            if (!config.key) {
+                return;
+            }
+
+            const WEB_VITALS_SRC = 'https://unpkg.com/web-vitals@3/dist/web-vitals.iife.js';
+            const runtimeEnv = config.environment || (window.location.hostname === 'localhost' ? 'local' : 'production');
+
+            const roundValue = (value) => {
+                return typeof value === 'number' && Number.isFinite(value)
+                    ? Math.round(value * 1000) / 1000
+                    : value;
+            };
+
+            const getNavigationType = () => {
+                if (typeof performance === 'undefined') {
+                    return undefined;
+                }
+                if (typeof performance.getEntriesByType === 'function') {
+                    const navEntry = performance.getEntriesByType('navigation')[0];
+                    if (navEntry && navEntry.type) {
+                        return navEntry.type;
+                    }
+                }
+                if (performance.navigation && typeof performance.navigation.type === 'number') {
+                    const legacyTypes = ['navigate', 'reload', 'back_forward', 'prerender'];
+                    return legacyTypes[performance.navigation.type] || 'navigate';
+                }
+                return undefined;
+            };
+
+            function sendToPosthog(metric) {
+                if (!window.posthog || typeof window.posthog.capture !== 'function') {
+                    return;
+                }
+
+                window.posthog.capture('web_vital', {
+                    metric_name: metric.name,
+                    metric_id: metric.id,
+                    value: roundValue(metric.value),
+                    delta: roundValue(metric.delta),
+                    rating: metric.rating,
+                    environment: runtimeEnv,
+                    visibility_state: document.visibilityState,
+                    navigation_type: getNavigationType(),
+                    path: window.location.pathname,
+                    connection_type: navigator.connection && navigator.connection.effectiveType
+                });
+            }
+
+            function bindWebVitals() {
+                if (!window.webVitals) {
+                    return;
+                }
+
+                const options = { reportAllChanges: true };
+                window.webVitals.onCLS && window.webVitals.onCLS(sendToPosthog, options);
+                window.webVitals.onFID && window.webVitals.onFID(sendToPosthog, options);
+                window.webVitals.onLCP && window.webVitals.onLCP(sendToPosthog, options);
+                window.webVitals.onFCP && window.webVitals.onFCP(sendToPosthog, options);
+                window.webVitals.onTTFB && window.webVitals.onTTFB(sendToPosthog, options);
+                window.webVitals.onINP && window.webVitals.onINP(sendToPosthog, options);
+            }
+
+            function ensureWebVitalsLoaded() {
+                if (window.webVitals) {
+                    bindWebVitals();
+                    return;
+                }
+                if (document.querySelector('script[data-web-vitals="true"]')) {
+                    return;
+                }
+
+                const script = document.createElement('script');
+                script.src = WEB_VITALS_SRC;
+                script.defer = true;
+                script.async = true;
+                script.crossOrigin = 'anonymous';
+                script.dataset.webVitals = 'true';
+                script.onload = bindWebVitals;
+                script.onerror = function(error) {
+                    if (typeof console !== 'undefined') {
+                        console.debug('Web Vitals script failed to load', error);
+                    }
+                };
+                document.head.appendChild(script);
+            }
+
+            if (document.readyState === 'complete') {
+                ensureWebVitalsLoaded();
+            } else {
+                window.addEventListener('load', ensureWebVitalsLoaded, { once: true });
+            }
+        })(window, document);
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
