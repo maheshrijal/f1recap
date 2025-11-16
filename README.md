@@ -14,6 +14,7 @@ A static website that automatically tracks and displays Formula 1 YouTube videos
 - 🎬 **Direct YouTube Access**: One-click to watch videos
 - 📅 **Weekend Organization**: Videos grouped by Grand Prix weekends
 - 🏁 **Session Ordering**: FP1 → FP2 → Qualifying → Race (or Sprint format)
+- 📊 **Built-in Analytics**: PostHog events plus Web Vitals capture for performance insights
 
 ## How It Works
 
@@ -50,6 +51,7 @@ A static website that automatically tracks and displays Formula 1 YouTube videos
    - `YOUTUBE_API_KEY` (secret)
    - `PUBLIC_POSTHOG_KEY` (public)
    - `PUBLIC_POSTHOG_HOST` (public, e.g. `https://app.posthog.com`)
+   - *(Optional but recommended)* `PUBLIC_RUNTIME_ENV` to label deployments (e.g. `production`, `preview`)
 5. Deploy!
 > **Tip:** Set the public PostHog variables for both Preview and Production environments so the runtime function can serve them to the browser. The handler lives at `functions/posthog-config.js` and responds to `/posthog-config`.
 

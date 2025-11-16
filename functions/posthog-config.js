@@ -6,16 +6,18 @@ export function onRequest({ env }) {
   const host = rawHost ? rawHost.replace(/\/$/, '') : DEFAULT_HOST;
   const rawUiHost = (env.PUBLIC_POSTHOG_UI_HOST || '').trim();
   const uiHost = rawUiHost ? rawUiHost.replace(/\/$/, '') : host;
-  const environment = (env.PUBLIC_RUNTIME_ENV || '').trim() || 'production';
+  const environment = (env.PUBLIC_RUNTIME_ENV || env.CF_PAGES_BRANCH || '').trim() || 'production';
   const commitSha = (env.PUBLIC_COMMIT_SHA || env.CF_PAGES_COMMIT_SHA || '').trim();
 
-  const body = `window.__POSTHOG__ = Object.freeze({
-  key: ${JSON.stringify(key)},
-  host: ${JSON.stringify(host)},
-  uiHost: ${JSON.stringify(uiHost)},
-  environment: ${JSON.stringify(environment)},
-  commitSha: ${JSON.stringify(commitSha)}
-});\n`;
+  const payload = {
+    key,
+    host,
+    uiHost,
+    environment,
+    commitSha
+  };
+
+  const body = `window.__POSTHOG__ = Object.freeze(${JSON.stringify(payload)});\n`;
 
   return new Response(body, {
     headers: {
