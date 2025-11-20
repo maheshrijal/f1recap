@@ -39,15 +39,24 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         fetch-depth: 0
+
+    - name: Decide if update is needed
+      id: gate
+      env:
+        MANUAL_RUN: ${{ github.event_name == 'workflow_dispatch' }}
+        FORCE_RUN: ${{ github.event.inputs.force_update || 'false' }}
+      run: node scripts/should-run.js
       
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '18'
         cache: 'npm'
+      if: steps.gate.outputs.run == 'true'
         
     - name: Install dependencies
       run: npm ci
+      if: steps.gate.outputs.run == 'true'
       
     - name: Fetch latest videos
       env:
@@ -58,6 +67,7 @@ jobs:
         echo "🚀 Starting F1 video fetch..."
         echo "Reason: $UPDATE_REASON"
         npm run fetch
+      if: steps.gate.outputs.run == 'true'
       
     - name: Commit and push changes
       run: |
@@ -86,11 +96,14 @@ jobs:
           git push origin HEAD:${{ github.ref_name }}
           echo "✅ Changes committed and pushed successfully"
         fi
-        
+      if: steps.gate.outputs.run == 'true'
+      
     - name: Summary
       run: |
         echo "📊 F1 Video Update Summary"
         echo "=========================="
+        
+        echo "Gate run? ${{ steps.gate.outputs.run || 'false' }} (reason: ${{ steps.gate.outputs.reason || 'n/a' }})"
         
         if [ -f videos.json ]; then
           TOTAL_VIDEOS=$(node -e "const data = require('./videos.json'); console.log(data.totalVideos || 0);")
