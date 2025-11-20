@@ -1,0 +1,27 @@
+// Static 2025 F1 calendar (UTC dates for race weekends)
+module.exports = [
+  { name: 'Australia', start: '2025-03-14', end: '2025-03-16' },
+  { name: 'China', start: '2025-03-21', end: '2025-03-23' },
+  { name: 'Japan', start: '2025-04-04', end: '2025-04-06' },
+  { name: 'Bahrain', start: '2025-04-11', end: '2025-04-13' },
+  { name: 'Saudi Arabia', start: '2025-04-18', end: '2025-04-20' },
+  { name: 'Miami', start: '2025-05-02', end: '2025-05-04' },
+  { name: 'Emilia Romagna', start: '2025-05-16', end: '2025-05-18' },
+  { name: 'Monaco', start: '2025-05-23', end: '2025-05-25' },
+  { name: 'Spain', start: '2025-05-30', end: '2025-06-01' },
+  { name: 'Canada', start: '2025-06-13', end: '2025-06-15' },
+  { name: 'Austria', start: '2025-06-27', end: '2025-06-29' },
+  { name: 'Great Britain', start: '2025-07-04', end: '2025-07-06' },
+  { name: 'Belgium', start: '2025-07-25', end: '2025-07-27' },
+  { name: 'Hungary', start: '2025-08-01', end: '2025-08-03' },
+  { name: 'Netherlands', start: '2025-08-29', end: '2025-08-31' },
+  { name: 'Italy (Monza)', start: '2025-09-05', end: '2025-09-07' },
+  { name: 'Azerbaijan', start: '2025-09-19', end: '2025-09-21' },
+  { name: 'Singapore', start: '2025-10-03', end: '2025-10-05' },
+  { name: 'United States (Austin)', start: '2025-10-17', end: '2025-10-19' },
+  { name: 'Mexico', start: '2025-10-24', end: '2025-10-26' },
+  { name: 'Brazil', start: '2025-11-07', end: '2025-11-09' },
+  { name: 'Las Vegas', start: '2025-11-20', end: '2025-11-22' },
+  { name: 'Qatar', start: '2025-11-28', end: '2025-11-30' },
+  { name: 'Abu Dhabi', start: '2025-12-05', end: '2025-12-07' }
+];

@@ -65,45 +65,49 @@ class F1VideoTracker {
         this.videoContainer.style.display = 'block';
 
         const safeWeekends = Array.isArray(grandPrixWeekends) ? grandPrixWeekends : [];
-        if (safeWeekends.length === 0) {
+        const visibleWeekends = safeWeekends.slice(0, 3);
+
+        if (visibleWeekends.length === 0) {
             this.videoContainer.innerHTML = '<p style="color: white; text-align: center;">No Grand Prix weekends found.</p>';
             this.captureAnalytics('videos_empty_state_seen');
             return;
         }
 
-        this.videoContainer.innerHTML = safeWeekends
+        this.videoContainer.innerHTML = visibleWeekends
             .map((grandPrix, index) => this.createGrandPrixSection(grandPrix, index))
             .join('');
 
-        this.attachVideoAnalyticsHandlers(safeWeekends);
+        this.latestGrandPrixWeekends = visibleWeekends;
+        this.attachVideoAnalyticsHandlers(visibleWeekends);
 
         this.captureAnalytics('videos_loaded', {
-            weekend_count: safeWeekends.length,
-            video_count: this.countTotalVideos(safeWeekends),
-            current_weekend: safeWeekends[0] ? safeWeekends[0].name : null,
-            latest_published_at: this.getLatestPublishedAt(safeWeekends)
+            weekend_count: visibleWeekends.length,
+            video_count: this.countTotalVideos(visibleWeekends),
+            current_weekend: visibleWeekends[0] ? visibleWeekends[0].name : null,
+            latest_published_at: this.getLatestPublishedAt(visibleWeekends)
         });
     }
 
     createGrandPrixSection(grandPrix = {}, index = 0) {
-        const isRecent = index === 0;
+        const latestDate = this.getWeekendLatestDate(grandPrix);
+        const recency = this.getWeekendRecency(latestDate);
         const videos = Array.isArray(grandPrix.videos) ? grandPrix.videos : [];
         const videoCountLabel = videos.length === 1 ? 'video' : 'videos';
-        const statusBadge = isRecent
+        const statusBadge = recency === 'current'
             ? '<span class="status-badge current">Current Weekend</span>'
-            : index === 1
+            : recency === 'recent'
                 ? '<span class="status-badge recent">Last Weekend</span>'
-                : '<span class="status-badge past">Past Weekend</span>';
+                : '<span class="status-badge past">Earlier Weekend</span>';
 
         return `
-            <div class="grandprix-section ${isRecent ? 'current-weekend' : ''}">
+            <div class="grandprix-section ${recency === 'current' ? 'current-weekend' : ''}">
                 <div class="grandprix-header">
                     <h2 class="grandprix-title">${this.escapeHtml(grandPrix.name || '')}</h2>
                     ${statusBadge}
                     <div class="video-count">${videos.length} ${videoCountLabel}</div>
                 </div>
                 <div class="grandprix-videos">
-                    ${videos.map(video => this.createVideoCard(video, grandPrix, isRecent)).join('')}
+                    ${videos.map(video => this.createVideoCard(video, grandPrix, recency === 'current')).join('')}
                 </div>
             </div>
         `;
@@ -206,15 +210,23 @@ class F1VideoTracker {
     }
 
     updatePageTitle() {
-        const currentSection = document.querySelector('.grandprix-section.current-weekend');
-        if (currentSection) {
-            const weekendName = currentSection.querySelector('.grandprix-title').textContent;
-            document.title = `${weekendName} Highlights - F1 Video Hub`;
+        const currentSection = document.querySelector('.grandprix-section.current-weekend') ||
+            document.querySelector('.grandprix-section');
 
-            const metaDesc = document.querySelector('meta[name="description"]');
-            if (metaDesc) {
-                metaDesc.content = `Watch the latest ${weekendName} highlights including FP1, FP2, Qualifying, Sprint, and Race sessions. Updated every 30 minutes.`;
-            }
+        if (!currentSection) {
+            return;
+        }
+
+        const weekendName = currentSection.querySelector('.grandprix-title').textContent;
+        const titlePrefix = currentSection.classList.contains('current-weekend')
+            ? weekendName
+            : `${weekendName} (Most Recent)`;
+
+        document.title = `${titlePrefix} Highlights - F1 Video Hub`;
+
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) {
+            metaDesc.content = `Watch the latest ${weekendName} highlights including FP1, FP2, Qualifying, Sprint, and Race sessions. Updated every 30 minutes.`;
         }
     }
 
@@ -331,6 +343,45 @@ class F1VideoTracker {
         });
 
         return latestTimestamp ? new Date(latestTimestamp).toISOString() : null;
+    }
+
+    getWeekendLatestDate(grandPrix = {}) {
+        if (grandPrix.latestDate) {
+            return grandPrix.latestDate;
+        }
+
+        const videos = Array.isArray(grandPrix.videos) ? grandPrix.videos : [];
+        const timestamps = videos
+            .map(video => Date.parse(video.publishedAt))
+            .filter(time => !Number.isNaN(time));
+
+        if (timestamps.length === 0) {
+            return null;
+        }
+
+        return new Date(Math.max(...timestamps)).toISOString();
+    }
+
+    getWeekendRecency(latestDateString) {
+        if (!latestDateString) {
+            return 'past';
+        }
+
+        const latestDate = new Date(latestDateString);
+        if (Number.isNaN(latestDate.getTime())) {
+            return 'past';
+        }
+
+        const now = new Date();
+        const diffDays = (now - latestDate) / (1000 * 60 * 60 * 24);
+
+        if (diffDays <= 4) {
+            return 'current';
+        }
+        if (diffDays <= 11) {
+            return 'recent';
+        }
+        return 'past';
     }
 
     countTotalVideos(grandPrixWeekends) {

@@ -17,7 +17,8 @@ class F1VideoFetcher {
         
         // Keywords that indicate the content we want
         this.includeKeywords = [
-            'highlights', 'recap', 'session'
+            'highlights', 'recap', 'session',
+            'full race', 'full replay', 'full qualifying', 'extended highlights'
         ];
         
         // Content to exclude
@@ -25,7 +26,10 @@ class F1VideoFetcher {
             'f2', 'formula 2', 'post-race show', 'post race show', 
             'live:', 'preview', 'analysis', 'interview', 'press conference',
             'feature race', 'f3', 'formula 3', 'porsche', 'w series',
-            'drivers react', 'driver react', 'react after', 'reaction'
+            'drivers react', 'driver react', 'react after', 'reaction',
+            'esports', 'indycar', 'nascar', 'wrc', 'dtm', 'motogp',
+            'team radio', 'top 10', 'best moments', 'radio rewinds', 'funniest',
+            'kids', 'challenge', 'hot laps', 'simulator', 'sim', 'gaming'
         ];
     }
 
@@ -56,17 +60,19 @@ class F1VideoFetcher {
             const filteredVideos = this.filterRecapVideos(allVideos);
             console.log(`Filtered to ${filteredVideos.length} recap videos`);
 
-            // Keep only videos from last 3 race weekends (approximately 6 weeks)
-            const recentVideos = this.filterRecentVideos(filteredVideos, 42); // 6 weeks
-            console.log(`Keeping ${recentVideos.length} videos from last 6 weeks`);
+            // Keep the latest 100 filtered videos (API returns newest first)
+            const boundedVideos = filteredVideos.slice(0, 100);
+            console.log(`Considering ${boundedVideos.length} newest filtered videos (max 100)`);
 
-            // Group videos by Grand Prix weekends
-            const groupedVideos = this.groupVideosByGrandPrix(recentVideos);
-            console.log(`Organized into ${groupedVideos.length} Grand Prix weekends`);
+            // Group videos by Grand Prix weekends and keep the latest 3 race weekends
+            const groupedVideos = this.groupVideosByGrandPrix(boundedVideos);
+            console.log(`Organized into ${groupedVideos.length} Grand Prix weekends (limited to last 3)`);
+
+            const visibleVideos = groupedVideos.reduce((total, gp) => total + gp.videos.length, 0);
 
             const videoData = {
                 lastUpdated: new Date().toISOString(),
-                totalVideos: recentVideos.length,
+                totalVideos: visibleVideos,
                 grandPrixWeekends: groupedVideos
             };
 
@@ -86,6 +92,7 @@ class F1VideoFetcher {
         return videos.filter(video => {
             const title = video.snippet.title.toLowerCase();
             const description = video.snippet.description.toLowerCase();
+            const videoType = this.getVideoTypeFromTitle(title);
             
             // First, exclude unwanted content
             const shouldExclude = this.excludeKeywords.some(keyword => 
@@ -96,12 +103,8 @@ class F1VideoFetcher {
                 return false;
             }
             
-            // Check if it's one of our allowed session types
-            const hasAllowedSession = this.allowedSessionTypes.some(sessionType => {
-                return title.includes(sessionType);
-            });
-            
-            if (!hasAllowedSession) {
+            // Only keep known F1 session types
+            if (videoType === 'other') {
                 return false;
             }
             
@@ -109,17 +112,12 @@ class F1VideoFetcher {
             const hasIncludeKeyword = this.includeKeywords.some(keyword => 
                 title.includes(keyword) || description.includes(keyword)
             );
-            
-            // For F1 sessions, be more lenient - if it has the session type, likely what we want
-            const isF1Session = hasAllowedSession && (
-                hasIncludeKeyword || 
-                title.includes('grand prix') || 
-                title.includes('gp') ||
-                title.includes('formula 1') ||
-                title.includes('f1')
+
+            const isF1Context = ['grand prix', 'gp', 'formula 1', 'f1'].some(keyword =>
+                title.includes(keyword) || description.includes(keyword)
             );
-            
-            return isF1Session;
+
+            return hasIncludeKeyword && isF1Context;
         });
     }
 
@@ -214,7 +212,7 @@ class F1VideoFetcher {
             });
         });
         
-        return sortedGroups;
+        return sortedGroups.slice(0, 3);
     }
     
     extractGrandPrixName(title) {
@@ -254,6 +252,8 @@ class F1VideoFetcher {
             return 'fp1';
         } else if (titleLower.includes('fp2')) {
             return 'fp2';
+        } else if (titleLower.includes('fp3') || titleLower.includes('practice 3') || titleLower.includes('free practice 3')) {
+            return 'fp3';
         } else if (titleLower.includes('sprint') && (titleLower.includes('qualifying') || titleLower.includes('quali'))) {
             return 'sprint-qualifying';
         } else if (titleLower.includes('sprint')) {
