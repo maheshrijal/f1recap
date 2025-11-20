@@ -252,6 +252,8 @@ class F1VideoFetcher {
             return 'fp1';
         } else if (titleLower.includes('fp2')) {
             return 'fp2';
+        } else if (titleLower.includes('fp3') || titleLower.includes('practice 3') || titleLower.includes('free practice 3')) {
+            return 'fp3';
         } else if (titleLower.includes('sprint') && (titleLower.includes('qualifying') || titleLower.includes('quali'))) {
             return 'sprint-qualifying';
         } else if (titleLower.includes('sprint')) {
