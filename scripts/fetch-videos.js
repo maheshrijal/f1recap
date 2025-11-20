@@ -70,6 +70,12 @@ class F1VideoFetcher {
 
             const visibleVideos = groupedVideos.reduce((total, gp) => total + gp.videos.length, 0);
 
+            if (groupedVideos.length === 0) {
+                console.warn('No race weekends detected from API response. Preserving existing videos.json to avoid wiping the site.');
+                await this.preserveExistingData();
+                return;
+            }
+
             const videoData = {
                 lastUpdated: new Date().toISOString(),
                 totalVideos: visibleVideos,
@@ -272,6 +278,18 @@ class F1VideoFetcher {
     async saveVideoData(data) {
         const outputPath = path.join(process.cwd(), 'videos.json');
         await fs.writeFile(outputPath, JSON.stringify(data, null, 2));
+    }
+
+    async preserveExistingData() {
+        const outputPath = path.join(process.cwd(), 'videos.json');
+        try {
+            const current = await fs.readFile(outputPath, 'utf8');
+            console.log('Kept existing videos.json unchanged.');
+            // Write back to ensure timestamp on artifact, but keep content
+            await fs.writeFile(outputPath, current);
+        } catch (err) {
+            console.warn('No existing videos.json to preserve; leaving empty.');
+        }
     }
 }
 
