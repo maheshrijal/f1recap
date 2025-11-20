@@ -60,12 +60,12 @@ class F1VideoFetcher {
             const filteredVideos = this.filterRecapVideos(allVideos);
             console.log(`Filtered to ${filteredVideos.length} recap videos`);
 
-            // Keep only videos from last 3 race weekends (approximately 6 weeks)
-            const recentVideos = this.filterRecentVideos(filteredVideos, 42); // 6 weeks
-            console.log(`Keeping ${recentVideos.length} videos from last 6 weeks`);
+            // Keep the latest 100 filtered videos (API returns newest first)
+            const boundedVideos = filteredVideos.slice(0, 100);
+            console.log(`Considering ${boundedVideos.length} newest filtered videos (max 100)`);
 
-            // Group videos by Grand Prix weekends
-            const groupedVideos = this.groupVideosByGrandPrix(recentVideos);
+            // Group videos by Grand Prix weekends and keep the latest 3 race weekends
+            const groupedVideos = this.groupVideosByGrandPrix(boundedVideos);
             console.log(`Organized into ${groupedVideos.length} Grand Prix weekends (limited to last 3)`);
 
             const visibleVideos = groupedVideos.reduce((total, gp) => total + gp.videos.length, 0);
