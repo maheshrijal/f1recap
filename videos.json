@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-11-21T06:05:30.916Z",
-  "totalVideos": 1,
+  "lastUpdated": "2025-11-21T06:52:52.979Z",
+  "totalVideos": 2,
   "grandPrixWeekends": [
     {
       "name": "2025 Las Vegas Grand Prix",
@@ -11,9 +11,16 @@
           "description": "The first practice session of the weekend got underway around the streets of the Las Vegas Circuit. Catch up on all the action from ...",
           "publishedAt": "2025-11-21T02:52:48Z",
           "thumbnail": "https://i.ytimg.com/vi/g9p8tirTnao/hqdefault.jpg"
+        },
+        {
+          "videoId": "GExKHjlBTfw",
+          "title": "FP2 Highlights | 2025 Las Vegas Grand Prix",
+          "description": "Catch up on all the action from the second practice in Las Vegas. For more F1® videos, visit: https://www.Formula1.com Visit our ...",
+          "publishedAt": "2025-11-21T06:14:12Z",
+          "thumbnail": "https://i.ytimg.com/vi/GExKHjlBTfw/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-11-21T02:52:48.000Z"
+      "latestDate": "2025-11-21T06:14:12.000Z"
     }
   ]
 }
