@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-11-21T23:47:10.859Z",
-  "totalVideos": 2,
+  "lastUpdated": "2025-11-22T06:02:42.938Z",
+  "totalVideos": 4,
   "grandPrixWeekends": [
     {
       "name": "2025 Las Vegas Grand Prix",
@@ -18,9 +18,23 @@
           "description": "Catch up on all the action from the second practice in Las Vegas. For more F1® videos, visit: https://www.Formula1.com Visit our ...",
           "publishedAt": "2025-11-21T06:14:12Z",
           "thumbnail": "https://i.ytimg.com/vi/GExKHjlBTfw/hqdefault.jpg"
+        },
+        {
+          "videoId": "gC88zq9Y4gQ",
+          "title": "Qualifying Highlights | 2025 Las Vegas Grand Prix",
+          "description": "A first-ever wet Qualifying in Las Vegas posed a challenging session for the drivers and teams as they battled to set the grid for ...",
+          "publishedAt": "2025-11-22T05:46:45Z",
+          "thumbnail": "https://i.ytimg.com/vi/gC88zq9Y4gQ/hqdefault.jpg"
+        },
+        {
+          "videoId": "tq7ZKnZYIA8",
+          "title": "FP3 Highlights | 2025 Las Vegas Grand Prix",
+          "description": "Amid mixed conditions, the teams took to the track for a final hour of practice in Las Vegas, as they make their final adjustments ...",
+          "publishedAt": "2025-11-22T02:35:20Z",
+          "thumbnail": "https://i.ytimg.com/vi/tq7ZKnZYIA8/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-11-21T06:14:12.000Z"
+      "latestDate": "2025-11-22T05:46:45.000Z"
     }
   ]
 }
