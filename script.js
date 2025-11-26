@@ -299,9 +299,12 @@ class F1VideoTracker {
 
     parseIcsDate(value) {
         if (!value) return null;
-        // Handles formats like 20250314T013000Z
-        const cleaned = value.replace(/Z$/, 'Z');
-        const date = new Date(cleaned);
+        // Handles formats like 20250314T013000Z -> 2025-03-14T01:30:00Z
+        const match = value.match(/^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})Z$/);
+        if (!match) return null;
+        const [, y, mo, d, h, mi, s] = match;
+        const iso = `${y}-${mo}-${d}T${h}:${mi}:${s}Z`;
+        const date = new Date(iso);
         return Number.isNaN(date.getTime()) ? null : date;
     }
 
