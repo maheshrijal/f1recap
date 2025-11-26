@@ -221,7 +221,7 @@ footer,
 
 main {
     max-width: 1240px;
-    margin: 0.6rem auto 2.2rem;
+    margin: 0.6rem auto 1.2rem;
     padding: 0 1.25rem;
 }
 
@@ -767,76 +767,33 @@ main {
 footer {
     background: linear-gradient(145deg, var(--card), var(--card-contrast));
     backdrop-filter: blur(6px);
-    margin-top: 3rem;
-    padding: 2.4rem 1rem 1.4rem;
+    margin-top: 0;
+    padding: 1rem 1.25rem 1rem;
     color: var(--text);
     border-top: 1px solid var(--stroke);
-}
-
-.footer-content {
     max-width: 1240px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.25rem;
-    margin-bottom: 1.4rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.footer-section h3 {
-    color: var(--text);
-    margin-bottom: 0.25rem;
-    font-size: 0.95rem;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    font-weight: 800;
-}
-
-.footer-section p {
-    line-height: 1.65;
-    font-size: 0.9rem;
-    color: var(--muted);
-    max-width: 480px;
-}
-
-.footer-section ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-section ul li::before {
-    content: '';
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    background: linear-gradient(135deg, var(--accent), var(--accent-2));
-    border-radius: 999px;
-    margin-right: 0.35rem;
-}
-
-.footer-section li {
-    padding: 0.22rem 0;
-    font-size: 0.9rem;
-    color: var(--text);
-    display: flex;
-    align-items: center;
-    gap: 0.45rem;
-}
+.footer-links { display: none; }
 
 .footer-bottom {
     text-align: center;
-    padding-top: 1.2rem;
+    padding-top: 0.6rem;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     font-size: 0.8rem;
     color: var(--muted);
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    gap: 0.65rem 1rem;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    gap: 0.75rem 1.25rem;
 }
 
-/* tz-pill removed; info merged into timezone note */
+.footer-cell-left { text-align: center; }
+.footer-cell-center { text-align: center; }
+.footer-cell-right { text-align: center; }
 
 .footer-toggle {
     display: flex;

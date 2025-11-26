@@ -98,25 +98,9 @@
     </div>
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-section footer-grid-card">
-                <h3>Essentials</h3>
-                <ul>
-                    <li>Auto-updates every 30 minutes</li>
-                    <li>Last 3 race weekends only</li>
-                    <li>FPs • Sprint • Quali • Race</li>
-                </ul>
-            </div>
-            <div class="footer-section footer-grid-card">
-                <h3>Disclosure</h3>
-                <p>This site is not affiliated with Formula 1. All videos remain on YouTube’s official F1 channel; we just organize links.</p>
-                <div class="footer-chip">
-                    ⚠️ F1 videos can't be embedded due to licensing restrictions
-                </div>
-            </div>
-        </div>
         <div class="footer-bottom">
-            <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme">
+            <span class="footer-text footer-left footer-cell-left" id="tzNote">All session times are shown in your local timezone.</span>
+            <button id="themeToggle" class="theme-toggle footer-cell-center" type="button" aria-label="Toggle theme">
                 <span class="light-stack" aria-hidden="true">
                     <span class="light-dot"></span>
                     <span class="light-dot"></span>
@@ -125,8 +109,13 @@
                 <span class="theme-toggle-icon">🌙</span>
                 <span class="theme-toggle-label">Dark</span>
             </button>
-            <span class="timezone-note" id="tzNote">All session times are shown in your local timezone.</span>
-            <p>&copy; 2025 F1 Recap. Built with ❤️ for F1 fans.</p>
+            <span class="footer-text footer-right footer-links-inline footer-cell-right">
+                <a href="/about" class="footer-inline-link">About</a>
+                <span aria-hidden="true">•</span>
+                <a href="/disclosure" class="footer-inline-link">Disclosure</a>
+                <span aria-hidden="true">•</span>
+                <span>&copy; 2025 F1 Recap. Built with ❤️ for F1 fans.</span>
+            </span>
         </div>
     </footer>
 
