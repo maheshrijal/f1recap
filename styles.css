@@ -773,53 +773,58 @@ footer {
     border-top: 1px solid var(--stroke);
 }
 
-.footer-content {
+.footer-links {
     max-width: 1240px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.25rem;
-    margin-bottom: 1.4rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-bottom: 0.8rem;
 }
 
-.footer-section h3 {
-    color: var(--text);
-    margin-bottom: 0.25rem;
+.footer-link-group {
+    flex: 1 1 240px;
+}
+
+.footer-link-group h3 {
+    margin-bottom: 0.35rem;
     font-size: 0.95rem;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
     font-weight: 800;
+    letter-spacing: 0.04em;
 }
 
-.footer-section p {
-    line-height: 1.65;
-    font-size: 0.9rem;
-    color: var(--muted);
-    max-width: 480px;
-}
-
-.footer-section ul {
+.footer-link-group ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
-.footer-section ul li::before {
-    content: '';
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    background: linear-gradient(135deg, var(--accent), var(--accent-2));
-    border-radius: 999px;
-    margin-right: 0.35rem;
+.footer-link-group li + li {
+    margin-top: 0.3rem;
 }
 
-.footer-section li {
-    padding: 0.22rem 0;
-    font-size: 0.9rem;
+.footer-link-group a {
     color: var(--text);
-    display: flex;
-    align-items: center;
-    gap: 0.45rem;
+    text-decoration: none;
+    font-size: 0.9rem;
+    position: relative;
+    padding-bottom: 0.1rem;
+}
+
+.footer-link-group a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(225, 6, 0, 0.8), rgba(47, 107, 255, 0.8));
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.footer-link-group a:hover::after {
+    opacity: 1;
 }
 
 .footer-bottom {
@@ -828,25 +833,11 @@ footer {
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     font-size: 0.8rem;
     color: var(--muted);
-    display: grid;
-    grid-template-columns: minmax(200px, 1fr) auto minmax(200px, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
-    gap: 0.5rem 1.5rem;
-}
-
-/* tz-pill removed; info merged into timezone note */
-
-.footer-text {
-    flex: 1;
-    min-width: 180px;
-}
-
-.footer-left {
-    text-align: left;
-}
-
-.footer-right {
-    text-align: right;
+    gap: 0.5rem 1rem;
 }
 
 .footer-toggle {
