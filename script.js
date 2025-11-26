@@ -394,7 +394,7 @@ class F1VideoTracker {
             return 'Race Quali';
         } else if (titleLower.includes('qualifying') || titleLower.includes('quali')) {
             return 'Qualifying';
-        } else if (titleLower.includes('race') && !titleLower.includes('practice')) {
+        } else if ((titleLower.includes('race') || titleLower.includes('grand prix')) && !titleLower.includes('practice')) {
             return 'Race';
         }
 
@@ -910,8 +910,13 @@ function initThemeToggle() {
         new F1VideoTracker();
 
         const tzInfo = document.getElementById('tzInfo');
+        const tzNote = document.getElementById('tzNote');
         if (tzInfo) {
             const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-            tzInfo.textContent = tz ? `Timezone: ${tz}` : 'Timezone: unknown';
+            const label = tz ? tz : 'unknown';
+            tzInfo.textContent = `Timezone: ${label}`;
+            if (tzNote && tz) {
+                tzNote.textContent = `All session times are shown in your local timezone (${label}).`;
+            }
         }
     });
