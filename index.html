@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Primary Meta Tags -->
-    <title>F1 Recap - Latest Formula 1 Practice, Qualifying & Race Highlights</title>
-    <meta name="title" content="F1 Recap - Latest Formula 1 Practice, Qualifying & Race Highlights">
-    <meta name="description" content="Watch the latest Formula 1 session highlights automatically updated every 30 minutes. FP1, FP2, Qualifying, Sprint, and Race recaps from recent Grand Prix weekends.">
-    <meta name="keywords" content="Formula 1, F1, highlights, practice, qualifying, race, sprint, Grand Prix, FP1, FP2, motorsport, racing, recap">
+    <title>F1 Highlights Hub | Latest Formula 1 Practice, Qualifying, Sprint & Race Videos</title>
+    <meta name="title" content="F1 Highlights Hub | Latest Formula 1 Practice, Qualifying, Sprint & Race Videos">
+    <meta name="description" content="Watch the latest Formula 1 FP1, FP2, FP3, Sprint, Qualifying & Race highlights. Updated every 30 minutes with videos from recent F1 weekends.">
+    <meta name="keywords" content="F1 highlights, Formula 1 highlights, F1 race highlights, F1 qualifying highlights, F1 sprint highlights, practice FP1 FP2 FP3">
     <meta name="author" content="F1 Recap">
     <meta name="robots" content="index, follow">
     
@@ -45,36 +45,36 @@
     {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "name": "F1 Recap",
-        "description": "Latest Formula 1 session highlights automatically updated every 30 minutes",
+        "name": "F1 Highlights Hub",
+        "description": "Latest Formula 1 FP1, FP2, FP3, Sprint, Qualifying & Race highlights, updated every 30 minutes",
         "url": "https://f1recap.pages.dev/",
         "potentialAction": {
             "@type": "SearchAction",
             "target": "https://f1recap.pages.dev/?q={search_term_string}",
             "query-input": "required name=search_term_string"
         },
-        "author": {
-            "@type": "Organization",
-            "name": "F1 Recap"
-        },
-        "keywords": "Formula 1, F1, highlights, practice, qualifying, race, sprint, Grand Prix, recap",
-        "inLanguage": "en-US"
+        "keywords": ["F1 highlights", "Formula 1 highlights", "F1 race highlights", "F1 qualifying highlights", "F1 sprint highlights"],
+        "inLanguage": "en-US",
+        "about": "F1 highlights"
     }
     </script>
 </head>
 <body>
     <header>
-        <h1>🏎️ F1 Recap</h1>
-        <p>Latest Formula 1 Practice, Qualifying & Race Highlights</p>
-        <div class="embed-info">
-            <small>⚠️ F1 videos can't be embedded due to licensing restrictions</small>
-        </div>
-        <div class="last-updated">
-            Last updated: <span id="lastUpdated">Loading...</span>
+        <div class="header-inner">
+            <a class="header-text" href="#" aria-label="Go to top">
+                <h1>🏎️ F1 Highlights Hub</h1>
+                <p>Latest Formula 1 Practice, Qualifying, Sprint & Race Highlights</p>
+                <div class="last-updated">
+                    Last updated: <span id="lastUpdated">Loading...</span>
+                </div>
+            </a>
         </div>
     </header>
 
     <main>
+        <section id="upcoming" class="hero upcoming" style="display:none" aria-live="polite"></section>
+        <section id="hero" class="hero" aria-live="polite"></section>
         <div id="loading" class="loading">
             <div class="spinner"></div>
             <p>Loading latest F1 videos...</p>
@@ -89,27 +89,44 @@
         </div>
     </main>
 
+    <div id="videoDrawer" class="drawer" aria-hidden="true">
+        <div class="drawer-backdrop"></div>
+        <div class="drawer-panel" role="dialog" aria-modal="true" aria-label="Session details">
+            <button class="drawer-close" type="button" aria-label="Close">✕</button>
+            <div class="drawer-body" id="drawerContent"></div>
+        </div>
+    </div>
+
     <footer>
         <div class="footer-content">
-            <div class="footer-section">
-                <h3>About F1 Recap</h3>
-                <p>Your go-to source for the latest Formula 1 session highlights. We automatically track and organize FP1, FP2, Qualifying, Sprint, and Race videos from recent Grand Prix weekends.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Features</h3>
+            <div class="footer-section footer-grid-card">
+                <h3>Essentials</h3>
                 <ul>
-                    <li>🔄 Auto-updates every 30 minutes</li>
-                    <li>📅 Last 3 race weekends</li>
-                    <li>🎯 Only essential F1 sessions</li>
-                    <li>📱 Mobile-friendly design</li>
+                    <li>Auto-updates every 30 minutes</li>
+                    <li>Last 3 race weekends only</li>
+                    <li>FPs • Sprint • Quali • Race</li>
                 </ul>
             </div>
-            <div class="footer-section">
-                <h3>Disclaimer</h3>
-                <p>This site is not affiliated with Formula 1. All videos are hosted on YouTube by the official Formula 1 channel. We simply provide an organized way to find the latest session highlights.</p>
+            <div class="footer-section footer-grid-card">
+                <h3>Disclosure</h3>
+                <p>This site is not affiliated with Formula 1. All videos remain on YouTube’s official F1 channel; we just organize links.</p>
+                <div class="footer-chip">
+                    ⚠️ F1 videos can't be embedded due to licensing restrictions
+                </div>
             </div>
         </div>
         <div class="footer-bottom">
+            <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme">
+                <span class="light-stack" aria-hidden="true">
+                    <span class="light-dot"></span>
+                    <span class="light-dot"></span>
+                    <span class="light-dot"></span>
+                </span>
+                <span class="theme-toggle-icon">🌙</span>
+                <span class="theme-toggle-label">Dark</span>
+            </button>
+            <span class="timezone-note">All session times are shown in your local timezone.</span>
+            <span class="tz-pill" id="tzInfo"></span>
             <p>&copy; 2025 F1 Recap. Built with ❤️ for F1 fans.</p>
         </div>
     </footer>
