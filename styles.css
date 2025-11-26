@@ -767,77 +767,24 @@ main {
 footer {
     background: linear-gradient(145deg, var(--card), var(--card-contrast));
     backdrop-filter: blur(6px);
-    margin-top: 0.5rem;
-    padding: 2.1rem 1rem 1.4rem;
+    margin-top: 0;
+    padding: 1.6rem 1rem 1.2rem;
     color: var(--text);
     border-top: 1px solid var(--stroke);
 }
 
-.footer-links {
-    max-width: 1240px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    padding-bottom: 0.8rem;
-}
-
-.footer-link-group {
-    flex: 1 1 240px;
-}
-
-.footer-link-group h3 {
-    margin-bottom: 0.35rem;
-    font-size: 0.95rem;
-    font-weight: 800;
-    letter-spacing: 0.04em;
-}
-
-.footer-link-group ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-link-group li + li {
-    margin-top: 0.3rem;
-}
-
-.footer-link-group a {
-    color: var(--text);
-    text-decoration: none;
-    font-size: 0.9rem;
-    position: relative;
-    padding-bottom: 0.1rem;
-}
-
-.footer-link-group a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 1px;
-    background: linear-gradient(90deg, rgba(225, 6, 0, 0.8), rgba(47, 107, 255, 0.8));
-    opacity: 0;
-    transition: opacity 0.2s ease;
-}
-
-.footer-link-group a:hover::after {
-    opacity: 1;
-}
+.footer-links { display: none; }
 
 .footer-bottom {
     text-align: center;
-    padding-top: 1.2rem;
+    padding-top: 0.9rem;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     font-size: 0.8rem;
     color: var(--muted);
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.5rem 1rem;
+    justify-content: center;
+    gap: 0.5rem 1.5rem;
 }
 
 .footer-toggle {

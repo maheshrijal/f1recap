@@ -98,24 +98,6 @@
     </div>
 
     <footer>
-        <div class="footer-links">
-            <div class="footer-link-group">
-                <h3>About</h3>
-                <ul>
-                    <li><a href="#hero">About F1 Highlights Hub</a></li>
-                    <li><a href="#upcoming">Upcoming races</a></li>
-                    <li><a href="#videoContainer">Latest sessions</a></li>
-                </ul>
-            </div>
-            <div class="footer-link-group">
-                <h3>Disclosure</h3>
-                <ul>
-                    <li><a href="#">Streams stay on YouTube</a></li>
-                    <li><a href="#">We track practice, sprint, qualifying, race clips</a></li>
-                    <li><a href="#">Licensing note</a></li>
-                </ul>
-            </div>
-        </div>
         <div class="footer-bottom">
             <span class="footer-text footer-left" id="tzNote">All session times are shown in your local timezone.</span>
             <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme">
@@ -127,7 +109,13 @@
                 <span class="theme-toggle-icon">🌙</span>
                 <span class="theme-toggle-label">Dark</span>
             </button>
-            <span class="footer-text footer-right">&copy; 2025 F1 Recap. Built with ❤️ for F1 fans.</span>
+            <span class="footer-text footer-right footer-links-inline">
+                <a href="/about" class="footer-inline-link">About</a>
+                <span aria-hidden="true">•</span>
+                <a href="/disclosure" class="footer-inline-link">Disclosure</a>
+                <span aria-hidden="true">•</span>
+                <span>&copy; 2025 F1 Recap. Built with ❤️ for F1 fans.</span>
+            </span>
         </div>
     </footer>
 
