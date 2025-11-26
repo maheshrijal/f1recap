@@ -836,18 +836,7 @@ footer {
     justify-content: center;
 }
 
-.tz-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    padding: 0.35rem 0.7rem;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid var(--stroke);
-    color: var(--text);
-    font-weight: 700;
-    letter-spacing: 0.02em;
-}
+/* tz-pill removed; info merged into timezone note */
 
 .footer-toggle {
     display: flex;

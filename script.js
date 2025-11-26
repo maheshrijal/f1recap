@@ -909,14 +909,10 @@ function initThemeToggle() {
         initThemeToggle();
         new F1VideoTracker();
 
-        const tzInfo = document.getElementById('tzInfo');
         const tzNote = document.getElementById('tzNote');
-        if (tzInfo) {
-            const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-            const label = tz ? tz : 'unknown';
-            tzInfo.textContent = `Timezone: ${label}`;
-            if (tzNote && tz) {
-                tzNote.textContent = `All session times are shown in your local timezone (${label}).`;
-            }
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        const label = tz ? tz : 'unknown';
+        if (tzNote) {
+            tzNote.textContent = `All session times are shown in your local timezone (${label}).`;
         }
     });
