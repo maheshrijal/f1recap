@@ -771,6 +771,9 @@ footer {
     padding: 1rem 1.25rem 1rem;
     color: var(--text);
     border-top: 1px solid var(--stroke);
+    max-width: 1240px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .footer-links { display: none; }
