@@ -767,8 +767,8 @@ main {
 footer {
     background: linear-gradient(145deg, var(--card), var(--card-contrast));
     backdrop-filter: blur(6px);
-    margin-top: 3rem;
-    padding: 2.4rem 1rem 1.4rem;
+    margin-top: 0.5rem;
+    padding: 2.1rem 1rem 1.4rem;
     color: var(--text);
     border-top: 1px solid var(--stroke);
 }
@@ -828,12 +828,10 @@ footer {
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     font-size: 0.8rem;
     color: var(--muted);
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0.65rem 1rem;
+    display: grid;
+    grid-template-columns: minmax(200px, 1fr) auto minmax(200px, 1fr);
     align-items: center;
-    justify-content: space-between;
+    gap: 0.5rem 1.5rem;
 }
 
 /* tz-pill removed; info merged into timezone note */
