@@ -4,17 +4,52 @@ class F1VideoTracker {
         this.loading = document.getElementById('loading');
         this.error = document.getElementById('error');
         this.lastUpdated = document.getElementById('lastUpdated');
+        this.hero = document.getElementById('hero');
+        this.upcoming = document.getElementById('upcoming');
+        this.drawer = document.getElementById('videoDrawer');
+        this.drawerContent = document.getElementById('drawerContent');
         this.latestGrandPrixWeekends = [];
+        this.calendarWeekends = [];
+        this.userTimeZone = this.getUserTimeZone();
 
         this.init();
     }
 
     async init() {
         try {
+            await this.loadCalendar();
             await this.loadVideos();
         } catch (error) {
             console.error('Failed to load videos:', error);
             this.showError();
+        }
+    }
+
+    async loadCalendar() {
+        const icsUrl = 'f1-calendar_p1_p2_p3_qualifying_sprint_gp.ics';
+        try {
+            const icsResponse = await fetch(icsUrl, { cache: 'no-cache' });
+            if (icsResponse.ok) {
+                const text = await icsResponse.text();
+                this.calendarWeekends = this.parseIcsCalendar(text);
+                if (this.calendarWeekends.length) {
+                    return;
+                }
+            }
+        } catch (error) {
+            console.debug('ICS calendar load failed, trying JSON fallback:', error);
+        }
+
+        try {
+            const response = await fetch('calendar2025.json', { cache: 'no-cache' });
+            if (!response.ok) {
+                throw new Error(`Failed to fetch calendar (${response.status})`);
+            }
+            const data = await response.json();
+            this.calendarWeekends = Array.isArray(data) ? data : [];
+        } catch (error) {
+            console.debug('Calendar JSON load failed, continuing without:', error);
+            this.calendarWeekends = [];
         }
     }
 
@@ -65,7 +100,13 @@ class F1VideoTracker {
         this.videoContainer.style.display = 'block';
 
         const safeWeekends = Array.isArray(grandPrixWeekends) ? grandPrixWeekends : [];
-        const visibleWeekends = safeWeekends.slice(0, 3);
+        const weekendsWithSortedVideos = safeWeekends.map(weekend => this.withSortedVideos(weekend));
+        const visibleWeekends = weekendsWithSortedVideos.slice(0, 3);
+
+        this.renderHero(visibleWeekends[0]);
+        const upcomingFromCalendar = this.getUpcomingFromCalendar();
+        const upcomingFromVideos = this.getUpcomingWeekend(weekendsWithSortedVideos);
+        this.renderUpcoming(upcomingFromCalendar || upcomingFromVideos || null);
 
         if (visibleWeekends.length === 0) {
             this.videoContainer.innerHTML = '<p style="color: white; text-align: center;">No Grand Prix weekends found.</p>';
@@ -79,6 +120,8 @@ class F1VideoTracker {
 
         this.latestGrandPrixWeekends = visibleWeekends;
         this.attachVideoAnalyticsHandlers(visibleWeekends);
+        this.attachDrawerHandlers();
+        this.injectVideoStructuredData(visibleWeekends);
 
         this.captureAnalytics('videos_loaded', {
             weekend_count: visibleWeekends.length,
@@ -106,10 +149,184 @@ class F1VideoTracker {
                     ${statusBadge}
                     <div class="video-count">${videos.length} ${videoCountLabel}</div>
                 </div>
+                <div class="session-timeline" role="list" aria-label="${this.escapeAttribute(grandPrix.name || '')} sessions">
+                    ${videos.map(video => this.createTimelineChip(video, grandPrix, recency === 'current')).join('')}
+                </div>
                 <div class="grandprix-videos">
                     ${videos.map(video => this.createVideoCard(video, grandPrix, recency === 'current')).join('')}
                 </div>
             </div>
+        `;
+    }
+
+    renderHero(grandPrix = {}) {
+        if (!this.hero) return;
+        if (!grandPrix || !grandPrix.name) {
+            this.hero.innerHTML = '';
+            return;
+        }
+
+        const latestDate = this.getWeekendLatestDate(grandPrix);
+        const formattedDate = latestDate ? this.formatDate(latestDate) : 'Date TBC';
+        const videos = Array.isArray(grandPrix.videos) ? grandPrix.videos : [];
+        const sessions = videos.map(v => this.getVideoType(v.title || '')).join(' • ');
+
+        this.hero.innerHTML = `
+            <div class="hero-card">
+                <div class="hero-meta">
+                    <p class="hero-kicker">Current Weekend</p>
+                    <h2 class="hero-title">${this.escapeHtml(grandPrix.name || '')}</h2>
+                    <p class="hero-date">Latest update: ${formattedDate}</p>
+                    <p class="hero-sessions">${this.escapeHtml(sessions)}</p>
+                </div>
+                <div class="hero-flag">🏁</div>
+            </div>
+        `;
+    }
+
+    renderUpcoming(weekend = null) {
+        if (!this.upcoming) return;
+        const earliestDate = weekend ? this.getWeekendEarliestDate(weekend) : null;
+        const formattedDate = earliestDate ? this.formatDate(earliestDate) : 'Date to be announced';
+        const rawSessions = (weekend && Array.isArray(weekend.videos) ? weekend.videos : weekend && Array.isArray(weekend.sessions) ? weekend.sessions : []);
+        const sessionLabels = rawSessions.map(v => this.getVideoType(v.title || v)).filter(Boolean);
+        const sessions = sessionLabels.join(' • ');
+        const hasSprint = sessionLabels.some(label => label.toLowerCase().includes('sprint'));
+
+        this.upcoming.style.display = 'block';
+        this.upcoming.innerHTML = `
+            <div class="hero-card upcoming-card">
+                <div class="hero-meta">
+                    <p class="hero-kicker">Upcoming Weekend</p>
+                    <h2 class="hero-title">${this.escapeHtml(weekend && weekend.name ? weekend.name : 'Next Grand Prix')}</h2>
+                    <p class="hero-date">${weekend ? 'Starts:' : 'Schedule:'} ${formattedDate}</p>
+                    <p class="hero-sessions">${this.escapeHtml(sessions || 'Sessions TBC')}</p>
+                    ${hasSprint ? '<span class="sprint-chip">Sprint Weekend</span>' : ''}
+                </div>
+                <div class="hero-flag">⏩</div>
+            </div>
+        `;
+    }
+
+    getUpcomingWeekend(weekends = []) {
+        const now = Date.now();
+        const list = Array.isArray(weekends) ? weekends : [];
+        const futureWeekends = list
+            .map(w => ({ weekend: w, time: Date.parse(this.getWeekendEarliestDate(w) || this.getWeekendLatestDate(w) || w.latestDate || w.startDate || '') }))
+            .filter(item => !Number.isNaN(item.time) && item.time > now)
+            .sort((a, b) => a.time - b.time);
+
+        if (futureWeekends.length) {
+            return futureWeekends[0].weekend;
+        }
+
+        if (list.length > 1) {
+            return list[1];
+        }
+
+        return null;
+    }
+
+    getUpcomingFromCalendar() {
+        const now = Date.now();
+        const calendar = Array.isArray(this.calendarWeekends) ? this.calendarWeekends : [];
+        const future = calendar
+            .map(item => ({
+                weekend: {
+                    name: item.name,
+                    startDate: item.startDate,
+                    earliestDate: item.startDate,
+                    latestDate: item.startDate,
+                    sessions: item.sessions || []
+                },
+                time: Date.parse(item.startDate)
+            }))
+            .filter(item => !Number.isNaN(item.time) && item.time > now)
+            .sort((a, b) => a.time - b.time);
+
+        return future.length ? future[0].weekend : null;
+    }
+
+    getWeekendEarliestDate(grandPrix = {}) {
+        const candidate = grandPrix.startDate || grandPrix.earliestDate;
+        if (candidate) return candidate;
+
+        const videos = Array.isArray(grandPrix.videos) ? grandPrix.videos : [];
+        const sessions = Array.isArray(grandPrix.sessions) ? grandPrix.sessions : [];
+        const timestamps = [...videos.map(v => Date.parse(v.publishedAt)), ...sessions.map(s => Date.parse(s.publishedAt || s.startDate))]
+            .filter(time => !Number.isNaN(time));
+
+        if (!timestamps.length) return null;
+        return new Date(Math.min(...timestamps)).toISOString();
+    }
+
+    parseIcsCalendar(text) {
+        if (!text) return [];
+        const events = text.split('BEGIN:VEVENT').slice(1);
+        const weekendMap = new Map();
+
+        const getValue = (block, key) => {
+            const match = block.match(new RegExp(`${key}:([^\n\r]+)`));
+            return match ? match[1].trim() : null;
+        };
+
+        events.forEach(block => {
+            const summary = getValue(block, 'SUMMARY');
+            const dtStart = getValue(block, 'DTSTART');
+            if (!summary || !dtStart) return;
+
+            const date = this.parseIcsDate(dtStart);
+            if (!date) return;
+
+            const sessionMatch = summary.match(/F1:\s*(.+?)\s*\(/i);
+            const gpMatch = summary.match(/\((.+)\)/);
+            const sessionTitle = sessionMatch ? sessionMatch[1].trim() : 'Session';
+            const gpName = gpMatch ? gpMatch[1].trim() : 'Grand Prix';
+
+            const existing = weekendMap.get(gpName) || { name: gpName, startDate: date.toISOString(), sessions: [] };
+            existing.sessions.push({ title: sessionTitle, publishedAt: date.toISOString() });
+
+            const existingStart = Date.parse(existing.startDate);
+            if (!existing.startDate || Number.isNaN(existingStart) || existingStart > date.getTime()) {
+                existing.startDate = date.toISOString();
+            }
+
+            weekendMap.set(gpName, existing);
+        });
+
+        return Array.from(weekendMap.values()).sort((a, b) => Date.parse(a.startDate) - Date.parse(b.startDate));
+    }
+
+    parseIcsDate(value) {
+        if (!value) return null;
+        // Handles formats like 20250314T013000Z -> 2025-03-14T01:30:00Z
+        const match = value.match(/^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})Z$/);
+        if (!match) return null;
+        const [, y, mo, d, h, mi, s] = match;
+        const iso = `${y}-${mo}-${d}T${h}:${mi}:${s}Z`;
+        const date = new Date(iso);
+        return Number.isNaN(date.getTime()) ? null : date;
+    }
+
+    createTimelineChip(video = {}, grandPrix = {}, isCurrentWeekend = false) {
+        const sessionType = this.getVideoType(video.title || '');
+        const sessionClass = sessionType.toLowerCase().replace(/\s+/g, '-');
+        const formattedDate = this.formatDate(video.publishedAt);
+        const analyticsAttributes = this.buildVideoDataAttributes({
+            videoId: video.videoId,
+            videoUrl: this.getVideoUrl(video.videoId),
+            grandPrixName: grandPrix.name,
+            videoTitle: video.title,
+            sessionType,
+            publishedAt: video.publishedAt,
+            isCurrentWeekend
+        });
+
+        return `
+            <button class="timeline-chip ${sessionClass}" type="button" data-analytics-role="timeline-chip" ${analyticsAttributes}>
+                <span class="chip-label">${sessionType}</span>
+                <span class="chip-date">${formattedDate}</span>
+            </button>
         `;
     }
 
@@ -165,7 +382,11 @@ class F1VideoTracker {
             return 'FP1';
         } else if (titleLower.includes('fp2')) {
             return 'FP2';
+        } else if (titleLower.includes('fp3')) {
+            return 'FP3';
         } else if (titleLower.includes('sprint') && (titleLower.includes('qualifying') || titleLower.includes('quali'))) {
+            return 'Sprint Quali';
+        } else if (titleLower.includes('shootout')) {
             return 'Sprint Quali';
         } else if (titleLower.includes('sprint')) {
             return 'Sprint';
@@ -173,11 +394,60 @@ class F1VideoTracker {
             return 'Race Quali';
         } else if (titleLower.includes('qualifying') || titleLower.includes('quali')) {
             return 'Qualifying';
-        } else if (titleLower.includes('race') && !titleLower.includes('practice')) {
+        } else if ((titleLower.includes('race') || titleLower.includes('grand prix')) && !titleLower.includes('practice')) {
             return 'Race';
         }
 
         return 'Other';
+    }
+
+    getSessionPriority(sessionType) {
+        const order = {
+            'FP1': 10,
+            'FP2': 20,
+            'FP3': 30,
+            // Grand Prix qualifying should precede sprint sessions
+            'Qualifying': 40,
+            'Sprint Quali': 50,
+            'Sprint': 60,
+            'Race Quali': 70,
+            'Race': 80,
+            'Other': 90
+        };
+
+        return order[sessionType] || 99;
+    }
+
+    getSortedVideos(grandPrix = {}) {
+        const videos = Array.isArray(grandPrix.videos) ? [...grandPrix.videos] : [];
+
+        return videos.sort((a, b) => {
+            const sessionPriorityDiff = this.getSessionPriority(this.getVideoType(a.title || '')) -
+                this.getSessionPriority(this.getVideoType(b.title || ''));
+
+            if (sessionPriorityDiff !== 0) {
+                return sessionPriorityDiff;
+            }
+
+            const dateA = Date.parse(a.publishedAt);
+            const dateB = Date.parse(b.publishedAt);
+            const dateAValid = !Number.isNaN(dateA);
+            const dateBValid = !Number.isNaN(dateB);
+
+            if (dateAValid && dateBValid && dateA !== dateB) {
+                return dateA - dateB;
+            }
+
+            if (dateAValid !== dateBValid) {
+                return dateAValid ? -1 : 1;
+            }
+
+            return (a.title || '').localeCompare(b.title || '');
+        });
+    }
+
+    withSortedVideos(grandPrix = {}) {
+        return Object.assign({}, grandPrix, { videos: this.getSortedVideos(grandPrix) });
     }
 
     formatDate(dateString) {
@@ -190,13 +460,27 @@ class F1VideoTracker {
             return 'Date unavailable';
         }
 
-        return date.toLocaleDateString('en-US', {
+        const options = {
             year: 'numeric',
             month: 'long',
             day: 'numeric',
             hour: '2-digit',
-            minute: '2-digit'
-        });
+            minute: '2-digit',
+            hour12: false
+        };
+        if (this.userTimeZone) {
+            options.timeZone = this.userTimeZone;
+        }
+
+        return date.toLocaleDateString('en-US', options);
+    }
+
+    getUserTimeZone() {
+        try {
+            return Intl.DateTimeFormat().resolvedOptions().timeZone;
+        } catch (_) {
+            return null;
+        }
     }
 
     updateLastUpdated(timestamp) {
@@ -240,10 +524,12 @@ class F1VideoTracker {
         thumbnailNodes.forEach(thumbnail => {
             thumbnail.addEventListener('click', () => {
                 const videoId = thumbnail.getAttribute('data-video-id');
-                const videoUrl = thumbnail.getAttribute('data-video-url');
-                const payload = Object.assign({}, metadataById.get(videoId), { interaction_type: 'thumbnail' });
+                const meta = metadataById.get(videoId);
+                const payload = Object.assign({}, meta, { interaction_type: 'thumbnail' });
                 this.captureAnalytics('video_thumbnail_opened', payload);
-                this.openVideo(videoUrl);
+                if (meta) {
+                    this.openDrawer(meta);
+                }
             });
 
             thumbnail.addEventListener('keydown', (event) => {
@@ -260,6 +546,18 @@ class F1VideoTracker {
                 const videoId = button.getAttribute('data-video-id');
                 const payload = Object.assign({}, metadataById.get(videoId), { interaction_type: 'watch_button' });
                 this.captureAnalytics('video_watch_clicked', payload);
+            });
+        });
+
+        const timelineChips = this.videoContainer.querySelectorAll('[data-analytics-role="timeline-chip"]');
+        timelineChips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                const videoId = chip.getAttribute('data-video-id');
+                const videoMeta = metadataById.get(videoId);
+                if (videoMeta) {
+                    this.captureAnalytics('timeline_chip_opened', Object.assign({}, videoMeta, { interaction_type: 'timeline_chip' }));
+                    this.openDrawer(videoMeta);
+                }
             });
         });
     }
@@ -315,6 +613,48 @@ class F1VideoTracker {
         return `https://youtube.com/watch?v=${videoId}`;
     }
 
+    injectVideoStructuredData(weekends = []) {
+        try {
+            const existing = document.getElementById('videoSchema');
+            if (existing && existing.parentNode) {
+                existing.parentNode.removeChild(existing);
+            }
+
+            const videos = [];
+            weekends.forEach(weekend => {
+                const gpName = weekend.name || '';
+                const gpVideos = Array.isArray(weekend.videos) ? weekend.videos : [];
+                gpVideos.forEach(video => {
+                    if (!video || !video.videoId) return;
+                    videos.push({
+                        '@context': 'https://schema.org',
+                        '@type': 'VideoObject',
+                        'name': video.title || gpName || 'F1 video highlight',
+                        'description': video.description || gpName,
+                        'thumbnailUrl': video.thumbnail || undefined,
+                        'uploadDate': video.publishedAt || undefined,
+                        'url': this.getVideoUrl(video.videoId),
+                        'inLanguage': 'en',
+                        'genre': 'Sports',
+                        'isFamilyFriendly': true
+                    });
+                });
+            });
+
+            if (videos.length === 0) {
+                return;
+            }
+
+            const script = document.createElement('script');
+            script.type = 'application/ld+json';
+            script.id = 'videoSchema';
+            script.textContent = JSON.stringify(videos);
+            document.head.appendChild(script);
+        } catch (e) {
+            console.debug('schema generation failed', e);
+        }
+    }
+
     openVideo(videoUrl) {
         if (!videoUrl) {
             return;
@@ -323,6 +663,75 @@ class F1VideoTracker {
         if (newWindow) {
             newWindow.opener = null;
         }
+    }
+
+    openDrawer(videoMeta = {}) {
+        if (!this.drawer || !this.drawerContent) {
+            return;
+        }
+
+        const { video_id: videoId, video_title: title, grand_prix: grandPrix, session_type: sessionType, published_at: publishedAt, video_url: videoUrl } = videoMeta;
+        const formattedDate = this.formatDate(publishedAt);
+
+        const thumbnail = this.findThumbnail(videoId);
+
+        this.drawerContent.innerHTML = `
+            <div class="drawer-media" style="background-image:url('${this.escapeAttribute(thumbnail || '')}')"></div>
+            <div class="drawer-meta">
+                <p class="drawer-session">${this.escapeHtml(sessionType || '')}</p>
+                <h3 class="drawer-title">${this.escapeHtml(title || '')}</h3>
+                <p class="drawer-date">${formattedDate}</p>
+                <p class="drawer-gp">${this.escapeHtml(grandPrix || '')}</p>
+                <div class="drawer-actions">
+                    <a class="watch-button" href="${this.escapeAttribute(videoUrl || '')}" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+                    <button class="secondary-button" type="button" data-drawer-close>Close</button>
+                </div>
+            </div>
+        `;
+
+        this.drawer.setAttribute('aria-hidden', 'false');
+        this.drawer.classList.add('open');
+
+        const closeBtn = this.drawer.querySelector('[data-drawer-close]');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => this.closeDrawer(), { once: true });
+        }
+    }
+
+    closeDrawer() {
+        if (!this.drawer) return;
+        this.drawer.setAttribute('aria-hidden', 'true');
+        this.drawer.classList.remove('open');
+    }
+
+    attachDrawerHandlers() {
+        if (!this.drawer) return;
+        const backdrop = this.drawer.querySelector('.drawer-backdrop');
+        const closeBtn = this.drawer.querySelector('.drawer-close');
+
+        if (backdrop) {
+            backdrop.addEventListener('click', () => this.closeDrawer());
+        }
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => this.closeDrawer());
+        }
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                this.closeDrawer();
+            }
+        });
+    }
+
+    findThumbnail(videoId) {
+        for (const gp of this.latestGrandPrixWeekends) {
+            const videos = Array.isArray(gp.videos) ? gp.videos : [];
+            const match = videos.find(v => v.videoId === videoId);
+            if (match && match.thumbnail) {
+                return match.thumbnail;
+            }
+        }
+        return '';
     }
 
     getLatestPublishedAt(grandPrixWeekends) {
@@ -447,7 +856,63 @@ class F1VideoTracker {
     }
 }
 
-// Initialize the app when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    new F1VideoTracker();
-});
+function setTheme(theme) {
+    const root = document.documentElement;
+    root.setAttribute('data-theme', theme);
+    document.body.classList.add('theme-transition');
+    setTimeout(() => document.body.classList.remove('theme-transition'), 320);
+    try {
+        localStorage.setItem('theme', theme);
+    } catch (_) {
+        /* ignore storage errors */
+    }
+
+    const toggle = document.getElementById('themeToggle');
+    if (toggle) {
+        const icon = toggle.querySelector('.theme-toggle-icon');
+        const label = toggle.querySelector('.theme-toggle-label');
+        const isDark = theme === 'dark';
+        if (icon) {
+            icon.textContent = isDark ? '🌙' : '☀️';
+        }
+        if (label) {
+            label.textContent = isDark ? 'Dark' : 'Light';
+        }
+        toggle.classList.toggle('is-dark', isDark);
+    }
+}
+
+function initThemeToggle() {
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let savedTheme = null;
+
+    try {
+        savedTheme = localStorage.getItem('theme');
+    } catch (_) {
+        savedTheme = null;
+    }
+
+    const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    setTheme(initialTheme);
+
+    const toggle = document.getElementById('themeToggle');
+    if (toggle) {
+        toggle.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme') || 'light';
+            setTheme(current === 'dark' ? 'light' : 'dark');
+        });
+    }
+}
+
+    // Initialize the app when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        initThemeToggle();
+        new F1VideoTracker();
+
+        const tzNote = document.getElementById('tzNote');
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        const label = tz ? tz : 'unknown';
+        if (tzNote) {
+            tzNote.textContent = `All session times are shown in your local timezone (${label}).`;
+        }
+    });

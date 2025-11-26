@@ -2,15 +2,12 @@ name: Update F1 Videos
 
 on:
   schedule:
-    # Run every 45 minutes during likely race windows to reduce billing
-    # Friday practice / Sprint quali windows (06:00-23:00 UTC roughly covers all venues)
-    - cron: '*/45 6-23 * * 5'
-    # Saturday sessions (06:00-23:00 UTC)
-    - cron: '*/45 6-23 * * 6'
-    # Sunday race coverage (06:00-23:00 UTC)
-    - cron: '*/45 6-23 * * 0'
-    # Monday post-race uploads (06:00-12:00 UTC)
-    - cron: '*/45 6-12 * * 1'
+    # Run every 30 minutes during GP weekends — full UTC coverage for Fri/Sat/Sun to avoid delays on APAC rounds
+    - cron: '*/30 * * * 5'   # Friday (all day UTC)
+    - cron: '*/30 * * * 6'   # Saturday
+    - cron: '*/30 * * * 0'   # Sunday
+    # Monday morning sweep for late uploads and corrections (00:00–12:00 UTC)
+    - cron: '*/30 0-12 * * 1'
   workflow_dispatch: # Allow manual trigger
     inputs:
       reason:
