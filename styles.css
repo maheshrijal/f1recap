@@ -833,10 +833,23 @@ footer {
     flex-wrap: wrap;
     gap: 0.65rem 1rem;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 /* tz-pill removed; info merged into timezone note */
+
+.footer-text {
+    flex: 1;
+    min-width: 180px;
+}
+
+.footer-left {
+    text-align: left;
+}
+
+.footer-right {
+    text-align: right;
+}
 
 .footer-toggle {
     display: flex;
