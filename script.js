@@ -524,11 +524,12 @@ class F1VideoTracker {
         thumbnailNodes.forEach(thumbnail => {
             thumbnail.addEventListener('click', () => {
                 const videoId = thumbnail.getAttribute('data-video-id');
+                const videoUrl = thumbnail.getAttribute('data-video-url');
                 const meta = metadataById.get(videoId);
                 const payload = Object.assign({}, meta, { interaction_type: 'thumbnail' });
                 this.captureAnalytics('video_thumbnail_opened', payload);
-                if (meta) {
-                    this.openDrawer(meta);
+                if (videoUrl) {
+                    this.openVideo(videoUrl);
                 }
             });
 
