@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-11-28T18:40:19.963Z",
-  "totalVideos": 4,
+  "lastUpdated": "2025-11-28T19:03:39.321Z",
+  "totalVideos": 3,
   "grandPrixWeekends": [
     {
       "name": "2025 Qatar Grand Prix",
@@ -11,33 +11,26 @@
           "description": "Catch up on the key moments as the grid got their one and only practice run around Lusail Circuit, before an all-important Sprint ...",
           "publishedAt": "2025-11-28T15:55:31Z",
           "thumbnail": "https://i.ytimg.com/vi/Vw7OAjLvZpc/hqdefault.jpg"
+        },
+        {
+          "videoId": "BsUo-E9-eTg",
+          "title": "Sprint Qualifying Highlights | 2025 Qatar Grand Prix",
+          "description": "See all the decisive moments from an exciting Sprint quali session in Qatar. For more F1® videos, visit: https://www.Formula1.com ...",
+          "publishedAt": "2025-11-28T18:53:42Z",
+          "thumbnail": "https://i.ytimg.com/vi/BsUo-E9-eTg/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-11-28T15:55:31.000Z"
+      "latestDate": "2025-11-28T18:53:42.000Z"
     },
     {
       "name": "2025 Las Vegas Grand Prix",
       "videos": [
-        {
-          "videoId": "gC88zq9Y4gQ",
-          "title": "Qualifying Highlights | 2025 Las Vegas Grand Prix",
-          "description": "A first-ever wet Qualifying in Las Vegas posed a challenging session for the drivers and teams as they battled to set the grid for ...",
-          "publishedAt": "2025-11-22T05:46:45Z",
-          "thumbnail": "https://i.ytimg.com/vi/gC88zq9Y4gQ/hqdefault.jpg"
-        },
         {
           "videoId": "uQc-pW3QLuI",
           "title": "Race Highlights | 2025 Las Vegas Grand Prix",
           "description": "Catch up on all the highlights from Las Vegas which saw epic drama from lights out! UPDATE: Both Lando Norris and Oscar ...",
           "publishedAt": "2025-11-23T06:18:34Z",
           "thumbnail": "https://i.ytimg.com/vi/uQc-pW3QLuI/hqdefault.jpg"
-        },
-        {
-          "videoId": "tq7ZKnZYIA8",
-          "title": "FP3 Highlights | 2025 Las Vegas Grand Prix",
-          "description": "Amid mixed conditions, the teams took to the track for a final hour of practice in Las Vegas, as they make their final adjustments ...",
-          "publishedAt": "2025-11-22T02:35:20Z",
-          "thumbnail": "https://i.ytimg.com/vi/tq7ZKnZYIA8/hqdefault.jpg"
         }
       ],
       "latestDate": "2025-11-23T06:18:34.000Z"
