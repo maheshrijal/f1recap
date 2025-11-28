@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-11-28T20:35:52.670Z",
-  "totalVideos": 5,
+  "lastUpdated": "2025-11-28T21:03:40.441Z",
+  "totalVideos": 4,
   "grandPrixWeekends": [
     {
       "name": "2025 Qatar Grand Prix",
@@ -33,13 +33,6 @@
           "thumbnail": "https://i.ytimg.com/vi/gC88zq9Y4gQ/hqdefault.jpg"
         },
         {
-          "videoId": "uQc-pW3QLuI",
-          "title": "Race Highlights | 2025 Las Vegas Grand Prix",
-          "description": "Catch up on all the highlights from Las Vegas which saw epic drama from lights out! UPDATE: Both Lando Norris and Oscar ...",
-          "publishedAt": "2025-11-23T06:18:34Z",
-          "thumbnail": "https://i.ytimg.com/vi/uQc-pW3QLuI/hqdefault.jpg"
-        },
-        {
           "videoId": "tq7ZKnZYIA8",
           "title": "FP3 Highlights | 2025 Las Vegas Grand Prix",
           "description": "Amid mixed conditions, the teams took to the track for a final hour of practice in Las Vegas, as they make their final adjustments ...",
@@ -47,7 +40,7 @@
           "thumbnail": "https://i.ytimg.com/vi/tq7ZKnZYIA8/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-11-23T06:18:34.000Z"
+      "latestDate": "2025-11-22T05:46:45.000Z"
     }
   ]
 }
