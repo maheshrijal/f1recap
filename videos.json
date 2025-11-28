@@ -1,7 +1,20 @@
 {
-  "lastUpdated": "2025-11-28T15:35:45.041Z",
-  "totalVideos": 3,
+  "lastUpdated": "2025-11-28T16:04:20.431Z",
+  "totalVideos": 4,
   "grandPrixWeekends": [
+    {
+      "name": "2025 Qatar Grand Prix",
+      "videos": [
+        {
+          "videoId": "Vw7OAjLvZpc",
+          "title": "FP1 Highlights | 2025 Qatar Grand Prix",
+          "description": "Catch up on the key moments as the grid got their one and only practice run around Lusail Circuit, before an all-important Sprint ...",
+          "publishedAt": "2025-11-28T15:55:31Z",
+          "thumbnail": "https://i.ytimg.com/vi/Vw7OAjLvZpc/hqdefault.jpg"
+        }
+      ],
+      "latestDate": "2025-11-28T15:55:31.000Z"
+    },
     {
       "name": "2025 Las Vegas Grand Prix",
       "videos": [
