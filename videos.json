@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-11-29T15:01:11.697Z",
-  "totalVideos": 4,
+  "lastUpdated": "2025-11-29T15:32:41.706Z",
+  "totalVideos": 5,
   "grandPrixWeekends": [
     {
       "name": "2025 Qatar Grand Prix",
@@ -13,6 +13,13 @@
           "thumbnail": "https://i.ytimg.com/vi/Vw7OAjLvZpc/hqdefault.jpg"
         },
         {
+          "videoId": "2La1SZMicqo",
+          "title": "Sprint Highlights | 2025 Qatar Grand Prix",
+          "description": "Catch up on all the action from the final #F1Sprint of the season in Qatar! For more F1® videos, visit: https://www.Formula1.com ...",
+          "publishedAt": "2025-11-29T15:32:08Z",
+          "thumbnail": "https://i.ytimg.com/vi/2La1SZMicqo/hqdefault.jpg"
+        },
+        {
           "videoId": "BsUo-E9-eTg",
           "title": "Sprint Qualifying Highlights | 2025 Qatar Grand Prix",
           "description": "See all the decisive moments from an exciting Sprint quali session in Qatar. For more F1® videos, visit: https://www.Formula1.com ...",
@@ -20,7 +27,7 @@
           "thumbnail": "https://i.ytimg.com/vi/BsUo-E9-eTg/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-11-28T18:53:42.000Z"
+      "latestDate": "2025-11-29T15:32:08.000Z"
     },
     {
       "name": "2025 Las Vegas Grand Prix",
