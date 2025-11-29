@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-11-29T08:37:03.900Z",
-  "totalVideos": 3,
+  "lastUpdated": "2025-11-29T09:01:09.240Z",
+  "totalVideos": 4,
   "grandPrixWeekends": [
     {
       "name": "2025 Qatar Grand Prix",
@@ -25,6 +25,13 @@
     {
       "name": "2025 Las Vegas Grand Prix",
       "videos": [
+        {
+          "videoId": "gC88zq9Y4gQ",
+          "title": "Qualifying Highlights | 2025 Las Vegas Grand Prix",
+          "description": "A first-ever wet Qualifying in Las Vegas posed a challenging session for the drivers and teams as they battled to set the grid for ...",
+          "publishedAt": "2025-11-22T05:46:45Z",
+          "thumbnail": "https://i.ytimg.com/vi/gC88zq9Y4gQ/hqdefault.jpg"
+        },
         {
           "videoId": "uQc-pW3QLuI",
           "title": "Race Highlights | 2025 Las Vegas Grand Prix",
