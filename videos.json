@@ -1,17 +1,10 @@
 {
-  "lastUpdated": "2025-11-30T18:07:29.795Z",
-  "totalVideos": 6,
+  "lastUpdated": "2025-11-30T18:40:38.494Z",
+  "totalVideos": 5,
   "grandPrixWeekends": [
     {
       "name": "2025 Qatar Grand Prix",
       "videos": [
-        {
-          "videoId": "Vw7OAjLvZpc",
-          "title": "FP1 Highlights | 2025 Qatar Grand Prix",
-          "description": "Catch up on the key moments as the grid got their one and only practice run around Lusail Circuit, before an all-important Sprint ...",
-          "publishedAt": "2025-11-28T15:55:31Z",
-          "thumbnail": "https://i.ytimg.com/vi/Vw7OAjLvZpc/hqdefault.jpg"
-        },
         {
           "videoId": "2La1SZMicqo",
           "title": "Sprint Highlights | 2025 Qatar Grand Prix",
@@ -20,11 +13,11 @@
           "thumbnail": "https://i.ytimg.com/vi/2La1SZMicqo/hqdefault.jpg"
         },
         {
-          "videoId": "BsUo-E9-eTg",
-          "title": "Sprint Qualifying Highlights | 2025 Qatar Grand Prix",
-          "description": "See all the decisive moments from an exciting Sprint quali session in Qatar. For more F1® videos, visit: https://www.Formula1.com ...",
-          "publishedAt": "2025-11-28T18:53:42Z",
-          "thumbnail": "https://i.ytimg.com/vi/BsUo-E9-eTg/hqdefault.jpg"
+          "videoId": "BeaVJggQ2dc",
+          "title": "Race Highlights | 2025 Qatar Grand Prix",
+          "description": "Catch up on key moments from Qatar, in a race with huge ramifications for the drivers' championship fight. For more F1® videos, ...",
+          "publishedAt": "2025-11-30T18:13:22Z",
+          "thumbnail": "https://i.ytimg.com/vi/BeaVJggQ2dc/hqdefault.jpg"
         },
         {
           "videoId": "HBgEJdwNbx0",
@@ -34,7 +27,7 @@
           "thumbnail": "https://i.ytimg.com/vi/HBgEJdwNbx0/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-11-29T19:43:21.000Z"
+      "latestDate": "2025-11-30T18:13:22.000Z"
     },
     {
       "name": "2025 Las Vegas Grand Prix",
