@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-11-30T13:10:59.190Z",
-  "totalVideos": 4,
+  "lastUpdated": "2025-11-30T13:37:43.369Z",
+  "totalVideos": 5,
   "grandPrixWeekends": [
     {
       "name": "2025 Qatar Grand Prix",
@@ -13,11 +13,11 @@
           "thumbnail": "https://i.ytimg.com/vi/Vw7OAjLvZpc/hqdefault.jpg"
         },
         {
-          "videoId": "2La1SZMicqo",
-          "title": "Sprint Highlights | 2025 Qatar Grand Prix",
-          "description": "Catch up on all the action from the final #F1Sprint of the season in Qatar! For more F1® videos, visit: https://www.Formula1.com ...",
-          "publishedAt": "2025-11-29T15:32:08Z",
-          "thumbnail": "https://i.ytimg.com/vi/2La1SZMicqo/hqdefault.jpg"
+          "videoId": "HBgEJdwNbx0",
+          "title": "Qualifying Highlights | 2025 Qatar Grand Prix",
+          "description": "The drivers took to the track to decide the grid for the penultimate Grand Prix of the season - who can secure the top spot in Qatar ...",
+          "publishedAt": "2025-11-29T19:43:21Z",
+          "thumbnail": "https://i.ytimg.com/vi/HBgEJdwNbx0/hqdefault.jpg"
         },
         {
           "videoId": "BsUo-E9-eTg",
@@ -25,16 +25,29 @@
           "description": "See all the decisive moments from an exciting Sprint quali session in Qatar. For more F1® videos, visit: https://www.Formula1.com ...",
           "publishedAt": "2025-11-28T18:53:42Z",
           "thumbnail": "https://i.ytimg.com/vi/BsUo-E9-eTg/hqdefault.jpg"
-        },
-        {
-          "videoId": "HBgEJdwNbx0",
-          "title": "Qualifying Highlights | 2025 Qatar Grand Prix",
-          "description": "The drivers took to the track to decide the grid for the penultimate Grand Prix of the season - who can secure the top spot in Qatar ...",
-          "publishedAt": "2025-11-29T19:43:21Z",
-          "thumbnail": "https://i.ytimg.com/vi/HBgEJdwNbx0/hqdefault.jpg"
         }
       ],
       "latestDate": "2025-11-29T19:43:21.000Z"
+    },
+    {
+      "name": "2025 Las Vegas Grand Prix",
+      "videos": [
+        {
+          "videoId": "gC88zq9Y4gQ",
+          "title": "Qualifying Highlights | 2025 Las Vegas Grand Prix",
+          "description": "A first-ever wet Qualifying in Las Vegas posed a challenging session for the drivers and teams as they battled to set the grid for ...",
+          "publishedAt": "2025-11-22T05:46:45Z",
+          "thumbnail": "https://i.ytimg.com/vi/gC88zq9Y4gQ/hqdefault.jpg"
+        },
+        {
+          "videoId": "uQc-pW3QLuI",
+          "title": "Race Highlights | 2025 Las Vegas Grand Prix",
+          "description": "Catch up on all the highlights from Las Vegas which saw epic drama from lights out! UPDATE: Both Lando Norris and Oscar ...",
+          "publishedAt": "2025-11-23T06:18:34Z",
+          "thumbnail": "https://i.ytimg.com/vi/uQc-pW3QLuI/hqdefault.jpg"
+        }
+      ],
+      "latestDate": "2025-11-23T06:18:34.000Z"
     }
   ]
 }
