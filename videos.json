@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-12-01T00:22:54.006Z",
-  "totalVideos": 4,
+  "lastUpdated": "2025-12-01T00:51:07.105Z",
+  "totalVideos": 5,
   "grandPrixWeekends": [
     {
       "name": "2025 Qatar Grand Prix",
@@ -13,11 +13,18 @@
           "thumbnail": "https://i.ytimg.com/vi/Vw7OAjLvZpc/hqdefault.jpg"
         },
         {
-          "videoId": "HBgEJdwNbx0",
-          "title": "Qualifying Highlights | 2025 Qatar Grand Prix",
-          "description": "The drivers took to the track to decide the grid for the penultimate Grand Prix of the season - who can secure the top spot in Qatar ...",
-          "publishedAt": "2025-11-29T19:43:21Z",
-          "thumbnail": "https://i.ytimg.com/vi/HBgEJdwNbx0/hqdefault.jpg"
+          "videoId": "2La1SZMicqo",
+          "title": "Sprint Highlights | 2025 Qatar Grand Prix",
+          "description": "Catch up on all the action from the final #F1Sprint of the season in Qatar! For more F1® videos, visit: https://www.Formula1.com ...",
+          "publishedAt": "2025-11-29T15:32:08Z",
+          "thumbnail": "https://i.ytimg.com/vi/2La1SZMicqo/hqdefault.jpg"
+        },
+        {
+          "videoId": "BsUo-E9-eTg",
+          "title": "Sprint Qualifying Highlights | 2025 Qatar Grand Prix",
+          "description": "See all the decisive moments from an exciting Sprint quali session in Qatar. For more F1® videos, visit: https://www.Formula1.com ...",
+          "publishedAt": "2025-11-28T18:53:42Z",
+          "thumbnail": "https://i.ytimg.com/vi/BsUo-E9-eTg/hqdefault.jpg"
         },
         {
           "videoId": "BeaVJggQ2dc",
@@ -27,11 +34,11 @@
           "thumbnail": "https://i.ytimg.com/vi/BeaVJggQ2dc/hqdefault.jpg"
         },
         {
-          "videoId": "BsUo-E9-eTg",
-          "title": "Sprint Qualifying Highlights | 2025 Qatar Grand Prix",
-          "description": "See all the decisive moments from an exciting Sprint quali session in Qatar. For more F1® videos, visit: https://www.Formula1.com ...",
-          "publishedAt": "2025-11-28T18:53:42Z",
-          "thumbnail": "https://i.ytimg.com/vi/BsUo-E9-eTg/hqdefault.jpg"
+          "videoId": "HBgEJdwNbx0",
+          "title": "Qualifying Highlights | 2025 Qatar Grand Prix",
+          "description": "The drivers took to the track to decide the grid for the penultimate Grand Prix of the season - who can secure the top spot in Qatar ...",
+          "publishedAt": "2025-11-29T19:43:21Z",
+          "thumbnail": "https://i.ytimg.com/vi/HBgEJdwNbx0/hqdefault.jpg"
         }
       ],
       "latestDate": "2025-11-30T18:13:22.000Z"
