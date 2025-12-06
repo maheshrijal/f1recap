@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-12-06T14:01:07.159Z",
-  "totalVideos": 6,
+  "lastUpdated": "2025-12-06T14:33:45.711Z",
+  "totalVideos": 7,
   "grandPrixWeekends": [
     {
       "name": "2025 Abu Dhabi Grand Prix",
@@ -18,9 +18,16 @@
           "description": "It's out with the rookies and in with our full grid, as title contender Oscar Piastri gets his first practice run in Abu Dhabi during FP2.",
           "publishedAt": "2025-12-05T15:03:01Z",
           "thumbnail": "https://i.ytimg.com/vi/8Vpi3PnKp5o/hqdefault.jpg"
+        },
+        {
+          "videoId": "HyyqwkEQfWw",
+          "title": "FP3 Highlights | 2025 Abu Dhabi Grand Prix",
+          "description": "It;s the final free practice session of the season! Catch the key moments as the grid gear up for the all-important qualifying hour in ...",
+          "publishedAt": "2025-12-06T12:34:58Z",
+          "thumbnail": "https://i.ytimg.com/vi/HyyqwkEQfWw/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-12-05T15:03:01.000Z"
+      "latestDate": "2025-12-06T12:34:58.000Z"
     },
     {
       "name": "2025 Qatar Grand Prix",
