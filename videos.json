@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-12-07T20:36:15.273Z",
-  "totalVideos": 6,
+  "lastUpdated": "2025-12-07T21:05:02.253Z",
+  "totalVideos": 5,
   "grandPrixWeekends": [
     {
       "name": "2025 Abu Dhabi Grand Prix",
@@ -42,19 +42,6 @@
         }
       ],
       "latestDate": "2025-12-07T15:44:41.000Z"
-    },
-    {
-      "name": "2025 Qatar Grand Prix",
-      "videos": [
-        {
-          "videoId": "BeaVJggQ2dc",
-          "title": "Race Highlights | 2025 Qatar Grand Prix",
-          "description": "Catch up on key moments from Qatar, in a race with huge ramifications for the drivers' championship fight. For more F1® videos, ...",
-          "publishedAt": "2025-11-30T18:13:22Z",
-          "thumbnail": "https://i.ytimg.com/vi/BeaVJggQ2dc/hqdefault.jpg"
-        }
-      ],
-      "latestDate": "2025-11-30T18:13:22.000Z"
     }
   ]
 }
