@@ -1,16 +1,30 @@
 {
-  "lastUpdated": "2025-12-07T08:06:51.707Z",
-  "totalVideos": 2,
+  "lastUpdated": "2025-12-07T08:38:37.165Z",
+  "totalVideos": 8,
   "grandPrixWeekends": [
     {
       "name": "2025 Abu Dhabi Grand Prix",
       "videos": [
+        {
+          "videoId": "lSmbXcPAeng",
+          "title": "FP1 Highlights | 2025 Abu Dhabi Grand Prix",
+          "description": "Catch the key moments from our first practice run of the final round, as a host of rookies join title hopefuls Lando Norris & Max ...",
+          "publishedAt": "2025-12-05T12:06:25Z",
+          "thumbnail": "https://i.ytimg.com/vi/lSmbXcPAeng/hqdefault.jpg"
+        },
         {
           "videoId": "8Vpi3PnKp5o",
           "title": "FP2 Highlights | 2025 Abu Dhabi Grand Prix",
           "description": "It's out with the rookies and in with our full grid, as title contender Oscar Piastri gets his first practice run in Abu Dhabi during FP2.",
           "publishedAt": "2025-12-05T15:03:01Z",
           "thumbnail": "https://i.ytimg.com/vi/8Vpi3PnKp5o/hqdefault.jpg"
+        },
+        {
+          "videoId": "H2VWkcUoCqs",
+          "title": "Qualifying Highlights | 2025 Abu Dhabi Grand Prix",
+          "description": "Find out who took pole position in the crucial final qualifying session of 2025! For more F1® videos, visit: https://www.",
+          "publishedAt": "2025-12-06T15:28:12Z",
+          "thumbnail": "https://i.ytimg.com/vi/H2VWkcUoCqs/hqdefault.jpg"
         },
         {
           "videoId": "HyyqwkEQfWw",
@@ -20,7 +34,41 @@
           "thumbnail": "https://i.ytimg.com/vi/HyyqwkEQfWw/hqdefault.jpg"
         }
       ],
-      "latestDate": "2025-12-06T12:34:58.000Z"
+      "latestDate": "2025-12-06T15:28:12.000Z"
+    },
+    {
+      "name": "2025 Qatar Grand Prix",
+      "videos": [
+        {
+          "videoId": "Vw7OAjLvZpc",
+          "title": "FP1 Highlights | 2025 Qatar Grand Prix",
+          "description": "Catch up on the key moments as the grid got their one and only practice run around Lusail Circuit, before an all-important Sprint ...",
+          "publishedAt": "2025-11-28T15:55:31Z",
+          "thumbnail": "https://i.ytimg.com/vi/Vw7OAjLvZpc/hqdefault.jpg"
+        },
+        {
+          "videoId": "2La1SZMicqo",
+          "title": "Sprint Highlights | 2025 Qatar Grand Prix",
+          "description": "Catch up on all the action from the final #F1Sprint of the season in Qatar! For more F1® videos, visit: https://www.Formula1.com ...",
+          "publishedAt": "2025-11-29T15:32:08Z",
+          "thumbnail": "https://i.ytimg.com/vi/2La1SZMicqo/hqdefault.jpg"
+        },
+        {
+          "videoId": "BeaVJggQ2dc",
+          "title": "Race Highlights | 2025 Qatar Grand Prix",
+          "description": "Catch up on key moments from Qatar, in a race with huge ramifications for the drivers' championship fight. For more F1® videos, ...",
+          "publishedAt": "2025-11-30T18:13:22Z",
+          "thumbnail": "https://i.ytimg.com/vi/BeaVJggQ2dc/hqdefault.jpg"
+        },
+        {
+          "videoId": "HBgEJdwNbx0",
+          "title": "Qualifying Highlights | 2025 Qatar Grand Prix",
+          "description": "The drivers took to the track to decide the grid for the penultimate Grand Prix of the season - who can secure the top spot in Qatar ...",
+          "publishedAt": "2025-11-29T19:43:21Z",
+          "thumbnail": "https://i.ytimg.com/vi/HBgEJdwNbx0/hqdefault.jpg"
+        }
+      ],
+      "latestDate": "2025-11-30T18:13:22.000Z"
     }
   ]
 }
