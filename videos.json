@@ -1,10 +1,17 @@
 {
-  "lastUpdated": "2025-12-07T18:07:40.391Z",
-  "totalVideos": 5,
+  "lastUpdated": "2025-12-07T18:40:20.172Z",
+  "totalVideos": 6,
   "grandPrixWeekends": [
     {
       "name": "2025 Abu Dhabi Grand Prix",
       "videos": [
+        {
+          "videoId": "lSmbXcPAeng",
+          "title": "FP1 Highlights | 2025 Abu Dhabi Grand Prix",
+          "description": "Catch the key moments from our first practice run of the final round, as a host of rookies join title hopefuls Lando Norris & Max ...",
+          "publishedAt": "2025-12-05T12:06:25Z",
+          "thumbnail": "https://i.ytimg.com/vi/lSmbXcPAeng/hqdefault.jpg"
+        },
         {
           "videoId": "8Vpi3PnKp5o",
           "title": "FP2 Highlights | 2025 Abu Dhabi Grand Prix",
