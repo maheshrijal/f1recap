@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2025-12-07T14:05:18.577Z",
-  "totalVideos": 7,
+  "lastUpdated": "2025-12-07T14:35:57.668Z",
+  "totalVideos": 8,
   "grandPrixWeekends": [
     {
       "name": "2025 Abu Dhabi Grand Prix",
@@ -25,6 +25,13 @@
           "description": "Find out who took pole position in the crucial final qualifying session of 2025! For more F1® videos, visit: https://www.",
           "publishedAt": "2025-12-06T15:28:12Z",
           "thumbnail": "https://i.ytimg.com/vi/H2VWkcUoCqs/hqdefault.jpg"
+        },
+        {
+          "videoId": "HyyqwkEQfWw",
+          "title": "FP3 Highlights | 2025 Abu Dhabi Grand Prix",
+          "description": "It;s the final free practice session of the season! Catch the key moments as the grid gear up for the all-important qualifying hour in ...",
+          "publishedAt": "2025-12-06T12:34:58Z",
+          "thumbnail": "https://i.ytimg.com/vi/HyyqwkEQfWw/hqdefault.jpg"
         }
       ],
       "latestDate": "2025-12-06T15:28:12.000Z"
