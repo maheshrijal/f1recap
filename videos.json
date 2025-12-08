@@ -1,16 +1,44 @@
 {
-  "lastUpdated": "2025-12-08T07:37:33.442Z",
-  "totalVideos": 1,
+  "lastUpdated": "2025-12-08T08:07:16.037Z",
+  "totalVideos": 5,
   "grandPrixWeekends": [
     {
       "name": "2025 Abu Dhabi Grand Prix",
       "videos": [
+        {
+          "videoId": "lSmbXcPAeng",
+          "title": "FP1 Highlights | 2025 Abu Dhabi Grand Prix",
+          "description": "Catch the key moments from our first practice run of the final round, as a host of rookies join title hopefuls Lando Norris & Max ...",
+          "publishedAt": "2025-12-05T12:06:25Z",
+          "thumbnail": "https://i.ytimg.com/vi/lSmbXcPAeng/hqdefault.jpg"
+        },
+        {
+          "videoId": "8Vpi3PnKp5o",
+          "title": "FP2 Highlights | 2025 Abu Dhabi Grand Prix",
+          "description": "It's out with the rookies and in with our full grid, as title contender Oscar Piastri gets his first practice run in Abu Dhabi during FP2.",
+          "publishedAt": "2025-12-05T15:03:01Z",
+          "thumbnail": "https://i.ytimg.com/vi/8Vpi3PnKp5o/hqdefault.jpg"
+        },
+        {
+          "videoId": "H2VWkcUoCqs",
+          "title": "Qualifying Highlights | 2025 Abu Dhabi Grand Prix",
+          "description": "Find out who took pole position in the crucial final qualifying session of 2025! For more F1® videos, visit: https://www.",
+          "publishedAt": "2025-12-06T15:28:12Z",
+          "thumbnail": "https://i.ytimg.com/vi/H2VWkcUoCqs/hqdefault.jpg"
+        },
         {
           "videoId": "S-LMSpzlnc0",
           "title": "Race Highlights | 2025 Abu Dhabi Grand Prix",
           "description": "Catch the key moments from the 2025 F1 title decider! For more F1® videos, visit: https://www.Formula1.com Visit our store: ...",
           "publishedAt": "2025-12-07T15:44:41Z",
           "thumbnail": "https://i.ytimg.com/vi/S-LMSpzlnc0/hqdefault.jpg"
+        },
+        {
+          "videoId": "HyyqwkEQfWw",
+          "title": "FP3 Highlights | 2025 Abu Dhabi Grand Prix",
+          "description": "It;s the final free practice session of the season! Catch the key moments as the grid gear up for the all-important qualifying hour in ...",
+          "publishedAt": "2025-12-06T12:34:58Z",
+          "thumbnail": "https://i.ytimg.com/vi/HyyqwkEQfWw/hqdefault.jpg"
         }
       ],
       "latestDate": "2025-12-07T15:44:41.000Z"
