@@ -147,7 +147,7 @@ class F1ArchiveFetcher {
     }
 
     async fetchGrandPrixVideos(gpName) {
-        const searchQuery = `2025 ${gpName} Grand Prix F1 highlights`;
+        const searchQuery = `2025 ${gpName} F1 highlights`;
         const all = [];
         let pageToken = null;
         let page = 1;
@@ -230,7 +230,7 @@ class F1ArchiveFetcher {
                 title: video.snippet.title,
                 description: video.snippet.description,
                 publishedAt: video.snippet.publishedAt,
-                thumbnail: video.snippet.thumbnails.high?.url || video.snippet.thumbnails.default.url
+                thumbnail: video.snippet.thumbnails?.high?.url || video.snippet.thumbnails?.default?.url || ''
             });
             
             if (publishDate > group.latestDate) {

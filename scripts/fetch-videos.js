@@ -190,7 +190,7 @@ class F1VideoFetcher {
                 title: video.snippet.title,
                 description: video.snippet.description,
                 publishedAt: video.snippet.publishedAt,
-                thumbnail: video.snippet.thumbnails.high?.url || video.snippet.thumbnails.default.url
+                thumbnail: video.snippet.thumbnails?.high?.url || video.snippet.thumbnails?.default?.url || ''
             });
             
             // Update latest date if this video is newer
