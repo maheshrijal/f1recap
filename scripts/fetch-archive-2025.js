@@ -147,7 +147,7 @@ class F1ArchiveFetcher {
     }
 
     async fetchGrandPrixVideos(gpName) {
-        const searchQuery = `2025 ${gpName} Grand Prix F1 highlights`;
+        const searchQuery = `2025 ${gpName} F1 highlights`;
         const all = [];
         let pageToken = null;
         let page = 1;

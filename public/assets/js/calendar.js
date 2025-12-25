@@ -168,8 +168,8 @@ class F1Calendar {
             const date = this.parseIcsDate(dtStart);
             if (!date) return;
             
-            const sessionMatch = summary.match(/F1:\\s*(.+?)\\s*\(/i);
-            const gpMatch = summary.match(/\\((.+)\\)/);
+            const sessionMatch = summary.match(/F1:\s*(.+?)\s*\(/i);
+            const gpMatch = summary.match(/\((.+)\)/);
             const sessionTitle = sessionMatch ? sessionMatch[1].trim() : 'Session';
             const gpName = gpMatch ? gpMatch[1].trim() : 'Grand Prix';
             
@@ -189,7 +189,7 @@ class F1Calendar {
     
     parseIcsDate(value) {
         if (!value) return null;
-        const match = value.match(/^(\\d{4})(\\d{2})(\\d{2})T(\\d{2})(\\d{2})(\\d{2})Z$/);
+        const match = value.match(/^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})Z$/);
         if (!match) return null;
         const [, y, mo, d, h, mi, s] = match;
         const iso = `${y}-${mo}-${d}T${h}:${mi}:${s}Z`;
@@ -679,42 +679,81 @@ class F1Calendar {
     
     openDrawer(thumbnail, drawer, drawerContent) {
         const videoId = thumbnail.getAttribute('data-video-id');
-        const videoUrl = thumbnail.getAttribute('data-video-url');
-        const grandPrix = thumbnail.getAttribute('data-grand-prix');
-        const videoTitle = thumbnail.getAttribute('data-video-title');
-        const sessionType = thumbnail.getAttribute('data-session-type');
+        const videoUrl = thumbnail.getAttribute('data-video-url') || '';
+        const grandPrix = thumbnail.getAttribute('data-grand-prix') || '';
+        const videoTitle = thumbnail.getAttribute('data-video-title') || '';
+        const sessionType = thumbnail.getAttribute('data-session-type') || '';
         
         const thumbnailEl = thumbnail.querySelector('.video-thumbnail');
         const thumbnailBg = thumbnailEl ? thumbnailEl.style.backgroundImage : '';
         const thumbnailUrl = thumbnailBg.replace(/^url\(['"]?(.+?)['"]?\)$/, '$1');
+        const safeThumb = thumbnailUrl && /^https?:\/\//i.test(thumbnailUrl) ? thumbnailUrl : '';
         
         const publishedDateEl = thumbnail.parentElement.querySelector('.video-date');
         const publishedDate = publishedDateEl ? publishedDateEl.textContent : '';
         
-        drawerContent.innerHTML = `
-            <div class="drawer-media" style="background-image:url('${thumbnailUrl}')"></div>
-            <div class="drawer-meta">
-                <p class="drawer-session">${sessionType || ''}</p>
-                <h3 class="drawer-title">${videoTitle || ''}</h3>
-                <p class="drawer-date">${publishedDate}</p>
-                <p class="drawer-gp">${grandPrix || ''}</p>
-                <div class="drawer-actions">
-                    <a class="watch-button" href="${videoUrl}" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
-                    <button class="secondary-button" type="button" data-drawer-close>Close</button>
-                </div>
-            </div>
-        `;
+        drawerContent.innerHTML = '';
+        
+        const media = document.createElement('div');
+        media.className = 'drawer-media';
+        if (safeThumb) {
+            media.style.backgroundImage = `url('${safeThumb}')`;
+        }
+        
+        const meta = document.createElement('div');
+        meta.className = 'drawer-meta';
+        
+        const sessionP = document.createElement('p');
+        sessionP.className = 'drawer-session';
+        sessionP.textContent = sessionType;
+        
+        const titleH3 = document.createElement('h3');
+        titleH3.className = 'drawer-title';
+        titleH3.textContent = videoTitle;
+        
+        const dateP = document.createElement('p');
+        dateP.className = 'drawer-date';
+        dateP.textContent = publishedDate;
+        
+        const gpP = document.createElement('p');
+        gpP.className = 'drawer-gp';
+        gpP.textContent = grandPrix;
+        
+        const actions = document.createElement('div');
+        actions.className = 'drawer-actions';
+        
+        const watchLink = document.createElement('a');
+        watchLink.className = 'watch-button';
+        watchLink.href = videoUrl;
+        watchLink.target = '_blank';
+        watchLink.rel = 'noopener noreferrer';
+        watchLink.textContent = 'Watch on YouTube';
+        
+        const closeBtn = document.createElement('button');
+        closeBtn.className = 'secondary-button';
+        closeBtn.type = 'button';
+        closeBtn.setAttribute('data-drawer-close', '');
+        closeBtn.textContent = 'Close';
+        
+        actions.appendChild(watchLink);
+        actions.appendChild(closeBtn);
+        
+        meta.appendChild(sessionP);
+        meta.appendChild(titleH3);
+        meta.appendChild(dateP);
+        meta.appendChild(gpP);
+        meta.appendChild(actions);
+        
+        drawerContent.appendChild(media);
+        drawerContent.appendChild(meta);
         
         drawer.setAttribute('aria-hidden', 'false');
         drawer.classList.add('open');
         
-        const closeBtn = drawer.querySelector('[data-drawer-close]');
-        if (closeBtn) {
-            closeBtn.addEventListener('click', () => {
-                drawer.setAttribute('aria-hidden', 'true');
-                drawer.classList.remove('open');
-            }, { once: true });
-        }
+        closeBtn.addEventListener('click', () => {
+            drawer.setAttribute('aria-hidden', 'true');
+            drawer.classList.remove('open');
+        }, { once: true });
         
         this.captureAnalytics('calendar_video_drawer_opened', {
             year: this.year,
