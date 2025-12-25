@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Primary Meta Tags -->
-    <title>F1 Highlights Hub | Latest Formula 1 Practice, Qualifying, Sprint & Race Videos</title>
-    <meta name="title" content="F1 Highlights Hub | Latest Formula 1 Practice, Qualifying, Sprint & Race Videos">
-    <meta name="description" content="Watch the latest Formula 1 FP1, FP2, FP3, Sprint, Qualifying & Race highlights. Updated every 30 minutes with videos from recent F1 weekends.">
-    <meta name="keywords" content="F1 highlights, Formula 1 highlights, F1 race highlights, F1 qualifying highlights, F1 sprint highlights, practice FP1 FP2 FP3">
+    <title>2026 F1 Calendar & Schedule | F1 Highlights Hub</title>
+    <meta name="title" content="2026 F1 Calendar & Schedule | F1 Highlights Hub">
+    <meta name="description" content="See the full 2026 Formula 1 calendar with practice, qualifying, sprint, and race times in your timezone. Countdown to the next session and download the 2026 .ics.">
+    <meta name="keywords" content="F1 2026 calendar, Formula 1 2026 schedule, F1 race times 2026, F1 sprint schedule 2026">
     <meta name="author" content="F1 Recap">
     <meta name="robots" content="index, follow">
     
@@ -18,17 +18,17 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://f1recap.pages.dev/">
-    <meta property="og:title" content="F1 Recap - Latest Formula 1 Highlights">
-    <meta property="og:description" content="Watch the latest Formula 1 session highlights automatically updated every 30 minutes. FP1, FP2, Qualifying, Sprint, and Race recaps.">
-    <meta property="og:image" content="https://f1recap.pages.dev/og-image.jpg">
+    <meta property="og:title" content="2026 F1 Calendar & Schedule">
+    <meta property="og:description" content="Upcoming 2026 Formula 1 sessions with timezone-aware times, countdown, and .ics download.">
+    <meta property="og:image" content="https://f1recap.pages.dev/assets/images/og-image.jpg">
     <meta property="og:site_name" content="F1 Recap">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://f1recap.pages.dev/">
-    <meta property="twitter:title" content="F1 Recap - Latest Formula 1 Highlights">
-    <meta property="twitter:description" content="Watch the latest Formula 1 session highlights automatically updated every 30 minutes. FP1, FP2, Qualifying, Sprint, and Race recaps.">
-    <meta property="twitter:image" content="https://f1recap.pages.dev/og-image.jpg">
+    <meta property="twitter:title" content="2026 F1 Calendar & Schedule">
+    <meta property="twitter:description" content="Upcoming 2026 Formula 1 sessions with timezone-aware times, countdown, and .ics download.">
+    <meta property="twitter:image" content="https://f1recap.pages.dev/assets/images/og-image.jpg">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏎️</text></svg>">
@@ -38,7 +38,7 @@
     <link rel="canonical" href="https://f1recap.pages.dev/">
     
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/styles.css">
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -46,7 +46,7 @@
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "F1 Highlights Hub",
-        "description": "Latest Formula 1 FP1, FP2, FP3, Sprint, Qualifying & Race highlights, updated every 30 minutes",
+        "description": "2026 Formula 1 calendar with session times plus a 2025 highlights archive.",
         "url": "https://f1recap.pages.dev/",
         "potentialAction": {
             "@type": "SearchAction",
@@ -58,44 +58,90 @@
         "about": "F1 highlights"
     }
     </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://f1recap.pages.dev/"
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
-    <header>
+     <header>
         <div class="header-inner">
             <a class="header-text" href="#" aria-label="Go to top">
                 <h1>🏎️ F1 Highlights Hub</h1>
-                <p>Latest Formula 1 Practice, Qualifying, Sprint & Race Highlights</p>
-                <div class="last-updated">
-                    Last updated: <span id="lastUpdated">Loading...</span>
-                </div>
+                <p>2026 Formula 1 Season • Practice, Qualifying, Sprint & Race Highlights</p>
             </a>
+        </div>
+        <nav class="header-nav" aria-label="Main navigation">
+            <div class="header-nav-inner">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="archive-2025.html" class="nav-link">Archive (2025)</a>
+            </div>
+        </nav>
+        <div class="header-inner">
+            <div class="last-updated" id="lastUpdated">Sessions shown in your local timezone.</div>
         </div>
     </header>
 
-    <main>
-        <section id="upcoming" class="hero upcoming" style="display:none" aria-live="polite"></section>
-        <section id="hero" class="hero" aria-live="polite"></section>
-        <div id="loading" class="loading">
-            <div class="spinner"></div>
-            <p>Loading latest F1 videos...</p>
-        </div>
-        
-        <div id="videoContainer" class="video-container" style="display: none;">
-            <!-- Videos will be loaded here -->
-        </div>
-        
-        <div id="error" class="error" style="display: none;">
-            <p>Failed to load videos. Please try again later.</p>
+    <main id="top">
+        <section id="hero" class="hero" aria-live="polite">
+            <div class="hero-card">
+                <div class="hero-meta">
+                    <p class="hero-kicker">2026 Season</p>
+                    <h2 class="hero-title">Full Formula 1 calendar, in your timezone</h2>
+                    <p class="hero-date">Every practice, qualifying, sprint, and race for 2026.</p>
+                    <p class="hero-sessions">Live countdown to the next session • Downloadable .ics • Updated automatically</p>
+                    <div class="hero-actions">
+                        <a class="watch-button" href="#calendar-2026">Jump to 2026 schedule</a>
+                        <a class="secondary-button" href="archive-2025.html">Open 2025 archive</a>
+                        <a class="secondary-button" href="data/f1-calendar_2026.ics">Download 2026 .ics</a>
+                    </div>
+                </div>
+                <div class="hero-flag">📅</div>
+            </div>
+        </section>
+
+        <div class="main-layout" id="calendar-2026">
+            <div class="content-area">
+                <div id="calendarLoading" class="calendar-loading">
+                    <div class="calendar-loading-spinner"></div>
+                    <p>Loading 2026 calendar...</p>
+                </div>
+                
+                <div id="calendarError" class="calendar-error" style="display: none;">
+                    <p>Failed to load the 2026 calendar. Please try again later.</p>
+                </div>
+
+                <div id="calendarContainer" class="timeline-container" style="display: none;">
+                    <div id="calendarTimeline" class="timeline" aria-live="polite">
+                        <!-- Calendar list renders here -->
+                    </div>
+                </div>
+            </div>
+
+            <aside class="info-panel" aria-label="Helpful links">
+                <div class="info-card">
+                    <h3>2025 season archive</h3>
+                    <p>Browse every 2025 session highlight in one place.</p>
+                    <a class="watch-button" href="archive-2025.html">View archive</a>
+                </div>
+                <div class="info-card subtle">
+                    <h3>Save the dates</h3>
+                    <p>Add the 2026 schedule to your calendar to keep countdowns handy.</p>
+                    <a class="secondary-button" href="data/f1-calendar_2026.ics">Download .ics</a>
+                </div>
+            </aside>
         </div>
     </main>
-
-    <div id="videoDrawer" class="drawer" aria-hidden="true">
-        <div class="drawer-backdrop"></div>
-        <div class="drawer-panel" role="dialog" aria-modal="true" aria-label="Session details">
-            <button class="drawer-close" type="button" aria-label="Close">✕</button>
-            <div class="drawer-body" id="drawerContent"></div>
-        </div>
-    </div>
 
     <footer>
         <div class="footer-bottom">
@@ -110,9 +156,9 @@
                 <span class="theme-toggle-label">Dark</span>
             </button>
             <span class="footer-text footer-right footer-links-inline footer-cell-right">
-                <a href="/about" class="footer-inline-link">About</a>
+                <a href="about.html" class="footer-inline-link">About</a>
                 <span aria-hidden="true">•</span>
-                <a href="/disclosure" class="footer-inline-link">Disclosure</a>
+                <a href="disclosure.html" class="footer-inline-link">Disclosure</a>
                 <span aria-hidden="true">•</span>
                 <span>&copy; 2025 F1 Recap. Built with ❤️ for F1 fans.</span>
             </span>
@@ -326,6 +372,7 @@
             }
         })(window, document);
     </script>
-    <script src="script.js"></script>
+    <script src="assets/js/calendar.js" data-year="2026" data-ics-file="data/f1-calendar_2026.ics" data-view="list" data-source="current"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>

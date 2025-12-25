@@ -26,7 +26,7 @@ class F1VideoTracker {
     }
 
     async loadCalendar() {
-        const icsUrl = 'f1-calendar_p1_p2_p3_qualifying_sprint_gp.ics';
+        const icsUrl = 'data/f1-calendar_2026.ics';
         try {
             const icsResponse = await fetch(icsUrl, { cache: 'no-cache' });
             if (icsResponse.ok) {
@@ -41,7 +41,7 @@ class F1VideoTracker {
         }
 
         try {
-            const response = await fetch('calendar2025.json', { cache: 'no-cache' });
+            const response = await fetch('data/calendar2026.json', { cache: 'no-cache' });
             if (!response.ok) {
                 throw new Error(`Failed to fetch calendar (${response.status})`);
             }
@@ -58,7 +58,7 @@ class F1VideoTracker {
         let response;
 
         try {
-            response = await fetch('videos.json', { cache: 'no-cache' });
+            response = await fetch('data/videos.json', { cache: 'no-cache' });
             if (!response.ok) {
                 throw new Error(`Failed to fetch videos (${response.status})`);
             }
@@ -95,8 +95,12 @@ class F1VideoTracker {
             return;
         }
 
-        this.loading.style.display = 'none';
-        this.error.style.display = 'none';
+        if (this.loading) {
+            this.loading.style.display = 'none';
+        }
+        if (this.error) {
+            this.error.style.display = 'none';
+        }
         this.videoContainer.style.display = 'block';
 
         const safeWeekends = Array.isArray(grandPrixWeekends) ? grandPrixWeekends : [];
@@ -905,15 +909,20 @@ function initThemeToggle() {
     }
 }
 
-    // Initialize the app when DOM is loaded
-    document.addEventListener('DOMContentLoaded', () => {
-        initThemeToggle();
-        new F1VideoTracker();
+// Initialize the app when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    initThemeToggle();
 
-        const tzNote = document.getElementById('tzNote');
-        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        const label = tz ? tz : 'unknown';
-        if (tzNote) {
-            tzNote.textContent = `All session times are shown in your local timezone (${label}).`;
-        }
-    });
+    // Only boot the video tracker on pages that actually render videos
+    const hasVideoContainer = document.getElementById('videoContainer');
+    if (hasVideoContainer) {
+        new F1VideoTracker();
+    }
+
+    const tzNote = document.getElementById('tzNote');
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const label = tz ? tz : 'unknown';
+    if (tzNote) {
+        tzNote.textContent = `All session times are shown in your local timezone (${label}).`;
+    }
+});

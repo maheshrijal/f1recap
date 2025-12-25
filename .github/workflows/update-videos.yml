@@ -60,6 +60,7 @@ jobs:
         YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         MANUAL_RUN: ${{ github.event_name == 'workflow_dispatch' }}
         UPDATE_REASON: ${{ github.event.inputs.reason || 'Scheduled update' }}
+        TARGET_YEAR: '2026'
       run: |
         echo "🚀 Starting F1 video fetch..."
         echo "Reason: $UPDATE_REASON"
@@ -72,8 +73,8 @@ jobs:
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         
-        # Add the videos.json file
-        git add videos.json
+        # Add the generated video data to the served location (current + archive)
+        git add public/data/videos.json public/data/videos-*.json
         
         # Check if there are changes or if force update is enabled
         if git diff --staged --quiet && [ "${{ github.event.inputs.force_update }}" != "true" ]; then
@@ -102,10 +103,10 @@ jobs:
         
         echo "Gate run? ${{ steps.gate.outputs.run || 'false' }} (reason: ${{ steps.gate.outputs.reason || 'n/a' }})"
         
-        if [ -f videos.json ]; then
-          TOTAL_VIDEOS=$(node -e "const data = require('./videos.json'); console.log(data.totalVideos || 0);")
-          WEEKENDS=$(node -e "const data = require('./videos.json'); console.log((data.grandPrixWeekends || []).length);")
-          LAST_UPDATED=$(node -e "const data = require('./videos.json'); console.log(data.lastUpdated || 'Unknown');")
+        if [ -f public/data/videos.json ]; then
+          TOTAL_VIDEOS=$(node -e "const data = require('./public/data/videos.json'); console.log(data.totalVideos || 0);")
+          WEEKENDS=$(node -e "const data = require('./public/data/videos.json'); console.log((data.grandPrixWeekends || []).length);")
+          LAST_UPDATED=$(node -e "const data = require('./public/data/videos.json'); console.log(data.lastUpdated || 'Unknown');")
           
           echo "📹 Total videos: $TOTAL_VIDEOS"
           echo "🏁 Grand Prix weekends: $WEEKENDS"
@@ -115,7 +116,7 @@ jobs:
             echo ""
             echo "🏎️ Current weekends:"
             node -e "
-              const data = require('./videos.json');
+              const data = require('./public/data/videos.json');
               (data.grandPrixWeekends || []).forEach((gp, i) => {
                 const status = i === 0 ? '🔴 Current' : i === 1 ? '🟡 Recent' : '⚪ Past';
                 console.log(\`  \${status} \${gp.name} (\${gp.videos.length} videos)\`);
@@ -123,5 +124,5 @@ jobs:
             "
           fi
         else
-          echo "❌ No videos.json file found"
+          echo "❌ No public/data/videos.json file found"
         fi

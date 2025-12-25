@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>2025 F1 Archive | Complete Season Highlights</title>
+    <meta name="title" content="2025 F1 Archive | Complete Season Highlights">
+    <meta name="description" content="Browse all 2025 Formula 1 season highlights. All 24 Grand Prix races with FP1, FP2, FP3, Qualifying, Sprint, and Race session videos.">
+    <meta name="keywords" content="F1 2025 archive, Formula 1 2025 highlights, 2025 Grand Prix archive, F1 season 2025">
+    <meta name="author" content="F1 Recap">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://f1recap.pages.dev/archive-2025.html">
+    <meta property="og:title" content="2025 F1 Archive - Complete Season Highlights">
+    <meta property="og:description" content="Browse all 2025 Formula 1 season highlights with complete session videos from all 24 Grand Prix.">
+    <meta property="og:image" content="https://f1recap.pages.dev/assets/images/og-image.jpg">
+    <meta property="og:site_name" content="F1 Recap">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://f1recap.pages.dev/archive-2025.html">
+    <meta property="twitter:title" content="2025 F1 Archive - Complete Season">
+    <meta property="twitter:description" content="Browse all 2025 Formula 1 season highlights from all Grand Prix.">
+    <meta property="twitter:image" content="https://f1recap.pages.dev/assets/images/og-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏎️</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏎️</text></svg>">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://f1recap.pages.dev/archive-2025.html">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="assets/styles.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "2025 F1 Archive",
+        "description": "Complete 2025 Formula 1 season archive with all Grand Prix highlights",
+        "url": "https://f1recap.pages.dev/archive-2025.html",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "F1 Highlights Hub",
+            "url": "https://f1recap.pages.dev/"
+        },
+        "inLanguage": "en-US"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://f1recap.pages.dev/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Archive 2025",
+          "item": "https://f1recap.pages.dev/archive-2025.html"
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a class="header-text" href="index.html" aria-label="Go to home">
+                <h1>🏎️ F1 Highlights Hub</h1>
+                <p>Latest Formula 1 Practice, Qualifying, Sprint & Race Highlights</p>
+            </a>
+        </div>
+        <nav class="header-nav" aria-label="Main navigation">
+            <div class="header-nav-inner">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="archive-2025.html" class="nav-link active">Archive (2025)</a>
+            </div>
+        </nav>
+        <div class="header-inner">
+            <div class="last-updated" id="lastUpdated">Loading...</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" aria-live="polite">
+            <div class="hero-card">
+                <div class="hero-meta">
+                    <p class="hero-kicker">2025 Season Archive</p>
+                    <h2 class="hero-title">Complete Season Highlights</h2>
+                    <p class="hero-date">All 24 Grand Prix with session videos</p>
+                    <p class="hero-sessions">Browse by date • Watch highlights • Full season archive</p>
+                </div>
+                <div class="hero-flag">📂</div>
+            </div>
+        </section>
+
+        <div id="calendarLoading" class="calendar-loading">
+            <div class="calendar-loading-spinner"></div>
+            <p>Loading 2025 archive...</p>
+        </div>
+        
+        <div id="calendarError" class="calendar-error" style="display: none;">
+            <p>Failed to load archive. Please try again later.</p>
+        </div>
+
+        <div id="calendarContainer" class="timeline-container" style="display: none;">
+            <div id="calendarTimeline" class="timeline" aria-live="polite">
+                <!-- Archive items will be loaded here -->
+            </div>
+            <div class="load-more-trigger">
+                <div class="load-more-spinner" id="loadMoreSpinner" style="display: none;"></div>
+            </div>
+        </div>
+    </main>
+
+    <div id="videoDrawer" class="drawer" aria-hidden="true">
+        <div class="drawer-backdrop"></div>
+        <div class="drawer-panel" role="dialog" aria-modal="true" aria-label="Session details">
+            <button class="drawer-close" type="button" aria-label="Close">✕</button>
+            <div class="drawer-body" id="drawerContent"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-bottom">
+            <span class="footer-text footer-left footer-cell-left" id="tzNote">All session times are shown in your local timezone.</span>
+            <button id="themeToggle" class="theme-toggle footer-cell-center" type="button" aria-label="Toggle theme">
+                <span class="light-stack" aria-hidden="true">
+                    <span class="light-dot"></span>
+                    <span class="light-dot"></span>
+                    <span class="light-dot"></span>
+                </span>
+                <span class="theme-toggle-icon">🌙</span>
+                <span class="theme-toggle-label">Dark</span>
+            </button>
+            <span class="footer-text footer-right footer-links-inline footer-cell-right">
+                <a href="about.html" class="footer-inline-link">About</a>
+                <span aria-hidden="true">•</span>
+                <a href="disclosure.html" class="footer-inline-link">Disclosure</a>
+                <span aria-hidden="true">•</span>
+                <span>&copy; 2025 F1 Recap. Built with ❤️ for F1 fans.</span>
+            </span>
+        </div>
+    </footer>
+
+    <script>
+        window.__POSTHOG__ = window.__POSTHOG__ || {};
+    </script>
+    <script src="/posthog-config"></script>
+    <script>
+        (function() {
+            if (!window.__POSTHOG__ || (!window.__POSTHOG__.host && !window.__POSTHOG__.key)) {
+                const defaultEnv = window.location.hostname === 'localhost' ? 'local' : 'production';
+                window.__POSTHOG__ = {
+                    key: '',
+                    host: 'https://app.posthog.com',
+                    uiHost: 'https://app.posthog.com',
+                    environment: defaultEnv,
+                    commitSha: ''
+                };
+            }
+        })();
+    </script>
+    <script>
+        (function(window, document) {
+            const config = window.__POSTHOG__ || {};
+            if (!config.key) {
+                if (typeof console !== 'undefined') {
+                    console.info('PostHog public key not provided; analytics disabled.');
+                }
+                return;
+            }
+
+            const apiHost = (config.host || 'https://app.posthog.com').replace(/\/$/, '');
+            const assetHost = apiHost.replace('.i.posthog.com', '-assets.i.posthog.com');
+            const toolbarHost = (config.uiHost || apiHost).replace(/\/$/, '');
+            const runtimeEnv = config.environment || (window.location.hostname === 'localhost' ? 'local' : 'production');
+
+            (function(t, e) {
+                var o, n, p, r;
+                if (!e.__SV) {
+                    window.posthog = e.posthog = function() {
+                        posthog._i.push(arguments);
+                    };
+                    posthog._i = [];
+                    posthog.init = function(i, s, a) {
+                        function g(t, e) {
+                            var o = e.split('.');
+                            if (o.length === 2) {
+                                t = t[o[0]];
+                                e = o[1];
+                            }
+                            t[e] = function() {
+                                t.push([e].concat(Array.prototype.slice.call(arguments, 0)));
+                            };
+                        }
+                        var u = posthog;
+                        if (typeof a !== 'undefined') {
+                            u = posthog[a] = [];
+                        } else {
+                            a = 'posthog';
+                        }
+                        u.people = u.people || [];
+                        u.toString = function(t) {
+                            var e = 'posthog';
+                            if (a !== 'posthog') {
+                                e += '.' + a;
+                            }
+                            if (!t) {
+                                e += ' (stub)';
+                            }
+                            return e;
+                        };
+                        u.people.toString = function() {
+                            return this.toString(1) + '.people (stub)';
+                        };
+                        r = 'capture identify alias people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete group identify_account resetAutocompleteCounter register register_once unregister set_config opt_out_capturing has_opt_out_capturing has_opted_out_capturing opt_in_capturing clear_opt_in_out_capturing onLMTConsentChange group_identify'.split(' ');
+                        for (p = 0; p < r.length; p++) {
+                            g(u, r[p]);
+                        }
+                        posthog._i.push([i, s, a]);
+                    };
+                    posthog.__SV = 1;
+                    o = t.createElement('script');
+                    o.type = 'text/javascript';
+                    o.async = true;
+                    o.src = assetHost + '/static/array.js';
+                    o.crossOrigin = 'anonymous';
+                    n = t.getElementsByTagName('script')[0];
+                    n.parentNode.insertBefore(o, n);
+                }
+            })(document, window.posthog || []);
+
+            if (typeof window.posthog.register === 'function') {
+                var baseProperties = { environment: runtimeEnv };
+                if (config.commitSha) {
+                    baseProperties.commit_sha = config.commitSha;
+                }
+                window.posthog.register(baseProperties);
+            }
+
+            window.posthog.init(config.key, {
+                api_host: apiHost,
+                ui_host: toolbarHost,
+                capture_pageview: true,
+                capture_pageleave: true,
+                autocapture: true,
+                persistence: 'localStorage+cookie',
+                session_recording: {
+                    maskAllInputs: true,
+                    maskTextSelector: '.ph-mask'
+                }
+            });
+        })(window, document);
+    </script>
+    <script>
+        (function(window, document) {
+            const config = window.__POSTHOG__ || {};
+            if (!config.key) {
+                return;
+            }
+
+            const WEB_VITALS_SRC = 'https://unpkg.com/web-vitals@3/dist/web-vitals.iife.js';
+            const runtimeEnv = config.environment || (window.location.hostname === 'localhost' ? 'local' : 'production');
+
+            const roundValue = (value) => {
+                return typeof value === 'number' && Number.isFinite(value)
+                    ? Math.round(value * 1000) / 1000
+                    : value;
+            };
+
+            const getNavigationType = () => {
+                if (typeof performance === 'undefined') {
+                    return undefined;
+                }
+                if (typeof performance.getEntriesByType === 'function') {
+                    const navEntry = performance.getEntriesByType('navigation')[0];
+                    if (navEntry && navEntry.type) {
+                        return navEntry.type;
+                    }
+                }
+                if (performance.navigation && typeof performance.navigation.type === 'number') {
+                    const legacyTypes = ['navigate', 'reload', 'back_forward', 'prerender'];
+                    return legacyTypes[performance.navigation.type] || 'navigate';
+                }
+                return undefined;
+            };
+
+            function sendToPosthog(metric) {
+                if (!window.posthog || typeof window.posthog.capture !== 'function') {
+                    return;
+                }
+
+                window.posthog.capture('web_vital', {
+                    metric_name: metric.name,
+                    metric_id: metric.id,
+                    value: roundValue(metric.value),
+                    delta: roundValue(metric.delta),
+                    rating: metric.rating,
+                    environment: runtimeEnv,
+                    visibility_state: document.visibilityState,
+                    navigation_type: getNavigationType(),
+                    path: window.location.pathname,
+                    connection_type: navigator.connection && navigator.connection.effectiveType
+                });
+            }
+
+            function bindWebVitals() {
+                if (!window.webVitals) {
+                    return;
+                }
+
+                const options = { reportAllChanges: true };
+                window.webVitals.onCLS && window.webVitals.onCLS(sendToPosthog, options);
+                window.webVitals.onFID && window.webVitals.onFID(sendToPosthog, options);
+                window.webVitals.onLCP && window.webVitals.onLCP(sendToPosthog, options);
+                window.webVitals.onFCP && window.webVitals.onFCP(sendToPosthog, options);
+                window.webVitals.onTTFB && window.webVitals.onTTFB(sendToPosthog, options);
+                window.webVitals.onINP && window.webVitals.onINP(sendToPosthog, options);
+            }
+
+            function ensureWebVitalsLoaded() {
+                if (window.webVitals) {
+                    bindWebVitals();
+                    return;
+                }
+                if (document.querySelector('script[data-web-vitals="true"]')) {
+                    return;
+                }
+
+                const script = document.createElement('script');
+                script.src = WEB_VITALS_SRC;
+                script.defer = true;
+                script.async = true;
+                script.crossOrigin = 'anonymous';
+                script.dataset.webVitals = 'true';
+                script.onload = bindWebVitals;
+                script.onerror = function(error) {
+                    if (typeof console !== 'undefined') {
+                        console.debug('Web Vitals script failed to load', error);
+                    }
+                };
+                document.head.appendChild(script);
+            }
+
+            if (document.readyState === 'complete') {
+                ensureWebVitalsLoaded();
+            } else {
+                window.addEventListener('load', ensureWebVitalsLoaded, { once: true });
+            }
+        })(window, document);
+    </script>
+    <script src="assets/js/calendar.js" data-year="2025" data-ics-file="data/f1-calendar_2025.ics" data-view="timeline" data-source="archive"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
