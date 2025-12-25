@@ -364,6 +364,7 @@ class F1Calendar {
         const sessionType = this.escapeHtml(this.getSessionTypeLabel(session.title));
         return `
             <div class="countdown-card">
+                <p class="countdown-kicker">2026 Season</p>
                 <p class="countdown-label">Next Session</p>
                 <div class="countdown-timer" id="countdownTimer">Loading...</div>
                 <p class="countdown-session-name">
