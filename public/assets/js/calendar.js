@@ -575,12 +575,27 @@ class F1Calendar {
     }
     
     updateLastUpdated(timestamp) {
-        if (timestamp && this.lastUpdated) {
-            const date = new Date(timestamp);
-            if (!Number.isNaN(date.getTime())) {
-                this.lastUpdated.textContent = date.toLocaleString();
-            }
+        if (!this.lastUpdated || !timestamp) return;
+        const date = new Date(timestamp);
+        if (Number.isNaN(date.getTime())) return;
+
+        const options = {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: false
+        };
+        if (this.userTimeZone) {
+            options.timeZone = this.userTimeZone;
+            options.timeZoneName = 'short';
         }
+
+        const formatted = new Intl.DateTimeFormat('en-GB', options).format(date);
+        const tzLabel = this.userTimeZone ? ` (${this.userTimeZone})` : '';
+        this.lastUpdated.textContent = `Last updated: ${formatted}${tzLabel}`;
     }
     
     hideLoading() {
