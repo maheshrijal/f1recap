@@ -230,7 +230,7 @@ class F1ArchiveFetcher {
                 title: video.snippet.title,
                 description: video.snippet.description,
                 publishedAt: video.snippet.publishedAt,
-                thumbnail: video.snippet.thumbnails.high?.url || video.snippet.thumbnails.default.url
+                thumbnail: video.snippet.thumbnails?.high?.url || video.snippet.thumbnails?.default?.url || ''
             });
             
             if (publishDate > group.latestDate) {

@@ -34,6 +34,8 @@ class F1Calendar {
         this.hasMore = true;
         this.isLoading = false;
         this.countdownInterval = null;
+        this.drawerInitialized = false;
+        this.drawerThumbs = new WeakSet();
         
         this.init();
     }
@@ -255,7 +257,7 @@ class F1Calendar {
             const isSessionUpcoming = sessionDate.getTime() > now;
             const sessionStatusClass = isSessionUpcoming ? 'upcoming' : 'completed';
             const sessionIcon = isSessionUpcoming ? '⏱' : '✓';
-            const sessionType = this.getSessionTypeLabel(session.title);
+            const sessionType = this.escapeHtml(this.getSessionTypeLabel(session.title));
             
             return `
                 <div class="sidebar-session-item ${sessionStatusClass}">
@@ -359,12 +361,13 @@ class F1Calendar {
     }
     
     createCountdownHtml(session) {
+        const sessionType = this.escapeHtml(this.getSessionTypeLabel(session.title));
         return `
             <div class="countdown-card">
                 <p class="countdown-label">Next Session</p>
                 <div class="countdown-timer" id="countdownTimer">Loading...</div>
                 <p class="countdown-session-name">
-                    <span class="session-type">${this.getSessionTypeLabel(session.title)}</span> • ${this.escapeHtml(session.gpName)}
+                    <span class="session-type">${sessionType}</span> • ${this.escapeHtml(session.gpName)}
                 </p>
             </div>
         `;
@@ -646,6 +649,10 @@ class F1Calendar {
         if (!thumbnails) return;
         
         thumbnails.forEach(thumbnail => {
+            if (this.drawerThumbs.has(thumbnail)) {
+                return;
+            }
+            this.drawerThumbs.add(thumbnail);
             thumbnail.addEventListener('click', () => this.openDrawer(thumbnail, drawer, drawerContent));
             thumbnail.addEventListener('keydown', (event) => {
                 if (event.key === 'Enter' || event.key === ' ') {
@@ -655,6 +662,11 @@ class F1Calendar {
             });
         });
         
+        if (this.drawerInitialized) {
+            return;
+        }
+        this.drawerInitialized = true;
+
         const closeDrawer = () => {
             drawer.setAttribute('aria-hidden', 'true');
             drawer.classList.remove('open');
