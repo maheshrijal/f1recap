@@ -5,7 +5,8 @@
   "main": "scripts/fetch-videos.js",
   "scripts": {
     "fetch": "node scripts/fetch-videos.js",
-    "dev": "python -m http.server 8000",
+    "fetch-archive": "node scripts/fetch-archive-2025.js",
+    "dev": "python3 -m http.server 8000 -d public",
     "build": "npm run fetch"
   },
   "dependencies": {

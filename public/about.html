@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Disclosure | F1 Highlights Hub</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>About | F1 Highlights Hub</title>
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
   <header>
@@ -12,20 +12,27 @@
       <a class="header-text" href="index.html" aria-label="Go to home">
         <h1>🏎️ F1 Highlights Hub</h1>
         <p>Latest Formula 1 Practice, Qualifying, Sprint & Race Highlights</p>
-        <div class="last-updated">Always updating every 30 minutes.</div>
       </a>
+    </div>
+     <nav class="header-nav" aria-label="Main navigation">
+       <div class="header-nav-inner">
+         <a href="index.html" class="nav-link">Home (2026)</a>
+         <a href="archive-2025.html" class="nav-link">Archive (2025)</a>
+       </div>
+     </nav>
+    <div class="header-inner">
+      <div class="last-updated">Always updating every 30 minutes.</div>
     </div>
   </header>
 
   <main>
     <section class="hero" aria-live="polite">
-      <div class="hero-card upcoming-card">
+      <div class="hero-card">
         <div class="hero-meta">
-          <p class="hero-kicker">Disclosure</p>
-          <h2 class="hero-title">We don’t host videos, we link to them</h2>
-          <p class="hero-date">All highlights are hosted on YouTube by the official Formula 1 channel. We simply organize links for faster access.</p>
-          <p class="hero-sessions">If a video is removed or blocked in your region, it will disappear from our feed on the next refresh.</p>
-          <p class="hero-sessions">Licensing note: embedding is disabled on F1’s uploads, so we direct you to YouTube.</p>
+          <p class="hero-kicker">About</p>
+          <h2 class="hero-title">Your quick way to catch every F1 session</h2>
+          <p class="hero-date">We auto-fetch FP1, FP2, FP3, Sprint, Qualifying, and Race highlights from the official F1 YouTube channel every 30 minutes.</p>
+          <p class="hero-sessions">You get the last three weekends, sprint-aware ordering, local time display, and direct YouTube links.</p>
         </div>
       </div>
     </section>
@@ -52,6 +59,6 @@
       </span>
     </div>
   </footer>
-  <script src="script.js"></script>
+  <script src="assets/js/script.js"></script>
 </body>
 </html>

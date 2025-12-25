@@ -24,6 +24,30 @@ A static website that automatically tracks and displays Formula 1 YouTube videos
 4. **videos.json** is updated with the latest video data organized by Grand Prix
 5. **Static website** loads and displays the videos with clean interface
 
+## Project Structure
+
+- `public/`
+  - `index.html` (home + 2026 calendar)
+  - `archive-2025.html`, `calendar-2025.html`, `about.html`, `disclosure.html`
+  - `assets/styles.css`, `assets/js/{calendar.js,script.js}`, `assets/images/og-image.*`
+  - `data/` — `f1-calendar_20xx.ics`, `calendar20xx.json`, `videos.json`, `videos-2025.json`
+- `scripts/` — data fetchers (`fetch-videos.js`, `fetch-archive-2025.js`)
+- `functions/` — serverless handler for PostHog config
+- `README.md`, `package.json`
+
+## Data Fetch Scripts
+
+- Current season (latest weekends): `npm run fetch`
+- Full 2025 archive: `npm run fetch-archive`
+- Current season output files:
+  - `public/data/videos.json` (latest N weekends for homepage)
+  - `public/data/videos-<year>.json` (full-season archive, merged across runs)
+
+Environment toggles for `scripts/fetch-archive-2025.js`:
+- `YT_PAGE_CAP` (default 5): max pages per GP (YouTube pagination)
+- `YT_GP_DELAY_MS` (default 400): delay between GP fetches (helps avoid 403/rate limits)
+- `FETCH_MISSING_ONLY` (default false): if true, keeps existing `videos-2025.json` GP data and fetches only missing ones
+
 ## Setup
 
 ### 1. Get YouTube API Key
@@ -46,7 +70,7 @@ A static website that automatically tracks and displays Formula 1 YouTube videos
 
 1. Connect your GitHub repository to Cloudflare Pages
 2. Set build command: `npm run build`
-3. Set output directory: `/` (root)
+3. Set output directory: `public`
 4. Add environment variables in the Pages project settings:
    - `YOUTUBE_API_KEY` (secret)
    - `PUBLIC_POSTHOG_KEY` (public)

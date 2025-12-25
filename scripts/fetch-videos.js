@@ -7,6 +7,10 @@ class F1VideoFetcher {
         this.apiKey = process.env.YOUTUBE_API_KEY;
         this.channelId = 'UCB_qr75-ydFVKSF9Dmo6izg'; // Formula 1 official channel
         this.baseUrl = 'https://www.googleapis.com/youtube/v3';
+        this.targetYear = parseInt(process.env.TARGET_YEAR || new Date().getUTCFullYear(), 10);
+        this.latestWindow = parseInt(process.env.LATEST_WINDOW || '3', 10); // homepage recency window
+        this.maxResults = parseInt(process.env.MAX_RESULTS || '150', 10);   // total videos to pull from search
+        this.pageCap = Math.max(1, Math.ceil(this.maxResults / 50));        // 50 per page; cap via maxResults
         
         // Specific F1 session types we want to include (with variations)
         this.allowedSessionTypes = [
@@ -33,6 +37,38 @@ class F1VideoFetcher {
         ];
     }
 
+    async fetchRecentVideos() {
+        const perPage = 50;
+        const maxPages = this.pageCap;
+        let pageToken = null;
+        let page = 1;
+        const items = [];
+
+        do {
+            const response = await axios.get(`${this.baseUrl}/search`, {
+                params: {
+                    key: this.apiKey,
+                    channelId: this.channelId,
+                    part: 'snippet',
+                    order: 'date',
+                    type: 'video',
+                    maxResults: perPage,
+                    pageToken
+                }
+            });
+
+            const fetched = (response.data.items || []).filter(
+                (item) => item.id?.videoId && item.snippet
+            );
+            items.push(...fetched);
+
+            pageToken = response.data.nextPageToken || null;
+            page += 1;
+        } while (pageToken && page <= maxPages && items.length < this.maxResults);
+
+        return items.slice(0, this.maxResults);
+    }
+
     async fetchVideos() {
         if (!this.apiKey) {
             throw new Error('YouTube API key not found. Please set YOUTUBE_API_KEY environment variable.');
@@ -41,32 +77,24 @@ class F1VideoFetcher {
         try {
             console.log('Fetching latest videos from Formula 1 channel...');
             
-            // Get the last 100 videos from the channel to ensure we don't miss recent content
-            const response = await axios.get(`${this.baseUrl}/search`, {
-                params: {
-                    key: this.apiKey,
-                    channelId: this.channelId,
-                    part: 'snippet',
-                    order: 'date',
-                    type: 'video',
-                    maxResults: 100
-                }
-            });
-
-            const allVideos = response.data.items;
-            console.log(`Found ${allVideos.length} total videos`);
+            const allVideos = await this.fetchRecentVideos();
+            console.log(`Found ${allVideos.length} total videos from recent feed`);
 
             // Filter for recap videos
             const filteredVideos = this.filterRecapVideos(allVideos);
             console.log(`Filtered to ${filteredVideos.length} recap videos`);
 
-            // Keep the latest 100 filtered videos (API returns newest first)
-            const boundedVideos = filteredVideos.slice(0, 100);
-            console.log(`Considering ${boundedVideos.length} newest filtered videos (max 100)`);
+            // Keep only the most recent N filtered videos based on configured maxResults
+            const boundedVideos = filteredVideos.slice(0, this.maxResults);
+            console.log(`Considering ${boundedVideos.length} newest filtered videos (max ${this.maxResults})`);
 
-            // Group videos by Grand Prix weekends and keep the latest 3 race weekends
-            const groupedVideos = this.groupVideosByGrandPrix(boundedVideos);
-            console.log(`Organized into ${groupedVideos.length} Grand Prix weekends (limited to last 3)`);
+            // Group videos by Grand Prix weekends (full set from the bounded list)
+            const fullGrouped = this.groupVideosByGrandPrix(boundedVideos);
+            console.log(`Organized into ${fullGrouped.length} Grand Prix weekends (full grouped set)`);
+
+            // Current feed: limit to latest N weekends for the homepage
+            const groupedVideos = fullGrouped.slice(0, this.latestWindow);
+            console.log(`Trimmed to ${groupedVideos.length} weekends for current feed (latest ${this.latestWindow})`);
 
             const visibleVideos = groupedVideos.reduce((total, gp) => total + gp.videos.length, 0);
 
@@ -82,8 +110,11 @@ class F1VideoFetcher {
                 grandPrixWeekends: groupedVideos
             };
 
-            // Save to JSON file
-            await this.saveVideoData(videoData);
+            // Build/merge full-season archive for target year
+            const archiveData = await this.buildArchive(fullGrouped);
+
+            // Save both current and archive outputs
+            await this.saveVideoData(videoData, archiveData);
             console.log('Video data saved successfully!');
             
             return videoData;
@@ -172,8 +203,12 @@ class F1VideoFetcher {
         const sortedGroups = Array.from(grandPrixGroups.values())
             .sort((a, b) => b.latestDate - a.latestDate);
         
+        // Filter to the target year only
+        const yearStr = String(this.targetYear);
+        const filteredByYear = sortedGroups.filter(gp => gp.name.includes(yearStr));
+        
         // Sort videos within each group by session order
-        sortedGroups.forEach(group => {
+        filteredByYear.forEach(group => {
             // Check if this weekend has sprint
             const hasSprint = group.videos.some(video => 
                 this.getVideoTypeFromTitle(video.title) === 'sprint'
@@ -218,7 +253,7 @@ class F1VideoFetcher {
             });
         });
         
-        return sortedGroups.slice(0, 3);
+        return filteredByYear;
     }
     
     extractGrandPrixName(title) {
@@ -243,7 +278,7 @@ class F1VideoFetcher {
         // Fallback: try to extract just the location
         const locationMatch = title.match(/([A-Za-z\s]+)\s+(Grand Prix|GP)/i);
         if (locationMatch) {
-            return `2025 ${locationMatch[1].trim()} Grand Prix`;
+            return `${this.targetYear} ${locationMatch[1].trim()} Grand Prix`;
         }
         
         // Ultimate fallback
@@ -275,20 +310,107 @@ class F1VideoFetcher {
         return 'other';
     }
 
-    async saveVideoData(data) {
-        const outputPath = path.join(process.cwd(), 'videos.json');
-        await fs.writeFile(outputPath, JSON.stringify(data, null, 2));
+    async saveVideoData(currentData, archiveData) {
+        const publicDataDir = path.join(process.cwd(), 'public', 'data');
+        const publicCurrent = path.join(publicDataDir, 'videos.json');
+        const publicArchive = path.join(publicDataDir, `videos-${this.targetYear}.json`);
+
+        // Persist to served locations for the site
+        await fs.mkdir(publicDataDir, { recursive: true });
+        await fs.writeFile(publicCurrent, JSON.stringify(currentData, null, 2));
+        await fs.writeFile(publicArchive, JSON.stringify(archiveData, null, 2));
     }
 
     async preserveExistingData() {
-        const outputPath = path.join(process.cwd(), 'videos.json');
+        const outputPath = path.join(process.cwd(), 'public', 'data', 'videos.json');
+        const archivePath = path.join(process.cwd(), 'public', 'data', `videos-${this.targetYear}.json`);
+        const publicDataDir = path.join(process.cwd(), 'public', 'data');
+        const publicCurrent = path.join(publicDataDir, 'videos.json');
+        const publicArchive = path.join(publicDataDir, `videos-${this.targetYear}.json`);
         try {
             const current = await fs.readFile(outputPath, 'utf8');
             console.log('Kept existing videos.json unchanged.');
             // Write back to ensure timestamp on artifact, but keep content
             await fs.writeFile(outputPath, current);
+            await fs.mkdir(publicDataDir, { recursive: true });
+            await fs.writeFile(publicCurrent, current);
+            if (await this.fileExists(archivePath)) {
+                const arch = await fs.readFile(archivePath, 'utf8');
+                await fs.writeFile(archivePath, arch);
+                await fs.writeFile(publicArchive, arch);
+            }
         } catch (err) {
             console.warn('No existing videos.json to preserve; leaving empty.');
+        }
+    }
+
+    async buildArchive(fullGrouped) {
+        const publicDataDir = path.join(process.cwd(), 'public', 'data');
+        const publicArchive = path.join(publicDataDir, `videos-${this.targetYear}.json`);
+        let existing = { lastUpdated: null, totalVideos: 0, grandPrixWeekends: [] };
+
+        if (await this.fileExists(publicArchive)) {
+            try {
+                existing = JSON.parse(await fs.readFile(publicArchive, 'utf8'));
+            } catch (e) {
+                console.warn('Existing archive unreadable, rebuilding from scratch');
+            }
+        }
+
+        const merged = this.mergeArchives(existing.grandPrixWeekends || [], fullGrouped || []);
+        const totalVideos = merged.reduce((sum, gp) => sum + (gp.videos?.length || 0), 0);
+
+        return {
+            lastUpdated: new Date().toISOString(),
+            totalVideos,
+            grandPrixWeekends: merged
+        };
+    }
+
+    mergeArchives(existing, incoming) {
+        const byName = new Map();
+
+        const addGp = (gp) => {
+            if (!gp || !gp.name) return;
+            const key = gp.name;
+            const base = byName.get(key) || { name: gp.name, videos: [], latestDate: null };
+
+            const seen = new Set(base.videos.map(v => v.videoId));
+            (gp.videos || []).forEach(v => {
+                if (v && v.videoId && !seen.has(v.videoId)) {
+                    seen.add(v.videoId);
+                    base.videos.push(v);
+                }
+            });
+
+            // Recompute latestDate
+            const latest = base.videos
+                .map(v => Date.parse(v.publishedAt))
+                .filter(t => !Number.isNaN(t))
+                .sort((a, b) => b - a)[0];
+            if (latest) {
+                base.latestDate = new Date(latest).toISOString();
+            }
+
+            byName.set(key, base);
+        };
+
+        existing.forEach(addGp);
+        incoming.forEach(addGp);
+
+        return Array.from(byName.values()).sort((a, b) => {
+            const da = Date.parse(a.latestDate || 0);
+            const db = Date.parse(b.latestDate || 0);
+            return db - da;
+        });
+    }
+
+    async fileExists(p) {
+        try {
+            await fs.access(p);
+            return true;
+        } catch {
+            return false;
         }
     }
 }
