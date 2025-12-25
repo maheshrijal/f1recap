@@ -28,21 +28,21 @@
 }
 
 [data-theme="dark"] {
-    --bg: #0b0f1c;
-    --bg-soft: #12182b;
-    --card: #0f1528;
-    --card-contrast: #141c34;
-    --text: #e6ecfb;
-    --muted: #9aa7bf;
+    --bg: #0f1424;
+    --bg-soft: #18203a;
+    --card: #151d34;
+    --card-contrast: #1c2746;
+    --text: #f2f5ff;
+    --muted: #b7c1d7;
     --accent: #e10600;
-    --accent-2: #5b8dff;
-    --glass: rgba(255, 255, 255, 0.06);
-    --stroke: rgba(255, 255, 255, 0.1);
-    --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
-    --bg-gradient: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.03), transparent 38%),
-        radial-gradient(circle at 80% 0%, rgba(91, 141, 255, 0.1), transparent 34%),
-        radial-gradient(circle at 15% 80%, rgba(86, 128, 233, 0.1), transparent 32%),
-        linear-gradient(160deg, #070b18 0%, #0b0f1c 55%, #0a0e1b 100%);
+    --accent-2: #6a9cff;
+    --glass: rgba(255, 255, 255, 0.1);
+    --stroke: rgba(255, 255, 255, 0.16);
+    --shadow: 0 18px 42px rgba(0, 0, 0, 0.38);
+    --bg-gradient: radial-gradient(circle at 20% 18%, rgba(255, 255, 255, 0.035), transparent 40%),
+        radial-gradient(circle at 82% 8%, rgba(106, 156, 255, 0.12), transparent 36%),
+        radial-gradient(circle at 15% 80%, rgba(86, 128, 233, 0.12), transparent 34%),
+        linear-gradient(160deg, #0c1222 0%, #0f1424 55%, #0c1121 100%);
 }
 
 body {
@@ -90,7 +90,7 @@ header {
 }
 
 [data-theme="dark"] header {
-    background: rgba(10, 14, 30, 0.92);
+    background: rgba(12, 16, 32, 0.94);
     box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
 }
 
@@ -145,6 +145,20 @@ header p {
     justify-content: center;
     gap: 1rem;
     flex-wrap: wrap;
+}
+
+.header-actions {
+    position: absolute;
+    right: 1rem;
+    top: 0.75rem;
+    display: flex;
+    align-items: center;
+}
+
+.header-toggle {
+    padding: 0.45rem 0.8rem;
+    font-size: 0.8rem;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.16);
 }
 
 .nav-link {
@@ -835,6 +849,11 @@ main {
     }
     .hero-card {
         grid-template-columns: 1fr;
+    }
+    .header-actions {
+        position: static;
+        margin: 0.35rem auto 0;
+        justify-content: center;
     }
 }
 
