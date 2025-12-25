@@ -879,19 +879,17 @@ class F1VideoTracker {
 function setTheme(theme) {
     const root = document.documentElement;
     root.setAttribute('data-theme', theme);
-    document.body.classList.add('theme-transition');
-    setTimeout(() => document.body.classList.remove('theme-transition'), 320);
     try {
         localStorage.setItem('theme', theme);
     } catch (_) {
         /* ignore storage errors */
     }
 
-    const toggle = document.getElementById('themeToggle');
-    if (toggle) {
+    const toggles = document.querySelectorAll('.theme-toggle');
+    const isDark = theme === 'dark';
+    toggles.forEach(toggle => {
         const icon = toggle.querySelector('.theme-toggle-icon');
         const label = toggle.querySelector('.theme-toggle-label');
-        const isDark = theme === 'dark';
         if (icon) {
             icon.textContent = isDark ? '🌙' : '☀️';
         }
@@ -899,7 +897,7 @@ function setTheme(theme) {
             label.textContent = isDark ? 'Dark' : 'Light';
         }
         toggle.classList.toggle('is-dark', isDark);
-    }
+    });
 }
 
 function initThemeToggle() {
@@ -915,13 +913,13 @@ function initThemeToggle() {
     const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
     setTheme(initialTheme);
 
-    const toggle = document.getElementById('themeToggle');
-    if (toggle) {
+    const toggles = document.querySelectorAll('.theme-toggle');
+    toggles.forEach(toggle => {
         toggle.addEventListener('click', () => {
             const current = document.documentElement.getAttribute('data-theme') || 'light';
             setTheme(current === 'dark' ? 'light' : 'dark');
         });
-    }
+    });
 }
 
 // Initialize the app when DOM is loaded
