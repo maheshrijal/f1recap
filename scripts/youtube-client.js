@@ -20,6 +20,7 @@ class YouTubeClient {
     baseUrl = 'https://www.googleapis.com/youtube/v3',
     requestDelayMs = 0,
     timeoutMs = 30000,
+    maxResponseBytes = 5 * 1024 * 1024,
     maxRetries = 5,
     retryBaseDelayMs = 500,
   }) {
@@ -31,6 +32,7 @@ class YouTubeClient {
     this.baseUrl = baseUrl.replace(/\/+$/, '');
     this.requestDelayMs = requestDelayMs;
     this.timeoutMs = timeoutMs;
+    this.maxResponseBytes = maxResponseBytes;
     this.maxRetries = maxRetries;
     this.retryBaseDelayMs = retryBaseDelayMs;
 
@@ -88,6 +90,8 @@ class YouTubeClient {
       const res = await axios.get(`${this.baseUrl}/${endpoint}`, {
         params: { key: this.apiKey, ...params },
         timeout: this.timeoutMs,
+        maxContentLength: this.maxResponseBytes,
+        maxBodyLength: this.maxResponseBytes,
       });
       return res.data;
     } catch (err) {
