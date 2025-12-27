@@ -1,16 +1,16 @@
-const axios = require('axios');
 const fs = require('fs').promises;
 const path = require('path');
+const { YouTubeClient } = require('./youtube-client');
 
 class F1VideoFetcher {
     constructor() {
         this.apiKey = process.env.YOUTUBE_API_KEY;
         this.channelId = 'UCB_qr75-ydFVKSF9Dmo6izg'; // Formula 1 official channel
-        this.baseUrl = 'https://www.googleapis.com/youtube/v3';
         this.targetYear = parseInt(process.env.TARGET_YEAR || new Date().getUTCFullYear(), 10);
         this.latestWindow = parseInt(process.env.LATEST_WINDOW || '3', 10); // homepage recency window
         this.maxResults = parseInt(process.env.MAX_RESULTS || '150', 10);   // total videos to pull from search
         this.pageCap = Math.max(1, Math.ceil(this.maxResults / 50));        // 50 per page; cap via maxResults
+        this.requestDelayMs = parseInt(process.env.YT_REQUEST_DELAY_MS || '0', 10);
         
         // Specific F1 session types we want to include (with variations)
         this.allowedSessionTypes = [
@@ -44,25 +44,42 @@ class F1VideoFetcher {
         let page = 1;
         const items = [];
 
+        const yt = new YouTubeClient({
+            apiKey: this.apiKey,
+            requestDelayMs: this.requestDelayMs
+        });
+
+        const uploadsPlaylistId = await yt.getUploadsPlaylistId(this.channelId);
+
         do {
-            const response = await axios.get(`${this.baseUrl}/search`, {
-                params: {
-                    key: this.apiKey,
-                    channelId: this.channelId,
-                    part: 'snippet',
-                    order: 'date',
-                    type: 'video',
-                    maxResults: perPage,
-                    pageToken
-                }
+            const resp = await yt.listPlaylistItems({
+                playlistId: uploadsPlaylistId,
+                pageToken,
+                maxResults: perPage
             });
 
-            const fetched = (response.data.items || []).filter(
-                (item) => item.id?.videoId && item.snippet
-            );
+            const fetched = (resp.items || [])
+                .map((item) => {
+                    const videoId = item?.contentDetails?.videoId || item?.snippet?.resourceId?.videoId;
+                    const publishedAt = item?.contentDetails?.videoPublishedAt || item?.snippet?.publishedAt;
+                    if (!videoId || !publishedAt) return null;
+                    const ts = Date.parse(publishedAt);
+                    if (Number.isNaN(ts)) return null;
+                    return {
+                        id: { videoId },
+                        snippet: {
+                            title: item?.snippet?.title || '',
+                            description: item?.snippet?.description || '',
+                            publishedAt: new Date(ts).toISOString(),
+                            thumbnails: item?.snippet?.thumbnails || {}
+                        }
+                    };
+                })
+                .filter(Boolean);
+
             items.push(...fetched);
 
-            pageToken = response.data.nextPageToken || null;
+            pageToken = resp.nextPageToken || null;
             page += 1;
         } while (pageToken && page <= maxPages && items.length < this.maxResults);
 
@@ -132,9 +149,9 @@ class F1VideoFetcher {
             const videoType = this.getVideoTypeFromTitle(title);
             
             // First, exclude unwanted content
-            const shouldExclude = this.excludeKeywords.some(keyword => 
-                title.includes(keyword) || description.includes(keyword)
-            );
+            // Avoid false negatives: descriptions can mention other series (F2/F3/etc).
+            // Title-based exclusion is much safer here.
+            const shouldExclude = this.excludeKeywords.some(keyword => title.includes(keyword));
             
             if (shouldExclude) {
                 return false;
@@ -289,9 +306,17 @@ class F1VideoFetcher {
         const titleLower = title.toLowerCase();
         
         // Check for specific session types
-        if (titleLower.includes('fp1')) {
+        if (
+            titleLower.includes('fp1') ||
+            titleLower.includes('practice 1') ||
+            titleLower.includes('free practice 1')
+        ) {
             return 'fp1';
-        } else if (titleLower.includes('fp2')) {
+        } else if (
+            titleLower.includes('fp2') ||
+            titleLower.includes('practice 2') ||
+            titleLower.includes('free practice 2')
+        ) {
             return 'fp2';
         } else if (titleLower.includes('fp3') || titleLower.includes('practice 3') || titleLower.includes('free practice 3')) {
             return 'fp3';
