@@ -591,13 +591,18 @@ class F1Calendar {
         const countdownEl = document.getElementById('heroCountdown');
         if (!countdownEl) return;
         
-        // Find the next session time
-        const now = Date.now();
-        const nextSession = gp.sessions.find(s => Date.parse(s.publishedAt) > now);
-        const targetTime = nextSession ? Date.parse(nextSession.publishedAt) : Date.parse(gp.startDate);
-        
         const updateCountdown = () => {
-            const diff = targetTime - Date.now();
+            const now = Date.now();
+            const nextSession = gp.sessions.find(s => Date.parse(s.publishedAt) > now);
+            
+            if (!nextSession) {
+                countdownEl.innerHTML = '<span class="countdown-live">🔴 Race Weekend!</span>';
+                clearInterval(this.countdownInterval);
+                return;
+            }
+            
+            const targetTime = Date.parse(nextSession.publishedAt);
+            const diff = targetTime - now;
             
             if (diff <= 0) {
                 countdownEl.innerHTML = '<span class="countdown-live">🔴 Live Now!</span>';
