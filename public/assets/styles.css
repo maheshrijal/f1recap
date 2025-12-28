@@ -817,6 +817,10 @@ main {
     height: 8px;
 }
 
+.timeline-chip {
+    scroll-snap-align: start;
+}
+
 .session-timeline::-webkit-scrollbar-thumb {
     background: var(--stroke);
     border-radius: 999px;
@@ -1212,6 +1216,8 @@ main {
         max-height: 0;
         opacity: 0;
         overflow: hidden;
+        visibility: hidden;
+        pointer-events: none;
         transition: max-height 0.25s ease, opacity 0.2s ease, padding 0.2s ease;
     }
 
@@ -1219,6 +1225,8 @@ main {
         max-height: 320px;
         opacity: 1;
         padding: 0.4rem 1rem 0.9rem;
+        visibility: visible;
+        pointer-events: auto;
     }
 
     .header-nav-inner {

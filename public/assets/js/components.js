@@ -151,26 +151,36 @@ const Components = {
         if (navToggle && nav && !navToggle.dataset.initialized) {
             const navIcon = navToggle.querySelector('.nav-toggle-icon');
             const navLabel = navToggle.querySelector('.nav-toggle-label');
+            const firstNavLink = () => nav.querySelector('a');
 
             const updateToggleVisual = (isOpen) => {
                 if (navIcon) navIcon.textContent = isOpen ? 'X' : '☰';
                 if (navLabel) navLabel.textContent = isOpen ? 'Close' : 'Menu';
             };
 
-            const setNavState = (isOpen) => {
+            const setNavState = (isOpen, options = {}) => {
+                const { focusToggle = true } = options;
                 nav.classList.toggle('is-open', isOpen);
                 navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
                 nav.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
                 updateToggleVisual(isOpen);
+                if (!isOpen && focusToggle) {
+                    navToggle.focus();
+                }
             };
 
             navToggle.addEventListener('click', () => {
                 const isOpen = nav.classList.contains('is-open');
-                setNavState(!isOpen);
+                const nextOpen = !isOpen;
+                setNavState(nextOpen, { focusToggle: !nextOpen });
+                if (nextOpen && navToggle.matches(':focus-visible')) {
+                    const firstLink = firstNavLink();
+                    if (firstLink) firstLink.focus();
+                }
             });
 
             nav.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => setNavState(false));
+                link.addEventListener('click', () => setNavState(false, { focusToggle: false }));
             });
 
             const mediaQuery = window.matchMedia('(max-width: 720px)');
@@ -185,6 +195,12 @@ const Components = {
                 nav.setAttribute('aria-hidden', nav.classList.contains('is-open') ? 'false' : 'true');
                 updateToggleVisual(nav.classList.contains('is-open'));
             };
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key !== 'Escape') return;
+                if (!nav.classList.contains('is-open')) return;
+                setNavState(false);
+            });
 
             if (typeof mediaQuery.addEventListener === 'function') {
                 mediaQuery.addEventListener('change', syncNav);
