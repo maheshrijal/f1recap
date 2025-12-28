@@ -817,10 +817,6 @@ main {
     height: 8px;
 }
 
-.timeline-chip {
-    scroll-snap-align: start;
-}
-
 .session-timeline::-webkit-scrollbar-thumb {
     background: var(--stroke);
     border-radius: 999px;
@@ -838,6 +834,7 @@ main {
     text-align: left;
     cursor: pointer;
     transition: background 0.2s ease, border-color 0.2s ease;
+    scroll-snap-align: start;
 }
 
 .timeline-chip.fp1 { border-left: 3px solid #22c55e; }
