@@ -317,7 +317,7 @@ class F1Calendar {
                         if (sessionLower.includes('fp2') && videoTitle.includes('fp2')) return true;
                         if (sessionLower.includes('fp3') && videoTitle.includes('fp3')) return true;
                         if (sessionLower.includes('sprint qualifying') && (videoTitle.includes('sprint qualifying') || videoTitle.includes('sprint quali'))) return true;
-                        if (sessionLower === 'sprint' && videoTitle.includes('sprint') && !videoTitle.includes('quali')) return true;
+                        if (sessionLower.includes('sprint') && !sessionLower.includes('quali') && videoTitle.includes('sprint') && !videoTitle.includes('quali')) return true;
                         if (sessionLower.includes('qualifying') && !sessionLower.includes('sprint') && videoTitle.includes('qualifying') && !videoTitle.includes('sprint')) return true;
                         if ((sessionLower.includes('grand prix') || sessionLower.includes('race')) && (videoTitle.includes('race') || (videoTitle.includes('grand prix') && !videoTitle.includes('qualifying')))) return true;
                         
