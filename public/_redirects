@@ -1,0 +1,2 @@
+# Redirect www to non-www (Cloudflare Pages)
+https://www.f1recap.pages.dev/* https://f1recap.pages.dev/:splat 301
