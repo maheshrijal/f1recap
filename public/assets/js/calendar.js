@@ -50,8 +50,15 @@ class F1Calendar {
                 this.setupCountdown();
                 this.hideLoading();
             } else {
-                this.setupInfiniteScroll();
-                this.renderBatch();
+                // For archive, render all items at once (no lazy loading)
+                // so users can use Ctrl+F to search
+                if (this.dataSource === 'archive') {
+                    this.renderAllItems();
+                    this.setupArchiveControls();
+                } else {
+                    this.setupInfiniteScroll();
+                    this.renderBatch();
+                }
                 this.hideLoading();
                 this.setupDrawer();
             }
@@ -66,6 +73,38 @@ class F1Calendar {
             console.error('Failed to load calendar:', error);
             this.showError();
             this.captureAnalytics('calendar_error', { year: this.year, error: error.message });
+        }
+    }
+    
+    setupArchiveControls() {
+        const toggleAllBtn = document.getElementById('toggleAllBtn');
+        
+        if (toggleAllBtn) {
+            toggleAllBtn.addEventListener('click', () => {
+                const details = this.timelineContainer.querySelectorAll('details.timeline-details');
+                const isExpanded = toggleAllBtn.dataset.expanded === 'true';
+                const expandIcon = toggleAllBtn.querySelector('.expand-icon');
+                const collapseIcon = toggleAllBtn.querySelector('.collapse-icon');
+                const label = toggleAllBtn.querySelector('.toggle-label');
+                
+                if (isExpanded) {
+                    // Collapse all
+                    details.forEach(d => d.open = false);
+                    toggleAllBtn.dataset.expanded = 'false';
+                    expandIcon.style.display = '';
+                    collapseIcon.style.display = 'none';
+                    label.textContent = 'Expand All';
+                    this.captureAnalytics('archive_collapse_all', { count: details.length });
+                } else {
+                    // Expand all
+                    details.forEach(d => d.open = true);
+                    toggleAllBtn.dataset.expanded = 'true';
+                    expandIcon.style.display = 'none';
+                    collapseIcon.style.display = '';
+                    label.textContent = 'Collapse All';
+                    this.captureAnalytics('archive_expand_all', { count: details.length });
+                }
+            });
         }
     }
     
@@ -410,6 +449,18 @@ class F1Calendar {
         timerEl.className = `countdown-timer ${urgency}`;
     }
     
+    renderAllItems() {
+        if (!this.timelineContainer) return;
+        
+        this.mergedWeekends.forEach(weekend => {
+            const item = this.createTimelineItem(weekend);
+            this.timelineContainer.appendChild(item);
+        });
+        
+        this.displayedCount = this.mergedWeekends.length;
+        this.hasMore = false;
+    }
+    
     renderBatch() {
         if (!this.timelineContainer || this.isLoading || !this.hasMore) return;
         
@@ -451,23 +502,46 @@ class F1Calendar {
         const date = this.formatDate(weekend.startDate);
         const badgeClass = isCompleted ? 'completed' : 'upcoming';
         const badgeText = isCompleted ? 'Completed' : 'Coming Soon';
+        const videoCount = isCompleted && weekend.videos.length > 0 ? weekend.videos.length : 0;
         
         const videosHtml = isCompleted && weekend.videos.length > 0
             ? weekend.videos.map(video => this.createVideoCard(video, weekend)).join('')
             : '<div class="timeline-no-videos"><div class="timeline-no-videos-icon">🎥</div><p>Highlights coming soon</p></div>';
         
-        div.innerHTML = `
-            <div class="timeline-header">
-                <h3 class="timeline-title">${this.escapeHtml(weekend.name)}</h3>
-                <span class="timeline-date">${date}</span>
-                <span class="timeline-badge ${badgeClass}">${badgeText}</span>
-            </div>
-            <div class="timeline-content">
-                <div class="timeline-videos">
-                    ${videosHtml}
+        // Use collapsible details/summary for archive view
+        if (this.dataSource === 'archive') {
+            div.innerHTML = `
+                <details class="timeline-details">
+                    <summary class="timeline-header timeline-summary">
+                        <span class="timeline-summary-content">
+                            <h3 class="timeline-title">${this.escapeHtml(weekend.name)}</h3>
+                            <span class="timeline-date">${date}</span>
+                            <span class="timeline-badge ${badgeClass}">${badgeText}</span>
+                            ${videoCount > 0 ? `<span class="timeline-video-count">${videoCount} video${videoCount !== 1 ? 's' : ''}</span>` : ''}
+                        </span>
+                        <span class="timeline-chevron" aria-hidden="true"></span>
+                    </summary>
+                    <div class="timeline-content">
+                        <div class="timeline-videos">
+                            ${videosHtml}
+                        </div>
+                    </div>
+                </details>
+            `;
+        } else {
+            div.innerHTML = `
+                <div class="timeline-header">
+                    <h3 class="timeline-title">${this.escapeHtml(weekend.name)}</h3>
+                    <span class="timeline-date">${date}</span>
+                    <span class="timeline-badge ${badgeClass}">${badgeText}</span>
                 </div>
-            </div>
-        `;
+                <div class="timeline-content">
+                    <div class="timeline-videos">
+                        ${videosHtml}
+                    </div>
+                </div>
+            `;
+        }
         
         return div;
     }
@@ -584,22 +658,18 @@ class F1Calendar {
         if (Number.isNaN(date.getTime())) return;
 
         const options = {
-            year: 'numeric',
             month: 'short',
             day: 'numeric',
             hour: '2-digit',
             minute: '2-digit',
-            second: '2-digit',
             hour12: false
         };
         if (this.userTimeZone) {
             options.timeZone = this.userTimeZone;
-            options.timeZoneName = 'short';
         }
 
         const formatted = new Intl.DateTimeFormat('en-GB', options).format(date);
-        const tzLabel = this.userTimeZone ? ` (${this.userTimeZone})` : '';
-        this.lastUpdated.textContent = `Last updated: ${formatted}${tzLabel}`;
+        this.lastUpdated.textContent = `Updated: ${formatted}`;
     }
     
     hideLoading() {

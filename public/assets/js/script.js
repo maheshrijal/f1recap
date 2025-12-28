@@ -493,22 +493,18 @@ class F1VideoTracker {
         if (Number.isNaN(date.getTime())) return;
 
         const options = {
-            year: 'numeric',
             month: 'short',
             day: 'numeric',
             hour: '2-digit',
             minute: '2-digit',
-            second: '2-digit',
             hour12: false
         };
         if (this.userTimeZone) {
             options.timeZone = this.userTimeZone;
-            options.timeZoneName = 'short';
         }
 
         const formatted = new Intl.DateTimeFormat('en-GB', options).format(date);
-        const tzLabel = this.userTimeZone ? ` (${this.userTimeZone})` : '';
-        this.lastUpdated.textContent = `Last updated: ${formatted}${tzLabel}`;
+        this.lastUpdated.textContent = `Updated: ${formatted}`;
         this.updatePageTitle();
     }
 
@@ -891,10 +887,10 @@ function setTheme(theme) {
         const icon = toggle.querySelector('.theme-toggle-icon');
         const label = toggle.querySelector('.theme-toggle-label');
         if (icon) {
-            icon.textContent = isDark ? '🌙' : '☀️';
+            icon.textContent = isDark ? '☀️' : '🌙';
         }
         if (label) {
-            label.textContent = isDark ? 'Dark' : 'Light';
+            label.textContent = isDark ? 'Light' : 'Dark';
         }
         toggle.classList.toggle('is-dark', isDark);
     });
@@ -915,6 +911,9 @@ function initThemeToggle() {
 
     const toggles = document.querySelectorAll('.theme-toggle');
     toggles.forEach(toggle => {
+        // Skip if already initialized by components.js
+        if (toggle.dataset.initialized) return;
+        toggle.dataset.initialized = 'true';
         toggle.addEventListener('click', () => {
             const current = document.documentElement.getAttribute('data-theme') || 'light';
             setTheme(current === 'dark' ? 'light' : 'dark');
@@ -934,8 +933,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const tzNote = document.getElementById('tzNote');
     const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const label = tz ? tz : 'unknown';
-    if (tzNote) {
-        tzNote.textContent = `All session times are shown in your local timezone (${label}).`;
+    if (tzNote && tz) {
+        tzNote.textContent = tz;
     }
 });
