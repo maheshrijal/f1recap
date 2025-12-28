@@ -74,35 +74,7 @@
     </script>
 </head>
 <body>
-    <header>
-        <div class="header-inner">
-            <a class="header-text" href="#" aria-label="Go to top">
-                <h1>🏎️ F1 Highlights Hub</h1>
-                <p>2026 Formula 1 Season • Practice, Qualifying, Sprint & Race Highlights</p>
-            </a>
-        </div>
-        <div class="header-actions">
-            <button class="theme-toggle header-toggle" type="button" aria-label="Toggle theme">
-                <span class="light-stack" aria-hidden="true">
-                    <span class="light-dot"></span>
-                    <span class="light-dot"></span>
-                    <span class="light-dot"></span>
-                </span>
-                <span class="theme-toggle-icon">🌙</span>
-                <span class="theme-toggle-label">Dark</span>
-            </button>
-        </div>
-        <nav class="header-nav" aria-label="Main navigation">
-            <div class="header-nav-inner">
-                <a href="index.html" class="nav-link active">Home</a>
-                <a href="archive-2025.html" class="nav-link">Archive (2025)</a>
-                <a href="about.html" class="nav-link">About</a>
-            </div>
-        </nav>
-        <div class="header-inner">
-            <div class="last-updated" id="lastUpdated">Sessions shown in your local timezone.</div>
-        </div>
-    </header>
+    <div id="site-header"></div>
 
     <main id="top">
         <section id="hero" class="hero" aria-live="polite"></section>
@@ -141,28 +113,10 @@
         </div>
     </main>
 
-    <footer>
-        <div class="footer-bottom">
-            <span class="footer-text footer-left footer-cell-left" id="tzNote">All session times are shown in your local timezone.</span>
-            <button class="theme-toggle footer-cell-center" type="button" aria-label="Toggle theme">
-                <span class="light-stack" aria-hidden="true">
-                    <span class="light-dot"></span>
-                    <span class="light-dot"></span>
-                    <span class="light-dot"></span>
-                </span>
-                <span class="theme-toggle-icon">🌙</span>
-                <span class="theme-toggle-label">Dark</span>
-            </button>
-            <span class="footer-text footer-right footer-links-inline footer-cell-right">
-                <a href="about.html" class="footer-inline-link">About</a>
-                <span aria-hidden="true">•</span>
-                <a href="disclosure.html" class="footer-inline-link">Disclosure</a>
-                <span aria-hidden="true">•</span>
-                <span>&copy; 2025 F1 Recap. Built with ❤️ for F1 fans.</span>
-            </span>
-        </div>
-    </footer>
+    <div id="site-footer"></div>
 
+    <script src="assets/js/components.js"></script>
+    <script>Components.render('home');</script>
     <script>
         window.__POSTHOG__ = window.__POSTHOG__ || {};
     </script>
