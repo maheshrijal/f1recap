@@ -30,6 +30,10 @@ const Components = {
             </a>
         </div>
         <div class="header-actions">
+            <button class="nav-toggle header-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav">
+                <span class="nav-toggle-icon" aria-hidden="true">☰</span>
+                <span class="nav-toggle-label">Menu</span>
+            </button>
             <button class="theme-toggle header-toggle" type="button" aria-label="Toggle theme">
                 <span class="light-stack" aria-hidden="true">
                     <span class="light-dot"></span>
@@ -40,7 +44,7 @@ const Components = {
                 <span class="theme-toggle-label">Dark</span>
             </button>
         </div>
-        <nav class="header-nav" aria-label="Main navigation">
+        <nav class="header-nav" id="site-nav" aria-label="Main navigation">
             <div class="header-nav-inner">
                 ${navHTML}
             </div>
@@ -140,6 +144,56 @@ const Components = {
             if (icon) icon.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
             if (label) label.textContent = currentTheme === 'dark' ? 'Light' : 'Dark';
         });
+
+        // Mobile nav toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const nav = document.getElementById('site-nav');
+        if (navToggle && nav && !navToggle.dataset.initialized) {
+            const navIcon = navToggle.querySelector('.nav-toggle-icon');
+            const navLabel = navToggle.querySelector('.nav-toggle-label');
+
+            const updateToggleVisual = (isOpen) => {
+                if (navIcon) navIcon.textContent = isOpen ? 'X' : '☰';
+                if (navLabel) navLabel.textContent = isOpen ? 'Close' : 'Menu';
+            };
+
+            const setNavState = (isOpen) => {
+                nav.classList.toggle('is-open', isOpen);
+                navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                nav.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+                updateToggleVisual(isOpen);
+            };
+
+            navToggle.addEventListener('click', () => {
+                const isOpen = nav.classList.contains('is-open');
+                setNavState(!isOpen);
+            });
+
+            nav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => setNavState(false));
+            });
+
+            const mediaQuery = window.matchMedia('(max-width: 720px)');
+            const syncNav = () => {
+                if (!mediaQuery.matches) {
+                    nav.classList.remove('is-open');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                    nav.removeAttribute('aria-hidden');
+                    updateToggleVisual(false);
+                    return;
+                }
+                nav.setAttribute('aria-hidden', nav.classList.contains('is-open') ? 'false' : 'true');
+                updateToggleVisual(nav.classList.contains('is-open'));
+            };
+
+            if (typeof mediaQuery.addEventListener === 'function') {
+                mediaQuery.addEventListener('change', syncNav);
+            } else if (typeof mediaQuery.addListener === 'function') {
+                mediaQuery.addListener(syncNav);
+            }
+            syncNav();
+            navToggle.dataset.initialized = 'true';
+        }
     },
 
     /**
