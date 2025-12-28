@@ -77,41 +77,112 @@
     <div id="site-header"></div>
 
     <main id="top">
+        <!-- Hero: Next Session Countdown -->
         <section id="hero" class="hero" aria-live="polite"></section>
-        <section id="upcoming" class="hero" aria-live="polite" style="display: none;"></section>
 
-        <div class="main-layout" id="calendar-2026">
+        <!-- Season Progress Bar -->
+        <section id="seasonProgress" class="season-progress" style="display: none;">
+            <div class="season-progress-bar">
+                <div class="season-progress-fill" id="progressFill"></div>
+                <div class="season-progress-marker" id="progressMarker"></div>
+            </div>
+            <div class="season-progress-label" id="progressLabel">Loading season progress...</div>
+        </section>
+
+        <!-- Main Content: Unified Calendar + Videos -->
+        <div class="main-layout unified-layout" id="calendar-2026">
             <div class="content-area">
                 <div id="calendarLoading" class="calendar-loading">
                     <div class="calendar-loading-spinner"></div>
-                    <p>Loading 2026 calendar...</p>
+                    <p>Loading calendar...</p>
                 </div>
                 
                 <div id="calendarError" class="calendar-error" style="display: none;">
-                    <p>Failed to load the 2026 calendar. Please try again later.</p>
+                    <p>Failed to load the calendar. Please try again later.</p>
                 </div>
 
-                <div id="calendarContainer" class="timeline-container" style="display: none;">
-                    <div id="calendarTimeline" class="timeline" aria-live="polite">
-                        <!-- Calendar list renders here -->
+                <!-- Upcoming Schedule Section -->
+                <section id="upcomingSchedule" class="gp-section" style="display: none;">
+                    <div class="gp-section-header">
+                        <h2 class="gp-section-title">
+                            <span class="gp-section-icon">📅</span>
+                            Upcoming Races
+                        </h2>
                     </div>
-                </div>
+                    <div id="upcomingGPCards" class="gp-cards-grid">
+                        <!-- Upcoming GP cards render here -->
+                    </div>
+                    <div class="load-more-trigger">
+                        <div class="load-more-spinner" id="loadMoreSpinner" style="display: none;"></div>
+                    </div>
+                </section>
+
+                <!-- Off-Season State -->
+                <section id="offSeasonState" class="off-season-state" style="display: none;">
+                    <div class="off-season-content">
+                        <div class="off-season-icon">🏎️</div>
+                        <h2 class="off-season-title">2026 Season Coming Soon</h2>
+                        <p class="off-season-subtitle">The new season kicks off in March 2026</p>
+                        <ul class="off-season-features">
+                            <li>📍 24 races across 5 continents</li>
+                            <li>🏃 6 sprint weekends</li>
+                            <li>🎬 Automatic highlight updates</li>
+                        </ul>
+                        <div class="off-season-actions">
+                            <a class="watch-button" href="data/f1-calendar_2026.ics">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                Add to Calendar
+                            </a>
+                        </div>
+                        <div class="off-season-archive">
+                            <span>Meanwhile, catch up on last season:</span>
+                            <a href="archive-2025.html" class="archive-link">Browse 2025 Archive →</a>
+                        </div>
+                    </div>
+                </section>
             </div>
 
-            <aside class="info-panel" aria-label="Helpful links">
-                <div class="info-card">
-                    <h3>2025 season archive</h3>
-                    <p>Browse every 2025 session highlight in one place.</p>
-                    <a class="watch-button" href="archive-2025.html">View archive</a>
+            <!-- Sidebar: Quick Calendar + Info -->
+            <aside class="info-panel" aria-label="Season overview">
+                <!-- Mini Calendar -->
+                <div class="sidebar-calendar-container">
+                    <div class="sidebar-calendar-header">
+                        <h3>2026 Calendar</h3>
+                        <a class="ics-download-link" href="data/f1-calendar_2026.ics" title="Download calendar">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            .ics
+                        </a>
+                    </div>
+                    <div id="sidebarCalendar" class="sidebar-calendar-list">
+                        <!-- Mini calendar renders here -->
+                    </div>
                 </div>
-                <div class="info-card subtle">
-                    <h3>Save the dates</h3>
-                    <p>Add the 2026 schedule to your calendar to keep countdowns handy.</p>
-                    <a class="secondary-button" href="data/f1-calendar_2026.ics">Download .ics</a>
+
+                <!-- Archive Card -->
+                <div class="info-card">
+                    <h3>2025 Season Archive</h3>
+                    <p>Relive all 24 races with complete session highlights.</p>
+                    <a class="watch-button" href="archive-2025.html">View archive</a>
                 </div>
             </aside>
         </div>
     </main>
+
+    <!-- Video Drawer -->
+    <div id="videoDrawer" class="drawer" aria-hidden="true">
+        <div class="drawer-backdrop"></div>
+        <div class="drawer-panel" role="dialog" aria-modal="true" aria-label="Session details">
+            <button class="drawer-close" type="button" aria-label="Close">✕</button>
+            <div class="drawer-body" id="drawerContent"></div>
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top" title="Back to top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
 
     <div id="site-footer"></div>
 
@@ -324,7 +395,29 @@
             }
         })(window, document);
     </script>
-    <script src="assets/js/calendar.js" data-year="2026" data-ics-file="data/f1-calendar_2026.ics" data-view="list" data-source="current"></script>
+    <script src="assets/js/calendar.js" data-year="2026" data-ics-file="data/f1-calendar_2026.ics" data-view="unified" data-source="homepage"></script>
     <script src="assets/js/script.js"></script>
+    <script>
+        // Scroll to Top functionality
+        (function() {
+            const scrollBtn = document.getElementById('scrollToTop');
+            if (!scrollBtn) return;
+            
+            const toggleVisibility = () => {
+                if (window.scrollY > 300) {
+                    scrollBtn.classList.add('visible');
+                } else {
+                    scrollBtn.classList.remove('visible');
+                }
+            };
+            
+            window.addEventListener('scroll', toggleVisibility, { passive: true });
+            toggleVisibility();
+            
+            scrollBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        })();
+    </script>
 </body>
 </html>
