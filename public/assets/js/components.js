@@ -158,9 +158,5 @@ const Components = {
     }
 };
 
-// Auto-initialize when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => Components.init());
-} else {
-    Components.init();
-}
+// Remove auto-initialization since render() calls init() explicitly
+// The inline script Components.render() will handle initialization
