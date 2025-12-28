@@ -629,6 +629,7 @@ class F1Calendar {
         };
         
         updateCountdown();
+        if (this.countdownInterval) clearInterval(this.countdownInterval);
         this.countdownInterval = setInterval(updateCountdown, 1000);
     }
     
