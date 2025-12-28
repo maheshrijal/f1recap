@@ -34,6 +34,15 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏎️</text></svg>">
     <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏎️</text></svg>">
     
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#e10600">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://www.youtube.com">
+    <link rel="preconnect" href="https://i.ytimg.com">
+    <link rel="dns-prefetch" href="https://eu.i.posthog.com">
+    
     <!-- Canonical URL -->
     <link rel="canonical" href="https://f1recap.pages.dev/">
     
@@ -70,6 +79,28 @@
           "item": "https://f1recap.pages.dev/"
         }
       ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      "name": "2026 Formula 1 World Championship",
+      "description": "The 2026 Formula 1 World Championship season featuring 24 Grand Prix races across 5 continents",
+      "url": "https://f1recap.pages.dev/",
+      "sport": "Formula 1 Racing",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "startDate": "2026-03-01",
+      "endDate": "2026-12-06",
+      "location": {
+        "@type": "Place",
+        "name": "Various circuits worldwide"
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "Formula One World Championship Limited",
+        "url": "https://www.formula1.com"
+      }
     }
     </script>
 </head>
