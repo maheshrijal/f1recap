@@ -59,12 +59,24 @@ class F1Calendar {
         this.offSeasonState = document.getElementById('offSeasonState');
         this.sidebarCalendar = document.getElementById('sidebarCalendar');
         this.seasonProgress = document.getElementById('seasonProgress');
+        this.standingsSection = document.getElementById('championshipStandings');
+        this.standingsMeta = document.getElementById('standingsMeta');
+        this.standingsLoading = document.getElementById('standingsLoading');
+        this.standingsEmpty = document.getElementById('standingsEmpty');
+        this.standingsUnavailable = document.getElementById('standingsUnavailable');
+        this.standingsTableWrap = document.getElementById('standingsTableWrap');
+        this.standingsTableHead = document.getElementById('standingsTableHead');
+        this.standingsTableBody = document.getElementById('standingsTableBody');
 
         this.calendarWeekends = [];
         this.videoWeekends = [];
         this.mergedWeekends = [];
         this.completedGPs = [];
         this.upcomingGPs = [];
+        this.standingsData = this.defaultStandingsData();
+        this.standingsStatus = 'loading';
+        this.activeStandingsView = this.getInitialStandingsView();
+        this.standingsTabsBound = false;
         this.displayedCount = 0;
         this.itemsPerPage = 6;
         this.userTimeZone = this.getUserTimeZone();
@@ -83,13 +95,26 @@ class F1Calendar {
 
     async init() {
         try {
-            await Promise.all([this.loadCalendar(), this.loadVideos()]);
+            if (this.viewMode === 'standings') {
+                await this.loadStandings();
+                this.renderStandings();
+                this.startAutoRefresh();
+                window.addEventListener('beforeunload', this.beforeUnloadHandler);
+                return;
+            }
+
+            const initTasks = [this.loadCalendar(), this.loadVideos()];
+            if (this.standingsSection) {
+                initTasks.push(this.loadStandings());
+            }
+            await Promise.all(initTasks);
             this.mergeAndSort();
 
             if (this.viewMode === 'unified') {
                 this.renderUnifiedView();
                 this.renderSidebarCalendar();
                 this.renderSeasonProgress();
+                this.renderStandings();
                 this.hideLoading();
                 this.setupDrawer();
             } else if (this.viewMode === 'list') {
@@ -166,13 +191,24 @@ class F1Calendar {
         this._lastRefresh = Date.now();
 
         try {
-            await Promise.all([this.loadCalendar(), this.loadVideos()]);
+            if (this.viewMode === 'standings') {
+                await this.loadStandings();
+                this.renderStandings();
+                return;
+            }
+
+            const refreshTasks = [this.loadCalendar(), this.loadVideos()];
+            if (this.standingsSection) {
+                refreshTasks.push(this.loadStandings());
+            }
+            await Promise.all(refreshTasks);
             this.mergeAndSort();
 
             if (this.viewMode === 'unified') {
                 this.renderUnifiedView();
                 this.renderSidebarCalendar();
                 this.renderSeasonProgress();
+                this.renderStandings();
                 this.setupDrawer();
             } else if (this.viewMode === 'list') {
                 this.renderListView();
@@ -309,6 +345,65 @@ class F1Calendar {
         }
 
         this.videoWeekends = [];
+    }
+
+    defaultStandingsData() {
+        return {
+            season: this.year,
+            round: null,
+            updatedAt: null,
+            seasonStarted: false,
+            source: 'jolpica',
+            drivers: [],
+            constructors: []
+        };
+    }
+
+    normalizeStandingsData(payload) {
+        const safe = payload && typeof payload === 'object' ? payload : {};
+        const drivers = Array.isArray(safe.drivers) ? safe.drivers : [];
+        const constructors = Array.isArray(safe.constructors) ? safe.constructors : [];
+
+        return {
+            season: String(safe.season || this.year),
+            round: safe.round !== undefined && safe.round !== null ? safe.round : null,
+            updatedAt: safe.updatedAt || null,
+            seasonStarted: Boolean(safe.seasonStarted) || drivers.length > 0 || constructors.length > 0,
+            source: safe.source || 'jolpica',
+            drivers: drivers.map((entry) => ({
+                position: Number(entry?.position || 0),
+                driverCode: entry?.driverCode || '',
+                driverName: entry?.driverName || 'Unknown Driver',
+                constructorName: entry?.constructorName || 'Unknown Team',
+                points: Number(entry?.points || 0),
+                wins: Number(entry?.wins || 0)
+            })),
+            constructors: constructors.map((entry) => ({
+                position: Number(entry?.position || 0),
+                constructorName: entry?.constructorName || 'Unknown Team',
+                points: Number(entry?.points || 0),
+                wins: Number(entry?.wins || 0)
+            }))
+        };
+    }
+
+    async loadStandings() {
+        const file = addDataPrefix(`standings${this.year}.json`);
+        this.standingsStatus = 'loading';
+
+        try {
+            const response = await fetch(file, { cache: 'no-cache' });
+            if (!response.ok) {
+                throw new Error(`Failed to fetch standings (${response.status})`);
+            }
+            const data = await response.json();
+            this.standingsData = this.normalizeStandingsData(data);
+            this.standingsStatus = 'ready';
+        } catch (error) {
+            console.debug('Standings load failed:', error.message);
+            this.standingsData = this.defaultStandingsData();
+            this.standingsStatus = 'unavailable';
+        }
     }
 
     parseIcsCalendar(text) {
@@ -771,6 +866,211 @@ class F1Calendar {
         if (progressLabel) progressLabel.textContent = `Race ${completed} of ${total} • ${percentage}% complete`;
 
         this.seasonProgress.style.display = 'block';
+    }
+
+    setupStandingsTabs() {
+        if (this.standingsTabsBound || !this.standingsSection) return;
+        const tabs = Array.from(this.standingsSection.querySelectorAll('[data-standings-view]'));
+        const firstTab = tabs[0];
+        const lastTab = tabs[tabs.length - 1];
+
+        tabs.forEach((tab) => {
+            tab.addEventListener('click', () => {
+                const view = tab.getAttribute('data-standings-view');
+                if (!view || view === this.activeStandingsView) return;
+                this.activeStandingsView = view;
+                this.updateStandingsViewInUrl(view);
+                this.renderStandings();
+            });
+
+            tab.addEventListener('keydown', (event) => {
+                if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+                event.preventDefault();
+
+                const currentIndex = tabs.indexOf(tab);
+                const nextTab = event.key === 'ArrowRight'
+                    ? (tab === lastTab ? firstTab : tabs[currentIndex + 1])
+                    : (tab === firstTab ? lastTab : tabs[currentIndex - 1]);
+
+                if (nextTab) {
+                    nextTab.focus();
+                    nextTab.click();
+                }
+            });
+        });
+        this.standingsTabsBound = true;
+    }
+
+    setStandingsState(state) {
+        const isLoading = state === 'loading';
+        const isEmpty = state === 'empty';
+        const isUnavailable = state === 'unavailable';
+        const isTable = state === 'table';
+
+        if (this.standingsLoading) this.standingsLoading.style.display = isLoading ? 'block' : 'none';
+        if (this.standingsEmpty) this.standingsEmpty.style.display = isEmpty ? 'block' : 'none';
+        if (this.standingsUnavailable) this.standingsUnavailable.style.display = isUnavailable ? 'block' : 'none';
+        if (this.standingsTableWrap) this.standingsTableWrap.style.display = isTable ? 'block' : 'none';
+    }
+
+    updateStandingsMeta() {
+        if (!this.standingsMeta) return;
+
+        if (this.standingsStatus === 'unavailable') {
+            this.standingsMeta.textContent = 'Standings data currently unavailable.';
+            return;
+        }
+
+        const round = this.standingsData?.round;
+        const updatedLabel = this.formatStandingsUpdatedAt(this.standingsData?.updatedAt);
+        const roundLabel = round ? `After Round ${round}` : 'Pre-season';
+        this.standingsMeta.textContent = updatedLabel ? `${roundLabel} • Updated ${updatedLabel}` : roundLabel;
+    }
+
+    formatStandingsUpdatedAt(timestamp) {
+        if (!timestamp) return '';
+        const date = new Date(timestamp);
+        if (Number.isNaN(date.getTime())) return '';
+
+        const options = {
+            month: 'short',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+        };
+        if (this.userTimeZone) {
+            options.timeZone = this.userTimeZone;
+        }
+
+        return new Intl.DateTimeFormat('en-GB', options).format(date);
+    }
+
+    renderStandings() {
+        if (!this.standingsSection) return;
+        this.setupStandingsTabs();
+        this.standingsSection.style.display = 'block';
+        this.updateStandingsMeta();
+        this.updateFooterMeta();
+
+        const tabs = this.standingsSection.querySelectorAll('[data-standings-view]');
+        const panel = document.getElementById('standingsPanel');
+        tabs.forEach((tab) => {
+            const isActive = tab.getAttribute('data-standings-view') === this.activeStandingsView;
+            tab.classList.toggle('active', isActive);
+            tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+            tab.setAttribute('tabindex', isActive ? '0' : '-1');
+            if (isActive && panel && tab.id) {
+                panel.setAttribute('aria-labelledby', tab.id);
+            }
+        });
+
+        if (this.standingsStatus === 'loading') {
+            this.setStandingsState('loading');
+            return;
+        }
+
+        if (this.standingsStatus === 'unavailable') {
+            this.setStandingsState('unavailable');
+            return;
+        }
+
+        const rows = this.activeStandingsView === 'constructors'
+            ? this.standingsData.constructors
+            : this.standingsData.drivers;
+
+        if (!this.standingsData.seasonStarted || rows.length === 0) {
+            this.setStandingsState('empty');
+            return;
+        }
+
+        this.renderStandingsTable(rows, this.activeStandingsView);
+        this.setStandingsState('table');
+    }
+
+    renderStandingsTable(rows, view) {
+        if (!this.standingsTableHead || !this.standingsTableBody) return;
+
+        const headCells = view === 'constructors'
+            ? ['Pos', 'Team', 'Pts', 'Wins']
+            : ['Pos', 'Driver', 'Team', 'Pts', 'Wins'];
+
+        this.standingsTableHead.innerHTML = `
+            <tr>
+                ${headCells.map((cell) => `<th scope=\"col\">${cell}</th>`).join('')}
+            </tr>
+        `;
+
+        this.standingsTableBody.innerHTML = rows.map((row) => {
+            if (view === 'constructors') {
+                return `
+                    <tr>
+                        <td>${row.position || '-'}</td>
+                        <td class="standings-name">${this.escapeHtml(row.constructorName || 'Unknown Team')}</td>
+                        <td>${this.formatPoints(row.points)}</td>
+                        <td>${row.wins || 0}</td>
+                    </tr>
+                `;
+            }
+
+            return `
+                <tr>
+                    <td>${row.position || '-'}</td>
+                    <td class="standings-name">
+                        ${this.escapeHtml(row.driverName || 'Unknown Driver')}
+                        ${row.driverCode ? `<span class=\"standings-code\">${this.escapeHtml(row.driverCode)}</span>` : ''}
+                    </td>
+                    <td>${this.escapeHtml(row.constructorName || 'Unknown Team')}</td>
+                    <td>${this.formatPoints(row.points)}</td>
+                    <td>${row.wins || 0}</td>
+                </tr>
+            `;
+        }).join('');
+    }
+
+    formatPoints(value) {
+        const points = Number(value);
+        if (!Number.isFinite(points)) return '0';
+        return Number.isInteger(points) ? String(points) : points.toFixed(1);
+    }
+
+    updateFooterMeta() {
+        const tzNote = document.getElementById('tzNote');
+        if (tzNote) {
+            const timeZone = this.userTimeZone || 'UTC';
+            tzNote.textContent = `Times shown in ${timeZone}`;
+        }
+        if (this.standingsData?.updatedAt) {
+            this.updateLastUpdated(this.standingsData.updatedAt);
+        }
+    }
+
+    getInitialStandingsView() {
+        if (typeof window === 'undefined') return 'drivers';
+        try {
+            const view = new URLSearchParams(window.location.search).get('tab');
+            return view === 'constructors' ? 'constructors' : 'drivers';
+        } catch (_) {
+            return 'drivers';
+        }
+    }
+
+    updateStandingsViewInUrl(view) {
+        if (typeof window === 'undefined' || !window.history || !window.history.replaceState) {
+            return;
+        }
+
+        try {
+            const url = new URL(window.location.href);
+            if (view === 'constructors') {
+                url.searchParams.set('tab', 'constructors');
+            } else {
+                url.searchParams.delete('tab');
+            }
+            window.history.replaceState({}, '', `${url.pathname}${url.search}${url.hash}`);
+        } catch (_) {
+            // Ignore URL sync failures
+        }
     }
 
     // Helper methods for unified view

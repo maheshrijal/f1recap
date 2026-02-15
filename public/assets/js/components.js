@@ -6,7 +6,7 @@
 const Components = {
     /**
      * Generate the site header HTML
-     * @param {string} activePage - The current active page ('home', 'archive', 'about')
+     * @param {string} activePage - The current active page ('home', 'standings', 'archive', 'about')
      * @param {Object} options - Optional configuration
      * @param {string} options.subtitle - Custom subtitle text
      * @returns {string} Header HTML
@@ -14,13 +14,16 @@ const Components = {
     header(activePage = 'home', options = {}) {
         const navLinks = [
             { href: 'index.html', label: 'Home', id: 'home' },
+            { href: 'standings.html', label: 'Standings', id: 'standings' },
             { href: 'archive-2025.html', label: 'Archive (2025)', id: 'archive' },
             { href: 'about.html', label: 'About', id: 'about' }
         ];
 
-        const navHTML = navLinks.map(link =>
-            `<a href="${link.href}" class="nav-link${activePage === link.id ? ' active' : ''}">${link.label}</a>`
-        ).join('\n                ');
+        const navHTML = navLinks.map((link) => {
+            const isActive = activePage === link.id;
+            const ariaCurrent = isActive ? ' aria-current="page"' : '';
+            return `<a href="${link.href}" class="nav-link${isActive ? ' active' : ''}"${ariaCurrent}>${link.label}</a>`;
+        }).join('\n                ');
 
         const notificationButtonHtml = activePage === 'home'
             ? `

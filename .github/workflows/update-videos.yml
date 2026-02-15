@@ -55,16 +55,17 @@ jobs:
       run: npm ci
       if: steps.gate.outputs.run == 'true'
       
-    - name: Fetch latest videos
+    - name: Fetch latest videos and standings
       env:
         YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         MANUAL_RUN: ${{ github.event_name == 'workflow_dispatch' }}
         UPDATE_REASON: ${{ github.event.inputs.reason || 'Scheduled update' }}
         TARGET_YEAR: '2026'
       run: |
-        echo "🚀 Starting F1 video fetch..."
+        echo "🚀 Starting F1 data fetch..."
         echo "Reason: $UPDATE_REASON"
         npm run fetch
+        npm run fetch-standings
       if: steps.gate.outputs.run == 'true'
       
     - name: Commit and push changes
@@ -73,8 +74,8 @@ jobs:
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         
-        # Add the generated video data to the served location (current + archive)
-        git add public/data/videos.json public/data/videos-*.json
+        # Add generated data to served location (videos + standings)
+        git add public/data/videos.json public/data/videos-*.json public/data/standings2026.json
         
         # Check if there are changes or if force update is enabled
         if git diff --staged --quiet && [ "${{ github.event.inputs.force_update }}" != "true" ]; then
@@ -89,6 +90,10 @@ jobs:
           
           echo "📝 Committing with message: $COMMIT_MSG"
           git commit -m "$COMMIT_MSG"
+
+          echo "🔄 Syncing with latest ${{ github.ref_name }} before push..."
+          git fetch origin "${{ github.ref_name }}"
+          GIT_EDITOR=: git pull --rebase origin "${{ github.ref_name }}"
           
           echo "🚀 Pushing changes..."
           git push origin HEAD:${{ github.ref_name }}
@@ -125,4 +130,20 @@ jobs:
           fi
         else
           echo "❌ No public/data/videos.json file found"
+        fi
+
+        if [ -f public/data/standings2026.json ]; then
+          STANDINGS_UPDATED=$(node -e "const data = require('./public/data/standings2026.json'); console.log(data.updatedAt || 'Unknown');")
+          SEASON_STARTED=$(node -e "const data = require('./public/data/standings2026.json'); console.log(Boolean(data.seasonStarted));")
+          DRIVERS_COUNT=$(node -e "const data = require('./public/data/standings2026.json'); console.log(Array.isArray(data.drivers) ? data.drivers.length : 0);")
+          CONSTRUCTORS_COUNT=$(node -e "const data = require('./public/data/standings2026.json'); console.log(Array.isArray(data.constructors) ? data.constructors.length : 0);")
+
+          echo ""
+          echo "🏆 Championship standings:"
+          echo "Season started: $SEASON_STARTED"
+          echo "Drivers rows: $DRIVERS_COUNT"
+          echo "Constructors rows: $CONSTRUCTORS_COUNT"
+          echo "Standings updated: $STANDINGS_UPDATED"
+        else
+          echo "❌ No public/data/standings2026.json file found"
         fi
