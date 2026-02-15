@@ -2443,6 +2443,152 @@ footer {
     font-weight: 500;
 }
 
+.standings-section {
+    margin: 0 0 1.5rem;
+    padding: 1rem 1.1rem;
+    background: var(--card);
+    border: 1px solid var(--stroke);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.standings-page-section {
+    max-width: 1100px;
+    margin: 0 auto 2rem;
+}
+
+.standings-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.standings-title {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-wrap: balance;
+}
+
+.standings-tabs {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem;
+    border-radius: 999px;
+    border: 1px solid var(--stroke);
+    background: var(--card-contrast);
+}
+
+.standings-tab {
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.4rem 0.75rem;
+    border-radius: 999px;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.standings-tab:hover {
+    color: var(--text);
+}
+
+.standings-tab.active {
+    background: var(--accent);
+    color: #fff;
+}
+
+.standings-tab:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.standings-meta {
+    margin: 0.75rem 0 0;
+    font-size: 0.84rem;
+    color: var(--muted);
+}
+
+.standings-state {
+    margin-top: 0.75rem;
+    padding: 0.8rem 0.9rem;
+    border: 1px dashed var(--stroke);
+    border-radius: 10px;
+    background: var(--card-contrast);
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.standings-table-wrap {
+    margin-top: 0.75rem;
+    overflow-x: auto;
+}
+
+.standings-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 520px;
+}
+
+.standings-table th,
+.standings-table td {
+    text-align: left;
+    padding: 0.62rem 0.55rem;
+    border-bottom: 1px solid var(--stroke);
+    font-size: 0.88rem;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+.standings-table th {
+    color: var(--muted);
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.standings-table td:first-child {
+    width: 44px;
+    font-weight: 700;
+}
+
+.standings-name {
+    font-weight: 600;
+    color: var(--text);
+}
+
+.standings-code {
+    margin-left: 0.45rem;
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-weight: 700;
+}
+
+.standings-attribution {
+    margin: 0.75rem 0 0;
+    font-size: 0.74rem;
+    color: var(--muted);
+}
+
+.standings-attribution a {
+    color: var(--accent-text);
+    font-weight: 600;
+}
+
+.standings-attribution a:hover {
+    text-decoration: underline;
+}
+
 /* GP Section Headers */
 .gp-section {
     margin-bottom: 1.5rem;
@@ -2905,6 +3051,28 @@ footer {
         align-items: flex-start;
         gap: 0.35rem;
     }
+
+    .standings-section {
+        padding: 0.9rem;
+    }
+
+    .standings-header {
+        align-items: flex-start;
+    }
+
+    .standings-title {
+        font-size: 1.05rem;
+    }
+
+    .standings-tabs {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .standings-tab {
+        flex: 1;
+        text-align: center;
+    }
 }
 
 /* Expanded Video Preview in GP Card */
@@ -3347,6 +3515,45 @@ footer {
 
 [data-theme="dark"] .season-progress-label {
     color: #a3a3a3;
+}
+
+[data-theme="dark"] .standings-section {
+    background: #141414;
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .standings-tabs {
+    background: #1f1f1f;
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="dark"] .standings-tab {
+    color: #a3a3a3;
+}
+
+[data-theme="dark"] .standings-tab:hover {
+    color: #f5f5f5;
+}
+
+[data-theme="dark"] .standings-state {
+    background: #1a1a1a;
+    border-color: rgba(255, 255, 255, 0.12);
+    color: #a3a3a3;
+}
+
+[data-theme="dark"] .standings-meta,
+[data-theme="dark"] .standings-attribution,
+[data-theme="dark"] .standings-code {
+    color: #a3a3a3;
+}
+
+[data-theme="dark"] .standings-table th,
+[data-theme="dark"] .standings-table td {
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .standings-name {
+    color: #f5f5f5;
 }
 
 [data-theme="dark"] .season-progress-marker {

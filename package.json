@@ -5,9 +5,10 @@
   "main": "scripts/fetch-videos.js",
   "scripts": {
     "fetch": "node scripts/fetch-videos.js",
+    "fetch-standings": "node scripts/fetch-standings-2026.js",
     "fetch-archive": "node scripts/fetch-archive-2025.js",
     "dev": "npx -y serve public -p 8000",
-    "build": "if [ -n \"$YOUTUBE_API_KEY\" ]; then npm run fetch; else echo \"Skipping video fetch: YOUTUBE_API_KEY not set. Using committed public/data/*.json.\"; fi",
+    "build": "if [ -n \"$YOUTUBE_API_KEY\" ]; then npm run fetch; else echo \"Skipping video fetch: YOUTUBE_API_KEY not set. Using committed public/data/*.json.\"; fi && npm run fetch-standings",
     "validate-calendar": "node scripts/validate-calendar.js"
   },
   "dependencies": {

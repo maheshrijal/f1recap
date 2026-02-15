@@ -8,6 +8,7 @@ A fast, elegant hub for Formula 1 race highlights. View the full season calendar
 - **Inline Video Expansion** — Single-click to expand and watch highlights directly
 - **Live Countdown** — Timer to the next session in your local timezone
 - **Season Progress** — Visual indicator of completed vs remaining races
+- **Championship Standings** — Drivers and Constructors tables refreshed via build-time data fetch
 - **Quick Navigation** — Sidebar calendar for jumping to any GP
 - **Dark Mode** — Easy on the eyes for late-night race watching
 - **2025 Archive** — Complete archive of all 2025 session highlights

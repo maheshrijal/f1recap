@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>2026 F1 Championship Standings | F1 Highlights Hub</title>
+  <meta name="title" content="2026 F1 Championship Standings | F1 Highlights Hub">
+  <meta name="description" content="Latest 2026 Formula 1 Drivers and Constructors championship standings with points and wins.">
+  <meta name="keywords" content="F1 standings 2026, Formula 1 drivers standings, F1 constructors standings, F1 points table">
+  <meta name="author" content="F1 Recap">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://f1recap.pages.dev/standings.html">
+  <meta property="og:title" content="2026 F1 Championship Standings">
+  <meta property="og:description" content="Drivers and Constructors standings for the 2026 Formula 1 season.">
+  <meta property="og:image" content="https://f1recap.pages.dev/assets/images/og-image.jpg">
+  <meta property="og:site_name" content="F1 Recap">
+
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://f1recap.pages.dev/standings.html">
+  <meta property="twitter:title" content="2026 F1 Championship Standings">
+  <meta property="twitter:description" content="Drivers and Constructors standings for the 2026 Formula 1 season.">
+  <meta property="twitter:image" content="https://f1recap.pages.dev/assets/images/og-image.jpg">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏎️</text></svg>">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏎️</text></svg>">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#e10600">
+  <link rel="canonical" href="https://f1recap.pages.dev/standings">
+
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+  <div id="site-header"></div>
+
+  <main id="main-content" tabindex="-1">
+    <section class="hero" aria-live="polite">
+      <div class="hero-card hero-centered">
+        <div class="hero-flag">🏆</div>
+        <div class="hero-meta">
+          <p class="hero-kicker">2026 Season</p>
+          <h1 class="hero-title">Championship Standings</h1>
+          <p class="hero-date">Track Drivers and Constructors points throughout the season.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="championshipStandings" class="standings-section standings-page-section" aria-live="polite" style="display: none;">
+      <div class="standings-header">
+        <h2 class="standings-title">
+          <span class="standings-icon">🏆</span>
+          Championship Standings
+        </h2>
+        <div class="standings-tabs" role="tablist" aria-label="Championship standings views">
+          <button class="standings-tab active" id="standingsTabDrivers" type="button" role="tab" aria-selected="true" aria-controls="standingsPanel" tabindex="0" data-standings-view="drivers">Drivers</button>
+          <button class="standings-tab" id="standingsTabConstructors" type="button" role="tab" aria-selected="false" aria-controls="standingsPanel" tabindex="-1" data-standings-view="constructors">Constructors</button>
+        </div>
+      </div>
+
+      <div id="standingsPanel" role="tabpanel" aria-labelledby="standingsTabDrivers" tabindex="0">
+        <p id="standingsMeta" class="standings-meta">Loading standings…</p>
+        <div id="standingsLoading" class="standings-state">Loading championship standings…</div>
+        <div id="standingsEmpty" class="standings-state" style="display: none;">2026 standings will appear after Round 1.</div>
+        <div id="standingsUnavailable" class="standings-state" style="display: none;">Standings data is temporarily unavailable.</div>
+
+        <div id="standingsTableWrap" class="standings-table-wrap" style="display: none;">
+          <table class="standings-table">
+            <thead id="standingsTableHead"></thead>
+            <tbody id="standingsTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <p class="standings-attribution">
+        Data: <a href="https://github.com/jolpica/jolpica-f1" target="_blank" rel="noopener noreferrer">Jolpica F1 API</a> (CC BY-NC-SA 4.0)
+      </p>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/components.js"></script>
+  <script>Components.render('standings');</script>
+  <script>
+    window.__POSTHOG__ = window.__POSTHOG__ || {};
+  </script>
+  <script src="/posthog-config"></script>
+  <script>
+    (function () {
+      if (!window.__POSTHOG__ || (!window.__POSTHOG__.host && !window.__POSTHOG__.key)) {
+        const defaultEnv = window.location.hostname === 'localhost' ? 'local' : 'production';
+        window.__POSTHOG__ = {
+          key: '',
+          host: 'https://app.posthog.com',
+          uiHost: 'https://app.posthog.com',
+          environment: defaultEnv,
+          commitSha: ''
+        };
+      }
+    })();
+  </script>
+  <script>
+    (function (window, document) {
+      const config = window.__POSTHOG__ || {};
+      if (!config.key) return;
+
+      const apiHost = (config.host || 'https://app.posthog.com').replace(/\/$/, '');
+      const assetHost = apiHost.replace('.i.posthog.com', '-assets.i.posthog.com');
+      const toolbarHost = (config.uiHost || apiHost).replace(/\/$/, '');
+      const runtimeEnv = config.environment || (window.location.hostname === 'localhost' ? 'local' : 'production');
+
+      (function (t, e) {
+        var o, n, p, r;
+        if (!e.__SV) {
+          window.posthog = e.posthog = function () { posthog._i.push(arguments); };
+          posthog._i = [];
+          posthog.init = function (i, s, a) {
+            function g(t, e) {
+              var o = e.split('.');
+              if (o.length === 2) { t = t[o[0]]; e = o[1]; }
+              t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))); };
+            }
+            var u = posthog;
+            if (typeof a !== 'undefined') { u = posthog[a] = []; } else { a = 'posthog'; }
+            u.people = u.people || [];
+            r = 'capture identify alias people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete group identify_account register register_once unregister set_config opt_out_capturing has_opted_out_capturing has_opted_in_capturing opt_in_capturing clear_opt_in_out_capturing onLMTConsentChange group_identify'.split(' ');
+            for (p = 0; p < r.length; p++) g(u, r[p]);
+            posthog._i.push([i, s, a]);
+          };
+          posthog.__SV = 1;
+          o = t.createElement('script');
+          o.type = 'text/javascript';
+          o.async = true;
+          o.src = assetHost + '/static/array.js';
+          o.crossOrigin = 'anonymous';
+          n = t.getElementsByTagName('script')[0];
+          n.parentNode.insertBefore(o, n);
+        }
+      })(document, window.posthog || []);
+
+      if (typeof window.posthog.register === 'function') {
+        const baseProperties = { environment: runtimeEnv };
+        if (config.commitSha) baseProperties.commit_sha = config.commitSha;
+        window.posthog.register(baseProperties);
+      }
+
+      window.posthog.init(config.key, {
+        api_host: apiHost,
+        ui_host: toolbarHost,
+        capture_pageview: true,
+        capture_pageleave: true,
+        autocapture: true,
+        persistence: 'localStorage+cookie'
+      });
+    })(window, document);
+  </script>
+  <script src="assets/js/calendar.js" data-year="2026" data-view="standings" data-source="homepage"></script>
+</body>
+
+</html>
