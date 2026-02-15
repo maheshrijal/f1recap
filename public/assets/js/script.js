@@ -8,6 +8,7 @@ class F1VideoTracker {
         this.upcoming = document.getElementById('upcoming');
         this.drawer = document.getElementById('videoDrawer');
         this.drawerContent = document.getElementById('drawerContent');
+        this.lastFocusedElement = null;
         this.latestGrandPrixWeekends = [];
         this.calendarWeekends = [];
         this.userTimeZone = this.getUserTimeZone();
@@ -705,19 +706,41 @@ class F1VideoTracker {
             </div>
         `;
 
+        this.lastFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
         this.drawer.setAttribute('aria-hidden', 'false');
         this.drawer.classList.add('open');
 
         const closeBtn = this.drawer.querySelector('[data-drawer-close]');
         if (closeBtn) {
             closeBtn.addEventListener('click', () => this.closeDrawer(), { once: true });
+            closeBtn.focus();
         }
+    }
+
+    getDrawerFocusableElements() {
+        if (!this.drawer) {
+            return [];
+        }
+        const selector = [
+            'a[href]',
+            'button:not([disabled])',
+            'input:not([disabled])',
+            'select:not([disabled])',
+            'textarea:not([disabled])',
+            '[tabindex]:not([tabindex="-1"])'
+        ].join(',');
+        return Array.from(this.drawer.querySelectorAll(selector))
+            .filter(el => !el.hasAttribute('hidden') && el.getAttribute('aria-hidden') !== 'true');
     }
 
     closeDrawer() {
         if (!this.drawer) return;
         this.drawer.setAttribute('aria-hidden', 'true');
         this.drawer.classList.remove('open');
+        if (this.lastFocusedElement) {
+            this.lastFocusedElement.focus();
+            this.lastFocusedElement = null;
+        }
     }
 
     attachDrawerHandlers() {
@@ -733,8 +756,35 @@ class F1VideoTracker {
         }
 
         document.addEventListener('keydown', (event) => {
+            if (this.drawer.getAttribute('aria-hidden') !== 'false') {
+                return;
+            }
+
             if (event.key === 'Escape') {
                 this.closeDrawer();
+                return;
+            }
+
+            if (event.key !== 'Tab') {
+                return;
+            }
+
+            const focusable = this.getDrawerFocusableElements();
+            if (focusable.length === 0) {
+                event.preventDefault();
+                return;
+            }
+
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            const active = document.activeElement;
+
+            if (event.shiftKey && active === first) {
+                event.preventDefault();
+                last.focus();
+            } else if (!event.shiftKey && active === last) {
+                event.preventDefault();
+                first.focus();
             }
         });
     }

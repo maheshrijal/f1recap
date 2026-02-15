@@ -73,6 +73,7 @@ class F1Calendar {
         this.countdownInterval = null;
         this.drawerInitialized = false;
         this.drawerThumbs = new WeakSet();
+        this.lastFocusedElement = null;
         this.refreshInterval = null;
         this._lastRefresh = 0;
         this.visibilityHandler = null;
@@ -597,11 +598,11 @@ class F1Calendar {
 
             // Data attributes for drawer
             const dataAttrs = hasVideo ? `
-                data-video-id="${session.video.videoId}"
-                data-video-url="${this.getVideoUrl(session.video.videoId)}"
+                data-video-id="${this.escapeAttribute(session.video.videoId)}"
+                data-video-url="${this.escapeAttribute(this.getVideoUrl(session.video.videoId))}"
                 data-grand-prix="${this.escapeAttribute(gp.name)}"
                 data-video-title="${this.escapeAttribute(session.video.title)}"
-                data-session-type="${sessionType}"
+                data-session-type="${this.escapeAttribute(sessionType)}"
                 data-thumbnail="${this.escapeAttribute(session.video.thumbnail || '')}"
                 role="button"
                 tabindex="0"
@@ -648,7 +649,7 @@ class F1Calendar {
                     <p class="hero-kicker">Next Race</p>
                     <h2 class="hero-title">${flag} ${this.escapeHtml(nextGP.name)}</h2>
                     <p class="hero-date">${this.formatGPDateRange(nextGP.startDate)}</p>
-                    <div class="hero-countdown" id="heroCountdown">Loading countdown...</div>
+                    <div class="hero-countdown" id="heroCountdown">Loading countdown…</div>
                     ${sprintBadge}
                 </div>
             </div>
@@ -741,7 +742,8 @@ class F1Calendar {
                 const gpId = item.getAttribute('data-gp-id');
                 const targetEl = document.getElementById(gpId);
                 if (targetEl) {
-                    targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                    targetEl.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'center' });
                     // Briefly highlight the card
                     targetEl.classList.add('highlight');
                     setTimeout(() => targetEl.classList.remove('highlight'), 1500);
@@ -927,7 +929,7 @@ class F1Calendar {
             <div class="countdown-card">
                 <p class="countdown-kicker">2026 Season</p>
                 <p class="countdown-label">Next Session</p>
-                <div class="countdown-timer" id="countdownTimer">Loading...</div>
+                <div class="countdown-timer" id="countdownTimer">Loading…</div>
                 <p class="countdown-session-name">
                     <span class="session-type">${sessionType}</span> • ${this.escapeHtml(session.gpName)}
                 </p>
@@ -1277,9 +1279,26 @@ class F1Calendar {
         }
         this.drawerInitialized = true;
 
+        const getFocusableElements = () => {
+            const selector = [
+                'a[href]',
+                'button:not([disabled])',
+                'input:not([disabled])',
+                'select:not([disabled])',
+                'textarea:not([disabled])',
+                '[tabindex]:not([tabindex="-1"])'
+            ].join(',');
+            return Array.from(drawer.querySelectorAll(selector))
+                .filter(el => !el.hasAttribute('hidden') && el.getAttribute('aria-hidden') !== 'true');
+        };
+
         const closeDrawer = () => {
             drawer.setAttribute('aria-hidden', 'true');
             drawer.classList.remove('open');
+            if (this.lastFocusedElement) {
+                this.lastFocusedElement.focus();
+                this.lastFocusedElement = null;
+            }
         };
 
         const backdrop = drawer.querySelector('.drawer-backdrop');
@@ -1293,8 +1312,35 @@ class F1Calendar {
         }
 
         document.addEventListener('keydown', (event) => {
+            if (drawer.getAttribute('aria-hidden') !== 'false') {
+                return;
+            }
+
             if (event.key === 'Escape') {
                 closeDrawer();
+                return;
+            }
+
+            if (event.key !== 'Tab') {
+                return;
+            }
+
+            const focusable = getFocusableElements();
+            if (focusable.length === 0) {
+                event.preventDefault();
+                return;
+            }
+
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            const active = document.activeElement;
+
+            if (event.shiftKey && active === first) {
+                event.preventDefault();
+                last.focus();
+            } else if (!event.shiftKey && active === last) {
+                event.preventDefault();
+                first.focus();
             }
         });
     }
@@ -1369,12 +1415,22 @@ class F1Calendar {
         drawerContent.appendChild(media);
         drawerContent.appendChild(meta);
 
+        this.lastFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
         drawer.setAttribute('aria-hidden', 'false');
         drawer.classList.add('open');
+
+        const primaryCloseBtn = drawer.querySelector('.drawer-close');
+        if (primaryCloseBtn) {
+            primaryCloseBtn.focus();
+        }
 
         closeBtn.addEventListener('click', () => {
             drawer.setAttribute('aria-hidden', 'true');
             drawer.classList.remove('open');
+            if (this.lastFocusedElement) {
+                this.lastFocusedElement.focus();
+                this.lastFocusedElement = null;
+            }
         }, { once: true });
 
         this.captureAnalytics('calendar_video_drawer_opened', {
@@ -1518,12 +1574,22 @@ class F1Calendar {
         drawerContent.appendChild(media);
         drawerContent.appendChild(meta);
 
+        this.lastFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
         drawer.setAttribute('aria-hidden', 'false');
         drawer.classList.add('open');
+
+        const primaryCloseBtn = drawer.querySelector('.drawer-close');
+        if (primaryCloseBtn) {
+            primaryCloseBtn.focus();
+        }
 
         closeBtn.addEventListener('click', () => {
             drawer.setAttribute('aria-hidden', 'true');
             drawer.classList.remove('open');
+            if (this.lastFocusedElement) {
+                this.lastFocusedElement.focus();
+                this.lastFocusedElement = null;
+            }
         }, { once: true });
 
         this.captureAnalytics('unified_video_chip_clicked', {
