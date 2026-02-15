@@ -38,47 +38,49 @@
   <div id="site-header"></div>
 
   <main id="main-content" tabindex="-1">
-    <section class="hero" aria-live="polite">
-      <div class="hero-card hero-centered">
-        <div class="hero-flag">🏆</div>
-        <div class="hero-meta">
-          <p class="hero-kicker">2026 Season</p>
-          <h1 class="hero-title">Championship Standings</h1>
-          <p class="hero-date">Track Drivers and Constructors points throughout the season.</p>
+    <div class="standings-page-shell">
+      <section class="hero standings-hero" aria-live="polite">
+        <div class="hero-card hero-centered">
+          <div class="hero-flag">🏆</div>
+          <div class="hero-meta">
+            <p class="hero-kicker">2026 Season</p>
+            <h1 class="hero-title">Championship Standings</h1>
+            <p class="hero-date">Track Drivers and Constructors points throughout the season.</p>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="championshipStandings" class="standings-section standings-page-section" aria-live="polite" style="display: none;">
-      <div class="standings-header">
-        <h2 class="standings-title">
-          <span class="standings-icon">🏆</span>
-          Championship Standings
-        </h2>
-        <div class="standings-tabs" role="tablist" aria-label="Championship standings views">
-          <button class="standings-tab active" id="standingsTabDrivers" type="button" role="tab" aria-selected="true" aria-controls="standingsPanel" tabindex="0" data-standings-view="drivers">Drivers</button>
-          <button class="standings-tab" id="standingsTabConstructors" type="button" role="tab" aria-selected="false" aria-controls="standingsPanel" tabindex="-1" data-standings-view="constructors">Constructors</button>
+      <section id="championshipStandings" class="standings-section standings-page-section" aria-live="polite" style="display: none;">
+        <div class="standings-header">
+          <h2 class="standings-title">
+            <span class="standings-icon">🏆</span>
+            Championship Standings
+          </h2>
+          <div class="standings-tabs" role="tablist" aria-label="Championship standings views">
+            <button class="standings-tab active" id="standingsTabDrivers" type="button" role="tab" aria-selected="true" aria-controls="standingsPanel" tabindex="0" data-standings-view="drivers">Drivers</button>
+            <button class="standings-tab" id="standingsTabConstructors" type="button" role="tab" aria-selected="false" aria-controls="standingsPanel" tabindex="-1" data-standings-view="constructors">Constructors</button>
+          </div>
         </div>
-      </div>
 
-      <div id="standingsPanel" role="tabpanel" aria-labelledby="standingsTabDrivers" tabindex="0">
-        <p id="standingsMeta" class="standings-meta">Loading standings…</p>
-        <div id="standingsLoading" class="standings-state">Loading championship standings…</div>
-        <div id="standingsEmpty" class="standings-state" style="display: none;">2026 standings will appear after Round 1.</div>
-        <div id="standingsUnavailable" class="standings-state" style="display: none;">Standings data is temporarily unavailable.</div>
+        <div id="standingsPanel" role="tabpanel" aria-labelledby="standingsTabDrivers" tabindex="0">
+          <p id="standingsMeta" class="standings-meta">Loading standings…</p>
+          <div id="standingsLoading" class="standings-state">Loading championship standings…</div>
+          <div id="standingsEmpty" class="standings-state" style="display: none;">2026 standings will appear after Round 1.</div>
+          <div id="standingsUnavailable" class="standings-state" style="display: none;">Standings data is temporarily unavailable.</div>
 
-        <div id="standingsTableWrap" class="standings-table-wrap" style="display: none;">
-          <table class="standings-table">
-            <thead id="standingsTableHead"></thead>
-            <tbody id="standingsTableBody"></tbody>
-          </table>
+          <div id="standingsTableWrap" class="standings-table-wrap" style="display: none;">
+            <table class="standings-table">
+              <thead id="standingsTableHead"></thead>
+              <tbody id="standingsTableBody"></tbody>
+            </table>
+          </div>
         </div>
-      </div>
 
-      <p class="standings-attribution">
-        Data: <a href="https://github.com/jolpica/jolpica-f1" target="_blank" rel="noopener noreferrer">Jolpica F1 API</a> (CC BY-NC-SA 4.0)
-      </p>
-    </section>
+        <p class="standings-attribution">
+          Data: <a href="https://github.com/jolpica/jolpica-f1" target="_blank" rel="noopener noreferrer">Jolpica F1 API</a> (CC BY-NC-SA 4.0)
+        </p>
+      </section>
+    </div>
   </main>
 
   <div id="site-footer"></div>

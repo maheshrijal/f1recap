@@ -2453,8 +2453,22 @@ footer {
 }
 
 .standings-page-section {
+    max-width: 100%;
+    margin: 0;
+}
+
+.standings-page-shell {
     max-width: 1100px;
     margin: 0 auto 2rem;
+    width: min(1100px, calc(100% - 2rem));
+}
+
+.standings-hero {
+    margin: 0 0 1rem;
+}
+
+.standings-hero .hero-card {
+    margin-bottom: 0;
 }
 
 .standings-header {
