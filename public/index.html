@@ -118,7 +118,7 @@
 <body>
     <div id="site-header"></div>
 
-    <main id="top">
+    <main id="main-content">
         <h1 class="visually-hidden">2026 F1 Calendar & Schedule</h1>
         <!-- Hero: Next Session Countdown -->
         <section id="hero" class="hero" aria-live="polite"></section>
@@ -129,7 +129,7 @@
                 <div class="season-progress-fill" id="progressFill"></div>
                 <div class="season-progress-marker" id="progressMarker"></div>
             </div>
-            <div class="season-progress-label" id="progressLabel">Loading season progress...</div>
+            <div class="season-progress-label" id="progressLabel">Loading season progress…</div>
         </section>
 
         <!-- Main Content: Unified Calendar + Videos -->
@@ -137,7 +137,7 @@
             <div class="content-area">
                 <div id="calendarLoading" class="calendar-loading">
                     <div class="calendar-loading-spinner"></div>
-                    <p>Loading calendar...</p>
+                    <p>Loading calendar…</p>
                 </div>
 
                 <div id="calendarError" class="calendar-error" style="display: none;">
@@ -472,7 +472,8 @@
             toggleVisibility();
 
             scrollBtn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
             });
         })();
     </script>

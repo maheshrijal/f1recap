@@ -30,10 +30,11 @@ const Components = {
             : '';
 
         return `
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <header>
         <div class="header-inner">
             <a class="header-text" href="index.html" aria-label="Go to home">
-                <h1>🏎️ F1 Highlights Hub</h1>
+                <span class="site-title">🏎️ F1 Highlights Hub</span>
             </a>
         </div>
         <div class="header-actions">
