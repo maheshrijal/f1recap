@@ -140,6 +140,9 @@ class F1Calendar {
             this.visibilityHandler = null;
         }
 
+        // Use current time as baseline so quick tab switches do not force an immediate refresh.
+        this._lastRefresh = Date.now();
+
         // Refresh data every 30 minutes
         this.refreshInterval = setInterval(() => this.refreshData(), 30 * 60 * 1000);
 
@@ -160,7 +163,6 @@ class F1Calendar {
 
         this.isLoading = true;
         this._lastRefresh = Date.now();
-        console.log('Refreshing calendar data...');
 
         try {
             await Promise.all([this.loadCalendar(), this.loadVideos()]);
@@ -173,6 +175,7 @@ class F1Calendar {
                 this.setupDrawer();
             } else if (this.viewMode === 'list') {
                 this.renderListView();
+                this.setupCountdown();
             } else {
                 if (this.timelineContainer) {
                     this.timelineContainer.innerHTML = '';
@@ -864,6 +867,18 @@ class F1Calendar {
     }
 
     setupCountdown() {
+        if (!this.timelineContainer) return;
+
+        if (this.countdownInterval) {
+            clearInterval(this.countdownInterval);
+            this.countdownInterval = null;
+        }
+
+        const existingCountdown = this.timelineContainer.querySelector('.countdown-section');
+        if (existingCountdown) {
+            existingCountdown.remove();
+        }
+
         const nextSession = this.getNextSession();
         if (!nextSession) return;
 

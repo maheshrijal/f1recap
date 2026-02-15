@@ -123,13 +123,13 @@ class NotificationManager {
 
                 if (timeDiff > 0 && timeDiff <= PRE_NOTIFY_WINDOW) {
                     this.sendNotification(
-                        sessionId,
+                        `${sessionId}|starting-soon`,
                         'Starting Soon',
                         `${session.title} at ${gp.name} starts in ${Math.ceil(timeDiff / 60000)} minutes.`
                     );
                 } else if (timeDiff <= 0 && Math.abs(timeDiff) < SESSION_START_WINDOW) {
                     this.sendNotification(
-                        sessionId,
+                        `${sessionId}|session-live`,
                         'Session Live',
                         `${session.title} at ${gp.name} is now live.`
                     );
