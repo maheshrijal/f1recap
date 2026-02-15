@@ -147,6 +147,48 @@ header {
     color: inherit;
 }
 
+/* Notification Button */
+.notification-btn {
+    background: transparent;
+    border: 1px solid var(--stroke);
+    color: var(--text);
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.5rem;
+}
+
+.notification-btn:hover {
+    background: var(--glass);
+    border-color: var(--muted);
+}
+
+.notification-btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.notification-btn.active {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: rgba(225, 6, 0, 0.1);
+}
+
+.notification-btn.active svg {
+    fill: currentColor;
+    fill-opacity: 0.1;
+}
+
+.notification-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 [data-theme="dark"] .theme-toggle {
     background: var(--card-contrast);
     color: var(--text);

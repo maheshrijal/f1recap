@@ -18,9 +18,16 @@ const Components = {
             { href: 'about.html', label: 'About', id: 'about' }
         ];
 
-        const navHTML = navLinks.map(link => 
+        const navHTML = navLinks.map(link =>
             `<a href="${link.href}" class="nav-link${activePage === link.id ? ' active' : ''}">${link.label}</a>`
         ).join('\n                ');
+
+        const notificationButtonHtml = activePage === 'home'
+            ? `
+            <button id="notificationBtn" class="notification-btn" type="button" aria-label="Enable notifications" title="Get notified when F1 sessions start">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            </button>`
+            : '';
 
         return `
     <header>
@@ -30,6 +37,7 @@ const Components = {
             </a>
         </div>
         <div class="header-actions">
+            ${notificationButtonHtml}
             <button class="nav-toggle header-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav">
                 <span class="nav-toggle-icon" aria-hidden="true">☰</span>
                 <span class="nav-toggle-label">Menu</span>
@@ -58,7 +66,7 @@ const Components = {
      */
     footer() {
         const currentYear = new Date().getFullYear();
-        
+
         return `
     <footer>
         <div class="footer-inner">
@@ -117,11 +125,11 @@ const Components = {
                     const html = document.documentElement;
                     const currentTheme = html.getAttribute('data-theme');
                     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                    
+
                     html.classList.add('theme-transition');
                     html.setAttribute('data-theme', newTheme);
                     localStorage.setItem('theme', newTheme);
-                    
+
                     // Update all toggle buttons
                     document.querySelectorAll('.theme-toggle').forEach(toggle => {
                         const icon = toggle.querySelector('.theme-toggle-icon');
@@ -129,7 +137,7 @@ const Components = {
                         if (icon) icon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
                         if (label) label.textContent = newTheme === 'dark' ? 'Light' : 'Dark';
                     });
-                    
+
                     setTimeout(() => html.classList.remove('theme-transition'), 600);
                 });
                 btn.dataset.initialized = 'true';
@@ -236,15 +244,15 @@ const Components = {
     render(activePage = 'home') {
         const headerEl = document.getElementById('site-header');
         const footerEl = document.getElementById('site-footer');
-        
+
         if (headerEl) {
             headerEl.outerHTML = this.header(activePage);
         }
-        
+
         if (footerEl) {
             footerEl.outerHTML = this.footer();
         }
-        
+
         // Initialize after rendering
         this.init();
     }

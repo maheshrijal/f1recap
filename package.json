@@ -6,7 +6,7 @@
   "scripts": {
     "fetch": "node scripts/fetch-videos.js",
     "fetch-archive": "node scripts/fetch-archive-2025.js",
-    "dev": "python3 -m http.server 8000 -d public",
+    "dev": "npx -y serve public -p 8000",
     "build": "npm run fetch",
     "validate-calendar": "node scripts/validate-calendar.js"
   },
