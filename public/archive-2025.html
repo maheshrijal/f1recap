@@ -36,6 +36,8 @@
     <meta name="theme-color" content="#e10600">
     
     <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://www.youtube.com">
     <link rel="preconnect" href="https://i.ytimg.com">
     <link rel="dns-prefetch" href="https://eu.i.posthog.com">
@@ -44,6 +46,8 @@
     <link rel="canonical" href="https://f1recap.pages.dev/archive-2025">
     
     <!-- Stylesheet -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap">
     <link rel="stylesheet" href="assets/styles.css">
     
     <!-- Structured Data -->
@@ -101,7 +105,7 @@
     <div id="site-header"></div>
 
     <main id="main-content" tabindex="-1">
-        <section class="hero" aria-live="polite">
+        <section class="hero">
             <div class="hero-card">
                 <div class="hero-meta">
                     <p class="hero-kicker">2025 Season Archive</p>
@@ -131,7 +135,7 @@
         </div>
 
         <div id="calendarContainer" class="timeline-container" style="display: none;">
-            <div id="calendarTimeline" class="timeline" aria-live="polite">
+            <div id="calendarTimeline" class="timeline">
                 <!-- Archive items will be loaded here -->
             </div>
             <div class="load-more-trigger">
@@ -360,6 +364,5 @@
         })(window, document);
     </script>
     <script src="assets/js/calendar.js" data-year="2025" data-ics-file="data/f1-calendar_2025.ics" data-view="timeline" data-source="archive"></script>
-    <script src="assets/js/script.js"></script>
 </body>
 </html>

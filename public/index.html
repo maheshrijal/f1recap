@@ -46,6 +46,8 @@
     <meta name="theme-color" content="#e10600">
 
     <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://www.youtube.com">
     <link rel="preconnect" href="https://i.ytimg.com">
     <link rel="dns-prefetch" href="https://eu.i.posthog.com">
@@ -54,6 +56,8 @@
     <link rel="canonical" href="https://f1recap.pages.dev/">
 
     <!-- Stylesheet -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap">
     <link rel="stylesheet" href="assets/styles.css">
 
     <!-- Structured Data -->
@@ -120,8 +124,9 @@
 
     <main id="main-content" tabindex="-1">
         <h1 class="visually-hidden">2026 F1 Calendar & Schedule</h1>
+        <p id="a11yLiveStatus" class="visually-hidden" aria-live="polite" aria-atomic="true"></p>
         <!-- Hero: Next Session Countdown -->
-        <section id="hero" class="hero" aria-live="polite"></section>
+        <section id="hero" class="hero"></section>
 
         <!-- Season Progress Bar -->
         <section id="seasonProgress" class="season-progress" style="display: none;">
@@ -453,7 +458,6 @@
     <script src="assets/js/notifications.js"></script>
     <script src="assets/js/calendar.js" data-year="2026" data-ics-file="data/f1-calendar_2026.ics" data-view="unified"
         data-source="homepage"></script>
-    <script src="assets/js/script.js"></script>
     <script>
         // Scroll to Top functionality
         (function () {

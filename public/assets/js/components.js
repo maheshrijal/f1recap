@@ -239,6 +239,19 @@ const Components = {
             syncNav();
             navToggle.dataset.initialized = 'true';
         }
+
+        const tzNote = document.getElementById('tzNote');
+        if (tzNote && !tzNote.dataset.initialized) {
+            try {
+                const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                if (timeZone) {
+                    tzNote.textContent = timeZone;
+                }
+            } catch (_) {
+                // Ignore runtime locale errors.
+            }
+            tzNote.dataset.initialized = 'true';
+        }
     },
 
     /**
