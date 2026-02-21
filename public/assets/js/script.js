@@ -352,9 +352,7 @@ class F1VideoTracker {
 
         return `
             <div class="video-card">
-                <div class="video-thumbnail-container"
-                    role="button"
-                    tabindex="0"
+                <button type="button" class="video-thumbnail-container"
                     aria-label="Play ${this.escapeAttribute(video.title || 'video')}"
                     data-analytics-role="thumbnail"${analyticsAttributes}>
                     <div class="video-thumbnail" style="background-image: url('${this.escapeAttribute(video.thumbnail || '')}')">
@@ -362,7 +360,7 @@ class F1VideoTracker {
                             <div class="play-button">▶</div>
                         </div>
                     </div>
-                </div>
+                </button>
                 <div class="video-info">
                     <h3 class="video-title">${this.escapeHtml(video.title || '')}</h3>
                     <div class="video-date">${formattedDate}</div>
@@ -546,13 +544,6 @@ class F1VideoTracker {
                 this.captureAnalytics('video_thumbnail_opened', payload);
                 if (videoUrl) {
                     this.openVideo(videoUrl);
-                }
-            });
-
-            thumbnail.addEventListener('keydown', (event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                    event.preventDefault();
-                    thumbnail.click();
                 }
             });
         });

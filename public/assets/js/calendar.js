@@ -80,6 +80,9 @@ class F1Calendar {
         this.displayedCount = 0;
         this.itemsPerPage = 6;
         this.userTimeZone = this.getUserTimeZone();
+        this.liveStatus = document.getElementById('a11yLiveStatus');
+        this.lastCountdownAnnouncement = '';
+        this.lastCountdownSessionKey = '';
         this.hasMore = true;
         this.isLoading = false;
         this.countdownInterval = null;
@@ -584,13 +587,24 @@ class F1Calendar {
 
     renderUnifiedView() {
         const hasUpcoming = this.upcomingGPs.length > 0;
+        if (this.upcomingCards) {
+            this.upcomingCards.innerHTML = '';
+        }
 
         // If no upcoming races, show off-season state
         if (!hasUpcoming) {
             if (this.offSeasonState) {
                 this.offSeasonState.style.display = 'block';
             }
+            if (this.upcomingSection) {
+                this.upcomingSection.style.display = 'none';
+            }
+            this.setupUnifiedHero();
             return;
+        }
+
+        if (this.offSeasonState) {
+            this.offSeasonState.style.display = 'none';
         }
 
         // Render upcoming GPs
@@ -699,9 +713,17 @@ class F1Calendar {
                 data-video-title="${this.escapeAttribute(session.video.title)}"
                 data-session-type="${this.escapeAttribute(sessionType)}"
                 data-thumbnail="${this.escapeAttribute(session.video.thumbnail || '')}"
-                role="button"
-                tabindex="0"
             ` : '';
+
+            if (hasVideo) {
+                return `
+                    <button type="button" class="${classes.join(' ')}" aria-label="Show ${this.escapeAttribute(sessionType)} video for ${this.escapeAttribute(gp.name)}" ${dataAttrs}>
+                        <span class="session-chip-label">${sessionType}</span>
+                        <span class="session-chip-icon">${icon}</span>
+                        <span class="session-chip-time">${timeStr}</span>
+                    </button>
+                `;
+            }
 
             return `
                 <div class="${classes.join(' ')}" ${dataAttrs}>
@@ -730,6 +752,9 @@ class F1Calendar {
                     </div>
                 </div>
             `;
+            this.announceLiveStatus('No upcoming races. Season complete.');
+            this.lastCountdownAnnouncement = 'season-complete';
+            this.lastCountdownSessionKey = '';
             return;
         }
 
@@ -764,8 +789,19 @@ class F1Calendar {
 
             if (!nextSession) {
                 countdownEl.innerHTML = '<span class="countdown-live">🔴 Race Weekend!</span>';
+                if (this.lastCountdownAnnouncement !== 'race-weekend-live') {
+                    this.announceLiveStatus(`Race weekend is now live for ${gp.name}.`);
+                    this.lastCountdownAnnouncement = 'race-weekend-live';
+                }
                 clearInterval(this.countdownInterval);
                 return;
+            }
+
+            const sessionKey = `${gp.name}|${nextSession.title}|${nextSession.publishedAt}`;
+            if (this.lastCountdownSessionKey !== sessionKey) {
+                this.announceLiveStatus(`Countdown started for ${this.getSessionTypeLabel(nextSession.title)} at ${gp.name}.`);
+                this.lastCountdownSessionKey = sessionKey;
+                this.lastCountdownAnnouncement = 'countdown';
             }
 
             const targetTime = Date.parse(nextSession.publishedAt);
@@ -773,6 +809,10 @@ class F1Calendar {
 
             if (diff <= 0) {
                 countdownEl.innerHTML = '<span class="countdown-live">🔴 Live Now!</span>';
+                if (this.lastCountdownAnnouncement !== `live-now:${sessionKey}`) {
+                    this.announceLiveStatus(`${this.getSessionTypeLabel(nextSession.title)} at ${gp.name} is live now.`);
+                    this.lastCountdownAnnouncement = `live-now:${sessionKey}`;
+                }
                 return;
             }
 
@@ -798,6 +838,16 @@ class F1Calendar {
         updateCountdown();
         if (this.countdownInterval) clearInterval(this.countdownInterval);
         this.countdownInterval = setInterval(updateCountdown, 1000);
+    }
+
+    announceLiveStatus(message) {
+        if (!this.liveStatus || !message) {
+            return;
+        }
+        this.liveStatus.textContent = '';
+        window.requestAnimationFrame(() => {
+            this.liveStatus.textContent = message;
+        });
     }
 
     renderSidebarCalendar() {
@@ -1378,9 +1428,7 @@ class F1Calendar {
 
         return `
             <div class="video-card">
-                <div class="video-thumbnail-container drawer-trigger"
-                    role="button"
-                    tabindex="0"
+                <button type="button" class="video-thumbnail-container drawer-trigger"
                     aria-label="Play ${this.escapeAttribute(video.title || 'video')}"
                     data-video-id="${video.videoId}"
                     data-video-url="${this.escapeAttribute(videoUrl)}"
@@ -1392,7 +1440,7 @@ class F1Calendar {
                             <div class="play-button">▶</div>
                         </div>
                     </div>
-                </div>
+                </button>
                 <div class="video-info">
                     <h3 class="video-title">${this.escapeHtml(video.title || '')}</h3>
                     <div class="video-date">${formattedDate}</div>
@@ -1549,12 +1597,6 @@ class F1Calendar {
                 }
                 this.drawerThumbs.add(thumbnail);
                 thumbnail.addEventListener('click', () => this.openDrawer(thumbnail, drawer, drawerContent));
-                thumbnail.addEventListener('keydown', (event) => {
-                    if (event.key === 'Enter' || event.key === ' ') {
-                        event.preventDefault();
-                        thumbnail.click();
-                    }
-                });
             });
         }
 
@@ -1566,12 +1608,6 @@ class F1Calendar {
             }
             this.drawerThumbs.add(chip);
             chip.addEventListener('click', () => this.expandInlineVideo(chip));
-            chip.addEventListener('keydown', (event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                    event.preventDefault();
-                    chip.click();
-                }
-            });
         });
 
         if (this.drawerInitialized) {
@@ -1785,7 +1821,7 @@ class F1Calendar {
         // Build the inline video content
         expandContainer.innerHTML = `
             <div class="inline-video-content">
-                <a href="${videoUrl}" target="_blank" rel="noopener noreferrer" class="inline-video-thumb" style="background-image: url('${thumbnailUrl}')">
+                <a href="${videoUrl}" target="_blank" rel="noopener noreferrer" class="inline-video-thumb" aria-label="Watch ${this.escapeAttribute(sessionType)} highlights for ${this.escapeAttribute(grandPrix)} on YouTube" style="background-image: url('${thumbnailUrl}')">
                     <div class="play-overlay">
                         <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
                             <circle cx="32" cy="32" r="32" fill="rgba(0,0,0,0.7)"/>
