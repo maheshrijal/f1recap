@@ -12,7 +12,7 @@
     "validate-calendar": "node scripts/validate-calendar.js"
   },
   "dependencies": {
-    "axios": "^1.13.2"
+    "axios": "^1.13.5"
   },
   "keywords": [
     "formula1",
