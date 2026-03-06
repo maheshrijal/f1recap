@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-03-06T07:16:49.203Z",
-  "totalVideos": 1,
+  "lastUpdated": "2026-03-06T07:43:48.565Z",
+  "totalVideos": 2,
   "grandPrixWeekends": [
     {
       "name": "2026 Australian Grand Prix",
@@ -11,9 +11,16 @@
           "description": "Catch up on all the action from our first practice session of the 2026 season!\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #AusGP",
           "publishedAt": "2026-03-06T04:01:15.000Z",
           "thumbnail": "https://i.ytimg.com/vi/ffRQyOpjydY/hqdefault.jpg"
+        },
+        {
+          "videoId": "PCSlAcvQjyo",
+          "title": "FP2 Highlights | 2026 Australian Grand Prix",
+          "description": "Catch up on all the action from the second practice session at the Australian Grand Prix in Melbourne.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #AusGP",
+          "publishedAt": "2026-03-06T07:31:03.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/PCSlAcvQjyo/hqdefault.jpg"
         }
       ],
-      "latestDate": "2026-03-06T04:01:15.000Z"
+      "latestDate": "2026-03-06T07:31:03.000Z"
     }
   ]
 }
