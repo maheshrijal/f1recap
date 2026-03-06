@@ -64,7 +64,8 @@ html {
     --motion-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
     --motion-fast: 0.18s;
     --motion-base: 0.28s;
-    --font-primary: 'Space Grotesk', 'Manrope', 'Sarabun', system-ui, -apple-system, sans-serif;
+    --font-primary: 'Plus Jakarta Sans', 'Manrope', system-ui, -apple-system, sans-serif;
+    --font-display: 'Syne', 'Plus Jakarta Sans', system-ui, sans-serif;
     --bg-gradient: radial-gradient(circle at 18% 18%, rgba(37, 99, 235, 0.06), transparent 38%),
         radial-gradient(circle at 82% 12%, rgba(225, 6, 0, 0.06), transparent 32%),
         radial-gradient(circle at 15% 82%, rgba(79, 139, 255, 0.08), transparent 34%),
@@ -107,6 +108,22 @@ body {
     padding-left: env(safe-area-inset-left, 0px);
     padding-right: env(safe-area-inset-right, 0px);
     width: 100%;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.028;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+}
+
+[data-theme="dark"] body::before {
+    opacity: 0.04;
 }
 
 img,
@@ -406,6 +423,7 @@ header {
 }
 
 .site-title {
+    font-family: var(--font-display);
     font-size: 2rem;
     margin-bottom: 0.2rem;
     color: var(--text);
@@ -707,6 +725,7 @@ main > section {
 }
 
 .hero-title {
+    font-family: var(--font-display);
     font-size: 1.5rem;
     margin: 0.2rem 0;
     color: var(--text);
@@ -817,6 +836,7 @@ main > section {
 }
 
 .grandprix-title {
+    font-family: var(--font-display);
     font-size: 1.65rem;
     font-weight: 700;
     color: var(--text);
@@ -1218,6 +1238,7 @@ main > section {
 }
 
 .drawer-title {
+    font-family: var(--font-display);
     font-size: 1.4rem;
     margin: 0.2rem 0;
 }
@@ -1363,6 +1384,7 @@ footer {
 }
 
 .footer-logo {
+    font-family: var(--font-display);
     font-size: 1.1rem;
     font-weight: 700;
     color: var(--text);
@@ -2510,6 +2532,7 @@ footer {
 }
 
 .standings-title {
+    font-family: var(--font-display);
     margin: 0;
     font-size: 1.2rem;
     font-weight: 700;
@@ -2648,6 +2671,7 @@ footer {
 }
 
 .gp-section-title {
+    font-family: var(--font-display);
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--text);
@@ -2681,17 +2705,35 @@ footer {
     gap: 1rem;
 }
 
+/* Card entrance animation */
+@keyframes card-enter {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Unified GP Card */
 .gp-card {
     background: var(--card);
     border: 1px solid var(--stroke);
     border-radius: var(--radius);
     overflow: hidden;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .gp-card:hover {
     border-color: var(--muted);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+}
+
+[data-theme="dark"] .gp-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 .gp-card.completed {
@@ -2727,6 +2769,7 @@ footer {
 }
 
 .gp-card-name {
+    font-family: var(--font-display);
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--text);
@@ -3282,6 +3325,7 @@ footer {
 }
 
 .off-season-title {
+    font-family: var(--font-display);
     font-size: 1.75rem;
     font-weight: 700;
     color: var(--text);
@@ -3817,6 +3861,28 @@ footer {
 
 [data-theme="dark"] .scroll-to-top:hover {
     background: #f87171;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .hero-card {
+        animation: card-enter 0.5s var(--motion-ease) both;
+    }
+
+    .grandprix-section {
+        animation: card-enter 0.45s var(--motion-ease) both;
+    }
+
+    .gp-card {
+        animation: card-enter 0.45s var(--motion-ease) both;
+    }
+
+    .gp-card:nth-child(1) { animation-delay: 0s; }
+    .gp-card:nth-child(2) { animation-delay: 0.06s; }
+    .gp-card:nth-child(3) { animation-delay: 0.12s; }
+    .gp-card:nth-child(4) { animation-delay: 0.18s; }
+    .gp-card:nth-child(5) { animation-delay: 0.24s; }
+    .gp-card:nth-child(6) { animation-delay: 0.30s; }
+    .gp-card:nth-child(n+7) { animation-delay: 0.35s; }
 }
 
 @media (prefers-reduced-motion: reduce) {

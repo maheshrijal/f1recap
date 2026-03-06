@@ -34,7 +34,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap">
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&family=Manrope:wght@500;600;700&display=swap">
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 
@@ -91,79 +91,9 @@
 
   <script src="assets/js/components.js"></script>
   <script>Components.render('standings');</script>
-  <script>
-    window.__POSTHOG__ = window.__POSTHOG__ || {};
-  </script>
+  <script>window.__POSTHOG__ = window.__POSTHOG__ || {};</script>
   <script src="/posthog-config"></script>
-  <script>
-    (function () {
-      if (!window.__POSTHOG__ || (!window.__POSTHOG__.host && !window.__POSTHOG__.key)) {
-        const defaultEnv = window.location.hostname === 'localhost' ? 'local' : 'production';
-        window.__POSTHOG__ = {
-          key: '',
-          host: 'https://app.posthog.com',
-          uiHost: 'https://app.posthog.com',
-          environment: defaultEnv,
-          commitSha: ''
-        };
-      }
-    })();
-  </script>
-  <script>
-    (function (window, document) {
-      const config = window.__POSTHOG__ || {};
-      if (!config.key) return;
-
-      const apiHost = (config.host || 'https://app.posthog.com').replace(/\/$/, '');
-      const assetHost = apiHost.replace('.i.posthog.com', '-assets.i.posthog.com');
-      const toolbarHost = (config.uiHost || apiHost).replace(/\/$/, '');
-      const runtimeEnv = config.environment || (window.location.hostname === 'localhost' ? 'local' : 'production');
-
-      (function (t, e) {
-        var o, n, p, r;
-        if (!e.__SV) {
-          window.posthog = e.posthog = function () { posthog._i.push(arguments); };
-          posthog._i = [];
-          posthog.init = function (i, s, a) {
-            function g(t, e) {
-              var o = e.split('.');
-              if (o.length === 2) { t = t[o[0]]; e = o[1]; }
-              t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))); };
-            }
-            var u = posthog;
-            if (typeof a !== 'undefined') { u = posthog[a] = []; } else { a = 'posthog'; }
-            u.people = u.people || [];
-            r = 'capture identify alias people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete group identify_account register register_once unregister set_config opt_out_capturing has_opted_out_capturing has_opted_in_capturing opt_in_capturing clear_opt_in_out_capturing onLMTConsentChange group_identify'.split(' ');
-            for (p = 0; p < r.length; p++) g(u, r[p]);
-            posthog._i.push([i, s, a]);
-          };
-          posthog.__SV = 1;
-          o = t.createElement('script');
-          o.type = 'text/javascript';
-          o.async = true;
-          o.src = assetHost + '/static/array.js';
-          o.crossOrigin = 'anonymous';
-          n = t.getElementsByTagName('script')[0];
-          n.parentNode.insertBefore(o, n);
-        }
-      })(document, window.posthog || []);
-
-      if (typeof window.posthog.register === 'function') {
-        const baseProperties = { environment: runtimeEnv };
-        if (config.commitSha) baseProperties.commit_sha = config.commitSha;
-        window.posthog.register(baseProperties);
-      }
-
-      window.posthog.init(config.key, {
-        api_host: apiHost,
-        ui_host: toolbarHost,
-        capture_pageview: true,
-        capture_pageleave: true,
-        autocapture: true,
-        persistence: 'localStorage+cookie'
-      });
-    })(window, document);
-  </script>
+  <script src="assets/js/analytics.js"></script>
   <script src="assets/js/calendar-state.js"></script>
   <script src="assets/js/calendar.js" data-year="2026" data-view="standings" data-source="homepage"></script>
 </body>
