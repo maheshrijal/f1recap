@@ -3,6 +3,7 @@ const scriptYear = script?.dataset?.year || '2025';
 const scriptIcsFile = script?.dataset?.icsFile || `f1-calendar_${scriptYear}.ics`;
 const scriptView = script?.dataset?.view || 'timeline';
 const scriptSource = script?.dataset?.source || 'current';
+const calendarState = window.F1CalendarState || null;
 
 const addDataPrefix = (file) => {
     if (!file) return file;
@@ -60,6 +61,7 @@ class F1Calendar {
         this.sidebarCalendar = document.getElementById('sidebarCalendar');
         this.seasonProgress = document.getElementById('seasonProgress');
         this.standingsSection = document.getElementById('championshipStandings');
+        this.upcomingSectionTitle = document.getElementById('upcomingSectionTitle');
         this.standingsMeta = document.getElementById('standingsMeta');
         this.standingsLoading = document.getElementById('standingsLoading');
         this.standingsEmpty = document.getElementById('standingsEmpty');
@@ -72,6 +74,7 @@ class F1Calendar {
         this.videoWeekends = [];
         this.mergedWeekends = [];
         this.completedGPs = [];
+        this.currentGPs = [];
         this.upcomingGPs = [];
         this.standingsData = this.defaultStandingsData();
         this.standingsStatus = 'loading';
@@ -459,17 +462,13 @@ class F1Calendar {
     mergeAndSort() {
         const now = Date.now();
         const upcomingGps = [];
+        const currentGps = [];
         const completedGps = [];
 
         this.calendarWeekends.forEach(calendarGP => {
-            const matchingVideos = this.videoWeekends.find(v =>
-                v.name.replace(`${this.year} `, '').includes(calendarGP.name.replace(' Grand Prix', '')) ||
-                calendarGP.name.replace(' Grand Prix', '').includes(v.name.replace(`${this.year} `, ''))
-            );
-
-            const startTime = Date.parse(calendarGP.startDate);
-            const isFuture = startTime > now;
-            const hasVideos = matchingVideos && matchingVideos.videos && matchingVideos.videos.length > 0;
+            const matchingVideos = this.findMatchingVideoWeekend(calendarGP);
+            const classification = this.classifyWeekend(calendarGP, matchingVideos, now);
+            const hasVideos = classification.hasVideos;
 
             // Match videos to sessions
             const sessionsWithVideos = (calendarGP.sessions || []).map(session => {
@@ -480,16 +479,9 @@ class F1Calendar {
                 let matchedVideo = null;
                 if (matchingVideos && matchingVideos.videos) {
                     matchedVideo = matchingVideos.videos.find(v => {
-                        const videoTitle = (v.title || '').toLowerCase();
-                        const sessionLower = sessionTitle.toLowerCase();
-
-                        if (sessionLower.includes('fp1') && videoTitle.includes('fp1')) return true;
-                        if (sessionLower.includes('fp2') && videoTitle.includes('fp2')) return true;
-                        if (sessionLower.includes('fp3') && videoTitle.includes('fp3')) return true;
-                        if (sessionLower.includes('sprint qualifying') && (videoTitle.includes('sprint qualifying') || videoTitle.includes('sprint quali'))) return true;
-                        if (sessionLower.includes('sprint') && !sessionLower.includes('quali') && videoTitle.includes('sprint') && !videoTitle.includes('quali')) return true;
-                        if (sessionLower.includes('qualifying') && !sessionLower.includes('sprint') && videoTitle.includes('qualifying') && !videoTitle.includes('sprint')) return true;
-                        if ((sessionLower.includes('grand prix') || sessionLower.includes('race')) && (videoTitle.includes('race') || (videoTitle.includes('grand prix') && !videoTitle.includes('qualifying')))) return true;
+                        if (calendarState?.sessionMatchesVideo) {
+                            return calendarState.sessionMatchesVideo(sessionTitle, v.title || '');
+                        }
 
                         return false;
                     });
@@ -507,12 +499,16 @@ class F1Calendar {
                 startDate: calendarGP.startDate,
                 sessions: sessionsWithVideos,
                 videos: matchingVideos?.videos || [],
-                isCompleted: hasVideos,
-                upcoming: isFuture || !hasVideos
+                isCompleted: classification.status === 'completed' && hasVideos,
+                isCurrent: classification.status === 'current',
+                upcoming: classification.status !== 'completed',
+                status: classification.status
             };
 
-            if (isFuture) {
+            if (classification.status === 'upcoming') {
                 upcomingGps.push(merged);
+            } else if (classification.status === 'current') {
+                currentGps.push(merged);
             } else {
                 completedGps.push(merged);
             }
@@ -520,14 +516,16 @@ class F1Calendar {
 
         // Sort completed (most recent first) and upcoming (soonest first)
         completedGps.sort((a, b) => Date.parse(b.startDate) - Date.parse(a.startDate));
+        currentGps.sort((a, b) => Date.parse(a.startDate) - Date.parse(b.startDate));
         upcomingGps.sort((a, b) => Date.parse(a.startDate) - Date.parse(b.startDate));
 
         // Store separately for unified view
         this.completedGPs = completedGps;
+        this.currentGPs = currentGps;
         this.upcomingGPs = upcomingGps;
 
         // Combined list for other views
-        this.mergedWeekends = [...completedGps, ...upcomingGps.slice(0, 1)];
+        this.mergedWeekends = [...currentGps, ...completedGps, ...upcomingGps.slice(0, 1)];
         this.hasMore = this.mergedWeekends.length > this.itemsPerPage;
     }
 
@@ -586,9 +584,15 @@ class F1Calendar {
     // ============================================
 
     renderUnifiedView() {
-        const hasUpcoming = this.upcomingGPs.length > 0;
+        const visibleGps = [...this.currentGPs, ...this.upcomingGPs];
+        const hasUpcoming = visibleGps.length > 0;
         if (this.upcomingCards) {
             this.upcomingCards.innerHTML = '';
+        }
+        if (this.upcomingSectionTitle) {
+            this.upcomingSectionTitle.textContent = this.currentGPs.length > 0
+                ? 'Current & Upcoming Races'
+                : 'Upcoming Races';
         }
 
         // If no upcoming races, show off-season state
@@ -609,9 +613,10 @@ class F1Calendar {
 
         // Render upcoming GPs
         if (hasUpcoming && this.upcomingSection && this.upcomingCards) {
-            // Mark the first upcoming as "next"
-            this.upcomingGPs.forEach((gp, index) => {
-                const type = index === 0 ? 'next' : 'upcoming';
+            visibleGps.forEach((gp, index) => {
+                const type = gp.status === 'current'
+                    ? 'current'
+                    : (this.currentGPs.length === 0 && index === 0 ? 'next' : 'upcoming');
                 const card = this.createUnifiedGPCard(gp, type);
                 this.upcomingCards.appendChild(card);
             });
@@ -640,6 +645,9 @@ class F1Calendar {
         if (status === 'next') {
             badgeText = 'Next Up';
             badgeClass = 'next';
+        } else if (status === 'current') {
+            badgeText = 'Current Weekend';
+            badgeClass = 'current';
         } else if (status === 'completed') {
             badgeText = 'Completed';
             badgeClass = 'completed';
@@ -702,8 +710,22 @@ class F1Calendar {
 
             // Build classes
             const classes = ['session-chip', sessionClass];
-            if (hasVideo) classes.push('has-video');
+            if (hasVideo) classes.push('has-video', 'with-thumbnail');
             if (isUpcoming) classes.push('upcoming');
+
+            const mediaHtml = hasVideo ? `
+                <span class="session-chip-thumb" aria-hidden="true" style="background-image: url('${this.escapeAttribute(session.video.thumbnail || '')}')"></span>
+                <span class="session-chip-overlay" aria-hidden="true"></span>
+            ` : '';
+
+            const contentHtml = `
+                ${mediaHtml}
+                <span class="session-chip-content">
+                    <span class="session-chip-label">${sessionType}</span>
+                    <span class="session-chip-icon">${icon}</span>
+                    <span class="session-chip-time">${timeStr}</span>
+                </span>
+            `;
 
             // Data attributes for drawer
             const dataAttrs = hasVideo ? `
@@ -718,18 +740,14 @@ class F1Calendar {
             if (hasVideo) {
                 return `
                     <button type="button" class="${classes.join(' ')}" aria-label="Show ${this.escapeAttribute(sessionType)} video for ${this.escapeAttribute(gp.name)}" ${dataAttrs}>
-                        <span class="session-chip-label">${sessionType}</span>
-                        <span class="session-chip-icon">${icon}</span>
-                        <span class="session-chip-time">${timeStr}</span>
+                        ${contentHtml}
                     </button>
                 `;
             }
 
             return `
                 <div class="${classes.join(' ')}" ${dataAttrs}>
-                    <span class="session-chip-label">${sessionType}</span>
-                    <span class="session-chip-icon">${icon}</span>
-                    <span class="session-chip-time">${timeStr}</span>
+                    ${contentHtml}
                 </div>
             `;
         }).join('');
@@ -739,7 +757,8 @@ class F1Calendar {
         const heroSection = document.getElementById('hero');
         if (!heroSection) return;
 
-        const nextGP = this.upcomingGPs[0];
+        const nextGP = this.currentGPs[0] || this.upcomingGPs[0];
+        const isCurrentWeekend = Boolean(this.currentGPs[0]);
         if (!nextGP) {
             // No upcoming races - show season complete or off-season
             heroSection.innerHTML = `
@@ -766,7 +785,7 @@ class F1Calendar {
             <div class="hero-card hero-centered upcoming-card">
                 <div class="hero-flag">🏁</div>
                 <div class="hero-meta">
-                    <p class="hero-kicker">Next Race</p>
+                    <p class="hero-kicker">${isCurrentWeekend ? 'Current Weekend' : 'Next Race'}</p>
                     <h2 class="hero-title">${flag} ${this.escapeHtml(nextGP.name)}</h2>
                     <p class="hero-date">${this.formatGPDateRange(nextGP.startDate)}</p>
                     <div class="hero-countdown" id="heroCountdown">Loading countdown…</div>
@@ -858,13 +877,14 @@ class F1Calendar {
 
         let foundNext = false;
         const html = allGPs.map((gp, index) => {
-            const gpTime = Date.parse(gp.startDate);
-            const isPast = gpTime < now;
-            const isNext = !isPast && !foundNext;
+            const classification = this.classifyWeekend(gp, this.findMatchingVideoWeekend(gp), now);
+            const isPast = classification.status === 'completed';
+            const isCurrent = classification.status === 'current';
+            const isNext = classification.status === 'upcoming' && !foundNext;
             if (isNext) foundNext = true;
 
-            const statusClass = isPast ? 'completed' : (isNext ? 'next' : 'upcoming');
-            const statusIcon = isPast ? '✓' : (isNext ? '→' : '○');
+            const statusClass = isCurrent ? 'current' : (isPast ? 'completed' : (isNext ? 'next' : 'upcoming'));
+            const statusIcon = isCurrent ? '●' : (isPast ? '✓' : (isNext ? '→' : '○'));
             const shortName = gp.name.replace(' Grand Prix', '');
             const dateStr = this.formatCompactDate(gp.startDate);
             const gpId = this.createGPId(gp.name);
@@ -901,7 +921,7 @@ class F1Calendar {
         if (!this.seasonProgress) return;
 
         const total = this.calendarWeekends.length;
-        const completed = this.completedGPs.filter(gp => gp.videos.length > 0).length;
+        const completed = this.completedGPs.length + this.currentGPs.length;
 
         if (total === 0) return;
 
@@ -1203,6 +1223,29 @@ class F1Calendar {
     isWeekendForYear(weekend = {}) {
         const name = weekend.name || '';
         return name.includes(this.year);
+    }
+
+    findMatchingVideoWeekend(calendarGP) {
+        if (calendarState?.findMatchingVideoWeekend) {
+            return calendarState.findMatchingVideoWeekend(calendarGP, this.videoWeekends, this.year);
+        }
+
+        return this.videoWeekends.find(v =>
+            v.name.replace(`${this.year} `, '').includes(calendarGP.name.replace(' Grand Prix', '')) ||
+            calendarGP.name.replace(' Grand Prix', '').includes(v.name.replace(`${this.year} `, ''))
+        ) || null;
+    }
+
+    classifyWeekend(calendarGP, matchingVideos, now = Date.now()) {
+        if (calendarState?.classifyWeekend) {
+            return calendarState.classifyWeekend(calendarGP, matchingVideos, now);
+        }
+
+        const startTime = Date.parse(calendarGP?.startDate || '');
+        const hasVideos = Boolean(matchingVideos && matchingVideos.videos && matchingVideos.videos.length > 0);
+        const status = !Number.isNaN(startTime) && startTime > now ? 'upcoming' : 'completed';
+
+        return { status, hasVideos };
     }
 
     dedupeWeekendVideos(weekends = []) {
