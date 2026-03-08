@@ -1,9 +1,253 @@
 {
   "season": "2026",
-  "round": null,
-  "updatedAt": "2026-03-08T09:42:12.080Z",
-  "seasonStarted": false,
+  "round": "1",
+  "updatedAt": "2026-03-08T10:07:12.782Z",
+  "seasonStarted": true,
   "source": "jolpica",
-  "drivers": [],
-  "constructors": []
+  "drivers": [
+    {
+      "position": 1,
+      "driverCode": "RUS",
+      "driverName": "George Russell",
+      "constructorName": "Mercedes",
+      "points": 25,
+      "wins": 1
+    },
+    {
+      "position": 2,
+      "driverCode": "ANT",
+      "driverName": "Andrea Kimi Antonelli",
+      "constructorName": "Mercedes",
+      "points": 18,
+      "wins": 0
+    },
+    {
+      "position": 3,
+      "driverCode": "LEC",
+      "driverName": "Charles Leclerc",
+      "constructorName": "Ferrari",
+      "points": 15,
+      "wins": 0
+    },
+    {
+      "position": 4,
+      "driverCode": "HAM",
+      "driverName": "Lewis Hamilton",
+      "constructorName": "Ferrari",
+      "points": 12,
+      "wins": 0
+    },
+    {
+      "position": 5,
+      "driverCode": "NOR",
+      "driverName": "Lando Norris",
+      "constructorName": "McLaren",
+      "points": 10,
+      "wins": 0
+    },
+    {
+      "position": 6,
+      "driverCode": "VER",
+      "driverName": "Max Verstappen",
+      "constructorName": "Red Bull",
+      "points": 8,
+      "wins": 0
+    },
+    {
+      "position": 7,
+      "driverCode": "BEA",
+      "driverName": "Oliver Bearman",
+      "constructorName": "Haas F1 Team",
+      "points": 6,
+      "wins": 0
+    },
+    {
+      "position": 8,
+      "driverCode": "LIN",
+      "driverName": "Arvid Lindblad",
+      "constructorName": "RB F1 Team",
+      "points": 4,
+      "wins": 0
+    },
+    {
+      "position": 9,
+      "driverCode": "BOR",
+      "driverName": "Gabriel Bortoleto",
+      "constructorName": "Audi",
+      "points": 2,
+      "wins": 0
+    },
+    {
+      "position": 10,
+      "driverCode": "GAS",
+      "driverName": "Pierre Gasly",
+      "constructorName": "Alpine F1 Team",
+      "points": 1,
+      "wins": 0
+    },
+    {
+      "position": 11,
+      "driverCode": "OCO",
+      "driverName": "Esteban Ocon",
+      "constructorName": "Haas F1 Team",
+      "points": 0,
+      "wins": 0
+    },
+    {
+      "position": 12,
+      "driverCode": "ALB",
+      "driverName": "Alexander Albon",
+      "constructorName": "Williams",
+      "points": 0,
+      "wins": 0
+    },
+    {
+      "position": 13,
+      "driverCode": "LAW",
+      "driverName": "Liam Lawson",
+      "constructorName": "RB F1 Team",
+      "points": 0,
+      "wins": 0
+    },
+    {
+      "position": 14,
+      "driverCode": "COL",
+      "driverName": "Franco Colapinto",
+      "constructorName": "Alpine F1 Team",
+      "points": 0,
+      "wins": 0
+    },
+    {
+      "position": 15,
+      "driverCode": "SAI",
+      "driverName": "Carlos Sainz",
+      "constructorName": "Williams",
+      "points": 0,
+      "wins": 0
+    },
+    {
+      "position": 16,
+      "driverCode": "PER",
+      "driverName": "Sergio Pérez",
+      "constructorName": "Cadillac F1 Team",
+      "points": 0,
+      "wins": 0
+    },
+    {
+      "position": 0,
+      "driverCode": "STR",
+      "driverName": "Lance Stroll",
+      "constructorName": "Aston Martin",
+      "points": 0,
+      "wins": 0
+    },
+    {
+      "position": 0,
+      "driverCode": "ALO",
+      "driverName": "Fernando Alonso",
+      "constructorName": "Aston Martin",
+      "points": 0,
+      "wins": 0
+    },
+    {
+      "position": 0,
+      "driverCode": "BOT",
+      "driverName": "Valtteri Bottas",
+      "constructorName": "Cadillac F1 Team",
+      "points": 0,
+      "wins": 0
+    },
+    {
+      "position": 0,
+      "driverCode": "HAD",
+      "driverName": "Isack Hadjar",
+      "constructorName": "Red Bull",
+      "points": 0,
+      "wins": 0
+    },
+    {
+      "position": 0,
+      "driverCode": "PIA",
+      "driverName": "Oscar Piastri",
+      "constructorName": "McLaren",
+      "points": 0,
+      "wins": 0
+    },
+    {
+      "position": 0,
+      "driverCode": "HUL",
+      "driverName": "Nico Hülkenberg",
+      "constructorName": "Audi",
+      "points": 0,
+      "wins": 0
+    }
+  ],
+  "constructors": [
+    {
+      "position": 1,
+      "constructorName": "Mercedes",
+      "points": 43,
+      "wins": 1
+    },
+    {
+      "position": 2,
+      "constructorName": "Ferrari",
+      "points": 27,
+      "wins": 0
+    },
+    {
+      "position": 3,
+      "constructorName": "McLaren",
+      "points": 10,
+      "wins": 0
+    },
+    {
+      "position": 4,
+      "constructorName": "Red Bull",
+      "points": 8,
+      "wins": 0
+    },
+    {
+      "position": 5,
+      "constructorName": "Haas F1 Team",
+      "points": 6,
+      "wins": 0
+    },
+    {
+      "position": 6,
+      "constructorName": "RB F1 Team",
+      "points": 4,
+      "wins": 0
+    },
+    {
+      "position": 7,
+      "constructorName": "Audi",
+      "points": 2,
+      "wins": 0
+    },
+    {
+      "position": 8,
+      "constructorName": "Alpine F1 Team",
+      "points": 1,
+      "wins": 0
+    },
+    {
+      "position": 9,
+      "constructorName": "Williams",
+      "points": 0,
+      "wins": 0
+    },
+    {
+      "position": 10,
+      "constructorName": "Cadillac F1 Team",
+      "points": 0,
+      "wins": 0
+    },
+    {
+      "position": 0,
+      "constructorName": "Aston Martin",
+      "points": 0,
+      "wins": 0
+    }
+  ]
 }
