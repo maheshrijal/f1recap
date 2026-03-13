@@ -1,7 +1,20 @@
 {
-  "lastUpdated": "2026-03-13T05:46:31.146Z",
-  "totalVideos": 5,
+  "lastUpdated": "2026-03-13T06:16:49.187Z",
+  "totalVideos": 6,
   "grandPrixWeekends": [
+    {
+      "name": "2026 Chinese Grand Prix",
+      "videos": [
+        {
+          "videoId": "fNEGWXFmZcU",
+          "title": "FP1 Highlights | 2026 Chinese Grand Prix",
+          "description": "Catch up on all the highlights from the sole practice session of the Chinese Grand Prix.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #ChineseGP",
+          "publishedAt": "2026-03-13T06:01:00.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/fNEGWXFmZcU/hqdefault.jpg"
+        }
+      ],
+      "latestDate": "2026-03-13T06:01:00.000Z"
+    },
     {
       "name": "2026 Australian Grand Prix",
       "videos": [
