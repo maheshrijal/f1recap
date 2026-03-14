@@ -1,7 +1,7 @@
 {
   "season": "2026",
   "round": "2",
-  "updatedAt": "2026-03-14T22:01:29.690Z",
+  "updatedAt": "2026-03-14T22:39:51.778Z",
   "seasonStarted": true,
   "source": "jolpica",
   "drivers": [
@@ -70,6 +70,14 @@
       "wins": 0
     },
     {
+      "position": 9,
+      "driverCode": "PIA",
+      "driverName": "Oscar Piastri",
+      "constructorName": "McLaren",
+      "points": 3,
+      "wins": 0
+    },
+    {
       "position": 10,
       "driverCode": "BOR",
       "driverName": "Gabriel Bortoleto",
@@ -134,39 +142,7 @@
       "wins": 0
     },
     {
-      "position": 0,
-      "driverCode": "PIA",
-      "driverName": "Oscar Piastri",
-      "constructorName": "McLaren",
-      "points": 3,
-      "wins": 0
-    },
-    {
-      "position": 0,
-      "driverCode": "STR",
-      "driverName": "Lance Stroll",
-      "constructorName": "Aston Martin",
-      "points": 0,
-      "wins": 0
-    },
-    {
-      "position": 0,
-      "driverCode": "ALO",
-      "driverName": "Fernando Alonso",
-      "constructorName": "Aston Martin",
-      "points": 0,
-      "wins": 0
-    },
-    {
-      "position": 0,
-      "driverCode": "BOT",
-      "driverName": "Valtteri Bottas",
-      "constructorName": "Cadillac F1 Team",
-      "points": 0,
-      "wins": 0
-    },
-    {
-      "position": 0,
+      "position": 18,
       "driverCode": "HAD",
       "driverName": "Isack Hadjar",
       "constructorName": "Red Bull",
@@ -174,10 +150,34 @@
       "wins": 0
     },
     {
-      "position": 0,
+      "position": 19,
       "driverCode": "HUL",
       "driverName": "Nico Hülkenberg",
       "constructorName": "Audi",
+      "points": 0,
+      "wins": 0
+    },
+    {
+      "position": 20,
+      "driverCode": "ALO",
+      "driverName": "Fernando Alonso",
+      "constructorName": "Aston Martin",
+      "points": 0,
+      "wins": 0
+    },
+    {
+      "position": 21,
+      "driverCode": "BOT",
+      "driverName": "Valtteri Bottas",
+      "constructorName": "Cadillac F1 Team",
+      "points": 0,
+      "wins": 0
+    },
+    {
+      "position": 22,
+      "driverCode": "STR",
+      "driverName": "Lance Stroll",
+      "constructorName": "Aston Martin",
       "points": 0,
       "wins": 0
     }
@@ -244,7 +244,7 @@
       "wins": 0
     },
     {
-      "position": 0,
+      "position": 11,
       "constructorName": "Aston Martin",
       "points": 0,
       "wins": 0
