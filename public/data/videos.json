@@ -1,7 +1,20 @@
 {
-  "lastUpdated": "2026-03-27T04:19:52.569Z",
-  "totalVideos": 10,
+  "lastUpdated": "2026-03-27T05:14:25.357Z",
+  "totalVideos": 11,
   "grandPrixWeekends": [
+    {
+      "name": "2026 Japanese Grand Prix",
+      "videos": [
+        {
+          "videoId": "P9CNSvRLeyo",
+          "title": "FP1 Highlights | 2026 Japanese Grand Prix",
+          "description": "The opening practice of the Japanese Grand Prix got underway at the Suzuka Circuit - catch up on all the highlights from FP1!\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #JapaneseGP",
+          "publishedAt": "2026-03-27T05:04:05.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/P9CNSvRLeyo/hqdefault.jpg"
+        }
+      ],
+      "latestDate": "2026-03-27T05:04:05.000Z"
+    },
     {
       "name": "2026 Chinese Grand Prix",
       "videos": [
