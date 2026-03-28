@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-03-28T04:14:24.465Z",
-  "totalVideos": 12,
+  "lastUpdated": "2026-03-28T05:04:15.779Z",
+  "totalVideos": 13,
   "grandPrixWeekends": [
     {
       "name": "2026 Japanese Grand Prix",
@@ -18,9 +18,16 @@
           "description": "Catch up on all of the action from the second practice session of the weekend at the Suzuka Circuit.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #JapaneseGP",
           "publishedAt": "2026-03-27T08:14:52.000Z",
           "thumbnail": "https://i.ytimg.com/vi/sa5tmiRpj6I/hqdefault.jpg"
+        },
+        {
+          "videoId": "nc_iIzHW30c",
+          "title": "FP3 Highlights | 2026 Japanese Grand Prix",
+          "description": "Catch all the action from the final practice hour at the Suzuka Circuit ahead of Qualifying for the Japanese Grand Prix.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #JapaneseGP",
+          "publishedAt": "2026-03-28T04:47:00.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/nc_iIzHW30c/hqdefault.jpg"
         }
       ],
-      "latestDate": "2026-03-27T08:14:52.000Z"
+      "latestDate": "2026-03-28T04:47:00.000Z"
     },
     {
       "name": "2026 Chinese Grand Prix",
