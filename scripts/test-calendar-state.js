@@ -1,9 +1,11 @@
 const assert = require('node:assert/strict');
 
 const {
+    buildHomepageSections,
     classifyWeekend,
     findMatchingVideoWeekend,
     grandPrixNamesMatch,
+    orderWeekendsByStart,
     sessionMatchesVideo
 } = require('../public/assets/js/calendar-state.js');
 
@@ -61,6 +63,64 @@ assert.equal(
     classifyWeekend(australiaWeekend, australiaVideos, mondayAfterRace).status,
     'completed',
     'Australian GP should move to completed after the weekend grace period'
+);
+
+const homepageWithCompletedOnly = buildHomepageSections({
+    completedWeekends: [australiaWeekend]
+});
+assert.equal(
+    homepageWithCompletedOnly.showRaceSection,
+    true,
+    'Homepage should still render race cards after a race weekend ends'
+);
+assert.equal(
+    homepageWithCompletedOnly.showOffSeasonState,
+    false,
+    'Completed highlights should suppress the pre-season empty state'
+);
+assert.equal(
+    homepageWithCompletedOnly.visibleWeekends[0]?.name,
+    'Australian Grand Prix',
+    'Completed weekend should remain visible on the homepage'
+);
+assert.equal(
+    homepageWithCompletedOnly.nextWeekend,
+    null,
+    'Completed-only homepage should not report a next weekend'
+);
+
+const preSeasonHomepage = buildHomepageSections();
+assert.equal(preSeasonHomepage.showRaceSection, false, 'Pre-season should not render race cards without races');
+assert.equal(preSeasonHomepage.showOffSeasonState, true, 'Pre-season should show the off-season state');
+
+const inSeasonHomepage = buildHomepageSections({
+    currentWeekends: [australiaWeekend],
+    upcomingWeekends: [chinaWeekend]
+});
+assert.equal(inSeasonHomepage.showRaceSection, true, 'In-season should render race cards');
+assert.equal(inSeasonHomepage.showOffSeasonState, false, 'In-season should hide the off-season state');
+assert.equal(
+    inSeasonHomepage.nextWeekend?.name,
+    'Australian Grand Prix',
+    'A live weekend should be the auto-scroll target'
+);
+
+const seasonCompleteHomepage = buildHomepageSections({
+    completedWeekends: [chinaWeekend, australiaWeekend]
+});
+assert.equal(seasonCompleteHomepage.showRaceSection, true, 'Post-season should keep completed highlights visible');
+assert.equal(seasonCompleteHomepage.showOffSeasonState, false, 'Post-season should not fall back to the pre-season state');
+assert.deepEqual(
+    seasonCompleteHomepage.visibleWeekends.map((weekend) => weekend.name),
+    ['Australian Grand Prix', 'Chinese Grand Prix'],
+    'Homepage should preserve season order for completed races'
+);
+
+const orderedCompleted = orderWeekendsByStart([chinaWeekend, australiaWeekend], 'asc');
+assert.deepEqual(
+    orderedCompleted.map((weekend) => weekend.name),
+    ['Australian Grand Prix', 'Chinese Grand Prix'],
+    'Completed weekends should preserve calendar order on the homepage'
 );
 
 console.log('calendar-state regression checks passed');

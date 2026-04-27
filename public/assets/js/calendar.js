@@ -67,6 +67,7 @@ class F1Calendar {
         this.standingsEmpty = document.getElementById('standingsEmpty');
         this.standingsUnavailable = document.getElementById('standingsUnavailable');
         this.standingsTableWrap = document.getElementById('standingsTableWrap');
+        this.standingsMobileCards = document.getElementById('standingsMobileCards');
         this.standingsTableHead = document.getElementById('standingsTableHead');
         this.standingsTableBody = document.getElementById('standingsTableBody');
 
@@ -323,9 +324,7 @@ class F1Calendar {
     }
 
     async loadVideos() {
-        const sources = this.dataSource === 'archive'
-            ? [`videos-${this.year}.json`, 'videos.json']
-            : ['videos.json'];
+        const sources = this.getVideoSources();
 
         for (const source of sources) {
             try {
@@ -351,6 +350,18 @@ class F1Calendar {
         }
 
         this.videoWeekends = [];
+    }
+
+    getVideoSources() {
+        if (this.dataSource === 'archive') {
+            return [`videos-${this.year}.json`, 'videos.json'];
+        }
+
+        if (this.dataSource === 'homepage') {
+            return [`videos-${this.year}.json`, 'videos.json'];
+        }
+
+        return ['videos.json'];
     }
 
     defaultStandingsData() {
@@ -514,18 +525,24 @@ class F1Calendar {
             }
         });
 
-        // Sort completed (most recent first) and upcoming (soonest first)
-        completedGps.sort((a, b) => Date.parse(b.startDate) - Date.parse(a.startDate));
-        currentGps.sort((a, b) => Date.parse(a.startDate) - Date.parse(b.startDate));
-        upcomingGps.sort((a, b) => Date.parse(a.startDate) - Date.parse(b.startDate));
+        const sortWeekends = calendarState?.orderWeekendsByStart;
+        const orderedCompleted = sortWeekends
+            ? sortWeekends(completedGps, 'desc')
+            : completedGps.sort((a, b) => Date.parse(b.startDate) - Date.parse(a.startDate));
+        const orderedCurrent = sortWeekends
+            ? sortWeekends(currentGps, 'asc')
+            : currentGps.sort((a, b) => Date.parse(a.startDate) - Date.parse(b.startDate));
+        const orderedUpcoming = sortWeekends
+            ? sortWeekends(upcomingGps, 'asc')
+            : upcomingGps.sort((a, b) => Date.parse(a.startDate) - Date.parse(b.startDate));
 
         // Store separately for unified view
-        this.completedGPs = completedGps;
-        this.currentGPs = currentGps;
-        this.upcomingGPs = upcomingGps;
+        this.completedGPs = orderedCompleted;
+        this.currentGPs = orderedCurrent;
+        this.upcomingGPs = orderedUpcoming;
 
         // Combined list for other views
-        this.mergedWeekends = [...currentGps, ...completedGps, ...upcomingGps.slice(0, 1)];
+        this.mergedWeekends = [...orderedCurrent, ...orderedCompleted, ...orderedUpcoming.slice(0, 1)];
         this.hasMore = this.mergedWeekends.length > this.itemsPerPage;
     }
 
@@ -584,47 +601,59 @@ class F1Calendar {
     // ============================================
 
     renderUnifiedView() {
-        const visibleGps = [...this.currentGPs, ...this.upcomingGPs];
-        const hasUpcoming = visibleGps.length > 0;
+        const homepageSections = calendarState?.buildHomepageSections
+            ? calendarState.buildHomepageSections({
+                year: this.year,
+                currentWeekends: this.currentGPs,
+                upcomingWeekends: this.upcomingGPs,
+                completedWeekends: this.completedGPs
+            })
+            : {
+                visibleWeekends: [...this.completedGPs, ...this.currentGPs, ...this.upcomingGPs],
+                nextWeekend: this.currentGPs[0] || this.upcomingGPs[0] || null,
+                showRaceSection: this.completedGPs.length + this.currentGPs.length + this.upcomingGPs.length > 0,
+                showOffSeasonState: this.currentGPs.length + this.upcomingGPs.length + this.completedGPs.length === 0,
+                sectionTitle: `${this.year} Grand Prix`
+            };
+
         if (this.upcomingCards) {
             this.upcomingCards.innerHTML = '';
         }
         if (this.upcomingSectionTitle) {
-            this.upcomingSectionTitle.textContent = this.currentGPs.length > 0
-                ? 'Current & Upcoming Races'
-                : 'Upcoming Races';
-        }
-
-        // If no upcoming races, show off-season state
-        if (!hasUpcoming) {
-            if (this.offSeasonState) {
-                this.offSeasonState.style.display = 'block';
-            }
-            if (this.upcomingSection) {
-                this.upcomingSection.style.display = 'none';
-            }
-            this.setupUnifiedHero();
-            return;
+            this.upcomingSectionTitle.textContent = homepageSections.sectionTitle || `${this.year} Grand Prix`;
         }
 
         if (this.offSeasonState) {
-            this.offSeasonState.style.display = 'none';
+            this.offSeasonState.style.display = homepageSections.showOffSeasonState ? 'block' : 'none';
         }
 
-        // Render upcoming GPs
-        if (hasUpcoming && this.upcomingSection && this.upcomingCards) {
-            visibleGps.forEach((gp, index) => {
+        if (homepageSections.showRaceSection && this.upcomingSection && this.upcomingCards) {
+            homepageSections.visibleWeekends.forEach((gp, index) => {
                 const type = gp.status === 'current'
                     ? 'current'
-                    : (this.currentGPs.length === 0 && index === 0 ? 'next' : 'upcoming');
+                    : (gp.status === 'upcoming' && gp.name === homepageSections.nextWeekend?.name && index >= 0 ? 'next' : gp.status);
                 const card = this.createUnifiedGPCard(gp, type);
                 this.upcomingCards.appendChild(card);
             });
             this.upcomingSection.style.display = 'block';
+        } else if (this.upcomingSection) {
+            this.upcomingSection.style.display = 'none';
         }
 
-        // Set up hero with next race countdown
         this.setupUnifiedHero();
+    }
+
+    scrollToGrandPrix(gpName) {
+        if (typeof window === 'undefined' || !gpName) {
+            return;
+        }
+
+        const targetEl = document.getElementById(this.createGPId(gpName));
+        if (!targetEl) {
+            return;
+        }
+
+        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     createUnifiedGPCard(gp, status) {
@@ -760,14 +789,14 @@ class F1Calendar {
         const nextGP = this.currentGPs[0] || this.upcomingGPs[0];
         const isCurrentWeekend = Boolean(this.currentGPs[0]);
         if (!nextGP) {
-            // No upcoming races - show season complete or off-season
+            // No upcoming races - show season complete while completed highlights remain below.
             heroSection.innerHTML = `
                 <div class="hero-card hero-centered">
                     <div class="hero-flag">🏆</div>
                     <div class="hero-meta">
                         <p class="hero-kicker">${this.year} Season</p>
                         <h2 class="hero-title">Season Complete!</h2>
-                        <p class="hero-date">Check out the 2025 archive for all highlights</p>
+                        <p class="hero-date">Replay every ${this.year} Grand Prix below.</p>
                     </div>
                 </div>
             `;
@@ -789,10 +818,20 @@ class F1Calendar {
                     <h2 class="hero-title">${flag} ${this.escapeHtml(nextGP.name)}</h2>
                     <p class="hero-date">${this.formatGPDateRange(nextGP.startDate)}</p>
                     <div class="hero-countdown" id="heroCountdown">Loading countdown…</div>
-                    ${sprintBadge}
+                    <div class="hero-actions">
+                        <button type="button" class="secondary-button hero-jump-button" id="heroJumpButton">
+                            Go to ${isCurrentWeekend ? 'weekend' : 'race'}
+                        </button>
+                        ${sprintBadge}
+                    </div>
                 </div>
             </div>
         `;
+
+        const jumpButton = document.getElementById('heroJumpButton');
+        if (jumpButton) {
+            jumpButton.addEventListener('click', () => this.scrollToGrandPrix(nextGP.name));
+        }
 
         // Start countdown
         this.startHeroCountdown(nextGP);
@@ -1096,6 +1135,51 @@ class F1Calendar {
                 </tr>
             `;
         }).join('');
+
+        if (this.standingsMobileCards) {
+            this.standingsMobileCards.innerHTML = rows.map((row) => {
+                if (view === 'constructors') {
+                    return `
+                        <article class="standings-mobile-card">
+                            <div class="standings-mobile-topline">
+                                <span class="standings-mobile-pos">#${row.position || '-'}</span>
+                                <span class="standings-mobile-points">${this.formatPoints(row.points)} pts</span>
+                            </div>
+                            <h3 class="standings-mobile-name">${this.escapeHtml(row.constructorName || 'Unknown Team')}</h3>
+                            <dl class="standings-mobile-meta">
+                                <div>
+                                    <dt>Wins</dt>
+                                    <dd>${row.wins || 0}</dd>
+                                </div>
+                            </dl>
+                        </article>
+                    `;
+                }
+
+                return `
+                    <article class="standings-mobile-card">
+                        <div class="standings-mobile-topline">
+                            <span class="standings-mobile-pos">#${row.position || '-'}</span>
+                            <span class="standings-mobile-points">${this.formatPoints(row.points)} pts</span>
+                        </div>
+                        <h3 class="standings-mobile-name">
+                            ${this.escapeHtml(row.driverName || 'Unknown Driver')}
+                            ${row.driverCode ? `<span class="standings-mobile-code">${this.escapeHtml(row.driverCode)}</span>` : ''}
+                        </h3>
+                        <dl class="standings-mobile-meta">
+                            <div>
+                                <dt>Team</dt>
+                                <dd>${this.escapeHtml(row.constructorName || 'Unknown Team')}</dd>
+                            </div>
+                            <div>
+                                <dt>Wins</dt>
+                                <dd>${row.wins || 0}</dd>
+                            </div>
+                        </dl>
+                    </article>
+                `;
+            }).join('');
+        }
     }
 
     formatPoints(value) {
@@ -1369,6 +1453,8 @@ class F1Calendar {
     renderAllItems() {
         if (!this.timelineContainer) return;
 
+        this.timelineContainer.classList.toggle('archive-gp-list', this.dataSource === 'archive');
+
         this.mergedWeekends.forEach(weekend => {
             const item = this.createTimelineItem(weekend);
             this.timelineContainer.appendChild(item);
@@ -1380,6 +1466,8 @@ class F1Calendar {
 
     renderBatch() {
         if (!this.timelineContainer || this.isLoading || !this.hasMore) return;
+
+        this.timelineContainer.classList.toggle('archive-gp-list', false);
 
         this.isLoading = true;
         if (this.loadMoreSpinner) {
@@ -1412,8 +1500,15 @@ class F1Calendar {
     }
 
     createTimelineItem(weekend) {
-        const div = document.createElement('div');
         const isCompleted = !weekend.upcoming;
+
+        if (this.dataSource === 'archive') {
+            const archiveCard = this.createUnifiedGPCard(weekend, isCompleted ? 'completed' : 'upcoming');
+            archiveCard.classList.add('archive-gp-card');
+            return archiveCard;
+        }
+
+        const div = document.createElement('div');
         div.className = `timeline-item ${isCompleted ? 'completed' : 'upcoming'}`;
 
         const date = this.formatDate(weekend.startDate);
@@ -1424,41 +1519,18 @@ class F1Calendar {
         const videosHtml = isCompleted && weekend.videos.length > 0
             ? weekend.videos.map(video => this.createVideoCard(video, weekend)).join('')
             : '<div class="timeline-no-videos"><div class="timeline-no-videos-icon">🎥</div><p>Highlights coming soon</p></div>';
-
-        // Use collapsible details/summary for archive view
-        if (this.dataSource === 'archive') {
-            div.innerHTML = `
-                <details class="timeline-details">
-                    <summary class="timeline-header timeline-summary">
-                        <span class="timeline-summary-content">
-                            <h3 class="timeline-title">${this.escapeHtml(weekend.name)}</h3>
-                            <span class="timeline-date">${date}</span>
-                            <span class="timeline-badge ${badgeClass}">${badgeText}</span>
-                            ${videoCount > 0 ? `<span class="timeline-video-count">${videoCount} video${videoCount !== 1 ? 's' : ''}</span>` : ''}
-                        </span>
-                        <span class="timeline-chevron" aria-hidden="true"></span>
-                    </summary>
-                    <div class="timeline-content">
-                        <div class="timeline-videos">
-                            ${videosHtml}
-                        </div>
-                    </div>
-                </details>
-            `;
-        } else {
-            div.innerHTML = `
-                <div class="timeline-header">
-                    <h3 class="timeline-title">${this.escapeHtml(weekend.name)}</h3>
-                    <span class="timeline-date">${date}</span>
-                    <span class="timeline-badge ${badgeClass}">${badgeText}</span>
+        div.innerHTML = `
+            <div class="timeline-header">
+                <h3 class="timeline-title">${this.escapeHtml(weekend.name)}</h3>
+                <span class="timeline-date">${date}</span>
+                <span class="timeline-badge ${badgeClass}">${badgeText}</span>
+            </div>
+            <div class="timeline-content">
+                <div class="timeline-videos">
+                    ${videosHtml}
                 </div>
-                <div class="timeline-content">
-                    <div class="timeline-videos">
-                        ${videosHtml}
-                    </div>
-                </div>
-            `;
-        }
+            </div>
+        `;
 
         return div;
     }
