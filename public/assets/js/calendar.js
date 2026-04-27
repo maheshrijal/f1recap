@@ -687,6 +687,9 @@ class F1Calendar {
 
         // Create session strip HTML
         const sessionStripHtml = this.createSessionStrip(gp);
+        const archiveVideoGrid = this.dataSource === 'archive'
+            ? this.createArchiveVideoGrid(gp)
+            : '';
 
         div.innerHTML = `
             <div class="gp-card-header">
@@ -709,10 +712,26 @@ class F1Calendar {
             <div class="session-strip">
                 ${sessionStripHtml}
             </div>
+            ${archiveVideoGrid}
             <div class="inline-video-expand" aria-hidden="true"></div>
         `;
 
         return div;
+    }
+
+    createArchiveVideoGrid(gp) {
+        const videos = Array.isArray(gp?.videos) ? gp.videos : [];
+        const videosHtml = videos.length > 0
+            ? videos.map((video) => this.createVideoCard(video, gp)).join('')
+            : '<div class="timeline-no-videos"><div class="timeline-no-videos-icon">🎥</div><p>Highlights coming soon</p></div>';
+
+        return `
+            <div class="timeline-content">
+                <div class="timeline-videos">
+                    ${videosHtml}
+                </div>
+            </div>
+        `;
     }
 
     createSessionStrip(gp) {
