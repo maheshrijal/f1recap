@@ -115,7 +115,37 @@
         return { status, hasVideos, startMs, lastSessionMs, endMs };
     }
 
+    function orderWeekendsByStart(weekends, direction = 'asc') {
+        const multiplier = direction === 'desc' ? -1 : 1;
+        return (Array.isArray(weekends) ? weekends : [])
+            .slice()
+            .sort((left, right) => {
+                const leftTime = parseTimestamp(left?.startDate) ?? 0;
+                const rightTime = parseTimestamp(right?.startDate) ?? 0;
+                return (leftTime - rightTime) * multiplier;
+            });
+    }
+
+    function buildHomepageSections({ year = '', currentWeekends = [], upcomingWeekends = [], completedWeekends = [] } = {}) {
+        const orderedCompleted = orderWeekendsByStart(completedWeekends, 'asc');
+        const orderedCurrent = orderWeekendsByStart(currentWeekends, 'asc');
+        const orderedUpcoming = orderWeekendsByStart(upcomingWeekends, 'asc');
+        const visibleWeekends = [...orderedCompleted, ...orderedCurrent, ...orderedUpcoming];
+        const nextWeekend = orderedCurrent[0] || orderedUpcoming[0] || null;
+        const hasWeekends = visibleWeekends.length > 0;
+
+        return {
+            visibleWeekends,
+            nextWeekend,
+            showRaceSection: hasWeekends,
+            showOffSeasonState: !hasWeekends,
+            isSeasonComplete: !nextWeekend && orderedCompleted.length > 0,
+            sectionTitle: year ? `${year} Grand Prix` : 'Grand Prix'
+        };
+    }
+
     const api = {
+        buildHomepageSections,
         CURRENT_WEEKEND_GRACE_MS,
         classifyWeekend,
         findMatchingVideoWeekend,
@@ -123,6 +153,7 @@
         getWeekendBounds,
         grandPrixNamesMatch,
         normalizeGrandPrixName,
+        orderWeekendsByStart,
         parseTimestamp,
         sessionMatchesVideo
     };
