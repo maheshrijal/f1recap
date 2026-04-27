@@ -13,7 +13,7 @@
     "test:calendar-state": "node scripts/test-calendar-state.js"
   },
   "dependencies": {
-    "axios": "^1.13.5"
+    "axios": "^1.15.2"
   },
   "keywords": [
     "formula1",
