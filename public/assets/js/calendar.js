@@ -704,11 +704,21 @@ class F1Calendar {
             badgeClass = 'upcoming';
         }
 
-        // Create session strip HTML
-        const sessionStripHtml = this.createSessionStrip(gp);
-        const archiveVideoGrid = this.dataSource === 'archive'
-            ? this.createArchiveVideoGrid(gp)
-            : '';
+        // Build the panel content: archive uses videos[], homepage uses sessions[],
+        // anything else falls back to the legacy session-strip + inline-expand UI.
+        let panelContent;
+        if (this.dataSource === 'archive') {
+            panelContent = this.createArchiveVideoGrid(gp);
+        } else if (this.dataSource === 'homepage') {
+            panelContent = this.createSessionGrid(gp);
+        } else {
+            panelContent = `
+                <div class="session-strip dashboard-session-strip">
+                ${this.createSessionStrip(gp)}
+                </div>
+                <div class="inline-video-expand" aria-hidden="true"></div>
+            `;
+        }
         const sessionCount = Array.isArray(gp.sessions) ? gp.sessions.length : 0;
 
         div.innerHTML = `
@@ -735,12 +745,7 @@ class F1Calendar {
                 </button>
             </div>
             <div class="gp-card-panel" id="${panelId}" ${isExpanded ? '' : 'hidden'}>
-                ${this.dataSource === 'archive' ? '' : `
-                <div class="session-strip dashboard-session-strip">
-                ${sessionStripHtml}
-                </div>
-                <div class="inline-video-expand" aria-hidden="true"></div>`}
-                ${archiveVideoGrid}
+                ${panelContent}
             </div>
         `;
 
@@ -774,6 +779,64 @@ class F1Calendar {
             <div class="timeline-content">
                 <div class="timeline-videos">
                     ${videosHtml}
+                </div>
+            </div>
+        `;
+    }
+
+    createSessionGrid(gp) {
+        const sessions = Array.isArray(gp?.sessions) ? gp.sessions : [];
+        if (sessions.length === 0) {
+            return `
+                <div class="timeline-content">
+                    <div class="timeline-videos">
+                        <div class="timeline-no-videos"><div class="timeline-no-videos-icon">🎥</div><p>Highlights coming soon</p></div>
+                    </div>
+                </div>
+            `;
+        }
+
+        const cardsHtml = sessions.map(session => {
+            const hasVideo = session.video && session.video.videoId;
+            return hasVideo
+                ? this.createVideoCard(session.video, gp)
+                : this.createSessionPlaceholderCard(session, gp);
+        }).join('');
+
+        return `
+            <div class="timeline-content">
+                <div class="timeline-videos">
+                    ${cardsHtml}
+                </div>
+            </div>
+        `;
+    }
+
+    createSessionPlaceholderCard(session, gp) {
+        const sessionTitle = typeof session.title === 'string' ? session.title : 'Session';
+        const sessionType = this.getSessionTypeLabel(sessionTitle);
+        const sessionClass = sessionType.toLowerCase().replace(/\s+/g, '-');
+        const sessionDate = new Date(session.publishedAt);
+        const isUpcoming = sessionDate.getTime() > Date.now();
+        const dateStr = this.formatDate(session.publishedAt);
+        const statusText = isUpcoming ? 'Coming soon' : 'Highlights pending';
+        const icon = isUpcoming ? '⏱' : '🎥';
+
+        return `
+            <div class="video-card video-card-placeholder">
+                <div class="video-thumbnail-container video-thumbnail-placeholder">
+                    <div class="placeholder-content">
+                        <div class="placeholder-icon">${icon}</div>
+                        <div class="placeholder-label">${this.escapeHtml(sessionType)}</div>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">${this.escapeHtml(sessionType)} — ${this.escapeHtml(gp.name)}</h3>
+                    <div class="video-date">${dateStr}</div>
+                    <div class="video-actions">
+                        <span class="video-type ${sessionClass}">${sessionType}</span>
+                        <span class="placeholder-status">${statusText}</span>
+                    </div>
                 </div>
             </div>
         `;
