@@ -1740,19 +1740,17 @@ class F1Calendar {
 
         return `
             <div class="video-card">
-                <button type="button" class="video-thumbnail-container drawer-trigger"
-                    aria-label="Play ${this.escapeAttribute(video.title || 'video')}"
-                    data-video-id="${video.videoId}"
-                    data-video-url="${this.escapeAttribute(videoUrl)}"
-                    data-grand-prix="${this.escapeAttribute(weekend.name)}"
-                    data-video-title="${this.escapeAttribute(video.title)}"
-                    data-session-type="${videoType}">
+                <a class="video-thumbnail-container"
+                    href="${this.escapeAttribute(videoUrl)}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Watch ${this.escapeAttribute(video.title || 'video')} on YouTube">
                     <div class="video-thumbnail" style="background-image: url('${this.escapeAttribute(video.thumbnail || '')}')">
                         <div class="play-overlay">
                             <div class="play-button">▶</div>
                         </div>
                     </div>
-                </button>
+                </a>
                 <div class="video-info">
                     <h3 class="video-title">${this.escapeHtml(video.title || '')}</h3>
                     <div class="video-date">${formattedDate}</div>
