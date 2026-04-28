@@ -735,10 +735,11 @@ class F1Calendar {
                 </button>
             </div>
             <div class="gp-card-panel" id="${panelId}" ${isExpanded ? '' : 'hidden'}>
+                ${this.dataSource === 'archive' ? '' : `
                 <div class="session-strip dashboard-session-strip">
                 ${sessionStripHtml}
                 </div>
-                ${this.dataSource === 'archive' ? '' : '<div class="inline-video-expand" aria-hidden="true"></div>'}
+                <div class="inline-video-expand" aria-hidden="true"></div>`}
                 ${archiveVideoGrid}
             </div>
         `;
