@@ -1209,12 +1209,60 @@ main > section {
     border-radius: 12px;
     overflow: hidden;
     border: 1px solid var(--stroke);
-    transition: border-color 0.2s ease;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .video-card:hover {
     border-color: var(--muted);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -16px rgba(0, 0, 0, 0.45);
+}
+
+.video-card-placeholder {
+    border-style: dashed;
+    background: color-mix(in srgb, var(--card) 92%, transparent);
+}
+
+.video-card-placeholder:hover {
+    border-color: var(--stroke);
+}
+
+.video-thumbnail-placeholder {
+    cursor: default;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--card-contrast) 70%, transparent), color-mix(in srgb, var(--card) 70%, transparent));
+}
+
+.video-thumbnail-placeholder .placeholder-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    color: var(--muted);
+}
+
+.video-thumbnail-placeholder .placeholder-icon {
+    font-size: 1.8rem;
+    opacity: 0.85;
+}
+
+.video-thumbnail-placeholder .placeholder-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.video-card-placeholder .placeholder-status {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-weight: 600;
 }
 
 
@@ -1224,7 +1272,7 @@ main > section {
     appearance: none;
     width: 100%;
     height: 0;
-    padding-bottom: 56.25%;
+    padding-bottom: 42%;
     padding-left: 0;
     padding-right: 0;
     border: 0;
@@ -1234,6 +1282,7 @@ main > section {
     text-align: inherit;
     cursor: pointer;
     overflow: hidden;
+    text-decoration: none;
 }
 
 .video-thumbnail-container:focus-visible {
@@ -1294,21 +1343,32 @@ main > section {
 
 
 .video-info {
-    padding: 1.05rem 1.05rem 0.95rem;
+    padding: 0.9rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    gap: 0.4rem;
 }
 
 .video-title {
-    font-size: 1.02rem;
+    font-size: 0.95rem;
     font-weight: 700;
-    margin-bottom: 0.35rem;
+    margin: 0;
     color: var(--text);
     line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: calc(0.95rem * 1.35 * 2);
 }
 
 .video-date {
     color: var(--muted);
-    font-size: 0.9rem;
-    margin-bottom: 0.45rem;
+    font-size: 0.85rem;
+    margin: 0;
+    line-height: 1.3;
 }
 
 .video-type {
@@ -1339,7 +1399,10 @@ main > section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 0.45rem;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 0.5rem;
+    min-height: 34px;
 }
 
 .watch-button {
@@ -5438,21 +5501,25 @@ body[data-page="about"] .feature-list {
     gap: 0.55rem;
 }
 
-.page-home .dashboard-race-card {
+.page-home .dashboard-race-card,
+.page-archive .dashboard-race-card {
     border-radius: 10px;
     box-shadow: none;
 }
 
-.page-home .dashboard-race-card:hover {
+.page-home .dashboard-race-card:hover,
+.page-archive .dashboard-race-card:hover {
     transform: none;
     box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
 }
 
-.page-home .dashboard-race-card .gp-card-header {
+.page-home .dashboard-race-card .gp-card-header,
+.page-archive .dashboard-race-card .gp-card-header {
     padding: 0;
 }
 
-.page-home .gp-card-toggle {
+.page-home .gp-card-toggle,
+.page-archive .gp-card-toggle {
     appearance: none;
     width: 100%;
     border: 0;
@@ -5468,18 +5535,21 @@ body[data-page="about"] .feature-list {
     font: inherit;
 }
 
-.page-home .gp-card-toggle:focus-visible {
+.page-home .gp-card-toggle:focus-visible,
+.page-archive .gp-card-toggle:focus-visible {
     outline: 3px solid rgba(225, 6, 0, 0.35);
     outline-offset: -3px;
 }
 
-.page-home .gp-card-info {
+.page-home .gp-card-info,
+.page-archive .gp-card-info {
     display: grid;
     min-width: 0;
     gap: 0.24rem;
 }
 
-.page-home .gp-card-name {
+.page-home .gp-card-name,
+.page-archive .gp-card-name {
     display: flex;
     min-width: 0;
     align-items: center;
@@ -5488,18 +5558,21 @@ body[data-page="about"] .feature-list {
     line-height: 1.2;
 }
 
-.page-home .gp-card-meta {
+.page-home .gp-card-meta,
+.page-archive .gp-card-meta {
     display: flex;
     gap: 0.48rem;
     font-size: 0.78rem;
 }
 
-.page-home .gp-card-next-session {
+.page-home .gp-card-next-session,
+.page-archive .gp-card-next-session {
     margin: 0;
     font-size: 0.8rem;
 }
 
-.page-home .gp-card-badges {
+.page-home .gp-card-badges,
+.page-archive .gp-card-badges {
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -5509,7 +5582,10 @@ body[data-page="about"] .feature-list {
 
 .page-home .gp-session-count,
 .page-home .gp-video-count,
-.page-home .gp-status-badge {
+.page-home .gp-status-badge,
+.page-archive .gp-session-count,
+.page-archive .gp-video-count,
+.page-archive .gp-status-badge {
     min-height: 28px;
     display: inline-flex;
     align-items: center;
@@ -5521,13 +5597,15 @@ body[data-page="about"] .feature-list {
     font-weight: 800;
 }
 
-.page-home .gp-session-count {
+.page-home .gp-session-count,
+.page-archive .gp-session-count {
     color: var(--muted);
     border: 1px solid var(--stroke);
     background: var(--glass);
 }
 
-.page-home .gp-card-chevron {
+.page-home .gp-card-chevron,
+.page-archive .gp-card-chevron {
     width: 24px;
     height: 24px;
     display: inline-flex;
@@ -5539,20 +5617,24 @@ body[data-page="about"] .feature-list {
     transition: transform 0.2s ease;
 }
 
-.page-home .dashboard-race-card.is-expanded .gp-card-chevron {
+.page-home .dashboard-race-card.is-expanded .gp-card-chevron,
+.page-archive .dashboard-race-card.is-expanded .gp-card-chevron {
     transform: rotate(180deg);
 }
 
-.page-home .gp-card-panel {
+.page-home .gp-card-panel,
+.page-archive .gp-card-panel {
     border-top: 1px solid var(--stroke);
     background: color-mix(in srgb, var(--card-contrast) 52%, transparent);
 }
 
-.page-home .gp-card-panel[hidden] {
+.page-home .gp-card-panel[hidden],
+.page-archive .gp-card-panel[hidden] {
     display: none;
 }
 
-.page-home .dashboard-session-strip {
+.page-home .dashboard-session-strip,
+.page-archive .dashboard-session-strip {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
     gap: 0.42rem;
@@ -5560,7 +5642,8 @@ body[data-page="about"] .feature-list {
     overflow: visible;
 }
 
-.page-home .dashboard-session-strip .session-chip {
+.page-home .dashboard-session-strip .session-chip,
+.page-archive .dashboard-session-strip .session-chip {
     min-width: 0;
     min-height: 54px;
     width: 100%;
@@ -5571,7 +5654,8 @@ body[data-page="about"] .feature-list {
     background: var(--card);
 }
 
-.page-home .dashboard-session-strip .session-chip-content {
+.page-home .dashboard-session-strip .session-chip-content,
+.page-archive .dashboard-session-strip .session-chip-content {
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-areas:
@@ -5582,29 +5666,34 @@ body[data-page="about"] .feature-list {
     padding: 0.5rem 0.58rem;
 }
 
-.page-home .dashboard-session-strip .session-chip-icon {
+.page-home .dashboard-session-strip .session-chip-icon,
+.page-archive .dashboard-session-strip .session-chip-icon {
     grid-area: icon;
     font-size: 0.95rem;
 }
 
-.page-home .dashboard-session-strip .session-chip-label {
+.page-home .dashboard-session-strip .session-chip-label,
+.page-archive .dashboard-session-strip .session-chip-label {
     grid-area: label;
     font-size: 0.68rem;
     line-height: 1.1;
 }
 
-.page-home .dashboard-session-strip .session-chip-time {
+.page-home .dashboard-session-strip .session-chip-time,
+.page-archive .dashboard-session-strip .session-chip-time {
     grid-area: time;
     text-align: left;
     font-size: 0.68rem;
 }
 
-.page-home .inline-video-expand.show {
+.page-home .inline-video-expand.show,
+.page-archive .inline-video-expand.show {
     max-height: 260px;
     padding: 0.72rem 0.75rem;
 }
 
-.page-home .inline-video-content {
+.page-home .inline-video-content,
+.page-archive .inline-video-content {
     gap: 0.9rem;
 }
 
@@ -5640,7 +5729,8 @@ body[data-page="about"] .feature-list {
 }
 
 [data-theme="dark"] .page-home .command-status-band,
-[data-theme="dark"] .page-home .dashboard-session-strip .session-chip {
+[data-theme="dark"] .page-home .dashboard-session-strip .session-chip,
+[data-theme="dark"] .page-archive .dashboard-session-strip .session-chip {
     background: #141414;
 }
 
@@ -5648,7 +5738,8 @@ body[data-page="about"] .feature-list {
     background: rgba(96, 165, 250, 0.045);
 }
 
-[data-theme="dark"] .page-home .gp-card-panel {
+[data-theme="dark"] .page-home .gp-card-panel,
+[data-theme="dark"] .page-archive .gp-card-panel {
     background: rgba(255, 255, 255, 0.025);
 }
 
@@ -5714,24 +5805,28 @@ body[data-page="about"] .feature-list {
         grid-column: 1 / -1;
     }
 
-    .page-home .gp-card-toggle {
+    .page-home .gp-card-toggle,
+    .page-archive .gp-card-toggle {
         grid-template-columns: 1fr;
         gap: 0.55rem;
         padding: 0.78rem 0.82rem;
     }
 
-    .page-home .gp-card-badges {
+    .page-home .gp-card-badges,
+    .page-archive .gp-card-badges {
         width: 100%;
         justify-content: flex-start;
         flex-wrap: wrap;
     }
 
-    .page-home .dashboard-session-strip {
+    .page-home .dashboard-session-strip,
+    .page-archive .dashboard-session-strip {
         grid-template-columns: 1fr 1fr;
         padding: 0.58rem;
     }
 
-    .page-home .inline-video-expand.show {
+    .page-home .inline-video-expand.show,
+    .page-archive .inline-video-expand.show {
         max-height: 520px;
     }
 
@@ -5741,7 +5836,8 @@ body[data-page="about"] .feature-list {
 }
 
 @media (max-width: 430px) {
-    .page-home .dashboard-session-strip {
+    .page-home .dashboard-session-strip,
+    .page-archive .dashboard-session-strip {
         grid-template-columns: 1fr;
     }
 }
