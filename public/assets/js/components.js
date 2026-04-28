@@ -152,6 +152,18 @@ const Components = {
                     setThemeState(newTheme);
                     localStorage.setItem('theme', newTheme);
                     setTimeout(() => document.documentElement.classList.remove('theme-transition'), 600);
+
+                    if (window.posthog && typeof window.posthog.capture === 'function') {
+                        try {
+                            window.posthog.capture('theme_toggled', {
+                                theme: newTheme,
+                                previous_theme: currentTheme,
+                                location: btn.closest('footer') ? 'footer' : 'header'
+                            });
+                        } catch (error) {
+                            console.debug('PostHog capture failed:', error);
+                        }
+                    }
                 });
                 btn.dataset.initialized = 'true';
             }
@@ -186,6 +198,17 @@ const Components = {
                 const isOpen = nav.classList.contains('is-open');
                 const nextOpen = !isOpen;
                 setNavState(nav, navToggle, nextOpen, { focusToggle: !nextOpen });
+
+                if (window.posthog && typeof window.posthog.capture === 'function') {
+                    try {
+                        window.posthog.capture('mobile_nav_toggled', {
+                            opened: nextOpen,
+                            page: document.body && document.body.dataset ? document.body.dataset.page : undefined
+                        });
+                    } catch (error) {
+                        console.debug('PostHog capture failed:', error);
+                    }
+                }
 
                 let openedByKeyboard = event.detail === 0;
                 if (!openedByKeyboard) {
