@@ -59,6 +59,7 @@ class F1Calendar {
         this.upcomingCards = document.getElementById('upcomingGPCards');
         this.offSeasonState = document.getElementById('offSeasonState');
         this.sidebarCalendar = document.getElementById('sidebarCalendar');
+        this.seasonSnapshot = document.getElementById('seasonSnapshot');
         this.seasonProgress = document.getElementById('seasonProgress');
         this.standingsSection = document.getElementById('championshipStandings');
         this.upcomingSectionTitle = document.getElementById('upcomingSectionTitle');
@@ -120,6 +121,7 @@ class F1Calendar {
             if (this.viewMode === 'unified') {
                 this.renderUnifiedView();
                 this.renderSidebarCalendar();
+                this.renderSeasonSnapshot();
                 this.renderSeasonProgress();
                 this.renderStandings();
                 this.hideLoading();
@@ -214,6 +216,7 @@ class F1Calendar {
             if (this.viewMode === 'unified') {
                 this.renderUnifiedView();
                 this.renderSidebarCalendar();
+                this.renderSeasonSnapshot();
                 this.renderSeasonProgress();
                 this.renderStandings();
                 this.setupDrawer();
@@ -628,7 +631,14 @@ class F1Calendar {
         }
 
         if (homepageSections.showRaceSection && this.upcomingSection && this.upcomingCards) {
-            homepageSections.visibleWeekends.forEach((gp, index) => {
+            const dashboardWeekends = homepageSections.nextWeekend
+                ? [
+                    homepageSections.nextWeekend,
+                    ...homepageSections.visibleWeekends.filter(gp => gp.name !== homepageSections.nextWeekend.name)
+                ]
+                : homepageSections.visibleWeekends;
+
+            dashboardWeekends.forEach((gp, index) => {
                 const type = gp.status === 'current'
                     ? 'current'
                     : (gp.status === 'upcoming' && gp.name === homepageSections.nextWeekend?.name && index >= 0 ? 'next' : gp.status);
@@ -659,14 +669,23 @@ class F1Calendar {
     createUnifiedGPCard(gp, status) {
         const div = document.createElement('div');
         const statusClass = status === 'next' ? 'next-up' : status;
-        div.className = `gp-card ${statusClass}`;
-        div.id = this.createGPId(gp.name);
+        const gpId = this.createGPId(gp.name);
+        const isExpanded = this.dataSource === 'archive' || status === 'next' || status === 'current';
+        const panelId = `${gpId}-sessions`;
+        div.className = `gp-card dashboard-race-card ${statusClass}${isExpanded ? ' is-expanded' : ''}`;
+        div.id = gpId;
 
         const flag = this.getGPFlag(gp.name);
         const dates = this.formatGPDateRange(gp.startDate);
         const location = gp.name.replace(' Grand Prix', '');
         const hasSprint = gp.sessions.some(s => s.title.toLowerCase().includes('sprint'));
         const videoCount = gp.videos.length;
+        const nextSession = this.getNextSession(gp);
+        const sessionSummary = nextSession
+            ? `${this.escapeHtml(this.getSessionTypeLabel(nextSession.title))} • ${this.escapeHtml(this.formatSessionTime(nextSession.publishedAt))}`
+            : videoCount > 0
+                ? `${videoCount} highlight${videoCount === 1 ? '' : 's'} available`
+                : 'Session schedule listed below';
 
         // Status badge text
         let badgeText = '';
@@ -690,31 +709,56 @@ class F1Calendar {
         const archiveVideoGrid = this.dataSource === 'archive'
             ? this.createArchiveVideoGrid(gp)
             : '';
+        const sessionCount = Array.isArray(gp.sessions) ? gp.sessions.length : 0;
 
         div.innerHTML = `
             <div class="gp-card-header">
-                <div class="gp-card-info">
-                    <h3 class="gp-card-name">
+                <button class="gp-card-toggle" type="button" aria-expanded="${isExpanded ? 'true' : 'false'}" aria-controls="${panelId}">
+                    <span class="gp-card-info">
+                    <span class="gp-card-name">
                         <span class="gp-card-flag">${flag}</span>
                         ${this.escapeHtml(gp.name)}
-                    </h3>
-                    <div class="gp-card-meta">
+                    </span>
+                    <span class="gp-card-meta">
                         <span class="gp-card-dates">${dates}</span>
                         <span class="gp-card-location">📍 ${this.escapeHtml(location)}</span>
                         ${hasSprint ? '<span class="sprint-badge">🏃 Sprint</span>' : ''}
-                    </div>
-                </div>
-                <div class="gp-card-badges">
+                    </span>
+                    <span class="gp-card-next-session">${sessionSummary}</span>
+                    </span>
+                    <span class="gp-card-badges">
+                    <span class="gp-session-count">${sessionCount} sessions</span>
                     ${videoCount > 0 ? `<span class="gp-video-count">🎬 ${videoCount}</span>` : ''}
                     <span class="gp-status-badge ${badgeClass}">${badgeText}</span>
-                </div>
+                    <span class="gp-card-chevron" aria-hidden="true">⌄</span>
+                    </span>
+                </button>
             </div>
-            <div class="session-strip">
+            <div class="gp-card-panel" id="${panelId}" ${isExpanded ? '' : 'hidden'}>
+                <div class="session-strip dashboard-session-strip">
                 ${sessionStripHtml}
+                </div>
+                <div class="inline-video-expand" aria-hidden="true"></div>
             </div>
             ${archiveVideoGrid}
-            <div class="inline-video-expand" aria-hidden="true"></div>
         `;
+
+        const toggle = div.querySelector('.gp-card-toggle');
+        const panel = div.querySelector('.gp-card-panel');
+        if (toggle && panel) {
+            toggle.addEventListener('click', () => {
+                const nextExpanded = toggle.getAttribute('aria-expanded') !== 'true';
+                toggle.setAttribute('aria-expanded', nextExpanded ? 'true' : 'false');
+                panel.hidden = !nextExpanded;
+                div.classList.toggle('is-expanded', nextExpanded);
+                if (!nextExpanded) {
+                    const expandContainer = div.querySelector('.inline-video-expand');
+                    expandContainer?.classList.remove('show');
+                    expandContainer?.setAttribute('aria-hidden', 'true');
+                    div.querySelectorAll('.session-chip.active').forEach(chip => chip.classList.remove('active'));
+                }
+            });
+        }
 
         return div;
     }
@@ -758,10 +802,12 @@ class F1Calendar {
 
             // Build classes
             const classes = ['session-chip', sessionClass];
-            if (hasVideo) classes.push('has-video', 'with-thumbnail');
+            const showThumbnail = hasVideo && this.dataSource !== 'homepage' && this.viewMode !== 'unified';
+            if (hasVideo) classes.push('has-video');
+            if (showThumbnail) classes.push('with-thumbnail');
             if (isUpcoming) classes.push('upcoming');
 
-            const mediaHtml = hasVideo ? `
+            const mediaHtml = showThumbnail ? `
                 <span class="session-chip-thumb" aria-hidden="true" style="background-image: url('${this.escapeAttribute(session.video.thumbnail || '')}')"></span>
                 <span class="session-chip-overlay" aria-hidden="true"></span>
             ` : '';
@@ -827,23 +873,35 @@ class F1Calendar {
 
         const flag = this.getGPFlag(nextGP.name);
         const hasSprint = nextGP.sessions.some(s => s.title.toLowerCase().includes('sprint'));
-        const sprintBadge = hasSprint ? '<span class="sprint-chip">🏃 Sprint Weekend</span>' : '';
+        const sprintBadge = hasSprint ? '<span class="sprint-chip hero-action hero-action-status">🏃 Sprint Weekend</span>' : '';
+        const nextSession = this.getNextSession(nextGP);
+        const sessionLabel = nextSession ? this.getSessionTypeLabel(nextSession.title) : 'Race Weekend';
+        const sessionTime = nextSession ? this.formatFullDateTime(nextSession.publishedAt) : this.formatGPDateRange(nextGP.startDate);
+        const timeZone = this.userTimeZone || 'local time';
 
         heroSection.innerHTML = `
-            <div class="hero-card hero-centered upcoming-card">
-                <div class="hero-flag">🏁</div>
-                <div class="hero-meta">
+            <div class="hero-card hero-centered upcoming-card hero-race-control command-status-band">
+                <div class="hero-meta command-status-main">
                     <p class="hero-kicker">${isCurrentWeekend ? 'Current Weekend' : 'Next Race'}</p>
                     <h2 class="hero-title">${flag} ${this.escapeHtml(nextGP.name)}</h2>
                     <p class="hero-date">${this.formatGPDateRange(nextGP.startDate)}</p>
-                    <div class="hero-countdown" id="heroCountdown">Loading countdown…</div>
+                </div>
+                <div class="hero-countdown command-status-countdown" id="heroCountdown">Loading countdown…</div>
+                <div class="hero-next-session command-status-session" aria-label="Next session">
+                    <span class="hero-next-label">Next session</span>
+                    <strong>${this.escapeHtml(sessionLabel)}</strong>
+                    <span class="hero-next-time">${this.escapeHtml(sessionTime)}</span>
+                    <small class="hero-next-zone">${this.escapeHtml(timeZone)}</small>
+                </div>
                     <div class="hero-actions">
-                        <button type="button" class="secondary-button hero-jump-button" id="heroJumpButton">
+                        <button type="button" class="secondary-button hero-action hero-action-secondary hero-jump-button" id="heroJumpButton">
                             Go to ${isCurrentWeekend ? 'weekend' : 'race'}
                         </button>
+                        <a class="watch-button hero-action hero-action-primary hero-calendar-button" href="${this.escapeAttribute(this.icsFile)}">
+                            Add calendar
+                        </a>
                         ${sprintBadge}
                     </div>
-                </div>
             </div>
         `;
 
@@ -854,6 +912,14 @@ class F1Calendar {
 
         // Start countdown
         this.startHeroCountdown(nextGP);
+    }
+
+    getNextSession(gp = {}) {
+        const now = Date.now();
+        const sessions = Array.isArray(gp.sessions) ? gp.sessions : [];
+        return sessions
+            .filter(session => Date.parse(session.publishedAt) > now)
+            .sort((a, b) => Date.parse(a.publishedAt) - Date.parse(b.publishedAt))[0] || null;
     }
 
     startHeroCountdown(gp) {
@@ -994,6 +1060,38 @@ class F1Calendar {
         if (progressLabel) progressLabel.textContent = `Race ${completed} of ${total} • ${percentage}% complete`;
 
         this.seasonProgress.style.display = 'block';
+    }
+
+    renderSeasonSnapshot() {
+        if (!this.seasonSnapshot) return;
+
+        const total = this.calendarWeekends.length || 24;
+        const completed = this.completedGPs.length;
+        const upcoming = this.upcomingGPs.length;
+        const sprintCount = this.calendarWeekends.filter(gp =>
+            Array.isArray(gp.sessions) && gp.sessions.some(session =>
+                String(session.title || '').toLowerCase().includes('sprint')
+            )
+        ).length || 6;
+
+        this.seasonSnapshot.innerHTML = `
+            <h3>Season Snapshot</h3>
+            <div class="season-snapshot-grid">
+                <div class="season-snapshot-item">
+                    <span class="snapshot-value">${completed}</span>
+                    <span class="snapshot-label">Complete</span>
+                </div>
+                <div class="season-snapshot-item">
+                    <span class="snapshot-value">${upcoming}</span>
+                    <span class="snapshot-label">Upcoming</span>
+                </div>
+                <div class="season-snapshot-item">
+                    <span class="snapshot-value">${sprintCount}</span>
+                    <span class="snapshot-label">Sprints</span>
+                </div>
+            </div>
+            <p class="season-snapshot-note">${total} race weekends tracked in your timezone.</p>
+        `;
     }
 
     setupStandingsTabs() {
@@ -1279,6 +1377,22 @@ class F1Calendar {
         const time = date.toLocaleTimeString('en-US', timeOptions);
 
         return `${day} ${time}`;
+    }
+
+    formatFullDateTime(dateString) {
+        if (!dateString) return '';
+        const date = new Date(dateString);
+        if (Number.isNaN(date.getTime())) return '';
+
+        return date.toLocaleString('en-US', {
+            weekday: 'short',
+            month: 'short',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false,
+            timeZone: this.userTimeZone
+        });
     }
 
     formatShortDateTime(dateString) {
