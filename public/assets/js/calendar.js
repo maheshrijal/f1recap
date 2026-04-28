@@ -738,7 +738,7 @@ class F1Calendar {
                 <div class="session-strip dashboard-session-strip">
                 ${sessionStripHtml}
                 </div>
-                <div class="inline-video-expand" aria-hidden="true"></div>
+                ${this.dataSource === 'archive' ? '' : '<div class="inline-video-expand" aria-hidden="true"></div>'}
                 ${archiveVideoGrid}
             </div>
         `;
@@ -1849,14 +1849,17 @@ class F1Calendar {
         }
 
         // Handle session chips in unified view - inline expansion
-        const sessionChips = document.querySelectorAll('.session-chip.has-video');
-        sessionChips.forEach(chip => {
-            if (this.drawerThumbs.has(chip)) {
-                return;
-            }
-            this.drawerThumbs.add(chip);
-            chip.addEventListener('click', () => this.expandInlineVideo(chip));
-        });
+        // Skip on archive: the main video grid already renders each video below the chips
+        if (this.dataSource !== 'archive') {
+            const sessionChips = document.querySelectorAll('.session-chip.has-video');
+            sessionChips.forEach(chip => {
+                if (this.drawerThumbs.has(chip)) {
+                    return;
+                }
+                this.drawerThumbs.add(chip);
+                chip.addEventListener('click', () => this.expandInlineVideo(chip));
+            });
+        }
 
         if (this.drawerInitialized) {
             return;
