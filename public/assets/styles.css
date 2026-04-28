@@ -1209,12 +1209,17 @@ main > section {
     border-radius: 12px;
     overflow: hidden;
     border: 1px solid var(--stroke);
-    transition: border-color 0.2s ease;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .video-card:hover {
     border-color: var(--muted);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -16px rgba(0, 0, 0, 0.45);
 }
 
 .video-card-placeholder {
@@ -1338,21 +1343,32 @@ main > section {
 
 
 .video-info {
-    padding: 1.05rem 1.05rem 0.95rem;
+    padding: 0.9rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    gap: 0.4rem;
 }
 
 .video-title {
-    font-size: 1.02rem;
+    font-size: 0.95rem;
     font-weight: 700;
-    margin-bottom: 0.35rem;
+    margin: 0;
     color: var(--text);
     line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: calc(0.95rem * 1.35 * 2);
 }
 
 .video-date {
     color: var(--muted);
-    font-size: 0.9rem;
-    margin-bottom: 0.45rem;
+    font-size: 0.85rem;
+    margin: 0;
+    line-height: 1.3;
 }
 
 .video-type {
@@ -1383,7 +1399,10 @@ main > section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 0.45rem;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 0.5rem;
+    min-height: 34px;
 }
 
 .watch-button {
