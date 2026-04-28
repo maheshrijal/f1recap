@@ -739,8 +739,8 @@ class F1Calendar {
                 ${sessionStripHtml}
                 </div>
                 <div class="inline-video-expand" aria-hidden="true"></div>
+                ${archiveVideoGrid}
             </div>
-            ${archiveVideoGrid}
         `;
 
         const toggle = div.querySelector('.gp-card-toggle');
@@ -802,7 +802,7 @@ class F1Calendar {
 
             // Build classes
             const classes = ['session-chip', sessionClass];
-            const showThumbnail = hasVideo && this.dataSource !== 'homepage' && this.viewMode !== 'unified';
+            const showThumbnail = hasVideo && this.dataSource !== 'homepage' && this.dataSource !== 'archive' && this.viewMode !== 'unified';
             if (hasVideo) classes.push('has-video');
             if (showThumbnail) classes.push('with-thumbnail');
             if (isUpcoming) classes.push('upcoming');
