@@ -65,10 +65,18 @@ class NotificationManager {
             return;
         }
 
+        this.captureAnalytics('notification_permission_requested', {
+            previous_permission: this.permission
+        });
+
         try {
             const permission = await Notification.requestPermission();
             this.permission = permission;
             this.updateUI();
+
+            this.captureAnalytics('notification_permission_resolved', {
+                permission
+            });
 
             if (permission === 'granted') {
                 new Notification('F1 Recap', {
@@ -78,6 +86,17 @@ class NotificationManager {
             }
         } catch (error) {
             console.error('Error requesting notification permission:', error);
+        }
+    }
+
+    captureAnalytics(eventName, properties = {}) {
+        if (!window.posthog || typeof window.posthog.capture !== 'function') {
+            return;
+        }
+        try {
+            window.posthog.capture(eventName, properties);
+        } catch (error) {
+            console.debug('PostHog capture failed:', error);
         }
     }
 
@@ -152,7 +171,15 @@ class NotificationManager {
 
             this.notifiedSessions.add(id);
 
+            const kind = id.endsWith('|session-live') ? 'session_live' : 'starting_soon';
+            this.captureAnalytics('session_notification_shown', {
+                kind,
+                title
+            });
+
+            const capture = (eventName, properties) => this.captureAnalytics(eventName, properties);
             notification.onclick = function () {
+                capture('session_notification_clicked', { kind, title });
                 window.focus();
                 this.close();
             };

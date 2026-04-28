@@ -763,6 +763,16 @@ class F1Calendar {
                     expandContainer?.setAttribute('aria-hidden', 'true');
                     div.querySelectorAll('.session-chip.active').forEach(chip => chip.classList.remove('active'));
                 }
+                this.captureAnalytics('gp_card_toggled', {
+                    grand_prix: gp.name,
+                    round: gp.round,
+                    status,
+                    video_count: videoCount,
+                    session_count: sessionCount,
+                    expanded: nextExpanded,
+                    data_source: this.dataSource,
+                    year: this.year
+                });
             });
         }
 
@@ -1168,9 +1178,15 @@ class F1Calendar {
             tab.addEventListener('click', () => {
                 const view = tab.getAttribute('data-standings-view');
                 if (!view || view === this.activeStandingsView) return;
+                const previousView = this.activeStandingsView;
                 this.activeStandingsView = view;
                 this.updateStandingsViewInUrl(view);
                 this.renderStandings();
+                this.captureAnalytics('standings_view_changed', {
+                    view,
+                    previous_view: previousView,
+                    year: this.year
+                });
             });
 
             tab.addEventListener('keydown', (event) => {
