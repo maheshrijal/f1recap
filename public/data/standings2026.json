@@ -1,7 +1,7 @@
 {
   "season": "2026",
-  "round": "3",
-  "updatedAt": "2026-05-02T18:12:00.944Z",
+  "round": "4",
+  "updatedAt": "2026-05-02T18:44:48.997Z",
   "seasonStarted": true,
   "source": "jolpica",
   "drivers": [
@@ -10,7 +10,7 @@
       "driverCode": "ANT",
       "driverName": "Andrea Kimi Antonelli",
       "constructorName": "Mercedes",
-      "points": 72,
+      "points": 75,
       "wins": 2
     },
     {
@@ -18,7 +18,7 @@
       "driverCode": "RUS",
       "driverName": "George Russell",
       "constructorName": "Mercedes",
-      "points": 63,
+      "points": 68,
       "wins": 1
     },
     {
@@ -26,7 +26,7 @@
       "driverCode": "LEC",
       "driverName": "Charles Leclerc",
       "constructorName": "Ferrari",
-      "points": 49,
+      "points": 55,
       "wins": 0
     },
     {
@@ -34,7 +34,7 @@
       "driverCode": "HAM",
       "driverName": "Lewis Hamilton",
       "constructorName": "Ferrari",
-      "points": 41,
+      "points": 43,
       "wins": 0
     },
     {
@@ -42,7 +42,7 @@
       "driverCode": "NOR",
       "driverName": "Lando Norris",
       "constructorName": "McLaren",
-      "points": 25,
+      "points": 33,
       "wins": 0
     },
     {
@@ -50,7 +50,7 @@
       "driverCode": "PIA",
       "driverName": "Oscar Piastri",
       "constructorName": "McLaren",
-      "points": 21,
+      "points": 28,
       "wins": 0
     },
     {
@@ -66,7 +66,7 @@
       "driverCode": "GAS",
       "driverName": "Pierre Gasly",
       "constructorName": "Alpine F1 Team",
-      "points": 15,
+      "points": 16,
       "wins": 0
     },
     {
@@ -74,7 +74,7 @@
       "driverCode": "VER",
       "driverName": "Max Verstappen",
       "constructorName": "Red Bull",
-      "points": 12,
+      "points": 16,
       "wins": 0
     },
     {
