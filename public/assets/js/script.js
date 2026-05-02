@@ -957,7 +957,19 @@ function initThemeToggle() {
         toggle.dataset.initialized = 'true';
         toggle.addEventListener('click', () => {
             const current = document.documentElement.getAttribute('data-theme') || 'light';
-            setTheme(current === 'dark' ? 'light' : 'dark');
+            const next = current === 'dark' ? 'light' : 'dark';
+            setTheme(next);
+            if (window.posthog && typeof window.posthog.capture === 'function') {
+                try {
+                    window.posthog.capture('theme_toggled', {
+                        theme: next,
+                        previous_theme: current,
+                        source: 'script'
+                    });
+                } catch (error) {
+                    console.debug('PostHog capture failed:', error);
+                }
+            }
         });
     });
 }

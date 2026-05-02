@@ -163,4 +163,93 @@
     } else {
         window.addEventListener('load', ensureWebVitalsLoaded, { once: true });
     }
+
+    // --- Exception capture ---
+    function captureException(error, source, extra) {
+        if (!window.posthog || typeof window.posthog.capture !== 'function') { return; }
+        const errorObj = error instanceof Error ? error : new Error(typeof error === 'string' ? error : 'Unknown error');
+        try {
+            if (typeof window.posthog.captureException === 'function') {
+                window.posthog.captureException(errorObj, Object.assign({ source: source }, extra || {}));
+                return;
+            }
+            window.posthog.capture('$exception', Object.assign({
+                $exception_message: errorObj.message,
+                $exception_type: errorObj.name,
+                $exception_stack_trace_raw: errorObj.stack,
+                $exception_personURL: window.location.href,
+                source: source
+            }, extra || {}));
+        } catch (e) {
+            if (typeof console !== 'undefined') { console.debug('PostHog exception capture failed:', e); }
+        }
+    }
+
+    window.addEventListener('error', function (event) {
+        captureException(event.error || event.message, 'window.onerror', {
+            filename: event.filename,
+            lineno: event.lineno,
+            colno: event.colno
+        });
+    });
+
+    window.addEventListener('unhandledrejection', function (event) {
+        captureException(event.reason, 'unhandledrejection');
+    });
+
+    // --- Scroll depth ---
+    (function () {
+        const thresholds = [25, 50, 75, 100];
+        const reached = new Set();
+        let ticking = false;
+
+        function checkScroll() {
+            ticking = false;
+            const doc = document.documentElement;
+            const scrollable = (doc.scrollHeight || 0) - (window.innerHeight || 0);
+            if (scrollable <= 0) { return; }
+            const percent = Math.min(100, Math.round(((window.scrollY || doc.scrollTop || 0) / scrollable) * 100));
+            thresholds.forEach(function (threshold) {
+                if (percent >= threshold && !reached.has(threshold)) {
+                    reached.add(threshold);
+                    if (window.posthog && typeof window.posthog.capture === 'function') {
+                        try {
+                            window.posthog.capture('scroll_depth_reached', {
+                                depth_percent: threshold,
+                                path: window.location.pathname
+                            });
+                        } catch (e) { /* swallow */ }
+                    }
+                }
+            });
+        }
+
+        window.addEventListener('scroll', function () {
+            if (ticking) { return; }
+            ticking = true;
+            window.requestAnimationFrame(checkScroll);
+        }, { passive: true });
+    })();
+
+    // --- PWA install ---
+    window.addEventListener('beforeinstallprompt', function (event) {
+        if (!window.posthog || typeof window.posthog.capture !== 'function') { return; }
+        try {
+            window.posthog.capture('pwa_install_prompt_shown', {
+                platforms: event.platforms
+            });
+            if (event.userChoice && typeof event.userChoice.then === 'function') {
+                event.userChoice.then(function (choice) {
+                    window.posthog.capture('pwa_install_prompt_resolved', {
+                        outcome: choice && choice.outcome
+                    });
+                });
+            }
+        } catch (e) { /* swallow */ }
+    });
+
+    window.addEventListener('appinstalled', function () {
+        if (!window.posthog || typeof window.posthog.capture !== 'function') { return; }
+        try { window.posthog.capture('pwa_installed'); } catch (e) { /* swallow */ }
+    });
 })(window, document);
