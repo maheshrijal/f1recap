@@ -1,7 +1,7 @@
 {
   "season": "2026",
   "round": "3",
-  "updatedAt": "2026-05-02T17:43:14.236Z",
+  "updatedAt": "2026-05-02T18:12:00.944Z",
   "seasonStarted": true,
   "source": "jolpica",
   "drivers": [
@@ -186,37 +186,37 @@
     {
       "position": 1,
       "constructorName": "Mercedes",
-      "points": 135,
+      "points": 143,
       "wins": 3
     },
     {
       "position": 2,
       "constructorName": "Ferrari",
-      "points": 90,
+      "points": 98,
       "wins": 0
     },
     {
       "position": 3,
       "constructorName": "McLaren",
-      "points": 46,
+      "points": 61,
       "wins": 0
     },
     {
       "position": 4,
+      "constructorName": "Red Bull",
+      "points": 20,
+      "wins": 0
+    },
+    {
+      "position": 5,
       "constructorName": "Haas F1 Team",
       "points": 18,
       "wins": 0
     },
     {
-      "position": 5,
-      "constructorName": "Alpine F1 Team",
-      "points": 16,
-      "wins": 0
-    },
-    {
       "position": 6,
-      "constructorName": "Red Bull",
-      "points": 16,
+      "constructorName": "Alpine F1 Team",
+      "points": 17,
       "wins": 0
     },
     {
