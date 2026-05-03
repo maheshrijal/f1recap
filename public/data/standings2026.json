@@ -1,7 +1,7 @@
 {
   "season": "2026",
   "round": "4",
-  "updatedAt": "2026-05-03T22:46:34.080Z",
+  "updatedAt": "2026-05-03T23:18:33.625Z",
   "seasonStarted": true,
   "source": "jolpica",
   "drivers": [
@@ -26,7 +26,7 @@
       "driverCode": "LEC",
       "driverName": "Charles Leclerc",
       "constructorName": "Ferrari",
-      "points": 63,
+      "points": 59,
       "wins": 0
     },
     {
@@ -42,7 +42,7 @@
       "driverCode": "HAM",
       "driverName": "Lewis Hamilton",
       "constructorName": "Ferrari",
-      "points": 49,
+      "points": 51,
       "wins": 0
     },
     {
@@ -90,7 +90,7 @@
       "driverCode": "COL",
       "driverName": "Franco Colapinto",
       "constructorName": "Alpine F1 Team",
-      "points": 5,
+      "points": 7,
       "wins": 0
     },
     {
@@ -192,7 +192,7 @@
     {
       "position": 2,
       "constructorName": "Ferrari",
-      "points": 112,
+      "points": 110,
       "wins": 0
     },
     {
@@ -210,7 +210,7 @@
     {
       "position": 5,
       "constructorName": "Alpine F1 Team",
-      "points": 21,
+      "points": 23,
       "wins": 0
     },
     {
