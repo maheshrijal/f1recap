@@ -130,13 +130,12 @@
 
     function bindWebVitals() {
         if (!window.webVitals) { return; }
-        const options = { reportAllChanges: true };
-        window.webVitals.onCLS && window.webVitals.onCLS(sendToPosthog, options);
-        window.webVitals.onFID && window.webVitals.onFID(sendToPosthog, options);
-        window.webVitals.onLCP && window.webVitals.onLCP(sendToPosthog, options);
-        window.webVitals.onFCP && window.webVitals.onFCP(sendToPosthog, options);
-        window.webVitals.onTTFB && window.webVitals.onTTFB(sendToPosthog, options);
-        window.webVitals.onINP && window.webVitals.onINP(sendToPosthog, options);
+        window.webVitals.onCLS && window.webVitals.onCLS(sendToPosthog);
+        window.webVitals.onFID && window.webVitals.onFID(sendToPosthog);
+        window.webVitals.onLCP && window.webVitals.onLCP(sendToPosthog);
+        window.webVitals.onFCP && window.webVitals.onFCP(sendToPosthog);
+        window.webVitals.onTTFB && window.webVitals.onTTFB(sendToPosthog);
+        window.webVitals.onINP && window.webVitals.onINP(sendToPosthog);
     }
 
     function ensureWebVitalsLoaded() {
