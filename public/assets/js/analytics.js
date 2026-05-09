@@ -235,9 +235,23 @@
     window.addEventListener('beforeinstallprompt', function (event) {
         if (!window.posthog || typeof window.posthog.capture !== 'function') { return; }
         try {
-            window.posthog.capture('pwa_install_available', {
+            window.posthog.capture('pwa_install_prompt_shown', {
                 platforms: event.platforms
             });
+
+            if (event.userChoice && typeof event.userChoice.then === 'function') {
+                event.userChoice
+                    .then(function (choice) {
+                        if (!window.posthog || typeof window.posthog.capture !== 'function') { return; }
+                        try {
+                            window.posthog.capture('pwa_install_prompt_resolved', {
+                                outcome: choice && choice.outcome ? choice.outcome : undefined,
+                                platform: choice && choice.platform ? choice.platform : undefined
+                            });
+                        } catch (e) { /* swallow */ }
+                    })
+                    .catch(function () { /* swallow */ });
+            }
         } catch (e) { /* swallow */ }
     });
 
