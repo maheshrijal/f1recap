@@ -186,6 +186,12 @@
     }
 
     window.addEventListener('error', function (event) {
+        const target = event.target || event.srcElement;
+        if (target && target !== window) {
+            const url = target.src || target.href;
+            if (url) { return; }
+        }
+
         if (!event.error && !event.message) { return; }
 
         captureException(event.error || event.message, 'window.onerror', {
@@ -207,7 +213,7 @@
         let settleTimer = null;
         let resizeObserver = null;
 
-        function getScrollPercent(allowNonScrollable) {
+        function getScrollInfo(allowNonScrollable) {
             const doc = document.documentElement;
             const body = document.body;
             const scrollHeight = Math.max(
@@ -218,19 +224,23 @@
             const scrollable = scrollHeight - viewportHeight;
 
             if (scrollable <= 0) {
-                return allowNonScrollable ? 100 : null;
+                return allowNonScrollable ? { percent: 100, nonScrollable: true } : null;
             }
 
-            return Math.min(100, Math.round(((window.scrollY || doc.scrollTop || 0) / scrollable) * 100));
+            return {
+                percent: Math.min(100, Math.round(((window.scrollY || doc.scrollTop || 0) / scrollable) * 100)),
+                nonScrollable: false
+            };
         }
 
         function checkScroll(options) {
             ticking = false;
-            const percent = getScrollPercent(options && options.allowNonScrollable);
-            if (percent === null) { return; }
+            const scrollInfo = getScrollInfo(options && options.allowNonScrollable);
+            if (scrollInfo === null) { return; }
 
-            thresholds.forEach(function (threshold) {
-                if (percent >= threshold && !reached.has(threshold)) {
+            const thresholdsToCheck = scrollInfo.nonScrollable ? [100] : thresholds;
+            thresholdsToCheck.forEach(function (threshold) {
+                if (scrollInfo.percent >= threshold && !reached.has(threshold)) {
                     reached.add(threshold);
                     if (window.posthog && typeof window.posthog.capture === 'function') {
                         try {
