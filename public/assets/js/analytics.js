@@ -204,14 +204,31 @@
         const thresholds = [25, 50, 75, 100];
         const reached = new Set();
         let ticking = false;
+        let settleTimer = null;
+        let resizeObserver = null;
 
-        function checkScroll() {
-            ticking = false;
+        function getScrollPercent(allowNonScrollable) {
             const doc = document.documentElement;
-            const scrollable = (doc.scrollHeight || 0) - (window.innerHeight || 0);
-            const percent = scrollable <= 0
-                ? 100
-                : Math.min(100, Math.round(((window.scrollY || doc.scrollTop || 0) / scrollable) * 100));
+            const body = document.body;
+            const scrollHeight = Math.max(
+                doc.scrollHeight || 0,
+                body ? body.scrollHeight || 0 : 0
+            );
+            const viewportHeight = window.innerHeight || doc.clientHeight || 0;
+            const scrollable = scrollHeight - viewportHeight;
+
+            if (scrollable <= 0) {
+                return allowNonScrollable ? 100 : null;
+            }
+
+            return Math.min(100, Math.round(((window.scrollY || doc.scrollTop || 0) / scrollable) * 100));
+        }
+
+        function checkScroll(options) {
+            ticking = false;
+            const percent = getScrollPercent(options && options.allowNonScrollable);
+            if (percent === null) { return; }
+
             thresholds.forEach(function (threshold) {
                 if (percent >= threshold && !reached.has(threshold)) {
                     reached.add(threshold);
@@ -227,13 +244,32 @@
             });
         }
 
+        function scheduleSettledCheck() {
+            if (settleTimer) { clearTimeout(settleTimer); }
+            settleTimer = setTimeout(function () {
+                checkScroll({ allowNonScrollable: true });
+            }, 1000);
+        }
+
+        function startSettledTracking() {
+            scheduleSettledCheck();
+            if (typeof ResizeObserver !== 'undefined' && document.body) {
+                resizeObserver = new ResizeObserver(scheduleSettledCheck);
+                resizeObserver.observe(document.body);
+            }
+        }
+
         window.addEventListener('scroll', function () {
             if (ticking) { return; }
             ticking = true;
             window.requestAnimationFrame(checkScroll);
         }, { passive: true });
 
-        window.requestAnimationFrame(checkScroll);
+        if (document.readyState === 'complete') {
+            startSettledTracking();
+        } else {
+            window.addEventListener('load', startSettledTracking, { once: true });
+        }
     })();
 
     // --- PWA install ---
