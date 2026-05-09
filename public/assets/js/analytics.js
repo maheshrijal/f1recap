@@ -235,16 +235,9 @@
     window.addEventListener('beforeinstallprompt', function (event) {
         if (!window.posthog || typeof window.posthog.capture !== 'function') { return; }
         try {
-            window.posthog.capture('pwa_install_prompt_shown', {
+            window.posthog.capture('pwa_install_available', {
                 platforms: event.platforms
             });
-            if (event.userChoice && typeof event.userChoice.then === 'function') {
-                event.userChoice.then(function (choice) {
-                    window.posthog.capture('pwa_install_prompt_resolved', {
-                        outcome: choice && choice.outcome
-                    });
-                });
-            }
         } catch (e) { /* swallow */ }
     });
 

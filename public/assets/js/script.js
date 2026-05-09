@@ -964,7 +964,7 @@ function initThemeToggle() {
                     window.posthog.capture('theme_toggled', {
                         theme: next,
                         previous_theme: current,
-                        source: 'script'
+                        location: 'legacy'
                     });
                 } catch (error) {
                     console.debug('PostHog capture failed:', error);

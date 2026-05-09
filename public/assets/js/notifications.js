@@ -65,6 +65,11 @@ class NotificationManager {
             return;
         }
 
+        if (this.permission === 'granted') {
+            this.updateUI();
+            return;
+        }
+
         this.captureAnalytics('notification_permission_requested', {
             previous_permission: this.permission
         });
