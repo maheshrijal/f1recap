@@ -186,6 +186,8 @@
     }
 
     window.addEventListener('error', function (event) {
+        if (!event.error && !event.message) { return; }
+
         captureException(event.error || event.message, 'window.onerror', {
             filename: event.filename,
             lineno: event.lineno,
@@ -207,8 +209,9 @@
             ticking = false;
             const doc = document.documentElement;
             const scrollable = (doc.scrollHeight || 0) - (window.innerHeight || 0);
-            if (scrollable <= 0) { return; }
-            const percent = Math.min(100, Math.round(((window.scrollY || doc.scrollTop || 0) / scrollable) * 100));
+            const percent = scrollable <= 0
+                ? 100
+                : Math.min(100, Math.round(((window.scrollY || doc.scrollTop || 0) / scrollable) * 100));
             thresholds.forEach(function (threshold) {
                 if (percent >= threshold && !reached.has(threshold)) {
                     reached.add(threshold);
@@ -229,6 +232,8 @@
             ticking = true;
             window.requestAnimationFrame(checkScroll);
         }, { passive: true });
+
+        window.requestAnimationFrame(checkScroll);
     })();
 
     // --- PWA install ---
