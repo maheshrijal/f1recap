@@ -163,4 +163,151 @@
     } else {
         window.addEventListener('load', ensureWebVitalsLoaded, { once: true });
     }
+
+    // --- Exception capture ---
+    function captureException(error, source, extra) {
+        if (!window.posthog || typeof window.posthog.capture !== 'function') { return; }
+        const errorObj = error instanceof Error ? error : new Error(typeof error === 'string' ? error : 'Unknown error');
+        try {
+            if (typeof window.posthog.captureException === 'function') {
+                window.posthog.captureException(errorObj, Object.assign({ source: source }, extra || {}));
+                return;
+            }
+            window.posthog.capture('$exception', Object.assign({
+                $exception_message: errorObj.message,
+                $exception_type: errorObj.name,
+                $exception_stack_trace_raw: errorObj.stack,
+                $exception_personURL: window.location.href,
+                source: source
+            }, extra || {}));
+        } catch (e) {
+            if (typeof console !== 'undefined') { console.debug('PostHog exception capture failed:', e); }
+        }
+    }
+
+    window.addEventListener('error', function (event) {
+        const target = event.target || event.srcElement;
+        if (target && target !== window) {
+            const url = target.src || target.href;
+            if (url) { return; }
+        }
+
+        if (!event.error && !event.message) { return; }
+
+        captureException(event.error || event.message, 'window.onerror', {
+            filename: event.filename,
+            lineno: event.lineno,
+            colno: event.colno
+        });
+    });
+
+    window.addEventListener('unhandledrejection', function (event) {
+        captureException(event.reason, 'unhandledrejection');
+    });
+
+    // --- Scroll depth ---
+    (function () {
+        const thresholds = [25, 50, 75, 100];
+        const reached = new Set();
+        let ticking = false;
+        let settleTimer = null;
+        let resizeObserver = null;
+
+        function getScrollInfo(allowNonScrollable) {
+            const doc = document.documentElement;
+            const body = document.body;
+            const scrollHeight = Math.max(
+                doc.scrollHeight || 0,
+                body ? body.scrollHeight || 0 : 0
+            );
+            const viewportHeight = window.innerHeight || doc.clientHeight || 0;
+            const scrollable = scrollHeight - viewportHeight;
+
+            if (scrollable <= 0) {
+                return allowNonScrollable ? { percent: 100, nonScrollable: true } : null;
+            }
+
+            return {
+                percent: Math.min(100, Math.round(((window.scrollY || doc.scrollTop || 0) / scrollable) * 100)),
+                nonScrollable: false
+            };
+        }
+
+        function checkScroll(options) {
+            ticking = false;
+            const scrollInfo = getScrollInfo(options && options.allowNonScrollable);
+            if (scrollInfo === null) { return; }
+
+            const thresholdsToCheck = scrollInfo.nonScrollable ? [100] : thresholds;
+            thresholdsToCheck.forEach(function (threshold) {
+                if (scrollInfo.percent >= threshold && !reached.has(threshold)) {
+                    reached.add(threshold);
+                    if (window.posthog && typeof window.posthog.capture === 'function') {
+                        try {
+                            window.posthog.capture('scroll_depth_reached', {
+                                depth_percent: threshold,
+                                path: window.location.pathname
+                            });
+                        } catch (e) { /* swallow */ }
+                    }
+                }
+            });
+        }
+
+        function scheduleSettledCheck() {
+            if (settleTimer) { clearTimeout(settleTimer); }
+            settleTimer = setTimeout(function () {
+                checkScroll({ allowNonScrollable: true });
+            }, 1000);
+        }
+
+        function startSettledTracking() {
+            scheduleSettledCheck();
+            if (typeof ResizeObserver !== 'undefined' && document.body) {
+                resizeObserver = new ResizeObserver(scheduleSettledCheck);
+                resizeObserver.observe(document.body);
+            }
+        }
+
+        window.addEventListener('scroll', function () {
+            if (ticking) { return; }
+            ticking = true;
+            window.requestAnimationFrame(checkScroll);
+        }, { passive: true });
+
+        if (document.readyState === 'complete') {
+            startSettledTracking();
+        } else {
+            window.addEventListener('load', startSettledTracking, { once: true });
+        }
+    })();
+
+    // --- PWA install ---
+    window.addEventListener('beforeinstallprompt', function (event) {
+        if (!window.posthog || typeof window.posthog.capture !== 'function') { return; }
+        try {
+            window.posthog.capture('pwa_install_prompt_shown', {
+                platforms: event.platforms
+            });
+
+            if (event.userChoice && typeof event.userChoice.then === 'function') {
+                event.userChoice
+                    .then(function (choice) {
+                        if (!window.posthog || typeof window.posthog.capture !== 'function') { return; }
+                        try {
+                            window.posthog.capture('pwa_install_prompt_resolved', {
+                                outcome: choice && choice.outcome ? choice.outcome : undefined,
+                                platform: choice && choice.platform ? choice.platform : undefined
+                            });
+                        } catch (e) { /* swallow */ }
+                    })
+                    .catch(function () { /* swallow */ });
+            }
+        } catch (e) { /* swallow */ }
+    });
+
+    window.addEventListener('appinstalled', function () {
+        if (!window.posthog || typeof window.posthog.capture !== 'function') { return; }
+        try { window.posthog.capture('pwa_installed'); } catch (e) { /* swallow */ }
+    });
 })(window, document);

@@ -118,6 +118,18 @@ const Components = {
      * Call this after DOM is ready
      */
     init() {
+        const captureAnalytics = (eventName, properties = {}) => {
+            if (!window.posthog || typeof window.posthog.capture !== 'function') {
+                return;
+            }
+
+            try {
+                window.posthog.capture(eventName, properties);
+            } catch (error) {
+                console.debug('PostHog capture failed:', error);
+            }
+        };
+
         const setThemeState = (theme) => {
             const isDark = theme === 'dark';
             document.documentElement.setAttribute('data-theme', theme);
@@ -152,6 +164,12 @@ const Components = {
                     setThemeState(newTheme);
                     localStorage.setItem('theme', newTheme);
                     setTimeout(() => document.documentElement.classList.remove('theme-transition'), 600);
+
+                    captureAnalytics('theme_toggled', {
+                        theme: newTheme,
+                        previous_theme: currentTheme,
+                        location: btn.closest('footer') ? 'footer' : 'header'
+                    });
                 });
                 btn.dataset.initialized = 'true';
             }
@@ -186,6 +204,11 @@ const Components = {
                 const isOpen = nav.classList.contains('is-open');
                 const nextOpen = !isOpen;
                 setNavState(nav, navToggle, nextOpen, { focusToggle: !nextOpen });
+
+                captureAnalytics('mobile_nav_toggled', {
+                    opened: nextOpen,
+                    page: document.body && document.body.dataset ? document.body.dataset.page : undefined
+                });
 
                 let openedByKeyboard = event.detail === 0;
                 if (!openedByKeyboard) {
