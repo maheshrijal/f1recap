@@ -1,7 +1,20 @@
 {
-  "lastUpdated": "2026-05-22T19:05:17.964Z",
-  "totalVideos": 5,
+  "lastUpdated": "2026-05-22T20:08:51.518Z",
+  "totalVideos": 6,
   "grandPrixWeekends": [
+    {
+      "name": "2026 Canadian Grand Prix",
+      "videos": [
+        {
+          "videoId": "eHf3ZKK-vIw",
+          "title": "FP1 Highlights | 2026 Canadian Grand Prix",
+          "description": "Round five gets underway in Montreal with the sole practice session of the weekend ahead of Sprint Qualifying.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #CanadianGP",
+          "publishedAt": "2026-05-22T19:31:20.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/eHf3ZKK-vIw/hqdefault.jpg"
+        }
+      ],
+      "latestDate": "2026-05-22T19:31:20.000Z"
+    },
     {
       "name": "2026 Miami Grand Prix",
       "videos": [
