@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-05-23T17:19:07.556Z",
-  "totalVideos": 7,
+  "lastUpdated": "2026-05-23T17:47:07.953Z",
+  "totalVideos": 8,
   "grandPrixWeekends": [
     {
       "name": "2026 Canadian Grand Prix",
@@ -13,6 +13,13 @@
           "thumbnail": "https://i.ytimg.com/vi/eHf3ZKK-vIw/hqdefault.jpg"
         },
         {
+          "videoId": "l3aB-W19bnc",
+          "title": "Sprint Highlights | 2026 Canadian Grand Prix",
+          "description": "Catch up on all the action from the first-ever F1 Sprint in Canada, which saw a tense clash between team mates!\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #CanadianGP",
+          "publishedAt": "2026-05-23T17:35:37.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/l3aB-W19bnc/hqdefault.jpg"
+        },
+        {
           "videoId": "d2urQDKqZhU",
           "title": "Sprint Qualifying Highlights | 2026 Canadian Grand Prix",
           "description": "Catch up on all the action from Montreal as the grid is set for the F1 Sprint at the Canadian Grand Prix!\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #CanadianGP",
@@ -20,7 +27,7 @@
           "thumbnail": "https://i.ytimg.com/vi/d2urQDKqZhU/hqdefault.jpg"
         }
       ],
-      "latestDate": "2026-05-22T22:09:07.000Z"
+      "latestDate": "2026-05-23T17:35:37.000Z"
     },
     {
       "name": "2026 Miami Grand Prix",
