@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-05-24T22:22:28.170Z",
-  "totalVideos": 9,
+  "lastUpdated": "2026-05-24T22:48:33.246Z",
+  "totalVideos": 10,
   "grandPrixWeekends": [
     {
       "name": "2026 Canadian Grand Prix",
@@ -27,6 +27,13 @@
           "thumbnail": "https://i.ytimg.com/vi/d2urQDKqZhU/hqdefault.jpg"
         },
         {
+          "videoId": "QrRh2vOJQbw",
+          "title": "Race Highlights | 2026 Canadian Grand Prix",
+          "description": "With a thrilling intra-team battle, and a late-race retirement, catch up on all the action from a dramatic race in Montreal!\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #CanadianGP",
+          "publishedAt": "2026-05-24T22:40:14.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/QrRh2vOJQbw/hqdefault.jpg"
+        },
+        {
           "videoId": "rjLDgDc0td4",
           "title": "Qualifying Highlights | 2026 Canadian Grand Prix",
           "description": "A last-gasp effort to secure pole in Qualifying for the Canadian Grand Prix! Tune in for all the highlights to see how the grid will line-up for race day...\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #CanadianGP",
@@ -34,7 +41,7 @@
           "thumbnail": "https://i.ytimg.com/vi/rjLDgDc0td4/hqdefault.jpg"
         }
       ],
-      "latestDate": "2026-05-23T21:23:51.000Z"
+      "latestDate": "2026-05-24T22:40:14.000Z"
     },
     {
       "name": "2026 Miami Grand Prix",
