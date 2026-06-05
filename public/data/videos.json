@@ -1,7 +1,20 @@
 {
-  "lastUpdated": "2026-06-05T13:31:49.309Z",
-  "totalVideos": 10,
+  "lastUpdated": "2026-06-05T15:00:47.269Z",
+  "totalVideos": 11,
   "grandPrixWeekends": [
+    {
+      "name": "2026 Monaco Grand Prix",
+      "videos": [
+        {
+          "videoId": "cUyrXVHSljc",
+          "title": "FP1 Highlights | 2026 Monaco Grand Prix",
+          "description": "The opening practice session in Monaco saw two red flags in the first hour of track action! Catch up on all the key moments from FP1...\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #MonacoGP",
+          "publishedAt": "2026-06-05T14:21:45.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/cUyrXVHSljc/hqdefault.jpg"
+        }
+      ],
+      "latestDate": "2026-06-05T14:21:45.000Z"
+    },
     {
       "name": "2026 Canadian Grand Prix",
       "videos": [
