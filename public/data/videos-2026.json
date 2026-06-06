@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-06-06T12:37:37.922Z",
-  "totalVideos": 27,
+  "lastUpdated": "2026-06-06T13:28:41.933Z",
+  "totalVideos": 28,
   "grandPrixWeekends": [
     {
       "name": "2026 Monaco Grand Prix",
@@ -18,9 +18,16 @@
           "description": "Tune in for the second hour of practice in Monte Carlo!\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #MonacoGP",
           "publishedAt": "2026-06-05T17:36:50.000Z",
           "thumbnail": "https://i.ytimg.com/vi/QkDLMiOsdhA/hqdefault.jpg"
+        },
+        {
+          "videoId": "cMIwQB3q95Y",
+          "title": "FP3 Highlights | 2026 Monaco Grand Prix",
+          "description": "Tune in for the final 60 minutes of practice in Monaco, as the teams and drivers finalise their set-ups and find their confidence around the narrow streets, ahead of the most important Qualifying hour of the season!\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #MonacoGP",
+          "publishedAt": "2026-06-06T13:11:07.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/cMIwQB3q95Y/hqdefault.jpg"
         }
       ],
-      "latestDate": "2026-06-05T17:36:50.000Z"
+      "latestDate": "2026-06-06T13:11:07.000Z"
     },
     {
       "name": "2026 Canadian Grand Prix",
