@@ -1,7 +1,7 @@
 {
   "season": "2026",
   "round": "6",
-  "updatedAt": "2026-06-07T19:32:59.962Z",
+  "updatedAt": "2026-06-07T20:30:24.853Z",
   "seasonStarted": true,
   "source": "jolpica",
   "drivers": [
@@ -143,9 +143,9 @@
     },
     {
       "position": 18,
-      "driverCode": "PER",
-      "driverName": "Sergio Pérez",
-      "constructorName": "Cadillac F1 Team",
+      "driverCode": "ALO",
+      "driverName": "Fernando Alonso",
+      "constructorName": "Aston Martin",
       "points": 1,
       "wins": 0
     },
@@ -159,16 +159,16 @@
     },
     {
       "position": 20,
-      "driverCode": "ALO",
-      "driverName": "Fernando Alonso",
-      "constructorName": "Aston Martin",
+      "driverCode": "BOT",
+      "driverName": "Valtteri Bottas",
+      "constructorName": "Cadillac F1 Team",
       "points": 0,
       "wins": 0
     },
     {
       "position": 21,
-      "driverCode": "BOT",
-      "driverName": "Valtteri Bottas",
+      "driverCode": "PER",
+      "driverName": "Sergio Pérez",
       "constructorName": "Cadillac F1 Team",
       "points": 0,
       "wins": 0
@@ -239,13 +239,13 @@
     },
     {
       "position": 10,
-      "constructorName": "Cadillac F1 Team",
+      "constructorName": "Aston Martin",
       "points": 1,
       "wins": 0
     },
     {
       "position": 11,
-      "constructorName": "Aston Martin",
+      "constructorName": "Cadillac F1 Team",
       "points": 0,
       "wins": 0
     }
