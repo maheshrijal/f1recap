@@ -1,7 +1,20 @@
 {
-  "lastUpdated": "2026-06-12T13:40:06.321Z",
-  "totalVideos": 10,
+  "lastUpdated": "2026-06-12T15:02:59.038Z",
+  "totalVideos": 11,
   "grandPrixWeekends": [
+    {
+      "name": "2026 Catalunya Grand Prix",
+      "videos": [
+        {
+          "videoId": "7DEPkd9lBUg",
+          "title": "FP1 Highlights | 2026 Barcelona-Catalunya Grand Prix",
+          "description": "The drivers and teams took to the track for the first hour at the Circuit de Barcelona-Catalunya, with no fewer than seven rookie drivers competing in the opening practice session.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #BarcelonaGP",
+          "publishedAt": "2026-06-12T14:01:58.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/7DEPkd9lBUg/hqdefault.jpg"
+        }
+      ],
+      "latestDate": "2026-06-12T14:01:58.000Z"
+    },
     {
       "name": "2026 Monaco Grand Prix",
       "videos": [
