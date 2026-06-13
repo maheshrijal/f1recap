@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-06-13T12:27:50.522Z",
-  "totalVideos": 32,
+  "lastUpdated": "2026-06-13T13:02:42.362Z",
+  "totalVideos": 33,
   "grandPrixWeekends": [
     {
       "name": "2026 Catalunya Grand Prix",
@@ -18,9 +18,16 @@
           "description": "Catch up on all the highlights from the second practice in Barcelona.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #BarcelonaGP",
           "publishedAt": "2026-06-12T17:43:55.000Z",
           "thumbnail": "https://i.ytimg.com/vi/oh_VY40lO6w/hqdefault.jpg"
+        },
+        {
+          "videoId": "pfiOI2rKc_o",
+          "title": "FP3 Highlights | 2026 Barcelona-Catalunya Grand Prix",
+          "description": "Catch up on all the highlights from the final hour of practice in Barcelona, as the teams and drivers made their final preparations ahead of Qualifying for round seven!\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #BarcelonaGP",
+          "publishedAt": "2026-06-13T12:50:03.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/pfiOI2rKc_o/hqdefault.jpg"
         }
       ],
-      "latestDate": "2026-06-12T17:43:55.000Z"
+      "latestDate": "2026-06-13T12:50:03.000Z"
     },
     {
       "name": "2026 Monaco Grand Prix",
