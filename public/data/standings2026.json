@@ -1,7 +1,7 @@
 {
   "season": "2026",
   "round": "7",
-  "updatedAt": "2026-06-14T19:33:49.722Z",
+  "updatedAt": "2026-06-14T20:32:40.267Z",
   "seasonStarted": true,
   "source": "jolpica",
   "drivers": [
@@ -210,13 +210,13 @@
     {
       "position": 5,
       "constructorName": "Alpine F1 Team",
-      "points": 60,
+      "points": 57,
       "wins": 0
     },
     {
       "position": 6,
       "constructorName": "RB F1 Team",
-      "points": 38,
+      "points": 41,
       "wins": 0
     },
     {
