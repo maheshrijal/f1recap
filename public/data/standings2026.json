@@ -1,7 +1,7 @@
 {
   "season": "2026",
   "round": "7",
-  "updatedAt": "2026-06-14T15:36:08.899Z",
+  "updatedAt": "2026-06-14T16:35:07.332Z",
   "seasonStarted": true,
   "source": "jolpica",
   "drivers": [
@@ -18,15 +18,15 @@
       "driverCode": "HAM",
       "driverName": "Lewis Hamilton",
       "constructorName": "Ferrari",
-      "points": 90,
-      "wins": 0
+      "points": 115,
+      "wins": 1
     },
     {
       "position": 3,
       "driverCode": "RUS",
       "driverName": "George Russell",
       "constructorName": "Mercedes",
-      "points": 88,
+      "points": 106,
       "wins": 1
     },
     {
@@ -39,18 +39,18 @@
     },
     {
       "position": 5,
-      "driverCode": "PIA",
-      "driverName": "Oscar Piastri",
+      "driverCode": "NOR",
+      "driverName": "Lando Norris",
       "constructorName": "McLaren",
-      "points": 58,
+      "points": 73,
       "wins": 0
     },
     {
       "position": 6,
-      "driverCode": "NOR",
-      "driverName": "Lando Norris",
+      "driverCode": "PIA",
+      "driverName": "Oscar Piastri",
       "constructorName": "McLaren",
-      "points": 58,
+      "points": 68,
       "wins": 0
     },
     {
@@ -58,7 +58,7 @@
       "driverCode": "VER",
       "driverName": "Max Verstappen",
       "constructorName": "Red Bull",
-      "points": 43,
+      "points": 55,
       "wins": 0
     },
     {
@@ -66,7 +66,7 @@
       "driverCode": "GAS",
       "driverName": "Pierre Gasly",
       "constructorName": "Alpine F1 Team",
-      "points": 35,
+      "points": 41,
       "wins": 0
     },
     {
@@ -74,7 +74,7 @@
       "driverCode": "HAD",
       "driverName": "Isack Hadjar",
       "constructorName": "Red Bull",
-      "points": 26,
+      "points": 34,
       "wins": 0
     },
     {
@@ -82,11 +82,19 @@
       "driverCode": "LAW",
       "driverName": "Liam Lawson",
       "constructorName": "RB F1 Team",
-      "points": 24,
+      "points": 26,
       "wins": 0
     },
     {
       "position": 11,
+      "driverCode": "COL",
+      "driverName": "Franco Colapinto",
+      "constructorName": "Alpine F1 Team",
+      "points": 19,
+      "wins": 0
+    },
+    {
+      "position": 12,
       "driverCode": "BEA",
       "driverName": "Oliver Bearman",
       "constructorName": "Haas F1 Team",
@@ -94,19 +102,11 @@
       "wins": 0
     },
     {
-      "position": 12,
-      "driverCode": "COL",
-      "driverName": "Franco Colapinto",
-      "constructorName": "Alpine F1 Team",
-      "points": 15,
-      "wins": 0
-    },
-    {
       "position": 13,
       "driverCode": "LIN",
       "driverName": "Arvid Lindblad",
       "constructorName": "RB F1 Team",
-      "points": 11,
+      "points": 12,
       "wins": 0
     },
     {
@@ -186,37 +186,37 @@
     {
       "position": 1,
       "constructorName": "Mercedes",
-      "points": 244,
+      "points": 262,
       "wins": 6
     },
     {
       "position": 2,
       "constructorName": "Ferrari",
-      "points": 165,
-      "wins": 0
+      "points": 190,
+      "wins": 1
     },
     {
       "position": 3,
       "constructorName": "McLaren",
-      "points": 116,
+      "points": 141,
       "wins": 0
     },
     {
       "position": 4,
       "constructorName": "Red Bull",
-      "points": 69,
+      "points": 89,
       "wins": 0
     },
     {
       "position": 5,
       "constructorName": "Alpine F1 Team",
-      "points": 50,
+      "points": 60,
       "wins": 0
     },
     {
       "position": 6,
       "constructorName": "RB F1 Team",
-      "points": 35,
+      "points": 38,
       "wins": 0
     },
     {
