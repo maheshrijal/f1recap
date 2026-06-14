@@ -1,7 +1,7 @@
 {
   "season": "2026",
   "round": "7",
-  "updatedAt": "2026-06-14T18:34:31.678Z",
+  "updatedAt": "2026-06-14T19:33:49.722Z",
   "seasonStarted": true,
   "source": "jolpica",
   "drivers": [
@@ -82,19 +82,11 @@
       "driverCode": "LAW",
       "driverName": "Liam Lawson",
       "constructorName": "RB F1 Team",
-      "points": 26,
+      "points": 28,
       "wins": 0
     },
     {
       "position": 11,
-      "driverCode": "COL",
-      "driverName": "Franco Colapinto",
-      "constructorName": "Alpine F1 Team",
-      "points": 19,
-      "wins": 0
-    },
-    {
-      "position": 12,
       "driverCode": "BEA",
       "driverName": "Oliver Bearman",
       "constructorName": "Haas F1 Team",
@@ -102,11 +94,19 @@
       "wins": 0
     },
     {
+      "position": 12,
+      "driverCode": "COL",
+      "driverName": "Franco Colapinto",
+      "constructorName": "Alpine F1 Team",
+      "points": 16,
+      "wins": 0
+    },
+    {
       "position": 13,
       "driverCode": "LIN",
       "driverName": "Arvid Lindblad",
       "constructorName": "RB F1 Team",
-      "points": 12,
+      "points": 13,
       "wins": 0
     },
     {
