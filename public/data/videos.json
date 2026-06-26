@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-06-26T16:40:10.605Z",
-  "totalVideos": 11,
+  "lastUpdated": "2026-06-26T17:33:57.396Z",
+  "totalVideos": 12,
   "grandPrixWeekends": [
     {
       "name": "2026 Austrian Grand Prix",
@@ -11,9 +11,16 @@
           "description": "Six rookies stepped in for the first hour of practice in Austria, as the teams put a raft of new upgrades through their paces.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #AustrianGP",
           "publishedAt": "2026-06-26T14:20:24.000Z",
           "thumbnail": "https://i.ytimg.com/vi/ltmoQb3bJZ0/hqdefault.jpg"
+        },
+        {
+          "videoId": "IucUnD5vKKE",
+          "title": "FP2 Highlights | 2026 Austrian Grand Prix",
+          "description": "Another scorching session in Austria as the grid battled the heat in the second and final practice of the day!\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #AustrianGP",
+          "publishedAt": "2026-06-26T17:10:42.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/IucUnD5vKKE/hqdefault.jpg"
         }
       ],
-      "latestDate": "2026-06-26T14:20:24.000Z"
+      "latestDate": "2026-06-26T17:10:42.000Z"
     },
     {
       "name": "2026 Catalunya Grand Prix",
