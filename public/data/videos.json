@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-06-27T15:32:59.966Z",
-  "totalVideos": 13,
+  "lastUpdated": "2026-06-27T16:20:02.304Z",
+  "totalVideos": 14,
   "grandPrixWeekends": [
     {
       "name": "2026 Austrian Grand Prix",
@@ -20,6 +20,13 @@
           "thumbnail": "https://i.ytimg.com/vi/IucUnD5vKKE/hqdefault.jpg"
         },
         {
+          "videoId": "sZb7_vNeA9o",
+          "title": "Qualifying Highlights | 2026 Austrian Grand Prix",
+          "description": "A crash late in Q3 caused drama during Qualifying for the Austrian Grand Prix! Catch up on all the action as the drivers fought for pole position...\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #AustrianGP",
+          "publishedAt": "2026-06-27T15:41:35.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/sZb7_vNeA9o/hqdefault.jpg"
+        },
+        {
           "videoId": "iTM4jPdzbO8",
           "title": "FP3 Highlights | 2026 Austrian Grand Prix",
           "description": "Tune in for the final hour of practice at the Red Bull Ring as the teams make their last adjustments ahead of Qualifying.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #AustrianGP",
@@ -27,7 +34,7 @@
           "thumbnail": "https://i.ytimg.com/vi/iTM4jPdzbO8/hqdefault.jpg"
         }
       ],
-      "latestDate": "2026-06-27T12:56:16.000Z"
+      "latestDate": "2026-06-27T15:41:35.000Z"
     },
     {
       "name": "2026 Catalunya Grand Prix",
