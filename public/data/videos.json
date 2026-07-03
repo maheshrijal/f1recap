@@ -1,7 +1,20 @@
 {
-  "lastUpdated": "2026-07-03T12:52:39.491Z",
+  "lastUpdated": "2026-07-03T15:05:38.383Z",
   "totalVideos": 11,
   "grandPrixWeekends": [
+    {
+      "name": "2026 British Grand Prix",
+      "videos": [
+        {
+          "videoId": "7_BJLlKdFtw",
+          "title": "FP1 Highlights | 2026 British Grand Prix",
+          "description": "In the sole practice session of the British Grand Prix, the teams and drivers had 60 minutes to prepare their setups ahead of Sprint Qualifying at Silverstone! Catch up on all the action from FP1...\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #BritishGP",
+          "publishedAt": "2026-07-03T13:48:49.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/7_BJLlKdFtw/hqdefault.jpg"
+        }
+      ],
+      "latestDate": "2026-07-03T13:48:49.000Z"
+    },
     {
       "name": "2026 Austrian Grand Prix",
       "videos": [
@@ -83,19 +96,6 @@
         }
       ],
       "latestDate": "2026-06-14T15:35:17.000Z"
-    },
-    {
-      "name": "2026 Monaco Grand Prix",
-      "videos": [
-        {
-          "videoId": "ipOT9ruRobc",
-          "title": "Race Highlights | 2026 Monaco Grand Prix",
-          "description": "In an exhilarating race that saw a number of shock retirements, the 2026 Monaco Grand Prix proved to be a race with pure drama throughout! Tune in for all the highlights from Monte Carlo.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #MonacoGP",
-          "publishedAt": "2026-06-07T16:21:43.000Z",
-          "thumbnail": "https://i.ytimg.com/vi/ipOT9ruRobc/hqdefault.jpg"
-        }
-      ],
-      "latestDate": "2026-06-07T16:21:43.000Z"
     }
   ]
 }
