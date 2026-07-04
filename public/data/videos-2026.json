@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-07-04T11:14:13.644Z",
-  "totalVideos": 42,
+  "lastUpdated": "2026-07-04T12:38:05.749Z",
+  "totalVideos": 43,
   "grandPrixWeekends": [
     {
       "name": "2026 British Grand Prix",
@@ -18,9 +18,16 @@
           "description": "Catch up on all the highlights from Sprint Qualifying at the British Grand Prix!\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #BritishGP",
           "publishedAt": "2026-07-03T16:39:01.000Z",
           "thumbnail": "https://i.ytimg.com/vi/WN6mB8Acs2Y/hqdefault.jpg"
+        },
+        {
+          "videoId": "v52utVGuAxQ",
+          "title": "Sprint Highlights | 2026 British Grand Prix",
+          "description": "With battles from lights to flag, catch up on an action-packed Sprint at the British Grand Prix!\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #BritishGP",
+          "publishedAt": "2026-07-04T12:17:13.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/v52utVGuAxQ/hqdefault.jpg"
         }
       ],
-      "latestDate": "2026-07-03T16:39:01.000Z"
+      "latestDate": "2026-07-04T12:17:13.000Z"
     },
     {
       "name": "2026 Austrian Grand Prix",
