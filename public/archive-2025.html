@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +17,7 @@
     <meta property="og:url" content="https://f1recap.pages.dev/archive-2025.html">
     <meta property="og:title" content="2025 F1 Archive - Complete Season Highlights">
     <meta property="og:description" content="Browse all 2025 Formula 1 season highlights with complete session videos from all 24 Grand Prix.">
-    <meta property="og:image" content="https://f1recap.pages.dev/assets/images/og-image.jpg">
+    <meta property="og:image" content="https://f1recap.pages.dev/assets/images/og-pitwall.png">
     <meta property="og:site_name" content="F1 Recap">
     
     <!-- Twitter -->
@@ -25,15 +25,11 @@
     <meta property="twitter:url" content="https://f1recap.pages.dev/archive-2025.html">
     <meta property="twitter:title" content="2025 F1 Archive - Complete Season">
     <meta property="twitter:description" content="Browse all 2025 Formula 1 season highlights from all Grand Prix.">
-    <meta property="twitter:image" content="https://f1recap.pages.dev/assets/images/og-image.jpg">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏎️</text></svg>">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏎️</text></svg>">
+    <meta property="twitter:image" content="https://f1recap.pages.dev/assets/images/og-pitwall.png">
     
     <!-- Web App Manifest -->
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#e10600">
+    <meta name="theme-color" content="#07090d">
     
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,8 +43,9 @@
     
     <!-- Stylesheet -->
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&family=Manrope:wght@500;600;700&display=swap">
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;0,800;1,700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter:wght@400;500;600;700&amp;display=swap">
     <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="assets/pitwall-site.css">
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -60,7 +57,7 @@
         "url": "https://f1recap.pages.dev/archive-2025.html",
         "isPartOf": {
             "@type": "WebSite",
-            "name": "F1 Highlights Hub",
+            "name": "F1 Recap",
             "url": "https://f1recap.pages.dev/"
         },
         "inLanguage": "en-US"
@@ -105,15 +102,16 @@
     <div id="site-header"></div>
 
     <main id="main-content" tabindex="-1">
-        <section class="hero">
-            <div class="hero-card">
-                <div class="hero-meta">
-                    <p class="hero-kicker">2025 Season Archive</p>
-                    <h1 class="hero-title">Complete Season Highlights</h1>
-                    <p class="hero-date">All 24 Grand Prix with session videos</p>
-                    <p class="hero-sessions">Browse by date • Watch highlights • Full season archive</p>
-                </div>
-                <div class="hero-flag">📂</div>
+        <section class="subpage-hero archive-page-intro" aria-labelledby="archivePageTitle">
+            <div class="subpage-hero-copy">
+                <p class="page-eyebrow">Replay control</p>
+                <h1 class="page-display-title" id="archivePageTitle">2025 <span>Archive</span></h1>
+                <p class="page-lede">Every Grand Prix and official session highlight from the complete 2025 season, organized race by race.</p>
+            </div>
+            <div class="hero-telemetry" aria-label="Archive overview">
+                <div><span>Season</span><strong>2025</strong></div>
+                <div><span>Coverage</span><strong>24 rounds</strong></div>
+                <div><span>Source</span><strong>Official F1</strong></div>
             </div>
         </section>
 
@@ -139,7 +137,7 @@
     <div id="videoDrawer" class="drawer" aria-hidden="true">
         <div class="drawer-backdrop"></div>
         <div class="drawer-panel" role="dialog" aria-modal="true" aria-label="Session details">
-            <button class="drawer-close" type="button" aria-label="Close">✕</button>
+            <button class="drawer-close" type="button" aria-label="Close">Close</button>
             <div class="drawer-body" id="drawerContent"></div>
         </div>
     </div>
