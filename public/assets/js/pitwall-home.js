@@ -247,12 +247,20 @@
     function renderCalendar(nextRace) {
         byId('calendarList').innerHTML = season.map((race) => {
             const status = race === nextRace ? 'next' : race.status;
-            const stateLabel = status === 'next' ? 'Next up' : status === 'completed' ? 'Complete' : status === 'current' ? 'Live' : 'Upcoming';
-            return `<a class="calendar-race is-${status}" id="race-${race.round}" href="data/f1-calendar_2026.ics" aria-label="${escapeAttribute(race.name)}, round ${race.round}, ${stateLabel}">
+            const action = state?.getCalendarRaceAction
+                ? state.getCalendarRaceAction(race, race === nextRace)
+                : { href: status === 'next' ? '#raceDashboard' : null, label: status === 'next' ? 'Next up' : 'Upcoming', description: 'race information' };
+            const content = `
                 <span class="race-number">R${String(race.round).padStart(2, '0')}</span>
                 <span><h3>${escapeHtml(shortRaceName(race.name))}</h3><p>${escapeHtml(dateRange(race))}</p></span>
-                <span class="race-state">${stateLabel}</span>
-            </a>`;
+                <span class="race-state">${escapeHtml(action.label)}</span>`;
+            if (!action.href) {
+                return `<div class="calendar-race is-${status} is-static" id="race-${race.round}">${content}</div>`;
+            }
+
+            const ariaLabel = `${race.name}, round ${race.round}, ${action.description}`;
+            const externalAttributes = action.external ? ' target="_blank" rel="noopener noreferrer"' : '';
+            return `<a class="calendar-race is-${status}" id="race-${race.round}" href="${escapeAttribute(action.href)}" aria-label="${escapeAttribute(ariaLabel)}"${externalAttributes}>${content}</a>`;
         }).join('');
         byId('season-calendar').hidden = false;
     }

@@ -283,7 +283,9 @@ h2, h3 { margin: 0; font-family: "Barlow Condensed", sans-serif; text-transform:
     gap: 14px; align-content: center; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
     background: rgba(13,17,24,.66); transition: background .2s var(--ease);
 }
-.calendar-race:hover { background: var(--surface-3); }
+.calendar-race[href] { cursor: pointer; }
+.calendar-race[href]:hover { background: var(--surface-3); }
+.calendar-race.is-static { cursor: default; }
 .calendar-race.is-next { box-shadow: inset 3px 0 0 var(--cyan); background: rgba(81,216,245,.06); }
 .calendar-race.is-completed { opacity: .72; }
 .race-number { color: var(--faint); font: 500 11px/1 "IBM Plex Mono", monospace; }
@@ -292,6 +294,7 @@ h2, h3 { margin: 0; font-family: "Barlow Condensed", sans-serif; text-transform:
 .race-state { color: var(--faint); font: 600 9px/1 "IBM Plex Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
 .calendar-race.is-next .race-state { color: var(--cyan); }
 .calendar-race.is-completed .race-state { color: var(--lime); }
+.calendar-race.is-completed[href] { opacity: .88; }
 
 .quick-links { margin-top: 72px; display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); }
 .quick-links a { min-height: 112px; padding: 24px; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid var(--line); background: var(--surface); }
