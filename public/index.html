@@ -1,301 +1,193 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="light">
-
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Primary Meta Tags -->
-    <title>2026 F1 Calendar & Schedule | F1 Highlights Hub</title>
-    <meta name="title" content="2026 F1 Calendar & Schedule | F1 Highlights Hub">
-    <meta name="description"
-        content="Full 2026 Formula 1 calendar with practice, qualifying, sprint & race times in your timezone. Countdown to the next session.">
-    <meta name="keywords"
-        content="F1 2026 calendar, Formula 1 2026 schedule, F1 race times 2026, F1 sprint schedule 2026">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#07090d">
+    <meta name="color-scheme" content="dark">
+    <title>F1 Recap | Race Weekends at a Glance</title>
+    <meta name="title" content="F1 Recap | Race Weekends at a Glance">
+    <meta name="description" content="Catch up on the latest Formula 1 weekend and see every upcoming session in your local time.">
+    <meta name="keywords" content="F1 calendar, Formula 1 highlights, F1 schedule, F1 race times">
     <meta name="author" content="F1 Recap">
     <meta name="robots" content="index, follow">
-
-    <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="OXTR_SvEoA1C8uzxumOiBB4yP0r4uudDEObWkv5AbmY">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://f1recap.pages.dev/">
-    <meta property="og:title" content="2026 F1 Calendar & Schedule">
-    <meta property="og:description"
-        content="Upcoming 2026 Formula 1 sessions with timezone-aware times, countdown, and .ics download.">
-    <meta property="og:image" content="https://f1recap.pages.dev/assets/images/og-image.jpg">
-    <meta property="og:site_name" content="F1 Recap">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://f1recap.pages.dev/">
-    <meta property="twitter:title" content="2026 F1 Calendar & Schedule">
-    <meta property="twitter:description"
-        content="Upcoming 2026 Formula 1 sessions with timezone-aware times, countdown, and .ics download.">
-    <meta property="twitter:image" content="https://f1recap.pages.dev/assets/images/og-image.jpg">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏎️</text></svg>">
-    <link rel="apple-touch-icon"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏎️</text></svg>">
-
-    <!-- Web App Manifest -->
+    <link rel="canonical" href="https://f1recap.pages.dev/">
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#e10600">
-
-    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://www.youtube.com">
     <link rel="preconnect" href="https://i.ytimg.com">
     <link rel="dns-prefetch" href="https://eu.i.posthog.com">
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://f1recap.pages.dev/">
-
-    <!-- Stylesheet -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&family=Manrope:wght@500;600;700&display=swap">
-    <link rel="stylesheet" href="assets/styles.css">
-
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "F1 Highlights Hub",
-        "description": "2026 Formula 1 calendar with session times plus a 2025 highlights archive.",
-        "url": "https://f1recap.pages.dev/",
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://f1recap.pages.dev/?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-        },
-        "keywords": ["F1 highlights", "Formula 1 highlights", "F1 race highlights", "F1 qualifying highlights", "F1 sprint highlights"],
-        "inLanguage": "en-US",
-        "about": "F1 highlights"
-    }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;0,800;1,700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/pitwall.css">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://f1recap.pages.dev/">
+    <meta property="og:title" content="F1 Recap | Race Weekends at a Glance">
+    <meta property="og:description" content="The latest F1 recap, the next session countdown, and the full season calendar in your timezone.">
+    <meta property="og:image" content="https://f1recap.pages.dev/assets/images/og-pitwall.png">
+    <meta property="og:site_name" content="F1 Recap">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="F1 Recap | Race Weekends at a Glance">
+    <meta name="twitter:description" content="The latest F1 recap, next-session countdown, and season calendar in your timezone.">
+    <meta name="twitter:image" content="https://f1recap.pages.dev/assets/images/og-pitwall.png">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://f1recap.pages.dev/"
-        }
-      ]
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SportsEvent",
-      "name": "2026 Formula 1 World Championship",
-      "description": "The 2026 Formula 1 World Championship season featuring 24 Grand Prix races across 5 continents",
+      "@type": "WebSite",
+      "name": "F1 Recap",
+      "description": "Formula 1 race highlights and a timezone-aware season calendar.",
       "url": "https://f1recap.pages.dev/",
-      "sport": "Formula 1 Racing",
-      "eventStatus": "https://schema.org/EventScheduled",
-      "startDate": "2026-03-01",
-      "endDate": "2026-12-06",
-      "location": {
-        "@type": "Place",
-        "name": "Various circuits worldwide"
-      },
-      "organizer": {
-        "@type": "Organization",
-        "name": "Formula One World Championship Limited",
-        "url": "https://www.formula1.com"
-      }
+      "inLanguage": "en"
     }
     </script>
-
-    <!-- Ahrefs Analytics -->
-    <script src="https://analytics.ahrefs.com/analytics.js" data-key="2nJzZJOXXbrsDZcxAWW/0w" async></script>
 </head>
-
 <body>
-    <div id="site-header"></div>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="topbar">
+        <div class="nav-shell">
+            <a class="brand" href="index.html" aria-label="F1 Recap home">
+                <span class="brand-mark" aria-hidden="true"></span>
+                <span>F1 <em>Recap</em></span>
+            </a>
+            <nav class="nav-links" id="primary-navigation" aria-label="Primary navigation">
+                <a class="active" href="index.html" aria-current="page">Calendar</a>
+                <a href="standings.html">Standings</a>
+                <a href="archive-2025.html">2025 Archive</a>
+                <a href="about.html">About</a>
+            </nav>
+            <div class="season-chip" id="headerSeason" aria-label="Season progress">
+                <span>Season</span><strong>-- / --</strong>
+            </div>
+            <button class="menu-button" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-navigation">
+                <span aria-hidden="true"></span>
+            </button>
+        </div>
+    </header>
 
     <main id="main-content" tabindex="-1">
-        <h1 class="visually-hidden">2026 F1 Calendar & Schedule</h1>
-        <p id="a11yLiveStatus" class="visually-hidden" aria-live="polite" aria-atomic="true"></p>
-        <!-- Hero: Next Session Countdown -->
-        <section id="hero" class="hero"></section>
+        <h1 class="visually-hidden">F1 Recap: latest highlights and upcoming race sessions</h1>
+        <p id="liveStatus" class="visually-hidden" aria-live="polite" aria-atomic="true"></p>
 
-        <!-- Season Progress Bar -->
-        <section id="seasonProgress" class="season-progress" style="display: none;">
-            <div class="season-progress-bar">
-                <div class="season-progress-fill" id="progressFill"></div>
-                <div class="season-progress-marker" id="progressMarker"></div>
+        <div class="control-strip">
+            <div class="status-line">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span id="feedStatus">Connecting to season feed</span>
             </div>
-            <div class="season-progress-label" id="progressLabel">Loading season progress…</div>
+            <div class="season-progress" id="seasonProgress" aria-label="Loading season progress">
+                <span>R01</span>
+                <span class="progress-rail" aria-hidden="true"><span id="progressFill"></span></span>
+                <strong id="progressValue">-- / --</strong>
+            </div>
+        </div>
+
+        <section class="loading-panel" id="loadingPanel" aria-label="Loading race information">
+            <span class="loading-line"></span>
+            <span class="loading-line short"></span>
         </section>
 
-        <!-- Main Content: Unified Calendar + Videos -->
-        <div class="main-layout unified-layout" id="calendar-2026">
-            <div class="content-area">
-                <div id="calendarLoading" class="calendar-loading">
-                    <div class="calendar-loading-spinner"></div>
-                    <p>Loading calendar…</p>
+        <section class="error-panel" id="errorPanel" hidden>
+            <p>Race control could not load the season feed.</p>
+            <button class="control-button" id="retryButton" type="button">Try again</button>
+        </section>
+
+        <section class="race-grid" id="raceDashboard" aria-label="Latest recap and upcoming race" hidden>
+            <article class="panel recap-panel" aria-labelledby="previousRaceTitle">
+                <div>
+                    <p class="eyebrow">Latest weekend report <span class="round" id="previousRound"></span></p>
+                    <p class="race-kicker" id="previousStatus">Recap available</p>
+                    <h2 class="display-title" id="previousRaceTitle"></h2>
+                    <div class="race-meta">
+                        <span class="circuit-code" id="previousCode"></span>
+                        <span id="previousDates"></span>
+                        <span class="highlight-count" id="highlightCount"></span>
+                    </div>
                 </div>
 
-                <div id="calendarError" class="calendar-error" style="display: none;">
-                    <p>Failed to load the calendar. Please try again later.</p>
+                <div class="recap-bottom">
+                    <div class="session-switcher" id="highlightTabs" role="tablist" aria-label="Available highlights"></div>
+                    <div class="featured-highlight" id="highlightPanel" role="tabpanel" aria-live="polite">
+                        <div>
+                            <p class="highlight-label" id="highlightMeta">Official F1 highlight</p>
+                            <p class="highlight-title" id="highlightTitle"></p>
+                        </div>
+                        <a class="cta cta-primary" id="highlightLink" href="#" target="_blank" rel="noopener noreferrer">Watch highlight</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel upcoming-panel" aria-labelledby="nextRaceTitle">
+                <div>
+                    <p class="eyebrow">Up next <span class="round" id="nextRound"></span></p>
+                    <h2 id="nextRaceTitle"></h2>
+                    <p class="upcoming-date" id="nextRaceDate"></p>
                 </div>
 
-                <!-- Upcoming Schedule Section -->
-                <section id="upcomingSchedule" class="gp-section" style="display: none;">
-                    <div class="gp-section-header">
-                        <h2 class="gp-section-title">
-                            <span class="gp-section-icon">📅</span>
-                            <span id="upcomingSectionTitle">Upcoming Races</span>
-                        </h2>
+                <div class="countdown-wrap">
+                    <div class="countdown-label">
+                        <span>Session begins in</span>
+                        <span id="countdownSession">Live estimate</span>
                     </div>
-                    <div id="upcomingGPCards" class="gp-cards-grid">
-                        <!-- Upcoming GP cards render here -->
-                    </div>
-                    <div class="load-more-trigger">
-                        <div class="load-more-spinner" id="loadMoreSpinner" style="display: none;"></div>
-                    </div>
-                </section>
+                    <div class="countdown" id="countdown" aria-live="off"></div>
+                </div>
 
-                <!-- Off-Season State -->
-                <section id="offSeasonState" class="off-season-state" style="display: none;">
-                    <div class="off-season-content">
-                        <div class="off-season-icon">🏎️</div>
-                        <h2 class="off-season-title">2026 Season Coming Soon</h2>
-                        <p class="off-season-subtitle">The new season kicks off in March 2026</p>
-                        <ul class="off-season-features">
-                            <li>📍 24 races across 5 continents</li>
-                            <li>🏃 6 sprint weekends</li>
-                            <li>🎬 Automatic highlight updates</li>
-                        </ul>
-                        <div class="off-season-actions">
-                            <a class="watch-button" href="data/f1-calendar_2026.ics">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                                    <line x1="16" y1="2" x2="16" y2="6" />
-                                    <line x1="8" y1="2" x2="8" y2="6" />
-                                    <line x1="3" y1="10" x2="21" y2="10" />
-                                </svg>
-                                Add to Calendar
-                            </a>
-                        </div>
-                        <div class="off-season-archive">
-                            <span>Meanwhile, catch up on last season:</span>
-                            <a href="archive-2025.html" class="archive-link">Browse 2025 Archive →</a>
-                        </div>
-                    </div>
-                </section>
+                <ol class="schedule" id="nextSchedule" aria-label="Upcoming race session schedule"></ol>
+
+                <div class="upcoming-actions">
+                    <div class="local-cue">Times displayed in<strong id="timezoneLabel">Your local time</strong></div>
+                    <a class="cta cta-secondary" href="data/f1-calendar_2026.ics" download>Add calendar</a>
+                </div>
+            </article>
+        </section>
+
+        <section class="next-races" id="followingRaces" aria-label="Following races" hidden>
+            <div class="next-label">Further<br>down the grid</div>
+            <div id="followingRaceCards" class="following-race-cards"></div>
+            <div class="next-progress">
+                <span>Championship distance</span>
+                <strong id="championshipDistance">--% complete</strong>
             </div>
+        </section>
 
-            <!-- Sidebar: Quick Calendar + Info -->
-            <aside class="info-panel" aria-label="Season overview">
-                <!-- Mini Calendar -->
-                <div class="sidebar-calendar-container">
-                    <div class="sidebar-calendar-header">
-                        <h3>2026 Calendar</h3>
-                        <a class="ics-download-link" href="data/f1-calendar_2026.ics" title="Download calendar">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                                <polyline points="7 10 12 15 17 10" />
-                                <line x1="12" y1="15" x2="12" y2="3" />
-                            </svg>
-                            .ics
-                        </a>
-                    </div>
-                    <div id="sidebarCalendar" class="sidebar-calendar-list">
-                        <!-- Mini calendar renders here -->
-                    </div>
+        <section class="season-board" id="season-calendar" aria-labelledby="seasonTitle" hidden>
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Season control</p>
+                    <h2 id="seasonTitle">2026 Race Calendar</h2>
                 </div>
+                <p>Completed races open their official recap. The next round jumps to its weekend schedule.</p>
+            </div>
+            <div class="calendar-list" id="calendarList"></div>
+        </section>
 
-                <!-- Archive Card -->
-                <div class="info-card season-snapshot-card" id="seasonSnapshot" aria-live="polite">
-                    <h3>Season Snapshot</h3>
-                    <div class="season-snapshot-grid">
-                        <div class="season-snapshot-item">
-                            <span class="snapshot-value">24</span>
-                            <span class="snapshot-label">Races</span>
-                        </div>
-                        <div class="season-snapshot-item">
-                            <span class="snapshot-value">6</span>
-                            <span class="snapshot-label">Sprints</span>
-                        </div>
-                        <div class="season-snapshot-item">
-                            <span class="snapshot-value">2026</span>
-                            <span class="snapshot-label">Season</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="info-card">
-                    <h3>2025 Season Archive</h3>
-                    <p>Relive all 24 races with complete session highlights.</p>
-                    <a class="watch-button" href="archive-2025.html">View archive</a>
-                </div>
-            </aside>
-        </div>
+        <section class="quick-links" aria-label="More F1 Recap">
+            <a href="standings.html"><span>Championship</span><strong>View 2026 standings</strong></a>
+            <a href="archive-2025.html"><span>Replay</span><strong>Browse the 2025 archive</strong></a>
+            <a href="about.html"><span>About</span><strong>How F1 Recap works</strong></a>
+        </section>
     </main>
 
-    <!-- Video Drawer -->
-    <div id="videoDrawer" class="drawer" aria-hidden="true">
-        <div class="drawer-backdrop"></div>
-        <div class="drawer-panel" role="dialog" aria-modal="true" aria-label="Session details">
-            <button class="drawer-close" type="button" aria-label="Close">✕</button>
-            <div class="drawer-body" id="drawerContent"></div>
+    <footer class="site-footer">
+        <div>
+            <a class="brand footer-brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>F1 <em>Recap</em></span></a>
+            <p>Your pit stop for Formula 1 highlights and session times.</p>
         </div>
-    </div>
+        <nav class="footer-links" aria-label="Footer navigation">
+            <a href="about.html">About</a>
+            <a href="disclosure.html">Disclosure</a>
+            <a href="https://github.com/maheshrijal/f1recap" target="_blank" rel="noopener noreferrer">Open source</a>
+        </nav>
+        <div class="footer-meta">
+            <span id="lastUpdated"></span>
+            <span>&copy; 2026 F1 Recap</span>
+        </div>
+    </footer>
 
-    <!-- Scroll to Top Button -->
-    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top" title="Back to top">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-            stroke-linejoin="round">
-            <polyline points="18 15 12 9 6 15"></polyline>
-        </svg>
-    </button>
-
-    <div id="site-footer"></div>
-
-    <script src="assets/js/components.js"></script>
-    <script>Components.render('home');</script>
     <script>window.__POSTHOG__ = window.__POSTHOG__ || {};</script>
     <script src="/posthog-config"></script>
     <script src="assets/js/analytics.js"></script>
-    <script src="assets/js/notifications.js"></script>
     <script src="assets/js/calendar-state.js"></script>
-    <script src="assets/js/calendar.js" data-year="2026" data-ics-file="data/f1-calendar_2026.ics" data-view="unified"
-        data-source="homepage"></script>
-    <script>
-        // Scroll to Top functionality
-        (function () {
-            const scrollBtn = document.getElementById('scrollToTop');
-            if (!scrollBtn) return;
-
-            const toggleVisibility = () => {
-                if (window.scrollY > 300) {
-                    scrollBtn.classList.add('visible');
-                } else {
-                    scrollBtn.classList.remove('visible');
-                }
-            };
-
-            window.addEventListener('scroll', toggleVisibility, { passive: true });
-            toggleVisibility();
-
-            scrollBtn.addEventListener('click', () => {
-                const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-                window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
-            });
-        })();
-    </script>
+    <script src="assets/js/pitwall-home.js"></script>
 </body>
-
 </html>
