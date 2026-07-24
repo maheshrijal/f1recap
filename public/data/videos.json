@@ -1,7 +1,20 @@
 {
-  "lastUpdated": "2026-07-24T12:15:42.776Z",
+  "lastUpdated": "2026-07-24T14:18:55.994Z",
   "totalVideos": 11,
   "grandPrixWeekends": [
+    {
+      "name": "2026 Hungarian Grand Prix",
+      "videos": [
+        {
+          "videoId": "rN2Nw-_fK1E",
+          "title": "FP1 Highlights | 2026 Hungarian Grand Prix",
+          "description": "The drivers and teams took to the Hungaroring for the final FP1 session ahead of summer break!\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #HungarianGP",
+          "publishedAt": "2026-07-24T14:00:42.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/rN2Nw-_fK1E/hqdefault.jpg"
+        }
+      ],
+      "latestDate": "2026-07-24T14:00:42.000Z"
+    },
     {
       "name": "2026 Belgian Grand Prix",
       "videos": [
@@ -83,19 +96,6 @@
         }
       ],
       "latestDate": "2026-07-05T16:34:10.000Z"
-    },
-    {
-      "name": "2026 Austrian Grand Prix",
-      "videos": [
-        {
-          "videoId": "usP9O0zFVaA",
-          "title": "Race Highlights | 2026 Austrian Grand Prix",
-          "description": "Catch up on all the action from the Austrian Grand Prix, which saw some  feisty battles, race-defining strategy calls and a number of changes in the Drivers' Championship standings!\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #AustrianGP",
-          "publishedAt": "2026-06-28T15:06:54.000Z",
-          "thumbnail": "https://i.ytimg.com/vi/usP9O0zFVaA/hqdefault.jpg"
-        }
-      ],
-      "latestDate": "2026-06-28T15:06:54.000Z"
     }
   ]
 }

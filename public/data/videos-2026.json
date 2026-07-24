@@ -1,7 +1,20 @@
 {
-  "lastUpdated": "2026-07-24T12:15:42.778Z",
-  "totalVideos": 50,
+  "lastUpdated": "2026-07-24T14:18:55.995Z",
+  "totalVideos": 51,
   "grandPrixWeekends": [
+    {
+      "name": "2026 Hungarian Grand Prix",
+      "videos": [
+        {
+          "videoId": "rN2Nw-_fK1E",
+          "title": "FP1 Highlights | 2026 Hungarian Grand Prix",
+          "description": "The drivers and teams took to the Hungaroring for the final FP1 session ahead of summer break!\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #HungarianGP",
+          "publishedAt": "2026-07-24T14:00:42.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/rN2Nw-_fK1E/hqdefault.jpg"
+        }
+      ],
+      "latestDate": "2026-07-24T14:00:42.000Z"
+    },
     {
       "name": "2026 Belgian Grand Prix",
       "videos": [
