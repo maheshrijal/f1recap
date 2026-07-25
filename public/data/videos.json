@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-07-25T15:33:05.925Z",
-  "totalVideos": 13,
+  "lastUpdated": "2026-07-25T16:40:11.074Z",
+  "totalVideos": 14,
   "grandPrixWeekends": [
     {
       "name": "2026 Hungarian Grand Prix",
@@ -20,6 +20,13 @@
           "thumbnail": "https://i.ytimg.com/vi/Kfz06pStAKE/hqdefault.jpg"
         },
         {
+          "videoId": "rqTTczYv93A",
+          "title": "Qualifying Highlights | 2026 Hungarian Grand Prix",
+          "description": "The grid is set for the 2026 Hungarian Grand Prix in an incredibly close Qualifying session at the Hungaroring!\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #HungarianGP",
+          "publishedAt": "2026-07-25T15:50:45.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/rqTTczYv93A/hqdefault.jpg"
+        },
+        {
           "videoId": "1rk3CKD5DGQ",
           "title": "FP3 Highlights | 2026 Hungarian Grand Prix",
           "description": "Catch up on the action from the final practice session at the Hungaroring, which saw three closely matched teams battle it out for the fastest time ahead of Qualifying.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #HungarianGP",
@@ -27,7 +34,7 @@
           "thumbnail": "https://i.ytimg.com/vi/1rk3CKD5DGQ/hqdefault.jpg"
         }
       ],
-      "latestDate": "2026-07-25T13:00:47.000Z"
+      "latestDate": "2026-07-25T15:50:45.000Z"
     },
     {
       "name": "2026 Belgian Grand Prix",
