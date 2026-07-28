@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>2026 F1 Championship Standings | F1 Highlights Hub</title>
-  <meta name="title" content="2026 F1 Championship Standings | F1 Highlights Hub">
+  <title>2026 F1 Championship Standings | F1 Recap</title>
+  <meta name="title" content="2026 F1 Championship Standings | F1 Recap">
   <meta name="description" content="Latest 2026 Formula 1 Drivers and Constructors championship standings with points and wins.">
   <meta name="keywords" content="F1 standings 2026, Formula 1 drivers standings, F1 constructors standings, F1 points table">
   <meta name="author" content="F1 Recap">
@@ -16,26 +16,25 @@
   <meta property="og:url" content="https://f1recap.pages.dev/standings.html">
   <meta property="og:title" content="2026 F1 Championship Standings">
   <meta property="og:description" content="Drivers and Constructors standings for the 2026 Formula 1 season.">
-  <meta property="og:image" content="https://f1recap.pages.dev/assets/images/og-image.jpg">
+  <meta property="og:image" content="https://f1recap.pages.dev/assets/images/og-pitwall.png">
   <meta property="og:site_name" content="F1 Recap">
 
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://f1recap.pages.dev/standings.html">
   <meta property="twitter:title" content="2026 F1 Championship Standings">
   <meta property="twitter:description" content="Drivers and Constructors standings for the 2026 Formula 1 season.">
-  <meta property="twitter:image" content="https://f1recap.pages.dev/assets/images/og-image.jpg">
+  <meta property="twitter:image" content="https://f1recap.pages.dev/assets/images/og-pitwall.png">
 
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏎️</text></svg>">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏎️</text></svg>">
   <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#e10600">
+  <meta name="theme-color" content="#07090d">
   <link rel="canonical" href="https://f1recap.pages.dev/standings">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&family=Manrope:wght@500;600;700&display=swap">
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;0,800;1,700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter:wght@400;500;600;700&amp;display=swap">
   <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/pitwall-site.css">
 </head>
 
 <body>
@@ -43,23 +42,22 @@
 
   <main id="main-content" tabindex="-1">
     <div class="standings-page-shell">
-      <section class="hero standings-hero">
-        <div class="hero-card hero-centered">
-          <div class="hero-flag">🏆</div>
-          <div class="hero-meta">
-            <p class="hero-kicker">2026 Season</p>
-            <h1 class="hero-title">Championship Standings</h1>
-            <p class="hero-date">Track Drivers and Constructors points throughout the season.</p>
-          </div>
+      <section class="subpage-hero standings-hero" aria-labelledby="standingsPageTitle">
+        <div class="subpage-hero-copy">
+          <p class="page-eyebrow">Championship control</p>
+          <h1 class="page-display-title" id="standingsPageTitle">2026 <span>Standings</span></h1>
+          <p class="page-lede">Track every driver and constructor through the season with wins, points, and position changes in one race-control view.</p>
+        </div>
+        <div class="hero-telemetry" aria-label="Standings overview">
+          <div><span>View 01</span><strong>Drivers</strong></div>
+          <div><span>View 02</span><strong>Constructors</strong></div>
+          <div><span>Feed</span><strong>Live data</strong></div>
         </div>
       </section>
 
       <section id="championshipStandings" class="standings-section standings-page-section" style="display: none;">
         <div class="standings-header">
-          <h2 class="standings-title">
-            <span class="standings-icon">🏆</span>
-            Championship Standings
-          </h2>
+          <h2 class="standings-title">Championship Standings</h2>
           <div class="standings-tabs" role="tablist" aria-label="Championship standings views">
             <button class="standings-tab active" id="standingsTabDrivers" type="button" role="tab" aria-selected="true" aria-controls="standingsPanel" tabindex="0" data-standings-view="drivers">Drivers</button>
             <button class="standings-tab" id="standingsTabConstructors" type="button" role="tab" aria-selected="false" aria-controls="standingsPanel" tabindex="-1" data-standings-view="constructors">Constructors</button>

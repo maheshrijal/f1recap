@@ -4,6 +4,7 @@ const {
     buildHomepageSections,
     classifyWeekend,
     findMatchingVideoWeekend,
+    getCalendarRaceAction,
     grandPrixNamesMatch,
     orderWeekendsByStart,
     sessionMatchesVideo
@@ -121,6 +122,46 @@ assert.deepEqual(
     orderedCompleted.map((weekend) => weekend.name),
     ['Australian Grand Prix', 'Chinese Grand Prix'],
     'Completed weekends should preserve calendar order on the homepage'
+);
+
+const completedRaceAction = getCalendarRaceAction({
+    status: 'completed',
+    videos: [
+        { videoId: 'practice-video', title: 'FP1 Highlights | Australian Grand Prix' },
+        { videoId: 'race-video', title: 'Race Highlights | Australian Grand Prix' }
+    ]
+});
+assert.equal(
+    completedRaceAction.href,
+    'https://www.youtube.com/watch?v=race-video',
+    'Completed race cards should open the preferred official recap'
+);
+assert.equal(completedRaceAction.label, 'Watch recap');
+assert.equal(completedRaceAction.external, true);
+assert.equal(
+    getCalendarRaceAction({ status: 'completed', videos: [] }).href,
+    null,
+    'Completed races without highlights should not pretend to be interactive'
+);
+assert.deepEqual(
+    getCalendarRaceAction({ status: 'upcoming' }, true),
+    {
+        href: '#raceDashboard',
+        label: 'Next up',
+        description: 'view weekend schedule'
+    },
+    'The next race card should jump to its on-page schedule'
+);
+assert.equal(
+    getCalendarRaceAction({ status: 'upcoming' }).href,
+    null,
+    'Future race cards should stay informative until a dedicated destination exists'
+);
+assert.equal(
+    [completedRaceAction, getCalendarRaceAction({ status: 'upcoming' }, true)]
+        .some((action) => action.href?.endsWith('.ics')),
+    false,
+    'Race cards must never trigger calendar downloads'
 );
 
 console.log('calendar-state regression checks passed');
