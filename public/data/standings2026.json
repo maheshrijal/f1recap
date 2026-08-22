@@ -1,7 +1,7 @@
 {
   "season": "2026",
   "round": "12",
-  "updatedAt": "2026-08-22T15:41:10.938Z",
+  "updatedAt": "2026-08-22T16:07:37.249Z",
   "seasonStarted": true,
   "source": "jolpica",
   "drivers": [
@@ -182,7 +182,7 @@
       "wins": 0
     },
     {
-      "position": 0,
+      "position": 23,
       "driverCode": "TSU",
       "driverName": "Yuki Tsunoda",
       "constructorName": "RB F1 Team",
