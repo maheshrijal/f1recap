@@ -1,7 +1,7 @@
 {
   "season": "2026",
-  "round": "11",
-  "updatedAt": "2026-08-22T11:40:40.294Z",
+  "round": "12",
+  "updatedAt": "2026-08-22T12:11:29.980Z",
   "seasonStarted": true,
   "source": "jolpica",
   "drivers": [
@@ -10,7 +10,7 @@
       "driverCode": "ANT",
       "driverName": "Andrea Kimi Antonelli",
       "constructorName": "Mercedes",
-      "points": 219,
+      "points": 224,
       "wins": 6
     },
     {
@@ -18,7 +18,7 @@
       "driverCode": "HAM",
       "driverName": "Lewis Hamilton",
       "constructorName": "Ferrari",
-      "points": 169,
+      "points": 171,
       "wins": 1
     },
     {
@@ -26,7 +26,7 @@
       "driverCode": "RUS",
       "driverName": "George Russell",
       "constructorName": "Mercedes",
-      "points": 160,
+      "points": 168,
       "wins": 2
     },
     {
@@ -34,7 +34,7 @@
       "driverCode": "LEC",
       "driverName": "Charles Leclerc",
       "constructorName": "Ferrari",
-      "points": 138,
+      "points": 145,
       "wins": 1
     },
     {
@@ -42,7 +42,7 @@
       "driverCode": "NOR",
       "driverName": "Lando Norris",
       "constructorName": "McLaren",
-      "points": 128,
+      "points": 134,
       "wins": 1
     },
     {
@@ -50,7 +50,7 @@
       "driverCode": "VER",
       "driverName": "Max Verstappen",
       "constructorName": "Red Bull",
-      "points": 109,
+      "points": 112,
       "wins": 0
     },
     {
@@ -58,7 +58,7 @@
       "driverCode": "PIA",
       "driverName": "Oscar Piastri",
       "constructorName": "McLaren",
-      "points": 92,
+      "points": 96,
       "wins": 0
     },
     {
@@ -71,18 +71,18 @@
     },
     {
       "position": 9,
-      "driverCode": "LAW",
-      "driverName": "Liam Lawson",
-      "constructorName": "RB F1 Team",
+      "driverCode": "GAS",
+      "driverName": "Pierre Gasly",
+      "constructorName": "Alpine F1 Team",
       "points": 43,
       "wins": 0
     },
     {
       "position": 10,
-      "driverCode": "GAS",
-      "driverName": "Pierre Gasly",
-      "constructorName": "Alpine F1 Team",
-      "points": 42,
+      "driverCode": "LAW",
+      "driverName": "Liam Lawson",
+      "constructorName": "RB F1 Team",
+      "points": 43,
       "wins": 0
     },
     {
@@ -180,31 +180,39 @@
       "constructorName": "Cadillac F1 Team",
       "points": 0,
       "wins": 0
+    },
+    {
+      "position": 0,
+      "driverCode": "TSU",
+      "driverName": "Yuki Tsunoda",
+      "constructorName": "RB F1 Team",
+      "points": 0,
+      "wins": 0
     }
   ],
   "constructors": [
     {
       "position": 1,
       "constructorName": "Mercedes",
-      "points": 379,
+      "points": 392,
       "wins": 8
     },
     {
       "position": 2,
       "constructorName": "Ferrari",
-      "points": 307,
+      "points": 316,
       "wins": 2
     },
     {
       "position": 3,
       "constructorName": "McLaren",
-      "points": 220,
+      "points": 230,
       "wins": 1
     },
     {
       "position": 4,
       "constructorName": "Red Bull",
-      "points": 177,
+      "points": 180,
       "wins": 0
     },
     {
@@ -216,7 +224,7 @@
     {
       "position": 6,
       "constructorName": "Alpine F1 Team",
-      "points": 61,
+      "points": 62,
       "wins": 0
     },
     {
