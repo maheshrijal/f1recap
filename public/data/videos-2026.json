@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-08-22T15:07:12.911Z",
-  "totalVideos": 58,
+  "lastUpdated": "2026-08-22T15:41:10.214Z",
+  "totalVideos": 59,
   "grandPrixWeekends": [
     {
       "name": "2026 Dutch Grand Prix",
@@ -25,9 +25,16 @@
           "description": "The first bit of racing action after the summer break is here! Enjoy highlights from the Sprint in Zandvoort.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #DutchGP",
           "publishedAt": "2026-08-22T11:04:24.000Z",
           "thumbnail": "https://i.ytimg.com/vi/1_utIsvJzBY/hqdefault.jpg"
+        },
+        {
+          "videoId": "l5ORxUVrhVQ",
+          "title": "Qualifying Highlights | 2026 Dutch Grand Prix",
+          "description": "Catch up with the best bits of qualifying from Zandvoort, as we go hunting for a polesitter for Sunday's Dutch Grand Prix.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #DutchGP",
+          "publishedAt": "2026-08-22T15:33:47.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/l5ORxUVrhVQ/hqdefault.jpg"
         }
       ],
-      "latestDate": "2026-08-22T11:04:24.000Z"
+      "latestDate": "2026-08-22T15:33:47.000Z"
     },
     {
       "name": "2026 Hungarian Grand Prix",
