@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-23T15:47:08.742Z",
+  "lastUpdated": "2026-08-23T16:24:52.182Z",
   "totalVideos": 10,
   "grandPrixWeekends": [
     {
@@ -27,6 +27,13 @@
           "thumbnail": "https://i.ytimg.com/vi/wBiZ8HJHAIA/hqdefault.jpg"
         },
         {
+          "videoId": "3OMLs3yI-KE",
+          "title": "Race Highlights | 2026 Dutch Grand Prix",
+          "description": "Catch highlights from a thrilling final Dutch Grand Prix in Zandvoort, where big incidents and converging strategies were the order of the day.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #DutchGP",
+          "publishedAt": "2026-08-23T16:05:58.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/3OMLs3yI-KE/hqdefault.jpg"
+        },
+        {
           "videoId": "l5ORxUVrhVQ",
           "title": "Qualifying Highlights | 2026 Dutch Grand Prix",
           "description": "Catch up with the best bits of qualifying from Zandvoort, as we go hunting for a polesitter for Sunday's Dutch Grand Prix.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #DutchGP",
@@ -34,7 +41,7 @@
           "thumbnail": "https://i.ytimg.com/vi/l5ORxUVrhVQ/hqdefault.jpg"
         }
       ],
-      "latestDate": "2026-08-22T15:33:47.000Z"
+      "latestDate": "2026-08-23T16:05:58.000Z"
     },
     {
       "name": "2026 Hungarian Grand Prix",
@@ -76,19 +83,6 @@
         }
       ],
       "latestDate": "2026-07-26T16:16:04.000Z"
-    },
-    {
-      "name": "2026 Belgian Grand Prix",
-      "videos": [
-        {
-          "videoId": "I6RfOY_7leA",
-          "title": "Race Highlights | 2026 Belgian Grand Prix",
-          "description": "Action from the very beginning in Belgium, as championship-leader Kimi Antonelli leads us off the line once again.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #BelgianGP",
-          "publishedAt": "2026-07-19T15:14:22.000Z",
-          "thumbnail": "https://i.ytimg.com/vi/I6RfOY_7leA/hqdefault.jpg"
-        }
-      ],
-      "latestDate": "2026-07-19T15:14:22.000Z"
     }
   ]
 }
