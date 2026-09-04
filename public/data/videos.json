@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-09-04T16:30:56.618Z",
-  "totalVideos": 7,
+  "lastUpdated": "2026-09-04T19:15:16.390Z",
+  "totalVideos": 8,
   "grandPrixWeekends": [
     {
       "name": "2026 Italian Grand Prix",
@@ -11,9 +11,16 @@
           "description": "The first hour of practice got underway in Monza and featured a few different names on the timesheets, with four rookies participating.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #ItalianGP",
           "publishedAt": "2026-09-04T13:02:45.000Z",
           "thumbnail": "https://i.ytimg.com/vi/mEV9_DwMm-g/hqdefault.jpg"
+        },
+        {
+          "videoId": "tonz8drjCWk",
+          "title": "FP2 Highlights | 2026 Italian Grand Prix",
+          "description": "Catch up on all the action from the second hour of running in Italy!\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #ItalianGP",
+          "publishedAt": "2026-09-04T16:32:59.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/tonz8drjCWk/hqdefault.jpg"
         }
       ],
-      "latestDate": "2026-09-04T13:02:45.000Z"
+      "latestDate": "2026-09-04T16:32:59.000Z"
     },
     {
       "name": "2026 Dutch Grand Prix",
