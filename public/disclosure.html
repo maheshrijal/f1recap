@@ -1,22 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- Primary Meta Tags -->
-  <title>Disclosure | F1 Highlights Hub</title>
-  <meta name="title" content="Disclosure | F1 Highlights Hub">
-  <meta name="description" content="Disclosure for F1 Highlights Hub: highlights are hosted on the official Formula 1 YouTube channel; we link to those videos and do not host content.">
+  <title>Disclosure | F1 Recap</title>
+  <meta name="title" content="Disclosure | F1 Recap">
+  <meta name="description" content="Disclosure for F1 Recap: highlights are hosted on the official Formula 1 YouTube channel; we link to those videos and do not host content.">
   <meta name="robots" content="index, follow">
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏎️</text></svg>">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏎️</text></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://f1recap.pages.dev/disclosure.html">
+  <meta property="og:title" content="Disclosure | F1 Recap">
+  <meta property="og:description" content="How F1 Recap links to official Formula 1 highlights without hosting or re-uploading videos.">
+  <meta property="og:image" content="https://f1recap.pages.dev/assets/images/og-pitwall.png">
+  <meta property="og:site_name" content="F1 Recap">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Disclosure | F1 Recap">
+  <meta name="twitter:description" content="How F1 Recap links to official Formula 1 highlights.">
+  <meta name="twitter:image" content="https://f1recap.pages.dev/assets/images/og-pitwall.png">
   
   <!-- Web App Manifest -->
   <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#e10600">
+  <meta name="theme-color" content="#07090d">
   
   <!-- Canonical URL -->
   <link rel="canonical" href="https://f1recap.pages.dev/disclosure">
@@ -25,8 +31,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&family=Manrope:wght@500;600;700&display=swap">
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;0,800;1,700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter:wght@400;500;600;700&amp;display=swap">
   <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/pitwall-site.css">
   
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -57,16 +64,32 @@
   <div id="site-header"></div>
 
   <main id="main-content" tabindex="-1">
-    <section class="hero">
-      <div class="hero-card upcoming-card">
-        <div class="hero-meta">
-          <p class="hero-kicker">Disclosure</p>
-          <h1 class="hero-title">We don't host videos, we link to them</h1>
-          <p class="hero-date">All highlights are hosted on YouTube by the official Formula 1 channel. We simply organize links for faster access.</p>
-          <p class="hero-sessions">If a video is removed or blocked in your region, it will disappear from our feed on the next refresh.</p>
-          <p class="hero-sessions">Licensing note: embedding is disabled on F1’s uploads, so we direct you to YouTube.</p>
-        </div>
+    <section class="subpage-hero" aria-labelledby="disclosurePageTitle">
+      <div class="subpage-hero-copy">
+        <p class="page-eyebrow">Source protocol</p>
+        <h1 class="page-display-title" id="disclosurePageTitle">Links, not <span>reuploads</span></h1>
+        <p class="page-lede">F1 Recap organizes public links to official Formula 1 videos. We do not host, copy, or re-upload race footage.</p>
       </div>
+      <div class="hero-telemetry" aria-label="Disclosure summary">
+        <div><span>Video host</span><strong>YouTube</strong></div>
+        <div><span>Publisher</span><strong>Formula 1</strong></div>
+        <div><span>Our role</span><strong>Link index</strong></div>
+      </div>
+    </section>
+
+    <section class="policy-stack" aria-label="Video and licensing disclosures">
+      <article class="policy-card">
+        <h2>Official source</h2>
+        <p>All highlight videos remain hosted on YouTube by the official Formula 1 channel. F1 Recap provides organized outbound links for faster access.</p>
+      </article>
+      <article class="policy-card">
+        <h2>Availability</h2>
+        <p>If Formula 1 removes a video or restricts it in your region, that video may become unavailable here and will leave the feed after the next refresh.</p>
+      </article>
+      <article class="policy-card">
+        <h2>Playback</h2>
+        <p>Embedding is disabled on Formula 1 uploads, so highlight controls open the corresponding video directly on YouTube.</p>
+      </article>
     </section>
   </main>
 
