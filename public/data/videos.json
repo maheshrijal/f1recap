@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-09-05T10:45:48.006Z",
-  "totalVideos": 8,
+  "lastUpdated": "2026-09-05T13:34:48.088Z",
+  "totalVideos": 9,
   "grandPrixWeekends": [
     {
       "name": "2026 Italian Grand Prix",
@@ -18,9 +18,16 @@
           "description": "Catch up on all the action from the second hour of running in Italy!\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #ItalianGP",
           "publishedAt": "2026-09-04T16:32:59.000Z",
           "thumbnail": "https://i.ytimg.com/vi/tonz8drjCWk/hqdefault.jpg"
+        },
+        {
+          "videoId": "VdvWvUWccSM",
+          "title": "FP3 Highlights | 2026 Italian Grand Prix",
+          "description": "Tune in for all the highlights of the final hour of practice in Monza.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #ItalianGP",
+          "publishedAt": "2026-09-05T13:13:42.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/VdvWvUWccSM/hqdefault.jpg"
         }
       ],
-      "latestDate": "2026-09-04T16:32:59.000Z"
+      "latestDate": "2026-09-05T13:13:42.000Z"
     },
     {
       "name": "2026 Dutch Grand Prix",
