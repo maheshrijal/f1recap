@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-09-05T13:34:48.090Z",
-  "totalVideos": 63,
+  "lastUpdated": "2026-09-05T16:18:15.300Z",
+  "totalVideos": 64,
   "grandPrixWeekends": [
     {
       "name": "2026 Italian Grand Prix",
@@ -25,9 +25,16 @@
           "description": "Tune in for all the highlights of the final hour of practice in Monza.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #ItalianGP",
           "publishedAt": "2026-09-05T13:13:42.000Z",
           "thumbnail": "https://i.ytimg.com/vi/VdvWvUWccSM/hqdefault.jpg"
+        },
+        {
+          "videoId": "aTqIIB2HrNg",
+          "title": "Qualifying Highlights | 2026 Italian Grand Prix",
+          "description": "The grid is set for the 2026 Italian Grand Prix! Catch up on the unbelievable action from Monza where a shock pole position was secured!\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #ItalianGP",
+          "publishedAt": "2026-09-05T15:42:36.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/aTqIIB2HrNg/hqdefault.jpg"
         }
       ],
-      "latestDate": "2026-09-05T13:13:42.000Z"
+      "latestDate": "2026-09-05T15:42:36.000Z"
     },
     {
       "name": "2026 Dutch Grand Prix",
