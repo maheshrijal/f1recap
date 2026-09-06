@@ -1,7 +1,7 @@
 {
   "season": "2026",
   "round": "13",
-  "updatedAt": "2026-09-06T18:03:20.045Z",
+  "updatedAt": "2026-09-06T20:39:15.143Z",
   "seasonStarted": true,
   "source": "jolpica",
   "drivers": [
@@ -58,7 +58,7 @@
       "driverCode": "PIA",
       "driverName": "Oscar Piastri",
       "constructorName": "McLaren",
-      "points": 104,
+      "points": 106,
       "wins": 0
     },
     {
@@ -66,7 +66,7 @@
       "driverCode": "HAD",
       "driverName": "Isack Hadjar",
       "constructorName": "Red Bull",
-      "points": 68,
+      "points": 71,
       "wins": 0
     },
     {
@@ -74,7 +74,7 @@
       "driverCode": "LAW",
       "driverName": "Liam Lawson",
       "constructorName": "RB F1 Team",
-      "points": 49,
+      "points": 51,
       "wins": 0
     },
     {
@@ -82,7 +82,7 @@
       "driverCode": "GAS",
       "driverName": "Pierre Gasly",
       "constructorName": "Alpine F1 Team",
-      "points": 44,
+      "points": 35,
       "wins": 0
     },
     {
@@ -90,7 +90,7 @@
       "driverCode": "LIN",
       "driverName": "Arvid Lindblad",
       "constructorName": "RB F1 Team",
-      "points": 23,
+      "points": 25,
       "wins": 0
     },
     {
@@ -206,25 +206,25 @@
     {
       "position": 3,
       "constructorName": "McLaren",
-      "points": 263,
+      "points": 265,
       "wins": 2
     },
     {
       "position": 4,
       "constructorName": "Red Bull",
-      "points": 186,
+      "points": 189,
       "wins": 0
     },
     {
       "position": 5,
       "constructorName": "RB F1 Team",
-      "points": 66,
+      "points": 70,
       "wins": 0
     },
     {
       "position": 6,
       "constructorName": "Alpine F1 Team",
-      "points": 63,
+      "points": 54,
       "wins": 0
     },
     {
