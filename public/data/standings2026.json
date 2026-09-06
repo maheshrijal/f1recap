@@ -1,7 +1,7 @@
 {
   "season": "2026",
   "round": "13",
-  "updatedAt": "2026-09-06T20:39:15.143Z",
+  "updatedAt": "2026-09-06T22:43:14.467Z",
   "seasonStarted": true,
   "source": "jolpica",
   "drivers": [
@@ -10,15 +10,15 @@
       "driverCode": "ANT",
       "driverName": "Andrea Kimi Antonelli",
       "constructorName": "Mercedes",
-      "points": 242,
-      "wins": 6
+      "points": 267,
+      "wins": 7
     },
     {
       "position": 2,
       "driverCode": "RUS",
       "driverName": "George Russell",
       "constructorName": "Mercedes",
-      "points": 183,
+      "points": 201,
       "wins": 2
     },
     {
@@ -26,7 +26,7 @@
       "driverCode": "HAM",
       "driverName": "Lewis Hamilton",
       "constructorName": "Ferrari",
-      "points": 183,
+      "points": 191,
       "wins": 1
     },
     {
@@ -34,7 +34,7 @@
       "driverCode": "NOR",
       "driverName": "Lando Norris",
       "constructorName": "McLaren",
-      "points": 159,
+      "points": 171,
       "wins": 2
     },
     {
@@ -50,7 +50,7 @@
       "driverCode": "VER",
       "driverName": "Max Verstappen",
       "constructorName": "Red Bull",
-      "points": 112,
+      "points": 127,
       "wins": 0
     },
     {
@@ -58,7 +58,7 @@
       "driverCode": "PIA",
       "driverName": "Oscar Piastri",
       "constructorName": "McLaren",
-      "points": 106,
+      "points": 116,
       "wins": 0
     },
     {
@@ -82,7 +82,7 @@
       "driverCode": "GAS",
       "driverName": "Pierre Gasly",
       "constructorName": "Alpine F1 Team",
-      "points": 35,
+      "points": 41,
       "wins": 0
     },
     {
@@ -90,7 +90,7 @@
       "driverCode": "LIN",
       "driverName": "Arvid Lindblad",
       "constructorName": "RB F1 Team",
-      "points": 25,
+      "points": 29,
       "wins": 0
     },
     {
@@ -98,7 +98,7 @@
       "driverCode": "COL",
       "driverName": "Franco Colapinto",
       "constructorName": "Alpine F1 Team",
-      "points": 19,
+      "points": 21,
       "wins": 0
     },
     {
@@ -162,7 +162,7 @@
       "driverCode": "TSU",
       "driverName": "Yuki Tsunoda",
       "constructorName": "RB F1 Team",
-      "points": 0,
+      "points": 1,
       "wins": 0
     },
     {
@@ -194,37 +194,37 @@
     {
       "position": 1,
       "constructorName": "Mercedes",
-      "points": 425,
-      "wins": 8
+      "points": 468,
+      "wins": 9
     },
     {
       "position": 2,
       "constructorName": "Ferrari",
-      "points": 338,
+      "points": 346,
       "wins": 2
     },
     {
       "position": 3,
       "constructorName": "McLaren",
-      "points": 265,
+      "points": 287,
       "wins": 2
     },
     {
       "position": 4,
       "constructorName": "Red Bull",
-      "points": 189,
+      "points": 204,
       "wins": 0
     },
     {
       "position": 5,
       "constructorName": "RB F1 Team",
-      "points": 70,
+      "points": 75,
       "wins": 0
     },
     {
       "position": 6,
       "constructorName": "Alpine F1 Team",
-      "points": 54,
+      "points": 62,
       "wins": 0
     },
     {
