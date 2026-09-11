@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-09-11T16:42:39.987Z",
-  "totalVideos": 66,
+  "lastUpdated": "2026-09-11T19:23:35.282Z",
+  "totalVideos": 67,
   "grandPrixWeekends": [
     {
       "name": "2026 Spanish Grand Prix",
@@ -11,9 +11,16 @@
           "description": "The first hour of running got underway at F1's newest circuit, as the drivers and teams took to the track at the MADRING.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #SpanishGP",
           "publishedAt": "2026-09-11T14:09:17.000Z",
           "thumbnail": "https://i.ytimg.com/vi/aiAr7EPPl4U/hqdefault.jpg"
+        },
+        {
+          "videoId": "DyKH1qMZEpY",
+          "title": "FP2 Highlights | 2026 Spanish Grand Prix",
+          "description": "Tune in for the second hour of practice in Madrid, as the teams refined their setups ahead of Qualifying on Saturday.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #SpanishGP",
+          "publishedAt": "2026-09-11T17:42:35.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/DyKH1qMZEpY/hqdefault.jpg"
         }
       ],
-      "latestDate": "2026-09-11T14:09:17.000Z"
+      "latestDate": "2026-09-11T17:42:35.000Z"
     },
     {
       "name": "2026 Italian Grand Prix",
