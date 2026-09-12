@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-09-12T14:14:03.378Z",
-  "totalVideos": 13,
+  "lastUpdated": "2026-09-12T17:17:16.939Z",
+  "totalVideos": 14,
   "grandPrixWeekends": [
     {
       "name": "2026 Spanish Grand Prix",
@@ -20,6 +20,13 @@
           "thumbnail": "https://i.ytimg.com/vi/DyKH1qMZEpY/hqdefault.jpg"
         },
         {
+          "videoId": "C99UPegyFsM",
+          "title": "Qualifying Highlights | 2026 Spanish Grand Prix",
+          "description": "Tune in for all the action from Qualifying, as four teams fought to the very end for the top spot, as the grid was decided for the 2026 Spanish Grand Prix! \n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #SpanishGP",
+          "publishedAt": "2026-09-12T15:38:16.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/C99UPegyFsM/hqdefault.jpg"
+        },
+        {
           "videoId": "FA-QkDHTyT8",
           "title": "FP3 Highlights | 2026 Spanish Grand Prix",
           "description": "Catch up on all the highlights from the final practice hour in Madrid, as the session was red flagged twice after two crashes.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #SpanishGP",
@@ -27,7 +34,7 @@
           "thumbnail": "https://i.ytimg.com/vi/FA-QkDHTyT8/hqdefault.jpg"
         }
       ],
-      "latestDate": "2026-09-12T13:00:06.000Z"
+      "latestDate": "2026-09-12T15:38:16.000Z"
     },
     {
       "name": "2026 Italian Grand Prix",
