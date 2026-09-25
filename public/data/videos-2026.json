@@ -1,7 +1,27 @@
 {
-  "lastUpdated": "2026-09-14T15:56:59.192Z",
-  "totalVideos": 70,
+  "lastUpdated": "2026-09-25T03:02:16.043Z",
+  "totalVideos": 72,
   "grandPrixWeekends": [
+    {
+      "name": "2026 Azerbaijan Grand Prix",
+      "videos": [
+        {
+          "videoId": "Os85ZjKi8Co",
+          "title": "FP1 Highlights | 2026 Azerbaijan Grand Prix",
+          "description": "For more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1",
+          "publishedAt": "2026-09-24T11:47:55.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/Os85ZjKi8Co/hqdefault.jpg"
+        },
+        {
+          "videoId": "cLgOcaTO2M0",
+          "title": "FP2 Highlights | 2026 Azerbaijan Grand Prix",
+          "description": "Catch up on a start-stop second practice as the grid got to grips with the Baku City Circuit ahead of Friday's Qualifying.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #AzerbaijanGP",
+          "publishedAt": "2026-09-24T15:13:37.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/cLgOcaTO2M0/hqdefault.jpg"
+        }
+      ],
+      "latestDate": "2026-09-24T15:13:37.000Z"
+    },
     {
       "name": "2026 Spanish Grand Prix",
       "videos": [
