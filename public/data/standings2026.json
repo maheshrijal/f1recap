@@ -1,7 +1,7 @@
 {
   "season": "2026",
   "round": "15",
-  "updatedAt": "2026-09-26T12:30:21.403Z",
+  "updatedAt": "2026-09-26T16:47:34.482Z",
   "seasonStarted": true,
   "source": "jolpica",
   "drivers": [
@@ -10,7 +10,7 @@
       "driverCode": "ANT",
       "driverName": "Andrea Kimi Antonelli",
       "constructorName": "Mercedes",
-      "points": 292,
+      "points": 302,
       "wins": 8
     },
     {
@@ -18,15 +18,15 @@
       "driverCode": "RUS",
       "driverName": "George Russell",
       "constructorName": "Mercedes",
-      "points": 211,
-      "wins": 2
+      "points": 236,
+      "wins": 3
     },
     {
       "position": 3,
       "driverCode": "HAM",
       "driverName": "Lewis Hamilton",
       "constructorName": "Ferrari",
-      "points": 191,
+      "points": 199,
       "wins": 1
     },
     {
@@ -42,7 +42,7 @@
       "driverCode": "LEC",
       "driverName": "Charles Leclerc",
       "constructorName": "Ferrari",
-      "points": 167,
+      "points": 179,
       "wins": 1
     },
     {
@@ -50,7 +50,7 @@
       "driverCode": "VER",
       "driverName": "Max Verstappen",
       "constructorName": "Red Bull",
-      "points": 145,
+      "points": 163,
       "wins": 0
     },
     {
@@ -66,7 +66,7 @@
       "driverCode": "HAD",
       "driverName": "Isack Hadjar",
       "constructorName": "Red Bull",
-      "points": 71,
+      "points": 86,
       "wins": 0
     },
     {
@@ -90,7 +90,7 @@
       "driverCode": "LIN",
       "driverName": "Arvid Lindblad",
       "constructorName": "RB F1 Team",
-      "points": 31,
+      "points": 37,
       "wins": 0
     },
     {
@@ -106,7 +106,7 @@
       "driverCode": "BEA",
       "driverName": "Oliver Bearman",
       "constructorName": "Haas F1 Team",
-      "points": 18,
+      "points": 20,
       "wins": 0
     },
     {
@@ -127,26 +127,26 @@
     },
     {
       "position": 16,
-      "driverCode": "SAI",
-      "driverName": "Carlos Sainz",
-      "constructorName": "Williams",
-      "points": 6,
+      "driverCode": "OCO",
+      "driverName": "Esteban Ocon",
+      "constructorName": "Haas F1 Team",
+      "points": 7,
       "wins": 0
     },
     {
       "position": 17,
-      "driverCode": "ALB",
-      "driverName": "Alexander Albon",
+      "driverCode": "SAI",
+      "driverName": "Carlos Sainz",
       "constructorName": "Williams",
-      "points": 5,
+      "points": 7,
       "wins": 0
     },
     {
       "position": 18,
-      "driverCode": "OCO",
-      "driverName": "Esteban Ocon",
-      "constructorName": "Haas F1 Team",
-      "points": 3,
+      "driverCode": "ALB",
+      "driverName": "Alexander Albon",
+      "constructorName": "Williams",
+      "points": 5,
       "wins": 0
     },
     {
@@ -194,13 +194,13 @@
     {
       "position": 1,
       "constructorName": "Mercedes",
-      "points": 503,
-      "wins": 10
+      "points": 538,
+      "wins": 11
     },
     {
       "position": 2,
       "constructorName": "Ferrari",
-      "points": 358,
+      "points": 378,
       "wins": 2
     },
     {
@@ -212,13 +212,13 @@
     {
       "position": 4,
       "constructorName": "Red Bull",
-      "points": 230,
+      "points": 263,
       "wins": 0
     },
     {
       "position": 5,
       "constructorName": "RB F1 Team",
-      "points": 77,
+      "points": 83,
       "wins": 0
     },
     {
@@ -230,7 +230,7 @@
     {
       "position": 7,
       "constructorName": "Haas F1 Team",
-      "points": 21,
+      "points": 27,
       "wins": 0
     },
     {
@@ -242,7 +242,7 @@
     {
       "position": 9,
       "constructorName": "Williams",
-      "points": 11,
+      "points": 12,
       "wins": 0
     },
     {

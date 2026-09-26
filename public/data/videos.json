@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-09-26T12:30:20.697Z",
-  "totalVideos": 14,
+  "lastUpdated": "2026-09-26T16:47:33.744Z",
+  "totalVideos": 15,
   "grandPrixWeekends": [
     {
       "name": "2026 Azerbaijan Grand Prix",
@@ -27,6 +27,13 @@
           "thumbnail": "https://i.ytimg.com/vi/nMrCLLJemBM/hqdefault.jpg"
         },
         {
+          "videoId": "I9oahfzac0I",
+          "title": "Race Highlights | 2026 Azerbaijan Grand Prix",
+          "description": "We're back in Baku for another eventful Grand Prix, with chaotic collisions and epic battles all the way to the chequered flag.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #AzerbaijanGP",
+          "publishedAt": "2026-09-26T13:30:51.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/I9oahfzac0I/hqdefault.jpg"
+        },
+        {
           "videoId": "tEotawWhuWg",
           "title": "FP3 Highlights | 2026 Azerbaijan Grand Prix",
           "description": "Catch up on an eventful final hour of practice ahead of Friday's quali in Baku!\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #AzerbaijanGP",
@@ -34,7 +41,7 @@
           "thumbnail": "https://i.ytimg.com/vi/tEotawWhuWg/hqdefault.jpg"
         }
       ],
-      "latestDate": "2026-09-25T13:38:55.000Z"
+      "latestDate": "2026-09-26T13:30:51.000Z"
     },
     {
       "name": "2026 Spanish Grand Prix",
