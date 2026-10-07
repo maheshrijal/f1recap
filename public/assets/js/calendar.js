@@ -738,9 +738,9 @@ class F1Calendar {
                     </span>
                     <span class="gp-card-badges">
                     <span class="gp-session-count">${sessionCount} sessions</span>
-                    ${videoCount > 0 ? `<span class="gp-video-count">🎬 ${videoCount}</span>` : ''}
+                    ${videoCount > 0 ? `<span class="gp-video-count">${videoCount} videos</span>` : ''}
                     <span class="gp-status-badge ${badgeClass}">${badgeText}</span>
-                    <span class="gp-card-chevron" aria-hidden="true">⌄</span>
+                    <span class="gp-card-chevron" aria-hidden="true"></span>
                     </span>
                 </button>
             </div>
@@ -783,7 +783,7 @@ class F1Calendar {
         const videos = Array.isArray(gp?.videos) ? gp.videos : [];
         const videosHtml = videos.length > 0
             ? videos.map((video) => this.createVideoCard(video, gp)).join('')
-            : '<div class="timeline-no-videos"><div class="timeline-no-videos-icon">🎥</div><p>Highlights coming soon</p></div>';
+            : '<div class="timeline-no-videos"><p>Highlights coming soon</p></div>';
 
         return `
             <div class="timeline-content">
@@ -800,7 +800,7 @@ class F1Calendar {
             return `
                 <div class="timeline-content">
                     <div class="timeline-videos">
-                        <div class="timeline-no-videos"><div class="timeline-no-videos-icon">🎥</div><p>Highlights coming soon</p></div>
+                        <div class="timeline-no-videos"><p>Highlights coming soon</p></div>
                     </div>
                 </div>
             `;
@@ -830,7 +830,7 @@ class F1Calendar {
         const isUpcoming = sessionDate.getTime() > Date.now();
         const dateStr = this.formatDate(session.publishedAt);
         const statusText = isUpcoming ? 'Coming soon' : 'Highlights pending';
-        const icon = isUpcoming ? '⏱' : '🎥';
+        const icon = isUpcoming ? 'Scheduled' : 'Pending';
 
         return `
             <div class="video-card video-card-placeholder">
@@ -1763,7 +1763,7 @@ class F1Calendar {
                     aria-label="Watch ${this.escapeAttribute(video.title || 'video')} on YouTube">
                     <div class="video-thumbnail" style="background-image: url('${this.escapeAttribute(video.thumbnail || '')}')">
                         <div class="play-overlay">
-                            <div class="play-button">▶</div>
+                            <div class="play-button" aria-hidden="true"></div>
                         </div>
                     </div>
                 </a>
@@ -1772,12 +1772,7 @@ class F1Calendar {
                     <div class="video-date">${formattedDate}</div>
                     <div class="video-actions">
                         <span class="video-type ${sessionClass}">${videoType}</span>
-                        <a href="${videoUrl}" target="_blank" rel="noopener noreferrer" class="watch-button">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                            </svg>
-                            WATCH
-                        </a>
+                        <a href="${videoUrl}" target="_blank" rel="noopener noreferrer" class="watch-button">Watch on YouTube</a>
                     </div>
                 </div>
             </div>

@@ -1,9 +1,9 @@
 {
-  "name": "F1 Highlights Hub",
+  "name": "F1 Recap",
   "short_name": "F1 Recap",
-  "description": "2026 Formula 1 calendar with session times and 2025 highlights archive",
+  "description": "Formula 1 highlights, upcoming sessions, and a timezone-aware season calendar",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0a0a0a",
-  "theme_color": "#e10600"
+  "background_color": "#07090d",
+  "theme_color": "#07090d"
 }

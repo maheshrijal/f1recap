@@ -71,6 +71,40 @@
         return 'other';
     }
 
+    function getCalendarRaceAction(race = {}, isNext = false) {
+        const status = isNext ? 'next' : race.status;
+
+        if (status === 'next' || status === 'current') {
+            return {
+                href: '#raceDashboard',
+                label: status === 'current' ? 'Live' : 'Next up',
+                description: 'view weekend schedule'
+            };
+        }
+
+        if (status === 'completed') {
+            const videos = Array.isArray(race.videos) ? race.videos : [];
+            const preferredTypes = ['race', 'sprint', 'qualifying'];
+            const preferredVideo = preferredTypes
+                .map((type) => videos.find((video) => video?.videoId && getCanonicalSessionType(video.title) === type))
+                .find(Boolean);
+            const video = preferredVideo || videos.find((candidate) => candidate?.videoId);
+
+            if (video?.videoId) {
+                return {
+                    href: `https://www.youtube.com/watch?v=${encodeURIComponent(video.videoId)}`,
+                    label: 'Watch recap',
+                    description: 'watch official highlights on YouTube, opens in a new tab',
+                    external: true
+                };
+            }
+
+            return { href: null, label: 'Complete', description: 'weekend complete' };
+        }
+
+        return { href: null, label: 'Upcoming', description: 'upcoming race' };
+    }
+
     function sessionMatchesVideo(sessionTitle, videoTitle) {
         const sessionType = getCanonicalSessionType(sessionTitle);
         const videoType = getCanonicalSessionType(videoTitle);
@@ -149,6 +183,7 @@
         CURRENT_WEEKEND_GRACE_MS,
         classifyWeekend,
         findMatchingVideoWeekend,
+        getCalendarRaceAction,
         getCanonicalSessionType,
         getWeekendBounds,
         grandPrixNamesMatch,
