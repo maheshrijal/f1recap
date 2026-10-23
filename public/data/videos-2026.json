@@ -1,7 +1,20 @@
 {
-  "lastUpdated": "2026-10-23T18:02:55.897Z",
-  "totalVideos": 85,
+  "lastUpdated": "2026-10-23T21:33:07.050Z",
+  "totalVideos": 86,
   "grandPrixWeekends": [
+    {
+      "name": "2026 United States Grand Prix",
+      "videos": [
+        {
+          "videoId": "wOxOwnRkI0I",
+          "title": "FP1 Highlights | 2026 United States Grand Prix",
+          "description": "Catch up on the action as the first practice session at the Circuit of the Americas got underway in Austin.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #USGP",
+          "publishedAt": "2026-10-23T20:04:33.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/wOxOwnRkI0I/hqdefault.jpg"
+        }
+      ],
+      "latestDate": "2026-10-23T20:04:33.000Z"
+    },
     {
       "name": "2026 Singapore Grand Prix",
       "videos": [
