@@ -1,7 +1,27 @@
 {
-  "lastUpdated": "2026-10-30T21:18:47.888Z",
-  "totalVideos": 90,
+  "lastUpdated": "2026-10-31T00:55:15.358Z",
+  "totalVideos": 92,
   "grandPrixWeekends": [
+    {
+      "name": "2026 Mexico City Grand Prix",
+      "videos": [
+        {
+          "videoId": "zM4cNh5YRek",
+          "title": "FP1 Highlights | 2026 Mexico City Grand Prix",
+          "description": "FP1 saw plenty of new faces head out on track for the opening hour, with 10 out of 11 teams running rookie drivers and only Ferrari keeping its regular line-up. Catch up on all the action from the first hour of practice in Mexico City.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #MexicoGP",
+          "publishedAt": "2026-10-30T21:33:38.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/zM4cNh5YRek/hqdefault.jpg"
+        },
+        {
+          "videoId": "tEEGnZna3Gc",
+          "title": "FP2 Highlights | 2026 Mexico City Grand Prix",
+          "description": "Catch up on the action from the second hour of Qualifying in Mexico City!\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #MexicoGP",
+          "publishedAt": "2026-10-31T00:26:19.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/tEEGnZna3Gc/hqdefault.jpg"
+        }
+      ],
+      "latestDate": "2026-10-31T00:26:19.000Z"
+    },
     {
       "name": "2026 United States Grand Prix",
       "videos": [
