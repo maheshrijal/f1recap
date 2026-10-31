@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-10-31T18:58:39.234Z",
-  "totalVideos": 12,
+  "lastUpdated": "2026-10-31T22:08:31.448Z",
+  "totalVideos": 13,
   "grandPrixWeekends": [
     {
       "name": "2026 Mexico City Grand Prix",
@@ -18,9 +18,16 @@
           "description": "Catch up on the action from the second hour of Qualifying in Mexico City!\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #MexicoGP",
           "publishedAt": "2026-10-31T00:26:19.000Z",
           "thumbnail": "https://i.ytimg.com/vi/tEEGnZna3Gc/hqdefault.jpg"
+        },
+        {
+          "videoId": "BH33XWkjtBI",
+          "title": "FP3 Highlights | 2026 Mexico City Grand Prix",
+          "description": "The final hour of practice got underway in Mexico City, as the teams made their final adjustments ahead of Qualifying.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #MexicoGP",
+          "publishedAt": "2026-10-31T19:54:25.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/BH33XWkjtBI/hqdefault.jpg"
         }
       ],
-      "latestDate": "2026-10-31T00:26:19.000Z"
+      "latestDate": "2026-10-31T19:54:25.000Z"
     },
     {
       "name": "2026 United States Grand Prix",
