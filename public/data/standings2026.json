@@ -1,7 +1,7 @@
 {
   "season": "2026",
   "round": "19",
-  "updatedAt": "2026-11-01T11:41:31.399Z",
+  "updatedAt": "2026-11-01T17:41:11.298Z",
   "seasonStarted": true,
   "source": "jolpica",
   "drivers": [
@@ -191,7 +191,7 @@
     },
     {
       "position": 24,
-      "driverCode": "",
+      "driverCode": "HIR",
       "driverName": "Ryo Hirakawa",
       "constructorName": "Haas F1 Team",
       "points": 0,
