@@ -1,7 +1,20 @@
 {
-  "lastUpdated": "2026-11-06T12:39:48.599Z",
-  "totalVideos": 13,
+  "lastUpdated": "2026-11-06T19:48:15.252Z",
+  "totalVideos": 11,
   "grandPrixWeekends": [
+    {
+      "name": "2026 Sao Paulo Grand Prix",
+      "videos": [
+        {
+          "videoId": "OwQ4ernSM00",
+          "title": "FP1 Highlights | 2026 Sao Paulo Grand Prix",
+          "description": "Kimi Antonelli takes to the track for the first time since securing the championship, as he joins a host of rookies during first practice in Brazil!\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #BrazilGP",
+          "publishedAt": "2026-11-06T18:22:52.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/OwQ4ernSM00/hqdefault.jpg"
+        }
+      ],
+      "latestDate": "2026-11-06T18:22:52.000Z"
+    },
     {
       "name": "2026 Mexico City Grand Prix",
       "videos": [
@@ -83,33 +96,6 @@
         }
       ],
       "latestDate": "2026-10-25T22:33:34.000Z"
-    },
-    {
-      "name": "2026 Singapore Grand Prix",
-      "videos": [
-        {
-          "videoId": "Rf7NEIpm5vI",
-          "title": "Sprint Highlights | 2026 Singapore Grand Prix",
-          "description": "A pre-race downpour caused challenging conditions in a dramatic mixed-weather Sprint around the Marina Bay Circuit! Catch up on all the action as Max Verstappen starts on pole position, with George Russell in P2.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #SingaporeGP",
-          "publishedAt": "2026-10-10T11:14:59.000Z",
-          "thumbnail": "https://i.ytimg.com/vi/Rf7NEIpm5vI/hqdefault.jpg"
-        },
-        {
-          "videoId": "ohgEehLtucc",
-          "title": "Race Highlights | 2026 Singapore Grand Prix",
-          "description": "Max Verstappen and Charles Leclerc share the front row, and we have 62 intense laps of action to run under the lights. Who'll emerge on top in Singapore?\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #SingaporeGP",
-          "publishedAt": "2026-10-11T14:22:34.000Z",
-          "thumbnail": "https://i.ytimg.com/vi/ohgEehLtucc/hqdefault.jpg"
-        },
-        {
-          "videoId": "ofZbJdPaH3A",
-          "title": "Qualifying Highlights | 2026 Singapore Grand Prix",
-          "description": "Catch up on all the highlights from Qualifying in Marina Bay, as Max Verstappen hunts for another pole position after already securing Sprint pole and the Sprint victory in round 17!\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #SingaporeGP",
-          "publishedAt": "2026-10-10T15:09:19.000Z",
-          "thumbnail": "https://i.ytimg.com/vi/ofZbJdPaH3A/hqdefault.jpg"
-        }
-      ],
-      "latestDate": "2026-10-11T14:22:34.000Z"
     }
   ]
 }

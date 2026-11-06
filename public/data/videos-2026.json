@@ -1,7 +1,20 @@
 {
-  "lastUpdated": "2026-11-06T12:39:48.601Z",
-  "totalVideos": 95,
+  "lastUpdated": "2026-11-06T19:48:15.253Z",
+  "totalVideos": 96,
   "grandPrixWeekends": [
+    {
+      "name": "2026 Sao Paulo Grand Prix",
+      "videos": [
+        {
+          "videoId": "OwQ4ernSM00",
+          "title": "FP1 Highlights | 2026 Sao Paulo Grand Prix",
+          "description": "Kimi Antonelli takes to the track for the first time since securing the championship, as he joins a host of rookies during first practice in Brazil!\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #BrazilGP",
+          "publishedAt": "2026-11-06T18:22:52.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/OwQ4ernSM00/hqdefault.jpg"
+        }
+      ],
+      "latestDate": "2026-11-06T18:22:52.000Z"
+    },
     {
       "name": "2026 Mexico City Grand Prix",
       "videos": [
