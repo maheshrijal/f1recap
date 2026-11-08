@@ -1,7 +1,7 @@
 {
   "season": "2026",
   "round": "20",
-  "updatedAt": "2026-11-08T17:40:16.321Z",
+  "updatedAt": "2026-11-08T21:44:01.112Z",
   "seasonStarted": true,
   "source": "jolpica",
   "drivers": [
@@ -10,7 +10,7 @@
       "driverCode": "ANT",
       "driverName": "Andrea Kimi Antonelli",
       "constructorName": "Mercedes",
-      "points": 380,
+      "points": 390,
       "wins": 9
     },
     {
@@ -18,31 +18,31 @@
       "driverCode": "VER",
       "driverName": "Max Verstappen",
       "constructorName": "Red Bull",
-      "points": 261,
+      "points": 279,
       "wins": 3
     },
     {
       "position": 3,
-      "driverCode": "HAM",
-      "driverName": "Lewis Hamilton",
-      "constructorName": "Ferrari",
-      "points": 259,
-      "wins": 1
-    },
-    {
-      "position": 4,
       "driverCode": "RUS",
       "driverName": "George Russell",
       "constructorName": "Mercedes",
-      "points": 250,
+      "points": 262,
       "wins": 3
+    },
+    {
+      "position": 4,
+      "driverCode": "HAM",
+      "driverName": "Lewis Hamilton",
+      "constructorName": "Ferrari",
+      "points": 261,
+      "wins": 1
     },
     {
       "position": 5,
       "driverCode": "LEC",
       "driverName": "Charles Leclerc",
       "constructorName": "Ferrari",
-      "points": 245,
+      "points": 251,
       "wins": 1
     },
     {
@@ -50,15 +50,15 @@
       "driverCode": "NOR",
       "driverName": "Lando Norris",
       "constructorName": "McLaren",
-      "points": 221,
-      "wins": 2
+      "points": 246,
+      "wins": 3
     },
     {
       "position": 7,
       "driverCode": "PIA",
       "driverName": "Oscar Piastri",
       "constructorName": "McLaren",
-      "points": 144,
+      "points": 152,
       "wins": 0
     },
     {
@@ -66,7 +66,7 @@
       "driverCode": "HAD",
       "driverName": "Isack Hadjar",
       "constructorName": "Red Bull",
-      "points": 107,
+      "points": 122,
       "wins": 0
     },
     {
@@ -74,7 +74,7 @@
       "driverCode": "LAW",
       "driverName": "Liam Lawson",
       "constructorName": "RB F1 Team",
-      "points": 83,
+      "points": 87,
       "wins": 0
     },
     {
@@ -122,7 +122,7 @@
       "driverCode": "HUL",
       "driverName": "Nico Hülkenberg",
       "constructorName": "Audi",
-      "points": 13,
+      "points": 14,
       "wins": 0
     },
     {
@@ -210,31 +210,31 @@
     {
       "position": 1,
       "constructorName": "Mercedes",
-      "points": 630,
+      "points": 652,
       "wins": 12
     },
     {
       "position": 2,
       "constructorName": "Ferrari",
-      "points": 504,
+      "points": 512,
       "wins": 2
     },
     {
       "position": 3,
       "constructorName": "Red Bull",
-      "points": 382,
+      "points": 415,
       "wins": 3
     },
     {
       "position": 4,
       "constructorName": "McLaren",
-      "points": 365,
-      "wins": 2
+      "points": 398,
+      "wins": 3
     },
     {
       "position": 5,
       "constructorName": "RB F1 Team",
-      "points": 108,
+      "points": 112,
       "wins": 0
     },
     {
@@ -252,7 +252,7 @@
     {
       "position": 8,
       "constructorName": "Audi",
-      "points": 27,
+      "points": 28,
       "wins": 0
     },
     {
