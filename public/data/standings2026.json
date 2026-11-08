@@ -1,7 +1,7 @@
 {
   "season": "2026",
-  "round": "19",
-  "updatedAt": "2026-11-07T20:34:00.001Z",
+  "round": "20",
+  "updatedAt": "2026-11-08T00:01:25.313Z",
   "seasonStarted": true,
   "source": "jolpica",
   "drivers": [
@@ -194,6 +194,14 @@
       "driverCode": "PER",
       "driverName": "Sergio Pérez",
       "constructorName": "Cadillac F1 Team",
+      "points": 0,
+      "wins": 0
+    },
+    {
+      "position": 25,
+      "driverCode": "",
+      "driverName": "Rafael Camara",
+      "constructorName": "Haas F1 Team",
       "points": 0,
       "wins": 0
     }
