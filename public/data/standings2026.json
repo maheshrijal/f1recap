@@ -1,7 +1,7 @@
 {
   "season": "2026",
   "round": "20",
-  "updatedAt": "2026-11-08T21:44:01.112Z",
+  "updatedAt": "2026-11-09T01:27:23.554Z",
   "seasonStarted": true,
   "source": "jolpica",
   "drivers": [
@@ -42,7 +42,7 @@
       "driverCode": "LEC",
       "driverName": "Charles Leclerc",
       "constructorName": "Ferrari",
-      "points": 251,
+      "points": 249,
       "wins": 1
     },
     {
@@ -74,7 +74,7 @@
       "driverCode": "LAW",
       "driverName": "Liam Lawson",
       "constructorName": "RB F1 Team",
-      "points": 87,
+      "points": 89,
       "wins": 0
     },
     {
@@ -216,7 +216,7 @@
     {
       "position": 2,
       "constructorName": "Ferrari",
-      "points": 512,
+      "points": 510,
       "wins": 2
     },
     {
@@ -234,7 +234,7 @@
     {
       "position": 5,
       "constructorName": "RB F1 Team",
-      "points": 112,
+      "points": 114,
       "wins": 0
     },
     {
