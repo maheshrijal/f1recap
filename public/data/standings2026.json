@@ -1,7 +1,7 @@
 {
   "season": "2026",
   "round": "20",
-  "updatedAt": "2026-11-09T13:35:13.130Z",
+  "updatedAt": "2026-11-20T05:22:30.384Z",
   "seasonStarted": true,
   "source": "jolpica",
   "drivers": [
@@ -199,7 +199,7 @@
     },
     {
       "position": 25,
-      "driverCode": "",
+      "driverCode": "CAM",
       "driverName": "Rafael Camara",
       "constructorName": "Haas F1 Team",
       "points": 0,

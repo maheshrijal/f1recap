@@ -1,7 +1,20 @@
 {
-  "lastUpdated": "2026-11-09T13:35:12.246Z",
-  "totalVideos": 15,
+  "lastUpdated": "2026-11-20T05:22:29.814Z",
+  "totalVideos": 11,
   "grandPrixWeekends": [
+    {
+      "name": "2026 Las Vegas Grand Prix",
+      "videos": [
+        {
+          "videoId": "WLs_o7ClyM8",
+          "title": "FP1 Highlights | 2026 Las Vegas Grand Prix",
+          "description": "Catch up on the rare few moments of track action in a rain-soaked hour of practice in Las Vegas.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #LasVegasGP",
+          "publishedAt": "2026-11-20T02:41:24.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/WLs_o7ClyM8/hqdefault.jpg"
+        }
+      ],
+      "latestDate": "2026-11-20T02:41:24.000Z"
+    },
     {
       "name": "2026 Sao Paulo Grand Prix",
       "videos": [
@@ -83,47 +96,6 @@
         }
       ],
       "latestDate": "2026-11-01T23:24:08.000Z"
-    },
-    {
-      "name": "2026 United States Grand Prix",
-      "videos": [
-        {
-          "videoId": "wOxOwnRkI0I",
-          "title": "FP1 Highlights | 2026 United States Grand Prix",
-          "description": "Catch up on the action as the first practice session at the Circuit of the Americas got underway in Austin.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #USGP",
-          "publishedAt": "2026-10-23T20:04:33.000Z",
-          "thumbnail": "https://i.ytimg.com/vi/wOxOwnRkI0I/hqdefault.jpg"
-        },
-        {
-          "videoId": "ZaP98lmzsfY",
-          "title": "FP2 Highlights | 2026 United States Grand Prix",
-          "description": "All the main talking points from Friday's second hour of running, as the drivers and teams test their set-ups ahead of Saturday's Qualifying.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #USGP",
-          "publishedAt": "2026-10-23T23:34:40.000Z",
-          "thumbnail": "https://i.ytimg.com/vi/ZaP98lmzsfY/hqdefault.jpg"
-        },
-        {
-          "videoId": "EQ74or790IM",
-          "title": "Qualifying Highlights | 2026 United States Grand Prix",
-          "description": "The grid is set for the 2026 United States Grand Prix! Can Kimi Antonelli put himself in position for a possible Championship victory on Sunday?\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #USGP",
-          "publishedAt": "2026-10-24T22:33:51.000Z",
-          "thumbnail": "https://i.ytimg.com/vi/EQ74or790IM/hqdefault.jpg"
-        },
-        {
-          "videoId": "srLm23RUAH0",
-          "title": "Race Highlights | 2026 United States Grand Prix",
-          "description": "With the Championship within reach for Kimi Antonelli, would the race play out in his favour in order for him to secure the victory? Catch up on all the action from Austin!\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #USGP",
-          "publishedAt": "2026-10-25T22:33:34.000Z",
-          "thumbnail": "https://i.ytimg.com/vi/srLm23RUAH0/hqdefault.jpg"
-        },
-        {
-          "videoId": "DI-XlksQPBo",
-          "title": "FP3 Highlights | 2026 United States Grand Prix",
-          "description": "One final hour of track time before Qualifying at the Circuit of the Americas - catch up on all the action from FP3.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #USGP",
-          "publishedAt": "2026-10-24T20:00:23.000Z",
-          "thumbnail": "https://i.ytimg.com/vi/DI-XlksQPBo/hqdefault.jpg"
-        }
-      ],
-      "latestDate": "2026-10-25T22:33:34.000Z"
     }
   ]
 }
