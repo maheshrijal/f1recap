@@ -1,7 +1,7 @@
 {
   "season": "2026",
   "round": "21",
-  "updatedAt": "2026-11-22T05:24:03.516Z",
+  "updatedAt": "2026-11-22T13:30:36.847Z",
   "seasonStarted": true,
   "source": "jolpica",
   "drivers": [
@@ -10,7 +10,7 @@
       "driverCode": "ANT",
       "driverName": "Andrea Kimi Antonelli",
       "constructorName": "Mercedes",
-      "points": 390,
+      "points": 402,
       "wins": 9
     },
     {
@@ -18,47 +18,47 @@
       "driverCode": "VER",
       "driverName": "Max Verstappen",
       "constructorName": "Red Bull",
-      "points": 279,
-      "wins": 3
+      "points": 304,
+      "wins": 4
     },
     {
       "position": 3,
-      "driverCode": "RUS",
-      "driverName": "George Russell",
-      "constructorName": "Mercedes",
-      "points": 262,
-      "wins": 3
-    },
-    {
-      "position": 4,
       "driverCode": "HAM",
       "driverName": "Lewis Hamilton",
       "constructorName": "Ferrari",
-      "points": 261,
+      "points": 267,
       "wins": 1
+    },
+    {
+      "position": 4,
+      "driverCode": "RUS",
+      "driverName": "George Russell",
+      "constructorName": "Mercedes",
+      "points": 264,
+      "wins": 3
     },
     {
       "position": 5,
-      "driverCode": "LEC",
-      "driverName": "Charles Leclerc",
-      "constructorName": "Ferrari",
-      "points": 249,
-      "wins": 1
-    },
-    {
-      "position": 6,
       "driverCode": "NOR",
       "driverName": "Lando Norris",
       "constructorName": "McLaren",
-      "points": 246,
+      "points": 264,
       "wins": 3
+    },
+    {
+      "position": 6,
+      "driverCode": "LEC",
+      "driverName": "Charles Leclerc",
+      "constructorName": "Ferrari",
+      "points": 250,
+      "wins": 1
     },
     {
       "position": 7,
       "driverCode": "PIA",
       "driverName": "Oscar Piastri",
       "constructorName": "McLaren",
-      "points": 152,
+      "points": 167,
       "wins": 0
     },
     {
@@ -82,7 +82,7 @@
       "driverCode": "GAS",
       "driverName": "Pierre Gasly",
       "constructorName": "Alpine F1 Team",
-      "points": 42,
+      "points": 52,
       "wins": 0
     },
     {
@@ -98,7 +98,7 @@
       "driverCode": "COL",
       "driverName": "Franco Colapinto",
       "constructorName": "Alpine F1 Team",
-      "points": 27,
+      "points": 35,
       "wins": 0
     },
     {
@@ -127,6 +127,14 @@
     },
     {
       "position": 16,
+      "driverCode": "SAI",
+      "driverName": "Carlos Sainz",
+      "constructorName": "Williams",
+      "points": 11,
+      "wins": 0
+    },
+    {
+      "position": 17,
       "driverCode": "OCO",
       "driverName": "Esteban Ocon",
       "constructorName": "Haas F1 Team",
@@ -134,18 +142,10 @@
       "wins": 0
     },
     {
-      "position": 17,
+      "position": 18,
       "driverCode": "ALO",
       "driverName": "Fernando Alonso",
       "constructorName": "Aston Martin",
-      "points": 7,
-      "wins": 0
-    },
-    {
-      "position": 18,
-      "driverCode": "SAI",
-      "driverName": "Carlos Sainz",
-      "constructorName": "Williams",
       "points": 7,
       "wins": 0
     },
@@ -210,25 +210,25 @@
     {
       "position": 1,
       "constructorName": "Mercedes",
-      "points": 652,
+      "points": 666,
       "wins": 12
     },
     {
       "position": 2,
       "constructorName": "Ferrari",
-      "points": 510,
+      "points": 517,
       "wins": 2
     },
     {
       "position": 3,
       "constructorName": "Red Bull",
-      "points": 415,
-      "wins": 3
+      "points": 440,
+      "wins": 4
     },
     {
       "position": 4,
       "constructorName": "McLaren",
-      "points": 398,
+      "points": 431,
       "wins": 3
     },
     {
@@ -240,7 +240,7 @@
     {
       "position": 6,
       "constructorName": "Alpine F1 Team",
-      "points": 69,
+      "points": 87,
       "wins": 0
     },
     {
@@ -258,7 +258,7 @@
     {
       "position": 9,
       "constructorName": "Williams",
-      "points": 12,
+      "points": 16,
       "wins": 0
     },
     {
