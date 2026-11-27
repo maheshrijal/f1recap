@@ -1,7 +1,20 @@
 {
-  "lastUpdated": "2026-11-27T06:17:47.070Z",
-  "totalVideos": 15,
+  "lastUpdated": "2026-11-27T16:53:06.480Z",
+  "totalVideos": 11,
   "grandPrixWeekends": [
+    {
+      "name": "2026 Qatar Grand Prix",
+      "videos": [
+        {
+          "videoId": "fHBZtHFSMUA",
+          "title": "FP1 Highlights | 2026 Qatar Grand Prix",
+          "description": "Trips into the gravel and sparks flying in our first hour of practice at Lusail International Circuit! Catch up on all the action from FP1...\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #QatarGP",
+          "publishedAt": "2026-11-27T16:32:24.000Z",
+          "thumbnail": "https://i.ytimg.com/vi/fHBZtHFSMUA/hqdefault.jpg"
+        }
+      ],
+      "latestDate": "2026-11-27T16:32:24.000Z"
+    },
     {
       "name": "2026 Las Vegas Grand Prix",
       "videos": [
@@ -83,47 +96,6 @@
         }
       ],
       "latestDate": "2026-11-08T19:57:16.000Z"
-    },
-    {
-      "name": "2026 Mexico City Grand Prix",
-      "videos": [
-        {
-          "videoId": "zM4cNh5YRek",
-          "title": "FP1 Highlights | 2026 Mexico City Grand Prix",
-          "description": "FP1 saw plenty of new faces head out on track for the opening hour, with 10 out of 11 teams running rookie drivers and only Ferrari keeping its regular line-up. Catch up on all the action from the first hour of practice in Mexico City.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #MexicoGP",
-          "publishedAt": "2026-10-30T21:33:38.000Z",
-          "thumbnail": "https://i.ytimg.com/vi/zM4cNh5YRek/hqdefault.jpg"
-        },
-        {
-          "videoId": "tEEGnZna3Gc",
-          "title": "FP2 Highlights | 2026 Mexico City Grand Prix",
-          "description": "Catch up on the action from the second hour of Qualifying in Mexico City!\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #MexicoGP",
-          "publishedAt": "2026-10-31T00:26:19.000Z",
-          "thumbnail": "https://i.ytimg.com/vi/tEEGnZna3Gc/hqdefault.jpg"
-        },
-        {
-          "videoId": "O9kbG2tTX10",
-          "title": "Qualifying Highlights | 2026 Mexico City Grand Prix",
-          "description": "Catch up on all the highlights from Qualifying at The Autódromo Hermanos Rodríguez!\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #MexicoGP",
-          "publishedAt": "2026-10-31T22:41:17.000Z",
-          "thumbnail": "https://i.ytimg.com/vi/O9kbG2tTX10/hqdefault.jpg"
-        },
-        {
-          "videoId": "tIiRK7hKScU",
-          "title": "Race Highlights | 2026 Mexico City Grand Prix",
-          "description": "With Kimi Antonelli lining up P4 and the championship in his sights, can he drive his way to victory in Mexico? Catch up on all the highlights from The Autódromo Hermanos Rodríguez...\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #MexicoGP",
-          "publishedAt": "2026-11-01T23:24:08.000Z",
-          "thumbnail": "https://i.ytimg.com/vi/tIiRK7hKScU/hqdefault.jpg"
-        },
-        {
-          "videoId": "BH33XWkjtBI",
-          "title": "FP3 Highlights | 2026 Mexico City Grand Prix",
-          "description": "The final hour of practice got underway in Mexico City, as the teams made their final adjustments ahead of Qualifying.\n\nFor more F1® videos, visit: https://www.Formula1.com\n\nVisit our store: https://f1store.formula1.com/\n\nFollow F1®:\nhttps://www.instagram.com/F1\nhttps://www.facebook.com/Formula1/\nhttps://www.twitter.com/F1\nhttps://www.twitch.tv/formula1\nhttps://www.tiktok.com/@f1\n\n#F1 #MexicoGP",
-          "publishedAt": "2026-10-31T19:54:25.000Z",
-          "thumbnail": "https://i.ytimg.com/vi/BH33XWkjtBI/hqdefault.jpg"
-        }
-      ],
-      "latestDate": "2026-11-01T23:24:08.000Z"
     }
   ]
 }
